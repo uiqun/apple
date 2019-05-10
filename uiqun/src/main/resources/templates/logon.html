@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>唯群网--登录</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/logon.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script charset="gb2312" type="text/javascript" src="js/public.js"></script>
+    <script charset="gb2312" type="text/javascript" src="js/logon.js"></script>
+ </head>
+
+<body>
+
+    <div id="header">
+        <div id="head">
+            <div id="logo">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
+            <a id="admin" onclick="admin()">后台管理</a>
+            <a id="logon" onclick="logon()">登陆</a>
+            <a id="regist" onclick="regist()">注册</a>
+            <a id="userInfo" onclick="userInfo()">用户信息</a>
+        </div>
+    </div>
+    <div id="naver">
+        <div id="nav">
+            <a class="nav1" onclick="index()">首页</a>
+            <a class="nav1" onclick="findPrice()">查价</a>
+            <a class="nav1" onclick="rfq()">询价</a>
+            <a class="nav1" onclick="quote()">报价</a>
+            <a class="nav1" onclick="vendor()">供应商</a>
+            <a class="nav1" onclick="BOM()">BOM</a>
+        </div>
+    </div>
+
+    <div id="login_box">
+        <div id="login">
+           <div id="logPic">
+               <img src="images/logPic.jpg" alt=""/>
+           </div>
+            <form id="logForm" name="logForm" method="post" action="">
+                <table width="100%" border="0" cellspacing="0" cellpadding="15">
+                    <tr>
+                        <td width="120" height="80" align="right">用户名：</td>
+                        <td><input name="unsename" type="text" size="18" /></td>
+                    </tr>
+                    <tr>
+                        <td height="80" align="right">密码：</td>
+                        <td><input name="passWord" type="password" size="18"/></td>
+                    </tr>
+                    <tr>
+                        <td height="80" align="right">&nbsp;</td>
+                        <td>
+                            <a  type="submit" value="登陆" onclick="user()">&nbsp;登陆&nbsp;</a>
+                           <a   id="forget" >忘记密码？</a>
+                            <a id="registBtn" onclick="regist()" >免费注册</a>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div id="belowNav_box">
+        <div id="belowNav">
+            <a onclick="platInfo()">用户指南</a>
+            <a onclick="platInfo()">操作流程</a>
+            <a onclick="platInfo()">免责声明</a>
+            <a onclick="platInfo()">关于我们</a>
+            <a onclick="platInfo()">联系我们</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <div id="vr">
+            <span>版权所有：深圳市大唯科技有限公司</span>
+            <span>备案号：©唯群网 粤ICP备17005480号-2</span>
+        </div>
+    </div>
+</body>
+</html>

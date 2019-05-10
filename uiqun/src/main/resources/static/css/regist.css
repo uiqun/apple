@@ -1,0 +1,44 @@
+
+#regist1_box{
+	width: 100%;
+}
+#regist1{
+	margin: 0 auto;
+	width:1000px;
+	height: 800px;
+}
+#logPic{
+    float: left;
+    margin-top: 100px;
+}
+#registForm{
+	float: left;
+    font-size: 24px;
+    margin-top: 100px;
+	line-height: 50px;
+}
+#registForm input{
+    font-size: 24px;
+}
+
+#user_prompt{
+	color: #FF0000;
+	font-size: 16px;
+}
+
+#pwd_prompt{
+	color: #FF0000;
+	font-size: 16px;
+}
+
+#mobile_prompt{
+	color: #FF0000;
+	font-size: 16px;
+}
+
+#userLaw{
+	border: 1px solid #333333;
+	width:850px;
+	height:300px;
+	font-size: 20px;
+}

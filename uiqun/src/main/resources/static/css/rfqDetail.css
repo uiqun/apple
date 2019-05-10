@@ -1,0 +1,64 @@
+
+#title_box{
+	width: 100%;
+	margin-top: 40px;
+}
+#title{
+	margin: 0 auto;
+	width: 1226px;
+}
+#title span{
+	font-size: 32px;
+	margin-left: 350px;
+}
+
+#rfqTarget_box{
+	width:100%;
+	margin-top: 10px;
+}
+#rfqTarget{
+	margin:0 auto;
+	width:1226px;
+	height:120px;
+
+	font-size:20px;
+}
+ul li{
+	float:left;
+}
+
+#quoteList_box{
+	width:100%
+}
+#quoteList{
+	margin:0 auto;
+	width:1266px;
+	height:850px;
+	font-size:20px;
+}
+
+#quoteList span:nth-child(9):hover{
+	color:#F30;
+}
+
+#quoteList span:nth-child(9){
+	cursor:pointer;
+	border:1px solid #F30;
+}
+#quoteList span:last-child:hover{
+	color:#F30;
+}
+#quoteList span:last-child{
+	cursor:pointer;	
+	border:1px solid #F30;
+}
+#quoteList a:hover{
+	color:#F30;
+}
+#quoteList a{
+	float:left;
+	cursor:pointer;
+	margin-left:10px;
+	color:#003;
+	font-size:20px	
+}

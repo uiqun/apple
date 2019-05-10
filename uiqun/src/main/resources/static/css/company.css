@@ -1,0 +1,55 @@
+
+#title{
+    margin: 0 auto;
+    width: 1000px;
+}
+#title span{
+    font-size: 32px;
+    margin-left: 350px;
+}
+
+#comInfo_box{
+	width: 100%;
+}
+#comInfo{
+	margin:0 auto;
+    width:1000px;
+    font-size: 20px;
+}
+#comInfo form{
+    margin-top: 20px;
+}
+.inputFm1{
+    width: auto;
+    height: 20px;
+}
+#comInfo #table #textarea{
+    font-size: 18px;
+}
+
+#h2_box{
+    width: 100%;
+}
+#h2{
+    margin: 0 auto;
+    width: 1000px;
+    height: 60px;
+    border-bottom: 2px solid #FF0000;
+}
+#h2 span{
+    float: left;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+ul li{
+    float: left;
+}
+#hotStk_box{
+    width: 100%;
+}
+#hotStk{
+    margin:0 auto;
+    width: 1000px;
+    height: 800px;
+}

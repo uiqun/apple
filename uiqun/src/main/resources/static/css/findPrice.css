@@ -1,0 +1,100 @@
+
+#search{
+	margin:0 auto;
+	width:1000px;
+	height:100px;
+}
+
+#ptypeList{
+	float:left;
+	border:2px solid blue;
+	width:150px;
+	height:35px;
+	margin-left: 150px;
+	margin-top:25px;
+	font-size: 20px;
+}
+#pnInput{
+	float:left;
+	width:420px;
+	height:30px;
+	margin-left:20px;
+	margin-top:25px;
+	border:2px solid blue;
+}
+#searchBtn{
+	float:left;
+	width:150px;
+	height:35px;
+	margin-left:10px;
+	margin-top:25px;
+	font-size:20px;
+}
+
+#priceList{
+	width:1000px;
+	height: 1500px;
+	font-size: 16px;
+	margin:0 auto;
+}
+.headline{
+	width:1000px;
+    margin-top:20px;
+    border-top: 2px solid #FF3300;
+}
+
+ul li{
+	float: left;
+}
+
+#newQuote{
+    margin: 0 auto;
+	width:1000px;
+	height: 20px;
+}
+#newQuote span{
+    font-size: 20px;
+    margin-left: 40px;
+}
+
+
+#quoteList{
+	margin: 0 auto;
+	width:1000px;
+    height: 800px;
+
+}
+
+#pageCount1{
+	margin:0 auto;
+	width:1000px;
+	height:60px;
+	background:#9CF;
+}
+#pageCount1 span{
+	width:20px;
+	margin-left:30px;
+	line-height:40px;
+	font-size:16px;
+}
+
+#stkHead{
+	margin:0 auto;
+	width:1000px;
+    height: 20px;
+}
+#stkHead span{
+    font-size: 20px;
+    margin-left: 40px;
+}
+
+#hotStk{
+	margin: 0 auto;
+	width:1000px;
+    height: 900px;
+}
+
+.nav1:nth-child(2){
+	color: #FF3300;
+	font-weight: bold;
+}

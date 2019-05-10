@@ -1,0 +1,28 @@
+
+#login_box{
+	width: 100%;
+}
+#login{
+    width: 1226px;
+    height: 800px;
+	margin:0 auto;
+    font-size: 24px;
+}
+#logPic{
+    float: left;
+    margin-top: 100px;
+}
+#logForm{
+    float: right;
+    margin-top: 100px;
+}
+#logForm input{
+    font-size: 24px;
+}
+a{
+    font-size: 24px;
+    cursor: pointer;
+}
+a:hover{
+    color: #FF0000;
+}

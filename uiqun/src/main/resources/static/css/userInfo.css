@@ -1,0 +1,61 @@
+
+#title{
+    margin: 0 auto;
+    width: 1226px;
+}
+#title span{
+    font-size: 32px;
+    margin-left: 350px;
+}
+
+#hl_box{
+	width: 100%;
+}
+#hlBox{
+	margin: 0 auto;
+	width:1226px;
+	height: 90px;
+    font-size: 18px;
+}
+#hl{
+    width:1226px;
+	margin-top: 50px;
+    font-size: 20px;
+}
+#hl span{
+    margin-left: 60px;
+}
+#form_box{
+	width: 100%;
+}
+#userDetail{
+	margin:0 auto;
+	width: 1226px;
+	font-size: 18px;
+}
+.input1{
+    width: 300px;
+    height: 20px;
+    margin-left: 10px;
+}
+.input2{
+    width: 800px;
+    height: 20px;
+    margin-left: 10px;
+}
+.input3{
+    width: 305px;
+    height: 25px;
+    margin-left: 10px;
+}
+#profile{
+    width:800px;
+    height:400px;
+    margin-left: 10px;
+}
+span:last-child{
+    cursor: pointer;
+}
+span:last-child:hover{
+    color: #FF0000;
+}

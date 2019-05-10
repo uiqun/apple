@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>唯群网--注册</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/regist.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script charset="gb2312" type="text/javascript" src="js/public.js"></script>
+    <script charset="gb2312" type="text/javascript" src="js/regist.js"></script>
+
+ </head>
+
+<body>
+
+    <div id="header">
+        <div id="head">
+            <div id="logo">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
+            <a id="admin" onclick="admin()">后台管理</a>
+            <a id="logon" onclick="logon()">登陆</a>
+            <a id="regist" onclick="regist()">注册</a>
+            <a id="userInfo" onclick="userInfo()">用户信息</a>
+        </div>
+    </div>
+    <div id="naver">
+        <div id="nav">
+            <a class="nav1" onclick="index()">首页</a>
+            <a class="nav1" onclick="findPrice()">查价</a>
+            <a class="nav1" onclick="rfq()">询价</a>
+            <a class="nav1" onclick="quote()">报价</a>
+            <a class="nav1" onclick="vendor()">供应商</a>
+            <a class="nav1" onclick="BOM()">BOM</a>
+        </div>
+    </div>
+
+    <div id="regist1_box">
+        <div id="regist1">
+              <form id="registForm" name="registForm" method="post" action="">
+                  <table>
+                        <tr>
+                            <td>用户名：<input id="username" type="text" size="18" required/><span id="user_prompt">用户名由英文字母和数字组成的4-16位字符，以字母开头</span></td>
+                        </tr>
+                        <tr>
+                            <td>密 &nbsp 码：<input id="passWord" type="password" size="18" required/><span id="pwd_prompt">密码由英文字母和数字组成的4-10位字符</span></td>
+                        </tr>
+                        <tr>
+                            <td>手 &nbsp 机：<input id="handPhone" type="text" size="18" required/> <span>发送验证码</span><span id="mobile_prompt"></span></td>
+                        </tr>
+                        <tr>
+                            <td>验证码：<input id="veriCode" type="text" size="18"/></td>
+                        </tr>
+                      <tr>
+                            <td height="40" align="center">《唯群网服务条款》</td>
+                      </tr>
+                        <tr>
+                            <td><textarea id="userLaw" cols="10" rows="8">唯群网要求客户遵守国家的相关网络管理法规。不传播色情、不造谣，不传谣。</textarea> </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input name="isAgree" type="radio" value="1"/>同意
+                                <input name="isAgree" type="radio" value="0"  checked="checked"/>不同意
+                            </td>
+                      </tr>
+                        <tr>
+                            <td><input class="button" type="submit" name="regist" value="提交注册"/> </td>
+                        </tr>
+                  </table>
+            </form>
+        </div>
+    </div>
+
+    <div id="belowNav_box">
+        <div id="belowNav">
+            <a onclick="platInfo()">用户指南</a>
+            <a onclick="platInfo()">操作流程</a>
+            <a onclick="platInfo()">免责声明</a>
+            <a onclick="platInfo()">关于我们</a>
+            <a onclick="platInfo()">联系我们</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <div id="vr">
+            <span>版权所有：深圳市大唯科技有限公司</span>
+            <span>备案号：©唯群网 粤ICP备17005480号-2</span>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+
+#addMfg_box{
+    width:100%;
+    margin-top: 40px;
+}
+#addMfg{
+    margin:0 auto;
+    width:1000px;
+    height:auto;
+    font-size:24px;
+}
+#addForm{
+    margin-top: 30px;
+    margin-left:200px;
+}
+input{
+    font-size:24px;
+    width:500px;
+    height:24px;
+    margin-top: 20px;
+}
+
+#addForm #spec{
+    width:500px;
+    height:300px;
+    margin-top: 20px;
+}
+.mfgSave{
+    width:100px;
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 35px;
+    margin-left:100px;
+    margin-bottom: 50px;
+}
+.mfgSave:hover{
+    color: #FF0000;
+}
+
+#uploadPn{
+    margin-top: 30px;
+    margin-left:200px;
+}
+#pnForm{
+    float: left;
+    font-size: 30px;
+    width: 1226px;
+    height:100px;
+    text-align: center;
+}
+
+#pnInput{
+    float:left;
+    width:420px;
+    height:30px;
+    margin-left:220px;
+    margin-top:25px;
+    border:2px solid blue;
+}
+#searchBtn{
+    float:left;
+    width:150px;
+    height:35px;
+    margin-left:10px;
+    margin-top:25px;
+    font-size:24px;
+}
+
+.nav1:nth-child(3){
+    color: #FF3300;
+    font-weight: bold;
+}

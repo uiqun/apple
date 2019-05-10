@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>唯群网--添加型号</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/addPn.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script  type="text/javascript" src="js/public.js"></script>
+    <script  type="text/javascript" src="js/addPn.js" ></script>
+</head>
+
+<body>
+<input type="hidden" id="AlertMessage" th:value="${AlertMessage}">
+<script>
+    var AlertMessage = document.getElementById("AlertMessage").value;
+    if(AlertMessage!=null&&AlertMessage!=''){
+        alert(AlertMessage);
+    }
+</script>
+<div id="header">
+    <div id="head">
+        <div id="logo">
+            <img src="images/logo.png" alt="">
+        </div>
+        <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
+        <a id="admin" onclick="admin()">后台管理</a>
+        <a id="logon" onclick="logon()">登陆</a>
+        <a id="regist" onclick="regist()">注册</a>
+        <a id="userInfo" onclick="userInfo()">用户信息</a>
+    </div>
+</div>
+<div id="naver">
+    <div id="nav">
+        <a class="nav1" onclick="index()">首页</a>
+        <a class="nav1" onclick="findPrice()">查价</a>
+        <a class="nav1" onclick="rfq()">询价</a>
+        <a class="nav1" onclick="quote()">报价</a>
+        <a class="nav1" onclick="vendor()">供应商</a>
+        <a class="nav1" onclick="BOM()">BOM</a>
+    </div>
+</div>
+
+<div id="addPn_box">
+    <div id="addPn">
+        <form id="addForm" action="/addpn" method="post" enctype="multipart/form-data" name="addForm">===============添加型号===============
+            <dl>
+                <dd>产品种类：<select  id="ptypeList" name="ptype">
+
+                    <option th:each="pntype:${pntypeList}"  th:value="${pntype.id}" th:text="${pntype.name}"></option>
+                </select></dd>
+                <dd>品牌名称：<input name="mfg"  type="text" onblur="checkMfg(this)" required="required"/><button onclick="addMfg()">增加品牌</button><span></span> </dd>
+                <dd>产品型号：<input name="pn" type="text" onblur="checkPn(this)" required="required"/><span></span></dd>
+                <dd>产品描述：<input name="des"  type="text" /></dd>
+                <dd>产品封装：<input name="pkge" type="text" /></dd>
+                <dd>包装方式：<input name="pack" type="text" /></dd>
+                <dd>整包数量：<input name="mpq" type="text" /></dd>
+                <dd>参考价格：<input name="price" type="text" /></dd>
+                <dd>规格参数：<input name="speck" id="spec"  type="text" /></dd>
+                <dd>上传图片：<input name="upload"  type="file"  id="upload"/></dd>
+                <dd>规格链接：<input name="datalink"  type="text" /></dd>
+                <dd><button type="button" onclick="saveCurrentPn()" class="pnSave">保存</button></dd>
+            </dl>
+        </form>
+    </div>
+</div>
+
+<div id="belowNav_box">
+    <div id="belowNav">
+        <a onclick="platInfo()">用户指南</a>
+        <a onclick="platInfo()">操作流程</a>
+        <a onclick="platInfo()">免责声明</a>
+        <a onclick="platInfo()">关于我们</a>
+        <a onclick="platInfo()">联系我们</a>
+    </div>
+</div>
+
+<div class="box">
+    <div id="vr">
+        <span>版权所有：深圳市大唯科技有限公司</span>
+        <span>备案号：©唯群网 粤ICP备17005480号-2</span>
+    </div>
+</div>
+</body>
+</html>

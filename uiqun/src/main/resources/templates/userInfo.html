@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>唯群网--用户信息</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/userInfo.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script charset="gb2312" type="text/javascript" src="js/public.js"></script>
+    <script charset="gb2312" type="text/javascript" src="js/user.js"></script>
+ </head>
+
+<body>
+    <div id="header">
+        <div id="head">
+            <div id="logo">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
+            <a id="admin" onclick="admin()">后台管理</a>
+            <a id="logon" onclick="logon()">登陆</a>
+            <a id="regist" onclick="regist()">注册</a>
+            <a id="userInfo" onclick="userInfo()">用户信息</a>
+        </div>
+    </div>
+    <div id="naver">
+        <div id="nav">
+            <a class="nav1" onclick="index()">首页</a>
+            <a class="nav1" onclick="findPrice()">查价</a>
+            <a class="nav1" onclick="rfq()">询价</a>
+            <a class="nav1" onclick="quote()">报价</a>
+            <a class="nav1" onclick="vendor()">供应商</a>
+            <a class="nav1" onclick="BOM()">BOM</a>
+        </div>
+    </div>
+
+        <div class="box">
+            <div id="title">
+                <span>用户信息管理</span>
+            </div>
+        </div>
+
+    <div id="hl_box">
+        <div id="hlBox">
+            <div id="hl">
+                <span>深圳市模板科技电子有限公司</span>
+                <span >未认证</span>
+                <span>已认证</span>
+                <span onclick="hotStk()">推广库存</span>
+            </div>
+        </div>
+    </div>
+<div id="form_box">
+    <form id="userDetail">
+    <table width="100%" border="0" cellspacing="0" cellpadding="15">
+        <tr>
+            <td width="120" height="40" align="right">昵称:</td>
+            <td><input class="input1" name="nickName" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td> <img src="images/logo.png" alt=""/></td>
+            <td><input name="uLogo" type="file" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">公司名称:</td>
+            <td><input class="input1" name="company" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">地域:</td>
+            <td>
+                <select class="input3" type="text">
+                    <option value="深圳"selected="selected">深圳市</option>
+                    <option value="北京" >北京市</option>
+                    <option value="上海">上海市</option>
+                    <option value="南京">南京市</option>
+                    <option value="杭州">杭州市</option>
+                    <option value="港台">港澳台</option>
+                    <option value="华南">华南区</option>
+                    <option value="华东">华东区</option>
+                    <option value="华中">华中区</option>
+                    <option value="华北">华北区</option>
+                    <option value="西南">西南区</option>
+                    <option value="西北">西北区</option>
+                    <option value="东北">东北区</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">手机号码:</td>
+            <td><input class="input1" name="mobile" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">用户类型:</td>
+            <td>
+                <select class="input3" type="text">
+                    <option value="贸易"selected="selected">B 贸易商</option>
+                    <option value="代理商" >F 代理商</option>
+                    <option value="原厂">M 品牌原厂</option>
+                    <option value="终端">U 终端用户</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">地址:</td>
+            <td><input class="input2" name="addr" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">联系人:</td>
+            <td><input class="input1" name="contact" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">职位:</td>
+            <td><input class="input1" name="title" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">电话:</td>
+            <td><input class="input1" name="tel" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">QQ:</td>
+            <td><input class="input1" name="qq" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">微信:</td>
+            <td><input class="input1" name="wechat" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">个人爱好:</td>
+            <td><input class="input2" name="hobby" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">网址:</td>
+            <td><input class="input1" name="web" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">主营产品:</td>
+            <td><input class="input2" name="business" type="text" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="80" align="right">公司介绍:</td>
+            <td><input id="profile" name="profile" type="text" size="500"></td>
+        </tr>
+        <tr>
+            <td width="120" height="80" align="right">资料认证:</td>
+            <td><input name="verify" type="file" size="18"></td>
+        </tr>
+        <tr>
+            <td width="120" height="80" align="right">&nbsp;</td>
+            <td><input name="view" type="image" size="18" value="预览"></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">&nbsp;</td>
+            <td><button class="button">提交认证</button></td>
+        </tr>
+    </table>
+  </form>
+</div>
+
+        <div id="belowNav_box">
+            <div id="belowNav">
+                <a onclick="platInfo()">用户指南</a>
+                <a onclick="platInfo()">操作流程</a>
+                <a onclick="platInfo()">免责声明</a>
+                <a onclick="platInfo()">关于我们</a>
+                <a onclick="platInfo()">联系我们</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="vr">
+                <span>版权所有：深圳市大唯科技有限公司</span>
+                <span>备案号：©唯群网 粤ICP备17005480号-2</span>
+            </div>
+        </div>
+</body>
+</html>

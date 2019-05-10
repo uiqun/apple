@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uiqun.dao.PnDao">
+    <insert id="insertPns">
+        INSERT INTO `pnlist`(ptype,pn,des,mfg,pkge,pack,mpq,price,spec,datalink)
+          VALUES
+          <foreach collection="list" item="outList" separator="," close=";">
+              <foreach collection="outList" item="intList" open="(" close=")" separator="," index="index">
+                <if test="index == 0">
+                    (SELECT id FROM `pntype` WHERE `name` LIKE  concat('%',#{intList}))
+                </if>
+              <if test="index > 0">
+                  #{intList}
+              </if>
+
+              </foreach>
+          </foreach>
+    </insert>
+    <select id="queryPns" resultType="Pn">
+        select * from pnlist
+    </select>
+    <select id="queryPn" resultType="_int">
+        select count(pn) from pnlist where pn = #{pn} and mfg= #{mfg}
+    </select>
+    <insert id="insertOnePn">
+        INSERT INTO `pnlist`(ptype,pn,des,mfg,pkge,pack,mpq,price,spec,datalink)
+         VALUES(#{ptype},#{pn},#{des},#{mfg},#{pkge},#{pack},#{mpq},#{price},#{speck},#{datalink})
+    </insert>
+</mapper>

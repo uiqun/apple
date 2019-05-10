@@ -1,0 +1,38 @@
+
+#addPn_box{
+    width:100%;
+    margin-top: 40px;
+}
+#addPn{
+    margin:0 auto;
+    width:1000px;
+    height:auto;
+    font-size:24px;
+}
+#addForm{
+    margin-top: 30px;
+    margin-left:200px;
+}
+.pnSave{
+    width:100px;
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 35px;
+    margin-left:100px;
+    margin-bottom: 50px;
+}
+.pnSave:hover{
+    color: #FF0000;
+}
+input{
+    font-size:24px;
+    width:500px;
+    height:24px;
+    margin-top: 20px;
+}
+
+
+.nav1:nth-child(3){
+    color: #FF3300;
+    font-weight: bold;
+}

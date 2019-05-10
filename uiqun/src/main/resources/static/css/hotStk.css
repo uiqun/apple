@@ -1,0 +1,57 @@
+
+#title{
+	margin: 0 auto;
+	width: 1000px;
+}
+#title span{
+	font-size: 32px;
+	margin-left: 350px;
+}
+
+#h1_box{
+	width: 100%;
+}
+#h1{
+	margin: 0 auto;
+	width: 1000px;
+	height: 120px;
+}
+#uLogo{
+	float: left;
+	margin-top: 50px;
+}
+#cName{
+	float: left;
+	font-size: 24px;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.upload{
+	float: right;
+	font-size: 18px;
+	margin-top: 50px;
+	margin-right: 40px;
+	cursor: pointer;
+}
+
+#h2{
+	margin: 0 auto;
+	width: 1000px;
+	height: 60px;
+	border-bottom: 2px solid #FF0000;
+}
+#h2 span{
+	float: left;
+	font-size: 20px;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+ul li{
+	float: left;
+}
+
+#hotStk{
+	margin:0 auto;
+	width: 1000px;
+	height: 800px;
+}

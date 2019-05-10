@@ -1,0 +1,26 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uiqun.dao.RfqDao">
+    <sql id="rfqCondition">
+        <where>
+            <if test="condition.pntype>0">
+                and pntype=#{condition.pntype}
+            </if>
+            <if test="condition.pn!=null and condition.pn!=''">
+                and pn like concat('%',#{condition.pn},'%')
+            </if>
+        </where>
+    </sql>
+    <select id="queryRfqList" resultType="Rfq">
+        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,sure,rdate,isOpen
+        from  rfqlist
+        <include refid="rfqCondition"/>
+        limit #{pageOffset},#{pageSize}
+    </select>
+    <select id="queryRfqRows" resultType="_int">
+        select count(1)
+        from  rfqlist
+      <include refid="rfqCondition"/>
+    </select>
+</mapper>

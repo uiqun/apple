@@ -1,0 +1,43 @@
+
+#rfqSubmit_box{
+	width:100%;
+}
+#rfqSubmit{
+	margin:0 auto;
+	width:1000px;
+	height:auto;
+    font-size: 16px;
+	margin-top:35px;
+}
+#pnInput{
+    width: 400px;
+    height:25px;
+}
+#qltyForm{
+    width:205px;
+    height:25px;
+}
+
+#rfqList{
+	margin:0 auto;
+	width:1000px;
+	height:1000px;
+	margin-top:30px;
+	border-top:1px solid #F30;
+}
+#rfqList li{
+    margin-top:10px;
+    float: left;
+}
+#rfqList li:hover{
+	color: #F30;
+}
+.rfqForm{
+    width:200px;
+    height:20px;
+}
+
+.nav1:nth-child(3){
+	color: #FF3300;
+	font-weight: bold;
+}

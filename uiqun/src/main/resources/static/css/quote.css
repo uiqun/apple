@@ -1,0 +1,77 @@
+
+#quoteSubmit_box{
+	width:100%;
+    border-top: 1px solid #FF0000;
+}
+#quoteSubmit{
+	margin:0 auto;
+	width:1030px;
+	height:200px;
+    font-size: 18px;
+}
+
+#quoteSubmit #rfqTarget{
+	float:left;
+	width:1030px
+	height:40px;
+}
+#quoteSubmit #rfqTarget li{
+    margin-top: 20px;
+}
+
+#quoteSubmit #rfqTarget1{
+    float:left;
+    width:1030px
+    height:80px;
+
+}
+#quoteSubmit  #rfqTarget1 #span{
+    margin-left:60px;
+    margin-top: 40px;
+}
+#quoteSubmit #fillQuote{
+    float:left;
+    width:1030px;
+    margin-left:30px;
+    margin-top: 20px;
+}
+#listHead_box{
+    width: 100%;
+}
+#listHead{
+    margin:0 auto;
+    width: 1030px;
+    font-size: 20px;
+    color: #000033;
+}
+#myQuote_box{
+    width:100%;
+}
+
+ul li{
+    float: left;
+}
+
+#quoteList{
+    margin: 0 auto;
+    width:1030px;
+    height:1200px;
+    border-top: 1px solid #FF0000;
+}
+.myRfq span{
+    margin-top: 30px;
+    color: #FF3300;
+}
+.head{
+    float: left;
+    width: 60px;
+    text-align: left;
+    font-size: 16px;
+    margin-left:10px;
+    margin-top: 10px;
+}
+
+.nav1:nth-child(4){
+    color: #FF3300;
+    font-weight: bold;
+}

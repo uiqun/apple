@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>唯群网--供应商</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css"    />
+    <link  rel="stylesheet"  type="text/css"  href="css/vendor.css"  />
+    <script src="js/jquery-3.2.1.js"></script>
+    <script  type="text/javascript" src="js/public.js"></script>
+    <script  type="text/javascript" src="js/vendor.js"></script>
+
+</head>
+
+<body>
+    <div id="header">
+        <div id="head">
+            <div id="logo">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
+            <a id="admin" onclick="admin()">后台管理</a>
+            <a id="logon" onclick="logon()">登陆</a>
+            <a id="regist" onclick="regist()">注册</a>
+            <a id="userInfo" onclick="userInfo()">用户信息</a>
+        </div>
+    </div>
+    <div id="naver">
+        <div id="nav">
+            <a class="nav1" onclick="index()">首页</a>
+            <a class="nav1" onclick="findPrice()">查价</a>
+            <a class="nav1" onclick="rfq()">询价</a>
+            <a class="nav1" onclick="quote()">报价</a>
+            <a class="nav1" onclick="vendor()">供应商</a>
+            <a class="nav1" onclick="BOM()">BOM</a>
+        </div>
+    </div>
+
+
+<div class="box">
+    <div id="box1">
+        <form  id="form">
+            <input type="search" id="pnInput"  placeholder="请输入供应商名称"/>
+            <button id="searchBtn" value="搜索"> 搜 索 </button>
+        </form>
+    </div>
+    <div id="box2">
+        <div id="category">
+            <ul>
+                <li>
+                    <span>综合供应</span>
+                    <ol>
+                        <li>行业大咖</li>
+                        <li>行业平台</li>
+                        <li>电商平台</li>
+                        <li>电子媒体</li>
+                        <li>配套服务</li>
+                    </ol>
+                </li>
+
+                <li>
+                    <span>主动元件</span>
+                    <ol>
+                        <li>单片机</li>
+                        <li>集成电路</li>
+                        <li>三极管</li>
+                        <li>二极管</li>
+                        <li>LED</li>
+                    </ol>
+                </li>
+
+                <li>
+                    <span>被动元件</span>
+                    <ol>
+                        <li>电容器</li>
+                        <li>电阻器</li>
+                        <li>电感</li>
+                        <li>晶振</li>
+                        <li>保险丝</li>
+                    </ol>
+                </li>
+
+                <li>
+                    <span>机电元件</span>
+                    <ol>
+                        <li>继电器</li>
+                        <li>开关</li>
+                        <li>电声器材</li>
+                        <li>变压器</li>
+                        <li>马达</li>
+                        <li>PCB</li>
+                    </ol>
+                </li>
+
+                <li>
+                    <span>结构元件</span>
+                    <ol>
+                        <li>连接器</li>
+                        <li>线材</li>
+                        <li>五金</li>
+                        <li>包装材料</li>
+                    </ol>
+                </li>
+
+                <li>
+                    <span>组合器件</span>
+                    <ol>
+                        <li>工具设备</li>
+                        <li>开发版</li>
+                        <li>模块</li>
+                        <li>电源</li>
+                        <li>显示屏</li>
+                        <li>PCBA</li>
+                    </ol>
+                </li>
+
+                <li>
+                    <span>高端军品</span>
+                    <ol>
+                        <li>国内</li>
+                        <li>海外</li>
+                        <li>研究所</li>
+                        <li>大学</li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+        <div id="detail">
+            <div>
+                <table  class="table" width="100%" cellspacing="20px">
+                    <tr><th colspan="4">分类一</th></tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table  class="table" width="100%" cellspacing="20px">
+                    <tr><th colspan="4">分类二</th></tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table  class="table" width="100%" cellspacing="20px">
+                    <tr><th colspan="4">分类三</th></tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table  class="table" width="100%" cellspacing="20px">
+                    <tr><th colspan="4">分类四</th></tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table  class="table" width="100%" cellspacing="20px">
+                    <tr><th colspan="4">分类五</th></tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="">公司一</a></td>
+                        <td><a href="">公司二</a></td>
+                        <td><a href="">公司三</a></td>
+                        <td><a href="">公司四</a></td>
+                        <td><a href="">公司五</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="adv">
+            <div><img src="images/ad1.jpg" alt=""/></div>
+            <div><img src="images/ad2.jpg" alt=""/></div>
+            <div><img src="images/ad3.jpg" alt=""/></div>
+            <div><img src="images/ad4.jpg" alt=""/></div>
+            <div><img src="images/ad5.jpg" alt=""/></div>
+            <div><img src="images/ad1.jpg" alt=""/></div>
+            <div><img src="images/ad2.jpg" alt=""/></div>
+            <div><img src="images/ad3.jpg" alt=""/></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="belowNav_box">
+    <div id="belowNav">
+        <a onclick="platInfo()">用户指南</a>
+        <a onclick="platInfo()">操作流程</a>
+        <a onclick="platInfo()">免责声明</a>
+        <a onclick="platInfo()">关于我们</a>
+        <a onclick="platInfo()">联系我们</a>
+    </div>
+</div>
+
+<div class="box">
+    <div id="vr">
+        <span>版权所有：深圳市大唯科技有限公司</span>
+        <span>备案号：©唯群网 粤ICP备17005480号-2</span>
+    </div>
+</div>
+</body>
+
+
+</html>

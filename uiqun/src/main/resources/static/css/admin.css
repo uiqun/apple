@@ -1,0 +1,49 @@
+*{
+    margin:0;
+    padding:0;
+}
+#box{
+    width: 100%;
+}
+#box1{
+    margin: 0 auto;
+    width: 1000px;
+    height: 50px;
+    background-color: burlywood;
+}
+#box1 span{
+    padding: 15px 30px;
+    display: inline-block;
+}
+a:hover{color:#F00;}
+
+#box2{
+    margin: auto;
+    width: 1000px;
+    height: 1600px;
+}
+#admnav{
+    float:left;
+    width: 100px;
+    height: 1500px;
+    background-color: #99CCFF;
+}
+ul{
+    list-style:none;
+}
+ul li{
+    padding: 10px 10px;
+}
+#detail{
+    float: left;
+    width: 900px;
+    height: 1500px;
+    background-color: lightgray;
+}
+
+#detail iframe{
+    display: none;
+    width: 99.5%;
+    height: 1498px;
+    frameborder:0;
+}

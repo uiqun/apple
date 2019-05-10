@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/public.css"    />
+    <link  rel="stylesheet"  type="text/css"  href="css/vendor.css"  />
+    <script src="js/jquery-3.2.1.js"></script>
+    <script  type="text/javascript" src="js/public.js"></script>
+    <script  type="text/javascript" src="js/vendor.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <form id="certify" action="toCertify">
+            <table cellspacing="10px">
+                <tr><th>客户认证</th></tr>
+                <tr>
+                    <td><input type="text" width="150px" placeholder="输入客户名称"/>查询</td>
+                </tr>
+                <tr>
+                    <td>客户名称</td>
+                    <td>是否通过认证</td>
+                    <td>YES</td><td><input type="submit" value="修改"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <form action="toSearchUser">
+            <div>
+                <input type="text" width="100px" placeholder="客户编号"/><input type="submit" value="查询"/>
+            </div>
+         </form>
+            <table id="user" cellspacing="10px">
+                <tr>
+                    <td>用户编号：</td>
+                    <td><input type="text" value="1001"/></td>
+                </tr>
+                <tr>
+                    <td>用户名：</td>
+                    <td><input type="text" value="卖姑娘的电容"/></td>
+                </tr>
+                <tr>
+                    <td>手机号码：</td>
+                    <td><input type="text" value="13976892368"/></td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input type="text" value="358576"/></td>
+                </tr>
+                <tr>
+                    <td>公司名称：</td>
+                    <td><input type="text" value="深圳市模板电子科技有限公司"/></td>
+                </tr>
+                <tr>
+                    <td>区域：</td>
+                    <td><input type="text" value="深圳市"/></td>
+                </tr>
+                <tr>
+                    <td>用户类型：</td>
+                    <td><input type="text" value="经销商"/></td>
+                </tr>
+                <tr>
+                    <td>联系人：</td>
+                    <td><input type="text" value="张先生"/></td>
+                </tr>
+                <tr>
+                    <td>职位：</td>
+                    <td><input type="text" value="采购经理"/></td>
+                </tr>
+                <tr>
+                    <td>电话：</td>
+                    <td><input type="text" value="0755-25358576"/></td>
+                </tr>
+                <tr>
+                    <td>QQ号码：</td>
+                    <td><input type="text" value="3585767855"/></td>
+                </tr>
+                <tr>
+                    <td>微信号码：</td>
+                    <td><input type="text" value="sf358576"/></td>
+                </tr>
+                <tr>
+                    <td>爱好：</td>
+                    <td><input type="text" value="打羽毛球，游泳，跑步"/></td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input type="text" value="3585762313@QQ.com"/></td>
+                </tr>
+                <tr>
+                    <td>地址：</td>
+                    <td><input type="text" value="深圳市福田区中航路新亚洲21051"/></td>
+                </tr>
+                <tr>
+                    <td>网址：</td>
+                    <td><input type="text" value="www.asferietrte.com"/></td>
+                </tr>
+                <tr>
+                    <td>主营业务：</td>
+                    <td><textarea name="spec"  cols="100" rows="10">代理分销ST和TI集成电路</textarea></td>
+                </tr>
+                <tr>
+                    <td>公司简介：</td>
+                    <td><textarea name="spec" cols="100" rows="10"></textarea></td>
+                </tr>
+                <tr>
+                    <td>公司商标：</td>
+                    <td><input type="text" value="http://sdaferjfeareteatertwgwrt.com"/></td>
+                </tr>
+                <tr>
+                    <td>宣传图片：</td>
+                    <td><input type="text" value="http://sdaferjfeareteatertwgwrt.com"/></td>
+                </tr>
+                <tr>
+                    <td>营业执照：</td>
+                    <td><input type="text" value="http://sdaferjfeareteatertwgwrt.com"/></td>
+                </tr>
+                <tr>
+                    <td>是否通过认证：</td>
+                    <td><input type="text" value="http://sdaferjfeareteatertwgwrt.com"/></td>
+                </tr>
+            </table>
+    </div>
+
+    <div>
+        <form action="downloadUser">
+            <tr><th>根据地域下载用户列表</th></tr>
+            <tr><td>
+                型号分类:<select class="input3" type="text">
+                <option value="深圳"selected="selected">深圳市</option>
+                <option value="北京" >北京市</option>
+                <option value="上海">上海市</option>
+                <option value="南京">南京市</option>
+                <option value="杭州">杭州市</option>
+                <option value="港台">港澳台</option>
+                <option value="华南">华南区</option>
+                <option value="华东">华东区</option>
+                <option value="华中">华中区</option>
+                <option value="华北">华北区</option>
+                <option value="西南">西南区</option>
+                <option value="西北">西北区</option>
+                <option value="东北">东北区</option>
+            </select>
+            </td></tr>
+            <td><input type="submit" value="批量下载"/></td>
+        </form>
+    </div>
+    <div>
+        <form action="uploadUser">
+            <tr><th>批量上传用户列表</th></tr>
+            <tr><td>
+                <input type="file"/>
+            </td></tr>
+            <tr>
+                <td><input type="radio" value="新增"/>新增<input type="radio" value="修改"/>修改</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="提交"/></td>
+            </tr>
+        </form>
+    </div>
+</body>
+
+<style>
+  #user input{
+        width: 680px;
+    }
+</style>
+</html>

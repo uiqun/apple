@@ -1,0 +1,58 @@
+
+#title_box{
+	width: 100%;
+	margin-top: 40px;
+}
+#banner{
+	margin: 0 auto;
+	width: 1000px;
+}
+
+#bom{
+	font-size: 18px;
+	margin:0 auto;
+	width: 1000px;
+}
+#title{
+	font: bold  36px "黑体";
+	color:#FF0000;
+}
+form{
+	font: bold 18px "黑体";
+	line-height: 40px;
+}
+input{
+	font-size: 18px;
+}
+select{
+	font-size: 18px;
+}
+p{
+	font: bold 18px "黑体";
+	line-height: 120px;
+}
+
+button{
+	font: bold 18px "黑体";
+	cursor: pointer;
+	margin-left:10px;
+	text-align: right;
+}
+button:hover{
+	color: #FF0000;
+}
+
+#content{
+	margin:0 auto;
+	width:1000px;
+	height:1000px;
+	border-top: 1px solid #FF3300;
+}
+li{
+	display:inline-block;
+}
+
+.nav1:last-child{
+	color: #FF3300;
+	font-weight: bold;
+}
