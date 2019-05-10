@@ -1,6 +1,9 @@
 package com.uiqun.service;
 
 import com.uiqun.model.Mfg;
+import com.uiqun.model.Pn;
+
+import java.util.List;
 
 public interface MfgService {
     /**
@@ -16,4 +19,12 @@ public interface MfgService {
      * @return
      */
     boolean checkMfg(Mfg mfg);
+
+
+    /**
+     * 按型号查询供应商信息
+     * @param pn
+     * @return
+     */
+    List<Mfg> checkRfqPn(Pn pn);
 }

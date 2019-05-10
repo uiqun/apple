@@ -1,5 +1,6 @@
 package com.uiqun.dao;
 
+import com.uiqun.model.Mfg;
 import com.uiqun.model.Pn;
 
 import java.util.List;
@@ -30,4 +31,6 @@ public interface PnDao {
      * @return
      */
     int insertOnePn(Pn pn);
+
+
 }

@@ -8,9 +8,9 @@
         <version>2.1.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.szxs</groupId>
-    <artifactId>bookinfo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <groupId>com.uiqun</groupId>
+    <artifactId>UiQun</artifactId>
+    <version>1.0</version>
     <name>UiQun</name>
     <description>Demo project for Spring Boot</description>
 
