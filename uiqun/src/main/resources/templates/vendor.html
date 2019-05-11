@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>唯群网--供应商</title>
-    <link rel="stylesheet" type="text/css" href="css/public.css"    />
-    <link  rel="stylesheet"  type="text/css"  href="css/vendor.css"  />
-    <script src="js/jquery-3.2.1.js"></script>
-    <script  type="text/javascript" src="js/public.js"></script>
-    <script  type="text/javascript" src="js/vendor.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/public.css"    />
+    <link  rel="stylesheet"  type="text/css"  href="/css/vendor.css"  />
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script  type="text/javascript" src="/js/public.js"></script>
+    <script  type="text/javascript" src="/js/vendor.js"></script>
 
 </head>
 
@@ -15,7 +16,7 @@
     <div id="header">
         <div id="head">
             <div id="logo">
-                <img src="images/logo.png" alt="">
+                <img src="/images/logo.png" alt="">
             </div>
             <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
             <a id="admin" onclick="admin()">后台管理</a>
@@ -44,252 +45,39 @@
         </form>
     </div>
     <div id="box2">
-        <div id="category">
-            <ul>
-                <li>
-                    <span>综合供应</span>
-                    <ol>
-                        <li>行业大咖</li>
-                        <li>行业平台</li>
-                        <li>电商平台</li>
-                        <li>电子媒体</li>
-                        <li>配套服务</li>
+        <div id="category" >
+            <ul >
+                <li th:each="types:${utypes}">
+                    <span th:text="${types.utypeName}">综合供应</span>
+                    <ol >
+                        <li th:each="level2:${types.level2}">
+                            <a th:href="${'/queryLevel/'+level2.id}" th:text="${level2.utypeName}"></a></li>
                     </ol>
                 </li>
 
-                <li>
-                    <span>主动元件</span>
-                    <ol>
-                        <li>单片机</li>
-                        <li>集成电路</li>
-                        <li>三极管</li>
-                        <li>二极管</li>
-                        <li>LED</li>
-                    </ol>
-                </li>
-
-                <li>
-                    <span>被动元件</span>
-                    <ol>
-                        <li>电容器</li>
-                        <li>电阻器</li>
-                        <li>电感</li>
-                        <li>晶振</li>
-                        <li>保险丝</li>
-                    </ol>
-                </li>
-
-                <li>
-                    <span>机电元件</span>
-                    <ol>
-                        <li>继电器</li>
-                        <li>开关</li>
-                        <li>电声器材</li>
-                        <li>变压器</li>
-                        <li>马达</li>
-                        <li>PCB</li>
-                    </ol>
-                </li>
-
-                <li>
-                    <span>结构元件</span>
-                    <ol>
-                        <li>连接器</li>
-                        <li>线材</li>
-                        <li>五金</li>
-                        <li>包装材料</li>
-                    </ol>
-                </li>
-
-                <li>
-                    <span>组合器件</span>
-                    <ol>
-                        <li>工具设备</li>
-                        <li>开发版</li>
-                        <li>模块</li>
-                        <li>电源</li>
-                        <li>显示屏</li>
-                        <li>PCBA</li>
-                    </ol>
-                </li>
-
-                <li>
-                    <span>高端军品</span>
-                    <ol>
-                        <li>国内</li>
-                        <li>海外</li>
-                        <li>研究所</li>
-                        <li>大学</li>
-                    </ol>
-                </li>
             </ul>
         </div>
         <div id="detail">
             <div>
+                <div style="font:bold 20px arial,sans-serif; ">
+                    <span>当前位置：</span><span>一级目录</span>&gt;<span>二级目录</span>
+                </div>
                 <table  class="table" width="100%" cellspacing="20px">
-                    <tr><th colspan="4">分类一</th></tr>
-                    <tr>
+                    <div th:each="list:${LevelList}">
+                    <tr  name="level3Id" th:value="${list.id}">
+                        <th th:text="${list.utypeName}" colspan="4">分类一</th>
+                    </tr>
+                    <tr >
                         <td><a href="">公司一</a></td>
                         <td><a href="">公司二</a></td>
                         <td><a href="">公司三</a></td>
                         <td><a href="">公司四</a></td>
                         <td><a href="">公司五</a></td>
                     </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
+                    </div>
                 </table>
             </div>
-            <div>
-                <table  class="table" width="100%" cellspacing="20px">
-                    <tr><th colspan="4">分类二</th></tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <table  class="table" width="100%" cellspacing="20px">
-                    <tr><th colspan="4">分类三</th></tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <table  class="table" width="100%" cellspacing="20px">
-                    <tr><th colspan="4">分类四</th></tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <table  class="table" width="100%" cellspacing="20px">
-                    <tr><th colspan="4">分类五</th></tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
-                    </tr>
-                </table>
-            </div>
+
         </div>
         <div id="adv">
             <div><img src="images/ad1.jpg" alt=""/></div>

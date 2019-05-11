@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uiqun.dao.UtypeDao">
+    <resultMap id="UtypesMap" type="Utype">
+        <result property="id" column="id"/>
+        <result property="utypeName" column="utypeName"/>
+        <collection property="level2" ofType="Utype">
+            <result property="id" column="id2"/>
+            <result property="utypeName" column="type2"/>
+        </collection>
+    </resultMap>
+    <select id="queryUtypes" resultMap="UtypesMap">
+        SELECT u1.*,u2.id id2, u2.utypeName type2 FROM utype u1 LEFT JOIN utype u2
+        ON u1.id=u2.parentId
+        WHERE u1.parentId= #{parentId}
+    </select>
+
+
+</mapper>
