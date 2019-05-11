@@ -30,5 +30,6 @@ public interface MfgDao {
      * @param pn
      * @return
      */
+    @Select("select m.* from mfglist m  left join pnlist p on m.mfgName=p.mfg WHERE p.pn=#{pn}")
     List<Mfg> checkRfqPn(Pn pn);
 }

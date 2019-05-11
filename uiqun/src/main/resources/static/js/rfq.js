@@ -9,18 +9,25 @@ $(document).ready(function(){
 function checkRfqPn(){
      var pn = document.getElementsByName("pn")[0].value;
     if(pn==null||pn==''){
-        alert("型号不能为空");
+        document.getElementById("mfg").innerHTML="请查询型号选择品牌";
         return;
     }
     $.post("/checkRfqPn",{"pn":pn},function (date){
         if(date.state=="none"){
-            alert("型号不存在");
+            document.getElementById("mfg").innerHTML=date.message;
         }else{
-            var tdSelect = document.getElementById("mfg");
-            tdSelect.append("<select name=\"mfg\"></select>");
-            for (i=0;i<date.datas.size();i++){
-                var option = '<option value="'+data.datas[i].mfgName+'">'+data.datas[i].mfgName+'</option>';
-                tdSelect.children()[0].append(option);
+            if(date.datas.length>0) {
+                var tdSelect = document.getElementById("mfg");
+                tdSelect.innerHTML = "";
+                var select = document.createElement("select");
+                select.setAttribute("name", "mfg");
+                tdSelect.append(select);
+                for (i = 0; i < date.datas.length; i++) {
+                    var option = document.createElement("option");
+                    option.setAttribute("value", date.datas[i].mfgName);
+                    option.innerText = date.datas[i].mfgName;
+                    tdSelect.children[0].append(option);
+                }
             }
         }
 

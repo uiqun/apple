@@ -1,10 +1,13 @@
 package com.uiqun.controller;
 
-import com.alibaba.druid.support.json.JSONUtils;
+import com.alibaba.fastjson.JSON;
 import com.uiqun.model.Mfg;
 import com.uiqun.model.Pn;
 import com.uiqun.model.Rfq;
-import com.uiqun.service.*;
+import com.uiqun.service.MfgService;
+import com.uiqun.service.PntypeService;
+import com.uiqun.service.QltytypeService;
+import com.uiqun.service.RfqService;
 import com.uiqun.utils.Pager;
 import com.uiqun.utils.VoResponseJson;
 import org.springframework.stereotype.Controller;
@@ -59,10 +62,20 @@ public class RfqController {
     @ResponseBody
     public String checkRfqPn(Pn pn){
         List<Mfg> mfgs = mfgService.checkRfqPn(pn);
-        if(mfgs!=null){
-            return JSONUtils.toJSONString(new VoResponseJson(mfgs));
+        if(mfgs!=null&&mfgs.size()>0){
+            return JSON.toJSONString(new VoResponseJson(mfgs));
         }
-        return JSONUtils.toJSONString(new VoResponseJson("none",1111,"该型号不存在,请添加该型号"));
+        return JSON.toJSONString(new VoResponseJson("none",1111,"该型号不存在,请添加该型号"));
+    }
+    @RequestMapping("/jumprfq")
+    public String jumpRfq(Model model){
+        model.addAttribute("qltyTypeList",qltytypeService.queryQltytype());
+        return "rfq";
+    }
+    @RequestMapping("/addrfq")
+    public String addrfq(Rfq rfq){
+        System.out.println("1");
+        return "rfq";
     }
 
 }
