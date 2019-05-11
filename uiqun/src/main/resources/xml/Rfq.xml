@@ -3,24 +3,38 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uiqun.dao.RfqDao">
     <sql id="rfqCondition">
-        <where>
+
             <if test="condition.pntype>0">
                 and pntype=#{condition.pntype}
             </if>
             <if test="condition.pn!=null and condition.pn!=''">
                 and pn like concat('%',#{condition.pn},'%')
             </if>
-        </where>
+            <if test="condition.uid>0">
+                and uid=#{condition.uid}
+            </if>
+
     </sql>
     <select id="queryRfqList" resultType="Rfq">
-        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,sure,rdate,isOpen
-        from  rfqlist
+        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName
+        from  rfqlist r,qltytype q where r.qlty=q.id
         <include refid="rfqCondition"/>
         limit #{pageOffset},#{pageSize}
     </select>
     <select id="queryRfqRows" resultType="_int">
         select count(1)
-        from  rfqlist
+        from  rfqlist where 1=1
       <include refid="rfqCondition"/>
+    </select>
+    <insert id="insertRfq">
+        insert into rfqlist(company,pntype,pn,mfg,qty,qlty,tp,dtime,sure,rdate,isOpen,uid)
+        values(#{company},#{pntype},#{pn},#{mfg},#{qty},#{qlty},#{tp},#{dtime},#{sure},now(),#{isOpen},#{uid})
+    </insert>
+    <delete id="deleterfq">
+        delete from rfqlist where rfqno=#{rfqno}
+    </delete>
+    <select id="modifyrfq" resultType="Rfq">
+        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName
+        from  rfqlist r,qltytype q where r.qlty=q.id and r.rfqno=#{rfqno}
     </select>
 </mapper>

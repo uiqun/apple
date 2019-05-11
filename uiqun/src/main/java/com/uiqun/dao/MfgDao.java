@@ -15,7 +15,7 @@ public interface MfgDao {
      */
     @Insert("insert into mfglist(MID ,mfgName ,mlogo ,product ,mprofile ,country ,website) " +
             "values(#{mid}  ,#{mfgName} ,#{mlogo} ,#{product} ,#{mprofile} ,#{country} ,#{website})")
-    int insertMfg(Mfg mfg);
+    int insertMfg(Mfg mfg)throws Exception;
 
     /**
      * 查询有无供应商
@@ -23,7 +23,7 @@ public interface MfgDao {
      * @return
      */
     @Select("select count(mfgName) from mfglist where mfgName = #{mfgName}")
-    int queryOneMfg(Mfg mfg);
+    int queryOneMfg(Mfg mfg)throws Exception;
 
     /**
      * 按型号查询品牌信息
@@ -31,5 +31,5 @@ public interface MfgDao {
      * @return
      */
     @Select("select m.* from mfglist m  left join pnlist p on m.mfgName=p.mfg WHERE p.pn=#{pn}")
-    List<Mfg> checkRfqPn(Pn pn);
+    List<Mfg> checkRfqPn(Pn pn)throws Exception;
 }

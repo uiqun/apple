@@ -15,6 +15,11 @@ public class UtypeServiceImpl implements UtypeService {
 
     @Override
     public List<Utype> queryUtypes(int id) {
-        return utypeDao.queryUtypes(id);
+        try {
+            return utypeDao.queryUtypes(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

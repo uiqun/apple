@@ -14,6 +14,11 @@ public class UserServiceImpl implements UserService {
 
 
     public User login(User user) {
-        return userdao.queryUser(user);
+        try {
+            return userdao.queryUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

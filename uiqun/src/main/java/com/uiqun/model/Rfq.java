@@ -8,16 +8,43 @@ public class Rfq implements Serializable {
 
   private int rfqno; //询价单号
   private String company; //公司名称
+  private int pntype;//型号类型
   private String pn; //型号
   private String mfg; //品牌
   private Integer qty; //数量
-  private int qlty; //质量标准
+  private int qlty; //质量标准Id
+  private String dtcd;//批次
   private Double tp; //目标价格
   private String dtime; //交货时间
-  private String sure; //是否实单
+  private int sure; //是否实单
   private Date rdate; //报价日期
-  private String isOpen; //是否公开
+  private int isOpen; //是否公开
   private int uid; //发布者
+  private String qltyName; //质量标准
+
+  public String getQltyName() {
+    return qltyName;
+  }
+
+  public void setQltyName(String qltyName) {
+    this.qltyName = qltyName;
+  }
+
+  public String getDtcd() {
+    return dtcd;
+  }
+
+  public void setDtcd(String dtcd) {
+    this.dtcd = dtcd;
+  }
+
+  public int getPntype() {
+    return pntype;
+  }
+
+  public void setPntype(int pntype) {
+    this.pntype = pntype;
+  }
 
   public int getRfqno() {
     return rfqno;
@@ -83,11 +110,11 @@ public class Rfq implements Serializable {
     this.dtime = dtime;
   }
 
-  public String getSure() {
+  public int getSure() {
     return sure;
   }
 
-  public void setSure(String sure) {
+  public void setSure(int sure) {
     this.sure = sure;
   }
 
@@ -99,11 +126,11 @@ public class Rfq implements Serializable {
     this.rdate = rdate;
   }
 
-  public String getIsOpen() {
+  public int getIsOpen() {
     return isOpen;
   }
 
-  public void setIsOpen(String isOpen) {
+  public void setIsOpen(int isOpen) {
     this.isOpen = isOpen;
   }
 

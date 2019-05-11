@@ -11,7 +11,13 @@
  </head>
 
 <body>
-
+<input type="hidden" id="AlertMessage" th:value="${AlertMessage}">
+<script>
+    var AlertMessage = document.getElementById("AlertMessage").value;
+    if(AlertMessage!=null&&AlertMessage!=''){
+        alert(AlertMessage);
+    }
+</script>
     <div id="header">
         <div id="head">
             <div id="logo">
@@ -44,10 +50,21 @@
                     <td ><input class="button" type="button" name="searchBtn" onclick="checkRfqPn()" value="查询型号"/>
                         <input class="button" type="button" name="addBtn" onclick="addPn()" value="新建型号"/></td>
                 </tr>
-                <tr>
-                    <td width="250px" height="35px" align="right">品牌:</td>
-                    <td id="mfg" style="color: red;">请查询型号选择品牌</td>
-                </tr>
+
+                  <tr>
+                      <td width="150" height="35" align="right">品牌：</td>
+                      <td id="mfg" style="color: red;">请查询型号选择品牌</td>
+                      <td width="250" height="35" align="right">&nbsp;</td>
+                  </tr>
+
+                 <tr>
+                     <td width="250px" height="35px" align="right">产品种类：</td>
+                      <td>   <select  id="ptypeList" name="pntype">
+
+                     <option th:each="pntype:${pntypeList}"  th:value="${pntype.id}" th:text="${pntype.name}"></option>
+                 </select>
+                     </td>
+                 </tr>
                 <tr>
                     <td width="150" height="35" align="right"> 品质要求：</td>
                     <td >
@@ -57,6 +74,11 @@
                     </td>
                     <td width="250" height="35" align="right">&nbsp;</td>
                 </tr>
+                  <tr>
+                      <td width="150" height="35" align="right">批次：</td>
+                      <td ><input class="rfqForm" name="dtcd" type="text" /></td>
+                      <td width="250" height="35" align="right">&nbsp;</td>
+                  </tr>
                 <tr>
                 <td width="150" height="35" align="right">询价数量：</td>
                 <td ><input class="rfqForm" name="qty" type="text" /></td>
@@ -69,7 +91,7 @@
             </tr>
                   <tr>
                       <td width="150" height="35" align="right">是否实单：</td>
-                      <td>是<input type="radio" name="sure" value="1" />
+                      <td>是<input type="radio" checked="checked" name="sure" value="1" />
                           否<input type="radio" name="sure"  value="0"/></td>
 
                   </tr>
@@ -81,7 +103,7 @@
                   <input type="hidden" name="isOpen" id="isOpen">
             <tr>
                 <td width="150" height="35" align="right">&nbsp;</td>
-                <td><button type="submit" onclick="javascript:document.getElementById('isOpen').value=1" class="button">公开询价</button><button type="submit" onclick="javascript:document.getElementById('isOpen').value=0" class="button">匿名询价</button></td>
+                <td><button type="button" onclick="commitRfq(1)" class="button">公开询价</button><button type="button" onclick="commitRfq(0)" class="button">匿名询价</button></td>
                 <td width="250" height="35" align="right">&nbsp;</td>
             </tr>
             </table>
@@ -90,7 +112,7 @@
 	
     <div class="box">
         <div id="rfqList">
-            <table cellspacing="10px">
+            <table cellspacing="10px" >
                 <tr>
                 <th>询价单号</th>
                 <th>型号</th>
@@ -100,259 +122,16 @@
                 <th>单价</th>
                 <th>要求货期</th>
                 <th>询价日期</th>
-                <th colspan="2">操作</th>
                 </tr>
-                <tr>
-                   <td>I8090600001</td>
-                   <td>STM8S903K3T6C</td>
-                   <td>原装正品</td>
-                   <td>2018+</td>
-                   <td>56850</td>
-                   <td>102.56</td>
-                   <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                   <td><a href="">修改</a></td>
-                   <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>I8090600001</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2018-12-31</td>
-                    <td><a href="">修改</a></td>
-                    <td><a href="">删除</a></td>
+                <tr th:each="rfq:${pager.datas}">
+                   <td th:text="${rfq.rfqno}">I8090600001</td>
+                   <td th:text="${rfq.pn}">STM8S903K3T6C</td>
+                   <td th:text="${rfq.qltyName}">原装正品</td>
+                   <td th:text="${rfq.dtcd}">2018+</td>
+                   <td th:text="${rfq.qty}">56850</td>
+                   <td th:text="${rfq.tp}">102.56</td>
+                   <td th:text="${rfq.dtime}">深圳现货</td>
+                    <td th:text="${#dates.format(rfq.rdate,'yyyy-MM-dd')}">2018-12-31</td>
                 </tr>
             </table>
         </div>

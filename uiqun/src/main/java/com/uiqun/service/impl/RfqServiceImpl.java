@@ -15,8 +15,43 @@ public class RfqServiceImpl implements RfqService {
     private RfqDao rfqDao;
 
     public Pager<Rfq> queryRfqList(Pager<Rfq> pager) {
-        pager.setTotalCount(rfqDao.queryRfqRows(pager));
-        pager.setDatas(rfqDao.queryRfqList(pager));
-        return pager;
+        try {
+            pager.setTotalCount(rfqDao.queryRfqRows(pager));
+            pager.setDatas(rfqDao.queryRfqList(pager));
+            return pager;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean addRfq(Rfq rfq) {
+        try {
+            return rfqDao.insertRfq(rfq)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleterfq(int rfqno) {
+        try {
+            return rfqDao.deleterfq(rfqno)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public Rfq modifyrfq(int rfqno) {
+        try {
+            return rfqDao.modifyrfq(rfqno);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

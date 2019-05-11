@@ -12,6 +12,11 @@ public class QltytypeServiceImpl implements QltytypeService {
     @Resource
     private QltytypeDao qltytypeDao;
     public List<Qltytype> queryQltytype() {
-        return qltytypeDao.queryQltytype();
+        try {
+            return qltytypeDao.queryQltytype();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

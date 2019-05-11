@@ -15,16 +15,31 @@ public class MfgServiceImpl implements MfgService {
     private MfgDao mfgDao;
 
     public boolean addMfg(Mfg mfg) {
-        return mfgDao.insertMfg(mfg)>0;
+        try {
+            return mfgDao.insertMfg(mfg)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public boolean checkMfg(Mfg mfg) {
-        return mfgDao.queryOneMfg(mfg)>0;
+        try {
+            return mfgDao.queryOneMfg(mfg)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public List<Mfg> checkRfqPn(Pn pn) {
-        return mfgDao.checkRfqPn(pn);
+        try {
+            return mfgDao.checkRfqPn(pn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

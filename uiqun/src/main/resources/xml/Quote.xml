@@ -1,0 +1,9 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uiqun.dao.QuoteDao">
+    <insert id="insertQuote">
+        insert into quotelist(rfqno,company,pn,mfg,qty,dtcd,qlty,price,dtime,sure,qdate,isOpen,uid)
+        values (#{rfqno},#{company},#{pn},#{mfg},#{qty},#{dtcd},#{qlty},#{price},#{dtime},#{sure},#{qdate},#{isOpen},#{uid})
+    </insert>
+</mapper>

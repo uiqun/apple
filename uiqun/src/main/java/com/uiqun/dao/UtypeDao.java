@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface UtypeDao {
 
-    List<Utype> queryUtypes(int id);
+    List<Utype> queryUtypes(int id)throws Exception;
 
 }

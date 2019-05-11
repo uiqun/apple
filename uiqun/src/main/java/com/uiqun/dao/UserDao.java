@@ -3,5 +3,5 @@ package com.uiqun.dao;
 import com.uiqun.model.User;
 
 public interface UserDao {
-    User queryUser(User user);
+    User queryUser(User user)throws Exception;
 }
