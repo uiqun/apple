@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PntypeDao {
     @Select("select * from pntype")
-    List<Pntype> queryPntypes();
+    List<Pntype> queryPntypes()throws Exception;
 }

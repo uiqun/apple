@@ -9,7 +9,7 @@ $(document).ready(function(){
 function checkRfqPn(){
      var pn = document.getElementsByName("pn")[0].value;
     if(pn==null||pn==''){
-        document.getElementById("mfg").innerHTML="请查询型号选择品牌";
+        document.getElementById("mfg").innerHTML="型号不能为空";
         return;
     }
     $.post("/checkRfqPn",{"pn":pn},function (date){
@@ -32,4 +32,21 @@ function checkRfqPn(){
         }
 
     },"json")
+}
+
+function commitRfq(num) {
+    document.getElementById('isOpen').value=num;
+    var qty = document.getElementsByName("qty")[0].value;
+    var tp = document.getElementsByName("tp")[0].value;
+    var dtime = document.getElementsByName("dtime")[0].value;
+
+
+    if(document.getElementsByName("mfg")!=null&&document.getElementsByName("mfg").length>0
+        &&(qty.match(/\d+/))
+        &&(tp.match(/\d{1,5}[\.]?\d{0,3}/))
+        &&(dtime!=null&&dtime!='')){
+        document.rfqSubmit.submit();
+    }else {
+        alert("请填写询价的相关信息");
+    }
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface QltytypeDao {
     @Select("select * from qltytype")
-    List<Qltytype> queryQltytype();
+    List<Qltytype> queryQltytype()throws Exception;
 }

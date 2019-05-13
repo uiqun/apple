@@ -12,6 +12,11 @@ public class PntypeServiceImpl implements PntypeService {
     @Resource
     private PntypeDao pntypeDao;
     public List<Pntype> queryPntypes() {
-        return pntypeDao.queryPntypes();
+        try {
+            return pntypeDao.queryPntypes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

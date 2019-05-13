@@ -13,20 +13,40 @@ public class PnServiceImpl implements PnService {
     private PnDao pnDao;
 
     public List<Pn> queryPns() {
-        return pnDao.queryPns();
+        try {
+            return pnDao.queryPns();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public boolean insertPns(List<List<Object>> pns) {
-        return pnDao.insertPns(pns)>0;
+        try {
+            return pnDao.insertPns(pns)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public boolean checkPn(Pn pn) {
-        return pnDao.queryPn(pn)>0;
+        try {
+            return pnDao.queryPn(pn)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public boolean addPn(Pn pn) {
-        return pnDao.insertOnePn(pn)>0;
+        try {
+            return pnDao.insertOnePn(pn)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
