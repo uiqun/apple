@@ -1,20 +1,23 @@
 package com.uiqun.model;
 
-import java.util.Date;
-
 public class Bom {
-    private int bid; //料表编号
-    private String company;//公司名称
-    private String bname;//料表名称
-    private int btype;//料表类型
-    private int buse;//料表月用量
-    private int isauto;//是否自动匹配
-    private String bpn;//型号
-    private String bdes;//描述
-    private String bmfg;//品牌
-    private int bqty;//单机用量
-    private Date bdate;//上传日期
-    private int uid; //发布者
+    private int pid; //型号编号
+    private int bid; //BOM编号
+    private String pn; //型号
+    private String des; //描述
+    private String mfg; //品牌
+    private int usage; //单机用量
+    private int mpq; //最小包装
+    private float price; //单价
+    private String dtime; //货期
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
 
     public int getBid() {
         return bid;
@@ -24,91 +27,59 @@ public class Bom {
         this.bid = bid;
     }
 
-    public String getCompany() {
-        return company;
+    public String getPn() {
+        return pn;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setPn(String pn) {
+        this.pn = pn;
     }
 
-    public String getBname() {
-        return bname;
+    public String getDes() {
+        return des;
     }
 
-    public void setBname(String bname) {
-        this.bname = bname;
+    public void setDes(String des) {
+        this.des = des;
     }
 
-    public int getBtype() {
-        return btype;
+    public String getMfg() {
+        return mfg;
     }
 
-    public void setBtype(int btype) {
-        this.btype = btype;
+    public void setMfg(String mfg) {
+        this.mfg = mfg;
     }
 
-    public int getBuse() {
-        return buse;
+    public int getUsage() {
+        return usage;
     }
 
-    public void setBuse(int buse) {
-        this.buse = buse;
+    public void setUsage(int usage) {
+        this.usage = usage;
     }
 
-    public int getIsauto() {
-        return isauto;
+    public int getMpq() {
+        return mpq;
     }
 
-    public void setIsauto(int isauto) {
-        this.isauto = isauto;
+    public void setMpq(int mpq) {
+        this.mpq = mpq;
     }
 
-    public String getBpn() {
-        return bpn;
+    public float getPrice() {
+        return price;
     }
 
-    public void setBpn(String bpn) {
-        this.bpn = bpn;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
-    public String getBdes() {
-        return bdes;
+    public String getDtime() {
+        return dtime;
     }
 
-    public void setBdes(String bdes) {
-        this.bdes = bdes;
-    }
-
-    public String getBmfg() {
-        return bmfg;
-    }
-
-    public void setBmfg(String bmfg) {
-        this.bmfg = bmfg;
-    }
-
-    public int getBqty() {
-        return bqty;
-    }
-
-    public void setBqty(int bqty) {
-        this.bqty = bqty;
-    }
-
-    public Date getBdate() {
-        return bdate;
-    }
-
-    public void setBdate(Date bdate) {
-        this.bdate = bdate;
-    }
-
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setDtime(String dtime) {
+        this.dtime = dtime;
     }
 }

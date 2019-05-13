@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uiqun.dao.BomlistDao">
+
+    <insert id="insertBomlist">
+        INSERT INTO `bomlist`values (DEFAULT,#{company},#{bname},#{btype},#{buse}，#{isauto},now(),#{uid})
+    </insert>
+
+    <select id="queryBomlists" resultMap="Bomlist">
+        select * from bomlist
+        <where>
+            <if test="condition.uid >0">
+                AND uid = #{condition.uid}
+            </if>
+        </where>
+        order by bomlist.bdate desc
+        limit #{pageOffset},#{pageSize}
+    </select>
+
+    <select id="queryRow" resultType="_int">
+        select count(1) from bomlist
+        <where>
+            <if test="condition.uid >0">
+                AND uid = #{condition.uid}
+            </if>
+        </where>
+    </select>
+</mapper>
