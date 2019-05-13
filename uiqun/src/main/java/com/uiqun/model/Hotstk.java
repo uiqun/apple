@@ -6,12 +6,14 @@ public class Hotstk {
     private int hid; //库存编号
     private String company; //公司名称
     private String pn; //型号
+    private String mfg; //品牌
+    private String pack; //封装
     private int qty; //数量
     private float price; //单价
     private String dtcd; //批次
     private String qlty; //质量标准
     private String dtime; //货期
-    private String pics; //产品图片链接
+    private String buylink; //购买链接
     private Date date; //热卖发布日期
     private int uid; //发布者
 
@@ -37,6 +39,22 @@ public class Hotstk {
 
     public void setPn(String pn) {
         this.pn = pn;
+    }
+
+    public String getMfg() {
+        return mfg;
+    }
+
+    public void setMfg(String mfg) {
+        this.mfg = mfg;
+    }
+
+    public String getPack() {
+        return pack;
+    }
+
+    public void setPack(String pack) {
+        this.pack = pack;
     }
 
     public int getQty() {
@@ -79,12 +97,12 @@ public class Hotstk {
         this.dtime = dtime;
     }
 
-    public String getPics() {
-        return pics;
+    public String getBuylink() {
+        return buylink;
     }
 
-    public void setPics(String pics) {
-        this.pics = pics;
+    public void setBuylink(String buylink) {
+        this.buylink = buylink;
     }
 
     public Date getDate() {
