@@ -62,17 +62,18 @@
                 <div style="font:bold 20px arial,sans-serif; ">
                     <span>当前位置：</span><span>一级目录</span>&gt;<span>二级目录</span>
                 </div>
+
                 <table  class="table" width="100%" cellspacing="20px">
                     <div th:each="list:${LevelList}">
                     <tr  name="level3Id" th:value="${list.id}">
                         <th th:text="${list.utypeName}" colspan="4">分类一</th>
                     </tr>
                     <tr >
-                        <td><a href="">公司一</a></td>
-                        <td><a href="">公司二</a></td>
-                        <td><a href="">公司三</a></td>
-                        <td><a href="">公司四</a></td>
-                        <td><a href="">公司五</a></td>
+                        <td th:each="ven:${vendors}">
+                            <a th:href="@{${ven.website1!=null}?${ven.website1}:${ven.website}}" th:text="${ven.co}">公司一</a>
+                        </td>
+
+
                     </tr>
                     </div>
                 </table>
