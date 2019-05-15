@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BomDao {
 
-    int insertBoms(List<List<Object>> Boms)throws Exception;
+    int insertBoms(List<List<Object>> boms)throws Exception;
 
     Bom queryBomById(int id);
 }
