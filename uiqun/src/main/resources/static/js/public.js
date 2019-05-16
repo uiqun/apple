@@ -31,7 +31,7 @@ function hotStk(){
 }
 
 function index(){
-    window.open("index.html","_self");
+    window.open("/index","_self");
 }
 
 function logon(){

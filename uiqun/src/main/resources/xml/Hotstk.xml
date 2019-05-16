@@ -19,7 +19,7 @@
     </insert>
 
 
-    <select id="queryHotstks" resultMap="Hotstk">
+    <select id="queryHotstks" resultType="Hotstk">
         select * from hotlist
         <where>
             <if test="condition.uid >0">

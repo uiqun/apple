@@ -7,7 +7,7 @@
         INSERT INTO `bomlist`values (DEFAULT,#{company},#{bname},#{btype},#{buse}，#{isauto},now(),#{uid})
     </insert>
 
-    <select id="queryBomlists" resultMap="Bomlist">
+    <select id="queryBomlists" resultType="Bomlist">
         select * from bomlist
         <where>
             <if test="condition.uid >0">
