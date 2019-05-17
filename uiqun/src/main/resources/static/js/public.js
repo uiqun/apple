@@ -31,11 +31,11 @@ function hotStk(){
 }
 
 function index(){
-    window.open("index.html","_self");
+    window.open("/index","_self");
 }
 
 function logon(){
-    window.open("logon.html","_self");
+    window.open("login.html","_self");
 }
 
 function quote(){

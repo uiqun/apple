@@ -89,6 +89,15 @@ public class RfqController {
         }
         return JSON.toJSONString(new VoResponseJson("none",1111,"该型号不存在,请添加该型号"));
     }
+
+    /**
+     * 访问RFQ页面
+     * @param model
+     * @param pager
+     * @param currentPage
+     * @param request
+     * @return
+     */
     @RequestMapping("/jumprfq")
     public String jumpRfq(Model model, Pager<Rfq> pager,
                           @RequestParam(defaultValue = "0")int currentPage, HttpServletRequest request){

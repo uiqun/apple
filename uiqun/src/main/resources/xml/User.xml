@@ -18,4 +18,10 @@
             </if>
         </where>
     </select>
+
+    <select id="queryVendor" resultType="User">
+       select uid,company,co,contact,tel,qq,wechat,addr,website,website1,ulogo
+        from userlist
+        where utype = #{utype}
+    </select>
 </mapper>
