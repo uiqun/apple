@@ -7,14 +7,14 @@ public class Utype {
     private String utypeName; //用户类别名称
     private int parentId; //父级编码
 
-    private List<Utype> Level2;
+    private List<Utype> level2;
 
     public List<Utype> getLevel2() {
-        return Level2;
+        return level2;
     }
 
     public void setLevel2(List<Utype> level2) {
-        Level2 = level2;
+        this.level2 = level2;
     }
 
     public int getId() {

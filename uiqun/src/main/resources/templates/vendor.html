@@ -70,9 +70,14 @@
                     </tr>
                     <tr >
                         <td th:each="ven:${vendors}">
-                            <a th:href="@{${ven.website1!=null}?${ven.website1}:${ven.website}}" th:text="${ven.co}">公司一</a>
-                        </td>
+                        <td th:each="ve:${ven}" th:text="${ve.co}">
+                            </td>
+                            <!--<span th:each="a:${ven[0]}">-->
+                                <!--<a href="" th:text="${a}"></a>-->
+                                <!--<a th:href="@{${a.website1!=null}?${a.website1}:${a.website}}" th:text="${a.co}">公司一</a>-->
+                            <!--</span>-->
 
+                        </td>
 
                     </tr>
                     </div>

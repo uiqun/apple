@@ -7,13 +7,13 @@
 }
 #box1{
     margin: 0 auto;
-    width: 1226px;
+    width: 1000px;
     height: 100px;
 }
 
 #search{
     margin:0 auto;
-    width:1226px;
+    width:1000px;
     height:100px;
 }
 
@@ -35,7 +35,7 @@
 }
 #box2{
     margin: auto;
-    width: 1226px;
+    width: 1000px;
     height: 1250px;
 }
 #category{
@@ -52,7 +52,7 @@ ul li{
 }
 #detail{
     float: left;
-    width: 1070px;
+    width: 850px;
     height: 1200px;
     background-color: lightgray;
 }

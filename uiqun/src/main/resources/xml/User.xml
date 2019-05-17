@@ -22,6 +22,6 @@
     <select id="queryVendor" resultType="User">
        select uid,company,co,contact,tel,qq,wechat,addr,website,website1,ulogo
         from userlist
-        where utype = #{utype}
+        where utype = #{id}
     </select>
 </mapper>
