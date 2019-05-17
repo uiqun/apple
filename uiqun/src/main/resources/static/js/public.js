@@ -35,7 +35,7 @@ function index(){
 }
 
 function logon(){
-    window.open("logon.html","_self");
+    window.open("login.html","_self");
 }
 
 function quote(){

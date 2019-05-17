@@ -40,7 +40,7 @@
 }
 #category{
     float:left;
-    width: 200px;
+    width: 150px;
     height: 1200px;
     background-color: #99CCFF;
 }
@@ -48,7 +48,7 @@ ul{
     list-style:none;
 }
 ul li{
-    padding: 10px 30px;
+    padding: 10px 10px;
 }
 
 ul li span{
