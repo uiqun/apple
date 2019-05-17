@@ -5,7 +5,12 @@ import com.uiqun.model.Utype;
 import java.util.List;
 
 public interface UtypeDao {
-
+    /**
+     * 按照分类id查询子分类
+     * @param id
+     * @return
+     * @throws Exception
+     */
     List<Utype> queryUtypes(int id)throws Exception;
 
 }

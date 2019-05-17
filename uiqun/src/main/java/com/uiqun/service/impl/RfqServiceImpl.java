@@ -7,6 +7,8 @@ import com.uiqun.utils.Pager;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class RfqServiceImpl implements RfqService {
@@ -57,6 +59,21 @@ public class RfqServiceImpl implements RfqService {
 
     @Override
     public Rfq queryRfq(int rfqno) {
-        return rfqDao.queryRfq(rfqno);
+        try {
+            return rfqDao.queryRfq(rfqno);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Rfq> queryRfqListFromFindPrice(Map<String, Object> condition) {
+        try {
+            return rfqDao.queryRfqListFromFindPrice(condition);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

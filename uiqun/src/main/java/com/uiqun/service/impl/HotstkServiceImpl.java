@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class HotstkServiceImpl implements HotstkService {
@@ -29,5 +30,13 @@ public class HotstkServiceImpl implements HotstkService {
         return hotstkDao.queryHotstkRow(pager);
     }
 
-
+    @Override
+    public List<Hotstk> queryHotstksFromFindPrice(Map<String, Object> condition) {
+        try {
+            return hotstkDao.queryHotstksFromFindPrice(condition);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

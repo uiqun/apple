@@ -42,4 +42,16 @@
         from  rfqlist r,qltytype q where r.qlty=q.id and r.rfqno=#{rfqno}
     </select>
 
+
+    <select id="queryRfqListFromFindPrice" resultType="Rfq">
+        select rfqno,company,pn,mfg,qty,dtcd,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName
+        from  rfqlist r,qltytype q where r.qlty=q.id
+            <if test="pn!='' and pn!=null">
+                and pn like concat('%',#{pn},'%')
+            </if>
+            <if test="pntype>0">
+                and pntype=#{pntype}
+            </if>
+        limit 20
+    </select>
 </mapper>

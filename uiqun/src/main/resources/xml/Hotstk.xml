@@ -38,4 +38,16 @@
             </if>
         </where>
     </select>
+
+    <select id="queryHotstksFromFindPrice" resultType="Hotstk">
+        select h.*,q.name qltyName from hotlist h,qltytype q
+        where h.qlty=q.id
+        <if test="pn!='' and pn!=null">
+            and pn like concat('%',#{pn},'%')
+        </if>
+        <if test="pntype>0">
+            and pntype=#{pntype}
+        </if>
+        limit 20
+    </select>
 </mapper>

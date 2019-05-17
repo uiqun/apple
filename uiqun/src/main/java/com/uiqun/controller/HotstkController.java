@@ -2,12 +2,15 @@ package com.uiqun.controller;
 
 import com.uiqun.model.Hotstk;
 import com.uiqun.service.HotstkService;
+import com.uiqun.service.PntypeService;
+import com.uiqun.service.RfqService;
 import com.uiqun.utils.Encrypt_Dncrypt;
 import com.uiqun.utils.ExcelUtil;
 import com.uiqun.utils.Pager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -15,12 +18,18 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HotstkController {
     @Resource
     private HotstkService hotstkService;
+    @Resource
+    private RfqService rfqService;
+    @Resource
+    private PntypeService pntypeService;
 
     @RequestMapping("/uploadHotstk")
     public String importExcelHotstk(Model model, MultipartFile upload, HttpSession session) throws Exception {
@@ -72,4 +81,19 @@ public class HotstkController {
         model.addAttribute("page",hotstkService.queryHotstks(pager));
         return "hotStk";
     }
+
+    @RequestMapping("/findPrice")
+    public String finPrice(Model model, HttpSession session,
+                           @RequestParam(defaultValue = "0") int pntype,
+                           @RequestParam(defaultValue = "")String pn){
+        Map<String,Object> condition = new HashMap<String,Object>();
+        condition.put("pntype",pntype);
+        condition.put("pn",pn);
+        model.addAttribute("pntypeList",pntypeService.queryPntypes());
+        model.addAttribute("condition",condition);
+        model.addAttribute("rfqList",rfqService.queryRfqListFromFindPrice(condition));
+        model.addAttribute("hotstkList",hotstkService.queryHotstksFromFindPrice(condition));
+        return "findPrice";
+    }
+
 }

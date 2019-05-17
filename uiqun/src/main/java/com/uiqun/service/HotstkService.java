@@ -4,6 +4,7 @@ import com.uiqun.model.Hotstk;
 import com.uiqun.utils.Pager;
 
 import java.util.List;
+import java.util.Map;
 
 public interface HotstkService {
 
@@ -21,4 +22,11 @@ public interface HotstkService {
 
 
     int queryRow(Pager<Hotstk> pager)throws Exception;
+
+    /**
+     * 前20个热卖
+     * @return
+     */
+    List<Hotstk> queryHotstksFromFindPrice(Map<String,Object> condition);
+
 }
