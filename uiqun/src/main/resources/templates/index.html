@@ -58,10 +58,10 @@
                     <td>
                         <select  id="ptypeList" name="pntype">
                            <option value="0">全部</option>
-                            <option th:each="pntype:${pntypeList}"  th:value="${pntype.id}" th:text="${pntype.name}"></option>
+                           <option th:each="pntype:${pntypeList}" th:selected="${pager.condition.pntype&gt;0} and ${pager.condition.pntype==pntype.id} "   th:value="${pntype.id}" th:text="${pntype.name}"></option>
                         </select>
                     </td>
-                    <td><input type="search" id="pnInput" name="pn"  placeholder="请输入查询型号"/></td>
+                    <td><input type="search" id="pnInput" name="pn" th:value="${pager.condition.pn}"  placeholder="请输入查询型号"/></td>
                     <td><input id="searchBtn" type="submit" value="搜索"/></td>
                 </tr>
             </table>
@@ -80,7 +80,7 @@
                     <td>品质要求</td>
                     <td>批次</td>
                     <td>数量</td>
-                    <td>价格</td>
+                    <td>价格(元)</td>
                     <td>要求货期</td>
                     <td>询价日期</td>
                     <td>操作</td>
@@ -89,13 +89,13 @@
                     <td th:text="${Rfq.rfqno}">I890600001</td>
                     <td th:text="${Rfq.company}">深圳市模板电子科技有限公司</td>
                     <td th:text="${Rfq.pn}">STM8S003F3P6TR</td>
-                    <td th:text="${Rfq.qlty}">原装正品</td>
-                    <td th:text="${Rfq.qty}+'+'">1830+</td>
+                    <td th:text="${Rfq.qltyName}">原装正品</td>
+                    <td th:text="${Rfq.dtcd}">1830+</td>
                     <td th:text="${Rfq.qty}">500000</td>
                     <td th:text="${Rfq.tp}">11.2563</td>
                     <td th:text="${Rfq.dtime}">深圳现货</td>
                     <td th:text="${#dates.format(Rfq.rdate,'yyyy-MM-dd')}">2019-04-23</td>
-                    <td><button type="button" th:value="${Rfq.rfqno}" onclick="inMfg(this.value)">报价</button></td>
+                    <td><button type="button" th:value="${Rfq.rfqno}" onclick="inquote(this.value)">报价</button></td>
                 </tr>
             </table>
         </form>
@@ -104,13 +104,14 @@
 
 <div class="box">
     <div id="pageCount">
-        <a href="/index" th:if="${pager.currentPage>1}">首页</a>
-        <a th:href="${'/index/'+(pager.currentPage-1)}" th:if="${pager.currentPage>1}">上一页</a>
+        <a th:href="@{/index(currentPage=1,pntype=${pager.condition.pntype},pn=${pager.condition.pn})}" th:if="${pager.currentPage>1}">首页</a>
+        <a th:href="@{/index(currentPage=${pager.currentPage} - 1,pntype=${pager.condition.pntype},pn=${pager.condition.pn})}" th:if="${pager.currentPage>1}">上一页</a>
         <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="'/index/'+${i}" th:text="${i}"></a>
+            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/index(currentPage=${i},pntype=${pager.condition.pntype},pn=${pager.condition.pn})}" th:text="${i}"></a>
         </span>
-        <a th:href="${'/index/'+(pager.currentPage+1)}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
-        <a th:href="${'/index/'+pager.totalPage}" th:if="${pager.currentPage>1}">末页</a>
+        <a th:href="@{/index/(currentPage=${pager.currentPage} + 1,pntype=${pager.condition.pntype},pn=${pager.condition.pn})}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+        <a th:href="@{/index(currentPage=${pager.totalPage},pntype=${pager.condition.pntype},pn=${pager.condition.pn})}" th:if="${pager.currentPage>1}">末页</a>
+        <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
     </div>
 </div>
 

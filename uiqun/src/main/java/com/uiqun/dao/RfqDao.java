@@ -11,4 +11,5 @@ public interface RfqDao {
     int insertRfq(Rfq rfq)throws Exception;
     int deleterfq(int rfqno)throws Exception;
     Rfq modifyrfq(int rfqno);
+    Rfq queryRfq(int rfqno);
 }

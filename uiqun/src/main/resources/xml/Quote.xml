@@ -4,6 +4,33 @@
 <mapper namespace="com.uiqun.dao.QuoteDao">
     <insert id="insertQuote">
         insert into quotelist(rfqno,company,pn,mfg,qty,dtcd,qlty,price,dtime,sure,qdate,isOpen,uid)
-        values (#{rfqno},#{company},#{pn},#{mfg},#{qty},#{dtcd},#{qlty},#{price},#{dtime},#{sure},#{qdate},#{isOpen},#{uid})
+        values (#{rfqno},#{company},#{pn},#{mfg},#{qty},#{dtcd},#{qlty},#{price},#{dtime},#{sure},now(),#{isOpen},#{uid})
     </insert>
+    <select id="queryQuotesByRfq" resultType="com.uiqun.model.Quote">
+         SELECT q.qotno,q.company,q.pn,q.mfg,q.qty,q.qlty,q.dtcd,q.price,q.dtime,q.sure,q.qdate,q.isOpen,ql.name qltyName
+         FROM `rfqlist` r ,`quotelist` q,qltytype ql
+         WHERE ql.id=q.qlty and r.`rfqno`=q.`rfqno` AND r.uid=#{condition.uid} and r.rfqno=#{condition.rfqno}
+    </select>
+    <select id="queryQuoteRows" resultType="_int">
+          SELECT count(1)
+          FROM `rfqlist` r ,`quotelist` q,qltytype ql
+          WHERE ql.id=q.qlty and r.`rfqno`=q.`rfqno` AND r.uid=#{condition.uid} and r.rfqno=#{condition.rfqno}
+
+    </select>
+
+    <resultMap id="QuoteMap" type="Quote">
+        <id property="qotno"     column="qotno"/>
+        <association property="rfq" javaType="Rfq" select="com.uiqun.dao.RfqDao.queryRfq" column="rfqno"></association>
+    </resultMap>
+    <select id="queryQuoteByRfq" resultMap="QuoteMap">
+        SELECT *,ql.name qltyName
+        FROM `quotelist` qu,qltytype ql
+        WHERE qu.uid=#{uid} and qu.qlty=ql.id
+    </select>
+    <select id="queryQuoteRowsByRfq" resultType="_int">
+        SELECT count(1)
+        FROM `quotelist`
+        WHERE uid=#{uid}
+    </select>
+
 </mapper>

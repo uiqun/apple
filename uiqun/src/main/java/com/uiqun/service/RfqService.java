@@ -8,4 +8,5 @@ public interface RfqService {
     boolean addRfq(Rfq rfq);
     boolean deleterfq(int rfqno);
     Rfq modifyrfq(int rfqno);
+    Rfq queryRfq(int rfqno);
 }

@@ -10,8 +10,8 @@ $(document).ready(function(){
 $(function(){
     $("#content>ul>span").html("")
 })
-function inMfg(rfqno) {
-    window.location.href=getRootPath()+"/inMfg/"+rfqno;
+function inquote(rfqno) {
+    window.location.href=getRootPath()+"/inquote/"+rfqno;
 }
 
 

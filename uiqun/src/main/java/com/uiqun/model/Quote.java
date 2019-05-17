@@ -1,8 +1,9 @@
 package com.uiqun.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Quote {
+public class Quote implements Serializable {
     private int qotno; //报价单号
     private int rfqno; //询价单号
     private String company; //公司名称
@@ -14,9 +15,19 @@ public class Quote {
     private float price; //单价
     private String dtime; //交货日期
     private int sure; //是否实价
-    private Date date; //报价日期
+    private Date qdate; //报价日期
     private int isOpen; //是否公开
     private int uid; //报价者
+    private String qltyName;//质量标准
+    private Rfq rfq;//对应报价
+
+    public Rfq getRfq() {
+        return rfq;
+    }
+
+    public void setRfq(Rfq rfq) {
+        this.rfq = rfq;
+    }
 
     public int getQotno() {
         return qotno;
@@ -106,12 +117,12 @@ public class Quote {
         this.sure = sure;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getQdate() {
+        return qdate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setQdate(Date qdate) {
+        this.qdate = qdate;
     }
 
     public int getIsOpen() {
@@ -128,5 +139,13 @@ public class Quote {
 
     public void setUid(int uid) {
         this.uid = uid;
+    }
+
+    public String getQltyName() {
+        return qltyName;
+    }
+
+    public void setQltyName(String qltyName) {
+        this.qltyName = qltyName;
     }
 }

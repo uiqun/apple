@@ -16,7 +16,7 @@
 
     </sql>
     <select id="queryRfqList" resultType="Rfq">
-        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName
+        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,dtcd,sure,rdate,isOpen,q.name qltyName
         from  rfqlist r,qltytype q where r.qlty=q.id
         <include refid="rfqCondition"/>
         limit #{pageOffset},#{pageSize}
@@ -27,14 +27,19 @@
       <include refid="rfqCondition"/>
     </select>
     <insert id="insertRfq">
-        insert into rfqlist(company,pntype,pn,mfg,qty,qlty,tp,dtime,sure,rdate,isOpen,uid)
-        values(#{company},#{pntype},#{pn},#{mfg},#{qty},#{qlty},#{tp},#{dtime},#{sure},now(),#{isOpen},#{uid})
+        insert into rfqlist(company,pntype,pn,mfg,qty,qlty,dtcd,tp,dtime,sure,rdate,isOpen,uid)
+        values(#{company},#{pntype},#{pn},#{mfg},#{qty},#{qlty},#{dtcd},#{tp},#{dtime},#{sure},now(),#{isOpen},#{uid})
     </insert>
     <delete id="deleterfq">
         delete from rfqlist where rfqno=#{rfqno}
     </delete>
     <select id="modifyrfq" resultType="Rfq">
-        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName
+        select rfqno,company,pn,mfg,qty,qlty,dtcd,tp,dtime,sure,rdate,isOpen,q.name qltyName
         from  rfqlist r,qltytype q where r.qlty=q.id and r.rfqno=#{rfqno}
     </select>
+    <select id="queryRfq" resultType="Rfq">
+        select rfqno,company,pn,mfg,qty,dtcd,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName
+        from  rfqlist r,qltytype q where r.qlty=q.id and r.rfqno=#{rfqno}
+    </select>
+
 </mapper>

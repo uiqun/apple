@@ -1,14 +1,8 @@
 package com.uiqun.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.uiqun.model.Mfg;
-import com.uiqun.model.Pn;
-import com.uiqun.model.Rfq;
-import com.uiqun.model.User;
-import com.uiqun.service.MfgService;
-import com.uiqun.service.PntypeService;
-import com.uiqun.service.QltytypeService;
-import com.uiqun.service.RfqService;
+import com.uiqun.model.*;
+import com.uiqun.service.*;
 import com.uiqun.utils.Pager;
 import com.uiqun.utils.VoResponseJson;
 import org.springframework.stereotype.Controller;
@@ -33,6 +27,8 @@ public class RfqController {
     private PntypeService pntypeService;
     @Resource
     private MfgService mfgService;
+    @Resource
+    private QuoteService quoteService;
 
     /**
      * 首页显示
@@ -47,12 +43,8 @@ public class RfqController {
     public String index(Model model, Pager<Rfq> pager, HttpSession session,
                         @RequestParam(required = false,defaultValue = "0")Integer pntype,
                         @RequestParam(required = false,defaultValue = "")String pn){
-        if(pntype>0||!"".equals(pn)){
-            pager.getCondition().put("pntype",pntype);
-            pager.getCondition().put("pn",pn);
-        }
-        model.addAttribute("pntype",pntype);
-        model.addAttribute("pn",pn);
+        pager.getCondition().put("pntype",pntype);
+        pager.getCondition().put("pn",pn);
         model.addAttribute("user",session.getAttribute("user"));
         model.addAttribute("pager",rfqService.queryRfqList(pager));
         model.addAttribute("qltytypeList",qltytypeService.queryQltytype());
@@ -60,26 +52,7 @@ public class RfqController {
         return "index";
     }
 
-    /**
-     * 报价
-     * @param model
-     * @param session
-     * @param pager
-     * @param rfqno
-     * @return
-     */
-    @RequestMapping("/inMfg/{rfqno}")
-    public String inMfg(Model model, HttpSession session,Pager<Rfq> pager,@PathVariable("rfqno") String rfqno){
-        model.addAttribute("user", session.getAttribute("user"));
-        if(rfqno!=null&&!"".equals(rfqno)) {
-            pager.getCondition().put("rfqno",rfqno);
-            Pager<Rfq> rfqPager = rfqService.queryRfqList(pager);
-            model.addAttribute("rfq", rfqPager.getDatas().get(0));
-            model.addAttribute("qltyTypeList",qltytypeService.queryQltytype());
-            return "quote";
-        }
-        return null;
-    }
+
     @RequestMapping(value = "/checkRfqPn",produces = "text/html;charset=utf-8")
     @ResponseBody
     public String checkRfqPn(Pn pn){
@@ -112,6 +85,14 @@ public class RfqController {
         model.addAttribute("pager",rfqService.queryRfqList(pager));
         return "rfq";
     }
+
+    /**
+     * 添加询价
+     * @param model
+     * @param rfq
+     * @param session
+     * @return
+     */
     @RequestMapping("/addrfq")
     public String addrfq(Model model,Rfq rfq,HttpSession session){
         if(rfq.getMfg()==null) {
@@ -130,9 +111,22 @@ public class RfqController {
         return "forward:/jumprfq";
     }
 
-    @RequestMapping("/deleterfq")
-    public String deleterfq(int rfqno){
-        rfqService.deleterfq(rfqno);
-        return "forward:/jumprfq";
+    /**
+     * 查看明细
+     * @param model
+     * @param rfqno
+     * @param session
+     * @return
+     */
+    @RequestMapping("/checkRfqDetail/{rfqno}")
+    public String checkRfqDetail(Model model,Pager<Quote> pager,
+                                 @PathVariable("rfqno")int rfqno, HttpSession session){
+        pager.getCondition().put("rfqno",rfqno);
+        pager.getCondition().put("uid",((User)session.getAttribute("user")).getUid());
+        model.addAttribute("pager",quoteService.queryQuotesByRfq(pager));
+        model.addAttribute("rfq",rfqService.queryRfq(rfqno));
+        return "rfqDetail";
     }
+
+
 }

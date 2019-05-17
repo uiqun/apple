@@ -54,4 +54,9 @@ public class RfqServiceImpl implements RfqService {
         }
         return null;
     }
+
+    @Override
+    public Rfq queryRfq(int rfqno) {
+        return rfqDao.queryRfq(rfqno);
+    }
 }

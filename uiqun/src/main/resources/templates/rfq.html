@@ -122,6 +122,7 @@
                 <th>单价</th>
                 <th>要求货期</th>
                 <th>询价日期</th>
+                <th>操作</th>
                 </tr>
                 <tr th:each="rfq:${pager.datas}">
                    <td th:text="${rfq.rfqno}">I8090600001</td>
@@ -131,7 +132,8 @@
                    <td th:text="${rfq.qty}">56850</td>
                    <td th:text="${rfq.tp}">102.56</td>
                    <td th:text="${rfq.dtime}">深圳现货</td>
-                    <td th:text="${#dates.format(rfq.rdate,'yyyy-MM-dd')}">2018-12-31</td>
+                   <td th:text="${#dates.format(rfq.rdate,'yyyy-MM-dd')}">2018-12-31</td>
+                   <td><a th:href="${'/checkRfqDetail/'+rfq.rfqno}">查看明细</a></td>
                 </tr>
             </table>
         </div>
