@@ -20,4 +20,9 @@ public class QuoteController {
         return null;
     }
 
+    @RequestMapping("/jumpquote")
+    public String jumpquote(){
+        return "quote";
+    }
+
 }
