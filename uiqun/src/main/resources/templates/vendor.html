@@ -13,6 +13,33 @@
 </head>
 
 <body>
+<div id="currentUserInfo" style="position: absolute;border: 1px gray solid;background-color: white;">
+    <table cellspacing="10px">
+<thead>
+        <tr><th colspan="4" >深圳市华强电子科技有限公司</th></tr>
+</thead>
+<tbody>
+<tr style="margin-top: 10px">
+    <td>联系人：</td><td>王先生</td>
+    <td style="margin-left: 15px">电话：</td>
+    <td >0755-35687598</td>
+</tr>
+<tr style="margin-top: 10px">
+    <td>QQ：</td>
+    <td >5682467959</td>
+    <td style="margin-left: 15px">微信：</td>
+    <td >1356sffaeraaer</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="margin-top: 10px">
+    <td>地址：</td>
+    <td colspan="3">深圳市福田区华强北路赛格大厦A2358</td>
+</tr>
+</tfoot>
+</table></div>
+
+
     <div id="header">
         <div id="head">
             <div id="logo">
@@ -64,21 +91,12 @@
                 </div>
 
                 <table  class="table" width="100%" cellspacing="20px">
-                    <div th:each="list:${LevelList}">
-                    <tr  name="level3Id" th:value="${list.id}">
-                        <th th:text="${list.utypeName}" colspan="4">分类一</th>
+                    <div th:each="vd:${vendors}">
+                    <tr>
+                        <th th:text="${vd.utypeName}" colspan="4">分类一</th>
                     </tr>
                     <tr >
-                        <td th:each="ven:${vendors}">
-                        <td th:each="ve:${ven}" th:text="${ve.co}">
-                            </td>
-                            <!--<span th:each="a:${ven[0]}">-->
-                                <!--<a href="" th:text="${a}"></a>-->
-                                <!--<a th:href="@{${a.website1!=null}?${a.website1}:${a.website}}" th:text="${a.co}">公司一</a>-->
-                            <!--</span>-->
-
-                        </td>
-
+                        <td th:each="user:${vd.user}"><a href="https://www.baidu.com" th:value="${user.uid}" onmousemove="checkCurrentUserInfo(this)" onmouseleave="uncheckCurrentUserInfo()"  th:text="${user.co}"></a></td>
                     </tr>
                     </div>
                 </table>

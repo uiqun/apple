@@ -1,12 +1,24 @@
 package com.uiqun.service;
 
 import com.uiqun.model.User;
-import com.uiqun.model.Utype;
+import com.uiqun.model.Vendors;
 
 import java.util.List;
 
 public interface UserService {
     User login(User user);
-
-    List<User> queryVendor(Utype utype);
+    /**
+     * 按照分类id查询子分类
+     * @param utypeId
+     * @return
+     * @throws Exception
+     */
+    List<Vendors> queryUtypesById(int utypeId);
+    /**
+     * 查询用户
+     * @param userId
+     * @return
+     * @throws Exception
+     */
+    User queryUserById(int userId);
 }

@@ -16,5 +16,4 @@
         ON u1.id=u2.parentId
         WHERE u1.parentId= #{parentId}
     </select>
-
 </mapper>

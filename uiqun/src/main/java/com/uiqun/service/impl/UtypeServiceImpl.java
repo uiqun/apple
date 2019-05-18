@@ -13,6 +13,7 @@ public class UtypeServiceImpl implements UtypeService {
     @Resource
     private UtypeDao utypeDao;
 
+
     @Override
     public List<Utype> queryUtypes(int id) {
         try {
@@ -22,4 +23,5 @@ public class UtypeServiceImpl implements UtypeService {
         }
         return null;
     }
+
 }

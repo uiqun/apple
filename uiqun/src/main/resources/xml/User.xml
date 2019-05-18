@@ -20,8 +20,24 @@
     </select>
 
     <select id="queryVendor" resultType="User">
-       select uid,company,co,contact,tel,qq,wechat,addr,website,website1,ulogo
+       select uid,co,website,website1
         from userlist
         where utype = #{id}
+    </select>
+
+    <resultMap id="UtypesByIdMap" type="Vendors">
+        <id property="id" column="id"/>
+        <collection property="user" ofType="User" select="queryVendor" column="id"></collection>
+    </resultMap>
+    <select id="queryUtypesById" resultMap="UtypesByIdMap">
+        SELECT u1.* FROM utype u1 LEFT JOIN utype u2
+        ON u1.id=u2.parentId
+        WHERE u1.parentId= #{parentId}
+    </select>
+
+    <select id="queryUserById" resultType="User">
+       select uid,company,co,contact,tel,qq,wechat,addr,website,website1,ulogo
+        from userlist
+        where uid = #{userId}
     </select>
 </mapper>

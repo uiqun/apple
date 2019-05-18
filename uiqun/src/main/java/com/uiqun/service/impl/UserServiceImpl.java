@@ -2,7 +2,7 @@ package com.uiqun.service.impl;
 
 import com.uiqun.dao.UserDao;
 import com.uiqun.model.User;
-import com.uiqun.model.Utype;
+import com.uiqun.model.Vendors;
 import com.uiqun.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +25,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> queryVendor(Utype utype) {
-        return userdao.queryVendor(utype);
+    public List<Vendors> queryUtypesById(int utypeid) {
+        try {
+            return userdao.queryUtypesById(utypeid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-
+    @Override
+    public User queryUserById(int userId) {
+        try {
+            return userdao.queryUserById(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
