@@ -16,4 +16,12 @@
         ON u1.id=u2.parentId
         WHERE u1.parentId= #{parentId}
     </select>
+
+
+    <select id="queryUtypeByIdFromChild" resultType="Utype">
+        SELECT u1.*,u2.id `utype.id`, u2.utypeName  `utype.utypeName`,
+        u2.parentId  `utype.parentId` FROM utype u1 LEFT JOIN utype u2
+        ON u1.parentId=u2.id
+        WHERE u1.id= #{id}
+    </select>
 </mapper>

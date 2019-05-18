@@ -30,6 +30,7 @@ public class UtypeController {
     @RequestMapping("/queryLevel/{id}")
     public String queryLevel(Model model, @PathVariable("id")int id){
         model.addAttribute("vendors",userService.queryUtypesById(id));
+        model.addAttribute("currentCheck",utypeService.queryUtypeByIdFromChild(id));
         return "forward:/queryUtypes";
     }
 }

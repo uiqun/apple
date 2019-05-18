@@ -24,4 +24,14 @@ public class UtypeServiceImpl implements UtypeService {
         return null;
     }
 
+    @Override
+    public Utype queryUtypeByIdFromChild(int utypeId) {
+        try {
+            return utypeDao.queryUtypeByIdFromChild(utypeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
