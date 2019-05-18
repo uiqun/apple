@@ -81,7 +81,7 @@
         <div id="detail">
             <div>
                 <div style="font:bold 20px arial,sans-serif; ">
-                    <span>当前位置：</span><span th:text="${currentCheck.utype.utypeName}">一级目录</span>&gt;<span th:text="${currentCheck.utypeName}">二级目录</span>
+                    <span>当前位置：</span><span th:text="${currentCheck?.utype?.utypeName}">一级目录</span>&gt;<span th:text="${currentCheck?.utypeName}">二级目录</span>
                 </div>
 
                 <table  class="table" width="100%" cellspacing="20px">
