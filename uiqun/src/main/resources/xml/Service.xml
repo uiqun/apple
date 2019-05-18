@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uiqun.dao.ServiceDao">
+   <insert id="insertService">
+       INSERT INTO `servicelist` VALUE(NULL,#{uid},#{sname},#{scontent},#{startdate},#{enddate},#{fee})
+   </insert>
+    <sql id="serviceSql">
+        <if test="condition.uName!='' and condition.uName!=null">
+            AND s.uid=(SELECT uid FROM userlist WHERE company=#{condition.uName})
+        </if>
+        <if test="condition.sName!='' and condition.sName!=null">
+            AND s.sname LIKE CONCAT('%',#{condition.sName},'%')
+        </if>
+    </sql>
+    <select id="queryService" resultType="Service">
+        SELECT s.*,u.company uName FROM `servicelist` s
+        , userlist u
+        WHERE s.uid=u.uid
+        <include refid="serviceSql"/>
+        limit #{pageOffset},#{pageSize}
+    </select>
+    <select id="queryServiceRows" resultType="_int">
+        SELECT count(1) FROM `servicelist` s
+        , userlist u
+        WHERE s.uid=u.uid
+        <include refid="serviceSql"/>
+    </select>
+</mapper>

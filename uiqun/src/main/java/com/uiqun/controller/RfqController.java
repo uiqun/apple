@@ -67,17 +67,12 @@ public class RfqController {
      * 访问RFQ页面
      * @param model
      * @param pager
-     * @param currentPage
      * @param request
      * @return
      */
     @RequestMapping("/jumprfq")
     public String jumpRfq(Model model, Pager<Rfq> pager,
-                          @RequestParam(defaultValue = "0")int currentPage, HttpServletRequest request){
-        if(pager.getCurrentPage()==0){
-            pager.setCurrentPage(currentPage);
-        }
-        pager.setPageSize(10);
+                           HttpServletRequest request){
         User user = (User)request.getSession().getAttribute("user");
         pager.getCondition().put("uid",user.getUid());
         model.addAttribute("qltyTypeList",qltytypeService.queryQltytype());

@@ -12,12 +12,6 @@
 
 <body>
 <input type="hidden" id="AlertMessage" th:value="${AlertMessage}">
-<script>
-    var AlertMessage = document.getElementById("AlertMessage").value;
-    if(AlertMessage!=null&&AlertMessage!=''){
-        alert(AlertMessage);
-    }
-</script>
     <div id="header">
         <div id="head">
             <div id="logo">
@@ -138,23 +132,20 @@
             </table>
         </div>
 	</div>
-        
-	<div id="pageCount_box">
-		<div id="pageCount">
-            <button class="button">首页</button>
-            <span class="num">1</span>
-            <span class="num">2</span>
-            <span class="num">3</span>
-            <span class="num">4</span>
-            <span class="num">5</span>
-            <span class="num">6</span>
-            <span class="num">7</span>
-            <span class="num">8</span>
-            <span class="num">9</span>
-            <span class="num">10</span>
-            <button class="button">末页</button>
-		</div>
-	</div>
+
+<div class="box">
+    <div id="pageCount">
+        <a th:href="@{/jumprfq(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
+        <a th:href="@{/jumprfq(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
+        <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/jumprfq(currentPage=${i})}" th:text="${i}"></a>
+        </span>
+        <a th:href="@{/jumprfq(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+        <a th:href="@{/jumprfq(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
+        <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
+
+    </div>
+</div>
 
     <div id="belowNav_box">
         <div id="belowNav">

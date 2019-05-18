@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="css/public.css"    />
@@ -11,35 +11,36 @@
 </head>
 
 <body>
+<input type="hidden" id="AlertMessage" th:value="${AlertMessage}">
     <div>
-        <form action="addService">
+        <form action="/addService" method="post">
             <table cellspacing="10px">
                 <tr>
                    <th colspan="2">新增客户服务</th>
                 </tr>
                 <tr>
-                    <td>客户名称</td>
-                    <td><input type="text"/></td>
+                    <td>客户编号</td>
+                    <td><input type="text" name="uid"/></td>
                 </tr>
                 <tr>
                     <td>服务名称</td>
-                    <td><input type="text"/></td>
+                    <td><input type="text" name="sname"/></td>
                 </tr>
                 <tr>
                     <td>服务内容</td>
-                    <td><input type="text"/></td>
+                    <td><input type="text" name="scontent"/></td>
                 </tr>
                 <tr>
                     <td>起始时间</td>
-                    <td><input type="text"/></td>
+                    <td><input type="text" name="startdate"/>(格式:2019/02/10)</td>
                 </tr>
                 <tr>
                     <td>截止时间</td>
-                    <td><input type="text"/></td>
+                    <td><input type="text" name="enddate"/>(格式:2019/02/10)</td>
                 </tr>
                 <tr>
                     <td>服务费用</td>
-                    <td><input type="text"/></td>
+                    <td><input type="text" name="fee"/></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="提交"/></td>
@@ -49,15 +50,16 @@
     </div>
 
     <div>
-        <form action="findService">
             <table cellspacing="10px">
-                <th colspan="7">
-                    <input type="text" placeholder="请输入客户名称"/>
-                    <input type="text" placeholder="服务名称"/>
-                    <input type="submit" value="提交"/>
-                </th>
+                <form action="/Xservice" method="post">
+                    <th colspan="7">
+                        <input type="text" name="uName" placeholder="请输入客户名称"/>
+                        <input type="text" name="sName" placeholder="服务名称"/>
+                        <input type="submit" value="提交"/>
+                    </th>
+                </form>
                 <tr>
-                    <th>编号</th>
+                    <th>服务编号</th>
                     <th>客户名称</th>
                     <th>服务名称</th>
                     <th>起始时间</th>
@@ -65,112 +67,29 @@
                     <th>服务费用</th>
                     <th>操作</th>
                 </tr>
-                <tr>
-                    <td>S001</td>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>金牌会员</td>
-                    <td>2019-06-12</td>
-                    <td>2020-06-11</td>
-                    <td>3800</td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>内容：</td>
-                    <td colspan="6">询价、报价、热卖库存</td>
-                </tr>
-                <tr>
-                    <td>S001</td>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>金牌会员</td>
-                    <td>2019-06-12</td>
-                    <td>2020-06-11</td>
-                    <td>3800</td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>内容：</td>
-                    <td colspan="6">询价、报价、热卖库存</td>
-                </tr>
-                <tr>
-                    <td>S001</td>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>金牌会员</td>
-                    <td>2019-06-12</td>
-                    <td>2020-06-11</td>
-                    <td>3800</td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>内容：</td>
-                    <td colspan="6">询价、报价、热卖库存</td>
-                </tr>
-                <tr>
-                    <td>S001</td>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>金牌会员</td>
-                    <td>2019-06-12</td>
-                    <td>2020-06-11</td>
-                    <td>3800</td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>内容：</td>
-                    <td colspan="6">询价、报价、热卖库存</td>
-                </tr>
-                <tr>
-                    <td>S001</td>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>金牌会员</td>
-                    <td>2019-06-12</td>
-                    <td>2020-06-11</td>
-                    <td>3800</td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>内容：</td>
-                    <td colspan="6">询价、报价、热卖库存</td>
-                </tr>
-                <tr>
-                    <td>S001</td>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>金牌会员</td>
-                    <td>2019-06-12</td>
-                    <td>2020-06-11</td>
-                    <td>3800</td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>内容：</td>
-                    <td colspan="6">询价、报价、热卖库存</td>
-                </tr>
-                <tr>
-                    <td>S001</td>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>金牌会员</td>
-                    <td>2019-06-12</td>
-                    <td>2020-06-11</td>
-                    <td>3800</td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>内容：</td>
-                    <td colspan="6">询价、报价、热卖库存</td>
-                </tr>
-                <tr>
-                    <td>S001</td>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>金牌会员</td>
-                    <td>2019-06-12</td>
-                    <td>2020-06-11</td>
-                    <td>3800</td>
-                    <td><a href="">删除</a></td>
-                </tr>
-                <tr>
-                    <td>内容：</td>
-                    <td colspan="6">询价、报价、热卖库存</td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>S001</td>-->
+                    <!--<td>深圳市模板电子科技有限公司</td>-->
+                    <!--<td>金牌会员</td>-->
+                    <!--<td>2019-06-12</td>-->
+                    <!--<td>2020-06-11</td>-->
+                    <!--<td>3800</td>-->
+                    <!--<td><a href="">删除</a></td>-->
+                <!--</tr>-->
+                <div th:each="service:${pager.datas}">
+                    <tr >
+                        <td th:text="${service.sid}"></td>
+                        <td th:text="${service.uName}"></td>
+                        <td th:text="${service.sname}"></td>
+                        <td th:text="${#dates.format(service.startdate,'yyyy/MM/dd')}"></td>
+                        <td th:text="${#dates.format(service.enddate,'yyyy/MM/dd')}"></td>
+                        <td th:text="${service.fee}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${'内容：'+service.scontent}"></td>
+                    </tr>
+                </div>
             </table>
-        </form>
     </div>
     <div id="pageCount_box">
         <div id="pageCount">

@@ -41,5 +41,10 @@ public class UserController  {
     }
 
 
+    @RequestMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
+
 
 }
