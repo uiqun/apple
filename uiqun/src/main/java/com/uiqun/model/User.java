@@ -28,7 +28,6 @@ public class User implements Serializable {
     private String certid; //营业执照号码
     private String cert; //营业执照
     private String iscert; //是否通过认证
-    private int sid; //服务编号
 
     public Integer getUid() {
         return uid;
@@ -228,13 +227,5 @@ public class User implements Serializable {
 
     public void setIscert(String iscert) {
         this.iscert = iscert;
-    }
-
-    public int getSid() {
-        return sid;
-    }
-
-    public void setSid(int sid) {
-        this.sid = sid;
     }
 }
