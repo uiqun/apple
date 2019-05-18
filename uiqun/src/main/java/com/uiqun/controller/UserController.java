@@ -34,6 +34,7 @@ public class UserController  {
     @ResponseBody
     public String queryUserInfo(Integer userId){
         User user = userService.queryUserById(userId);
+        System.out.println("111");
         if(user!=null) {
             return JSON.toJSONString(user);
         }
