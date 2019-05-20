@@ -3,7 +3,7 @@
  */
 
 function addPn(){
-    window.open("addPn.html","_self");
+    window.open("/addpn","_self");
 }
 
 function vendor(){
@@ -35,7 +35,7 @@ function index(){
 }
 
 function logon(){
-    window.open("login.html","_self");
+    window.open("/user/login","_self");
 }
 
 function quote(){
@@ -47,12 +47,9 @@ function regist(){
 }
 
 function rfq(){
-    window.open("rfq.html","_self");
+    window.open("/jumprfq","_self");
 }
 
-function rfqDetail(){
-    window.open("rfqDetail.html","_self");
-}
 
 function user(){
     window.open("user.html","_self");
@@ -67,11 +64,11 @@ function admin(){
 }
 
 function addPn(){
-    window.open("addPn.html","_self");
+    window.open("/addpn","_self");
 }
 
 function addMfg() {
-    window.open("addMfg.html", "_self");
+    window.open("/addmfg", "_self");
 }
 
 
