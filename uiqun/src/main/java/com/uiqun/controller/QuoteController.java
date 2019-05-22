@@ -60,4 +60,14 @@ public class QuoteController {
         return null;
     }
 
+    @RequestMapping("/inquote1")
+    public String inMfg1(Model model, HttpSession session, Pager<Quote> pager){
+        pager.getCondition().put("user",session.getAttribute("user"));
+            model.addAttribute("rfq", null);
+        pager.getCondition().put("rfqno","");
+            model.addAttribute("qltyTypeList",qltytypeService.queryQltytype());
+            model.addAttribute("pager",quoteService.queryQuoteByRfq(pager));
+            return "quote";
+    }
+
 }

@@ -39,7 +39,7 @@ function logon(){
 }
 
 function quote(){
-    window.open("quote.html","_self");
+    window.open("/inquote1","_self");
 }
 
 function regist(){
