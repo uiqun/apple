@@ -28,5 +28,4 @@ public interface HotstkService {
      * @return
      */
     List<Hotstk> queryHotstksFromFindPrice(Map<String,Object> condition);
-
 }

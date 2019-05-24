@@ -7,7 +7,6 @@ import com.uiqun.utils.Pager;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service
 public class BomlistServiceImpl implements BomlistService {
@@ -15,17 +14,25 @@ public class BomlistServiceImpl implements BomlistService {
     private BomlistDao bomlistDao;
 
     @Override
-    public boolean insertBomlist(Bomlist bomlist) throws Exception {
-        return bomlistDao.insertBomlist(bomlist)>0;
+    public boolean insertBomlist(Bomlist bomlist){
+        try {
+            return bomlistDao.insertBomlist(bomlist)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
-    public List<Bomlist> queryBomlists(Pager<Bomlist> pager) throws Exception {
-        return bomlistDao.queryBomlists(pager);
+    public Pager<Bomlist> queryBomlists(Pager<Bomlist> pager) {
+        try {
+            pager.setTotalCount(bomlistDao.queryBomlistRow(pager));
+            pager.setDatas(bomlistDao.queryBomlists(pager));
+            return pager;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    @Override
-    public boolean queryBomlistRow(Pager<Bomlist> pager) throws Exception {
-        return bomlistDao.queryBomlistRow(pager)>0;
-    }
 }

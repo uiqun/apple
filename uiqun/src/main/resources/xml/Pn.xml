@@ -27,4 +27,14 @@
         INSERT INTO `pnlist`(ptype,pn,des,mfg,pkge,pack,mpq,price,spec,datalink)
          VALUES(#{ptype},#{pn},#{des},#{mfg},#{pkge},#{pack},#{mpq},#{price},#{speck},#{datalink})
     </insert>
+
+
+    <select id="selectStkByMinPrice" resultType="Pn">
+    SELECT * FROM hotlist
+    WHERE pn LIKE CONCAT('%',#{pn},'%')
+    AND mfg=#{mfg}
+    AND price = (SELECT MIN(price) FROM hotlist
+    WHERE pn LIKE CONCAT('%',#{pn},'%')
+    AND mfg=#{mfg}  )
+    </select>
 </mapper>

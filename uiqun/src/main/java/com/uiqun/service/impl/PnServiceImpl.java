@@ -49,4 +49,15 @@ public class PnServiceImpl implements PnService {
         }
         return false;
     }
+
+    @Override
+    public Pn selectStkByMinPrice(Pn pn) {
+        try {
+            return pnDao.selectStkByMinPrice(pn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

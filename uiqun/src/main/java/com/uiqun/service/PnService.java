@@ -30,4 +30,11 @@ public interface PnService {
      * @return
      */
     boolean addPn(Pn pn);
+
+    /**
+     * 按型号匹配最优
+     * @param pn
+     * @return
+     */
+    Pn selectStkByMinPrice(Pn pn);
 }

@@ -12,6 +12,6 @@ public interface BtypeDao {
      * @return
      * @throws Exception
      */
-    @Select("select * from btype")
+    @Select("select id btypeId,name btypeName from bomtype")
     List<Btype> queryBtypes()throws Exception;
 }

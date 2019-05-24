@@ -44,11 +44,11 @@ public class PnController {
         if(upload.getName()!=null&&!"".equals(upload.getName())){
             //图片上传
             //获取用户上传的Logo的文件名
-            filename = Encrypt_Dncrypt.getUpLoadFileName(session,upload,"importExcle");
+            filename = Encrypt_Dncrypt.getUpLoadFileName(session,upload,"importPnTypeExcel");
             try {
                 upfilelogin = session.getServletContext().getRealPath("upfilelogin");
                 //保存路径&保存文件名
-                upload.transferTo(new File("C:\\Users\\Administrator\\Desktop\\bookinfo - 副本\\target\\classes\\static\\upfilelogin",filename));
+                upload.transferTo(new File(upfilelogin,filename));
                 flag = true;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -62,12 +62,12 @@ public class PnController {
                 upfilelogin+="/"+filename;
             }
             String filepath = upfilelogin;
-            FileInputStream inputStream = new FileInputStream(new File(filepath));
-            List<List<Object>> list = ExcelUtil.getBankListByExcel(inputStream, filepath);
+            File file = new File(filepath);
+            FileInputStream inputStream = new FileInputStream(file);
+            List<List<Object>> list = ExcelUtil.getBankListByExcel(inputStream, filename);
             //添加到数据库
             pnService.insertPns(list);
             //删除以添加到数据库中的文件
-            File file = new File(filepath);
             if(file.exists()){
                 file.delete();
             }

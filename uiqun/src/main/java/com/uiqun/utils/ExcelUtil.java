@@ -1,6 +1,8 @@
 package com.uiqun.utils;
 
 
+import com.uiqun.model.Pn;
+import com.uiqun.service.PnService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -15,7 +17,6 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 public class ExcelUtil {
     private final static String excel2003L = ".xls";    //2003- 版本的excel
     private final static String excel2007U = ".xlsx";   //2007+ 版本的excel
@@ -52,6 +53,71 @@ public class ExcelUtil {
                 //遍历所有的列
                 List<Object> li = new ArrayList<Object>();
                 for (int y = row.getFirstCellNum(); y < row.getLastCellNum(); y++) {
+                    if("".equals(row.getCell(y))||row.getCell(y)==null){
+                        row.getCell(y).setCellValue(" ");
+                    }
+                    cell = row.getCell(y);
+                    li.add(getCellValue(cell));
+                }
+                list.add(li);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * excel导入bomlist信息
+     * @param in
+     * @param fileName
+     * @param bomlistPrimaryKey
+     * @return
+     * @throws Exception
+     */
+    public static List<List<Object>> getBomListByExcel(InputStream in, String fileName,
+                                                       Integer bomlistPrimaryKey, PnService pnService) throws Exception {
+        List<List<Object>> list = null;
+        //创建Excel工作薄
+        Workbook work = getWorkbook(in, fileName);
+        if (null == work) {
+            throw new Exception("创建Excel工作薄为空！");
+        }
+        Sheet sheet = null;
+        Row row = null;
+        Cell cell = null;
+        list = new ArrayList<List<Object>>();
+        //遍历Excel中所有的sheet
+        for (int i = 0; i < work.getNumberOfSheets(); i++) {
+            sheet = work.getSheetAt(i);
+            if (sheet == null) {
+                continue;
+            }
+            //遍历当前sheet中的所有行
+            //包涵头部，所以要小于等于最后一列数,这里也可以在初始值加上头部行数，以便跳过头部
+            for (int j = sheet.getFirstRowNum(); j <= sheet.getLastRowNum(); j++) {
+                //读取一行
+                row = sheet.getRow(j);
+                //去掉空行和表头
+                if (row == null || row.getFirstCellNum() == j) {
+                    continue;
+                }
+                //遍历所有的列
+                List<Object> li = new ArrayList<Object>();
+                for (int y = row.getFirstCellNum()-1; y < row.getLastCellNum()+1; y++) {
+                    if(y==row.getFirstCellNum()-1){
+                        li.add(bomlistPrimaryKey);
+                        continue;
+                    }else if(y == row.getLastCellNum()){
+                        Pn pn = new Pn();
+                        pn.setPn(
+                                row.getCell(row.getFirstCellNum()).getRichStringCellValue().getString()   );
+                        pn.setMfg(
+                                row.getCell(row.getFirstCellNum()+2).getRichStringCellValue().getString()  );
+                        Pn pn1 = pnService.selectStkByMinPrice(pn);
+                        li.add(pn1!=null?pn1.getMpq():0);
+                        li.add(pn1!=null?pn1.getPrice():0f);
+                        li.add(pn1!=null?pn1.getDtime():"无记录");
+                        continue;
+                    }
                     if("".equals(row.getCell(y))||row.getCell(y)==null){
                         row.getCell(y).setCellValue(" ");
                     }
@@ -113,7 +179,13 @@ public class ExcelUtil {
         return value;
     }
 
-    public static void downExcleTemplate(List<List<String>> data,String pnType) throws IOException {
+    /**
+     * 型号的模板文件下载
+     * @param data
+     * @param pnType
+     * @throws IOException
+     */
+    public static void downExclePnTypeTemplate(List<List<String>> data, String pnType) throws IOException {
         Workbook wk=new HSSFWorkbook();//创建一个工作薄
         Sheet sh=wk.createSheet(pnType);//创建一个sheet页
         Row row=sh.createRow(0);//创建第一行
@@ -147,6 +219,6 @@ public class ExcelUtil {
 //                data.get(i).add("\""+i+"------"+x+"\"");
 //            }
 //        }
-//        downExcleTemplate(data,"111");
+//        downExclePnTypeTemplate(data,"111");
 //    }
 }

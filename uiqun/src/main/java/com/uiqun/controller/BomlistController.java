@@ -22,7 +22,7 @@ public class BomlistController {
 public String addBomlist(Model model,Bomlist bomlist) throws Exception{
     model.addAttribute("btypeList",btypeService.queryBtypes());
     bomlistService.insertBomlist(bomlist);
-    return "queryBomlists";
+    return "forward:/queryBomlists";
 }
 
 

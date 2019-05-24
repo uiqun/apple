@@ -12,6 +12,15 @@ public class Pn {
     private float price; //单价
     private String speck; //规格
     private String datalink; //规格书链接
+    private String dtime;//交期
+
+    public String getDtime() {
+        return dtime;
+    }
+
+    public void setDtime(String dtime) {
+        this.dtime = dtime;
+    }
 
     public int getPid() {
         return pid;
