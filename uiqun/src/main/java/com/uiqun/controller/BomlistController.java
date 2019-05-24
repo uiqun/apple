@@ -2,6 +2,7 @@ package com.uiqun.controller;
 
 import com.uiqun.model.Bomlist;
 import com.uiqun.service.BomlistService;
+import com.uiqun.service.BtypeService;
 import com.uiqun.utils.Pager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,19 +15,20 @@ import javax.servlet.http.HttpSession;
 public class BomlistController {
 @Resource
     private BomlistService bomlistService;
+@Resource
+    private BtypeService btypeService;
 
 @RequestMapping("/addBomlist")
-public String addBomlist(Bomlist bomlist) throws Exception{
+public String addBomlist(Model model,Bomlist bomlist) throws Exception{
+    model.addAttribute("btypeList",btypeService.queryBtypes());
     bomlistService.insertBomlist(bomlist);
-    return "BOM";
+    return "queryBomlists";
 }
 
 
     @RequestMapping("/queryBomlists")
    public String queryBomlists(Model model, Pager<Bomlist> pager, HttpSession session)throws Exception{
        model.addAttribute("bomlists",bomlistService.queryBomlists(pager));
-
-
-        return "queryBomlists";
+        return "findPrice";
     }
 }

@@ -23,7 +23,7 @@ function userInfo(){
 }
 
 function findPrice(){
-    window.open("/jumprfq","_self");
+    window.open("/queryBomlists,"_self");
 }
 
 function hotStk(){

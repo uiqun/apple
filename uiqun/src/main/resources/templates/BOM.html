@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>唯群网--BOM成本核算</title>
@@ -43,15 +44,15 @@
     <div class="box">
         <div id="bom">
             <p><span id="title">BOM成本核算</span></p>
-            <form action="">
+            <form action="addBomlist">
                 <dl>
-                    <dd> 产品编号 ：<input type="text"/></dd>
+                    <dd> 产品编号 ：<input name="bid" type="text"/></dd>
                 </dl>
                 <dl>
-                   <dd>  产品名称 ：<input type="text"/></dd>
+                   <dd>  产品名称 ：<input name="bname" type="text"/></dd>
                 </dl>
                 <dl>
-                    <dd> 产品类别 ：<select >
+                    <dd> 产品类别 ：<select>
                         <option value="消费电子" selected>消费电子</option>
                         <option value="通信产品">通信产品</option>
                         <option value="医疗产品">医疗产品</option>
@@ -60,10 +61,10 @@
                     </select></dd>
                 </dl>
                 <dl>
-                    <dd> 计划用量 ：<input type="text"/>套/月</dd>
+                    <dd> 计划用量 ：<input name="buse" type="text" />套/月</dd>
                 </dl>
                 <dl>
-                    <dd> 报价方式 ：<select >
+                    <dd> 报价方式 ：<select  name="isauto">
                         <option value="电智能匹配，即刻下载结果" selected>智能匹配，即刻下载结果</option>
                         <option value="人工确认，24小时后下载结果">要求人工确认，24小时后下载结果</option>
                     </select></dd>
@@ -72,7 +73,7 @@
                     <dd>上传BOM：<input type="file"/></dd>(备注：上传格式为4个字段：型号、描述、品牌、单机用量。)
                 </dl>
                 <dl>
-                    <dd><button>&nbsp;提交上传&nbsp;</button></dd>
+                    <dd><input type="submit"></dd>
                 </dl>
             </form>
             <br/>
@@ -93,8 +94,8 @@
                     <th>下载</th>
                     <th>删除</th>
                 </tr>
-                <tr>
-                    <td>Model001</td>
+                <tr th:each="blist:${bomlists}">
+                    <td th:text="${blist.bid}">Model001</td>
                     <td>手机主板</td>
                     <td>通信产品</td>
                     <td>30000</td>
