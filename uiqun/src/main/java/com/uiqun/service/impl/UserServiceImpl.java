@@ -43,4 +43,14 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public boolean register(User user) {
+        try {
+            return userdao.insertUser(user)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

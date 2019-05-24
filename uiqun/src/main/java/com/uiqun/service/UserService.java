@@ -21,4 +21,11 @@ public interface UserService {
      * @throws Exception
      */
     User queryUserById(int userId);
+
+    /**
+     * 用户注册
+     * @param user
+     * @return
+     */
+    boolean register(User user);
 }

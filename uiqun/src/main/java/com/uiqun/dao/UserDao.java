@@ -36,4 +36,11 @@ public interface UserDao {
      * @throws Exception
      */
     List<Vendors> queryUtypesById(int utypeId)throws Exception;
+
+    /**
+     * 添加用户
+     * @param user
+     * @return
+     */
+    int insertUser(User user);
 }

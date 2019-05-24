@@ -10,7 +10,6 @@ import com.uiqun.utils.Pager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -18,9 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class HotstkController {
@@ -31,6 +28,14 @@ public class HotstkController {
     @Resource
     private PntypeService pntypeService;
 
+    /**
+     * Excel导入热门库存
+     * @param model
+     * @param upload
+     * @param session
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/uploadHotstk")
     public String importExcelHotstk(Model model, MultipartFile upload, HttpSession session) throws Exception {
         boolean flag =false;
@@ -74,7 +79,14 @@ public class HotstkController {
         return "forward:/addHotstkPage";
     }
 
-
+    /**
+     *查询热门库存
+     * @param uid
+     * @param pager
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/queryHotstks")
     public String showList(int uid, Pager<Hotstk> pager, Model model) throws Exception{
         pager.getCondition().put("uid",uid);
@@ -82,18 +94,6 @@ public class HotstkController {
         return "hotStk";
     }
 
-    @RequestMapping("/findPrice")
-    public String finPrice(Model model, HttpSession session,
-                           @RequestParam(defaultValue = "0") int pntype,
-                           @RequestParam(defaultValue = "")String pn){
-        Map<String,Object> condition = new HashMap<String,Object>();
-        condition.put("pntype",pntype);
-        condition.put("pn",pn);
-        model.addAttribute("pntypeList",pntypeService.queryPntypes());
-        model.addAttribute("condition",condition);
-        model.addAttribute("rfqList",rfqService.queryRfqListFromFindPrice(condition));
-        model.addAttribute("hotstkList",hotstkService.queryHotstksFromFindPrice(condition));
-        return "findPrice";
-    }
+
 
 }

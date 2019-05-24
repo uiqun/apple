@@ -40,4 +40,7 @@
         from userlist
         where uid = #{userId}
     </select>
+    <insert id="insertUser">
+        insert into userlist(nickname,mobile,pwd) values(#{nickname},#{mobile},#{pwd})
+    </insert>
 </mapper>
