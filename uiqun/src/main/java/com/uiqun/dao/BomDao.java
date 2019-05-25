@@ -11,4 +11,8 @@ public interface BomDao {
     Bom queryBomById(int id);
 
     List<Bom> queryBomByBid(int bid);
+
+    int deleteXbom(int bid);
+
+
 }

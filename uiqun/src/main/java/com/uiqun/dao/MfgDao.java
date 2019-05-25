@@ -32,4 +32,12 @@ public interface MfgDao {
      */
     @Select("select m.* from mfglist m  left join pnlist p on m.mfgName=p.mfg WHERE p.pn=#{pn}")
     List<Mfg> checkRfqPn(Pn pn)throws Exception;
+
+    /**
+     * 按id查询品牌信息
+     * @param mfg
+     * @return
+     */
+    @Select("select * from mfglist  WHERE mid=#{mid}")
+    Mfg queryRfq(Mfg mfg);
 }

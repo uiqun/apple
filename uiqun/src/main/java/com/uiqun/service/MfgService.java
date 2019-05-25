@@ -27,4 +27,6 @@ public interface MfgService {
      * @return
      */
     List<Mfg> checkRfqPn(Pn pn);
+
+    Mfg getMfg(Mfg mfg);
 }

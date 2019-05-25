@@ -2,6 +2,7 @@ package com.uiqun.dao;
 
 import com.uiqun.model.User;
 import com.uiqun.model.Vendors;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -45,4 +46,6 @@ public interface UserDao {
     int insertUser(User user);
 
     int updateUser(User user);
+
+    User queryUserByPhone(@Param("mobile") String mobile);
 }

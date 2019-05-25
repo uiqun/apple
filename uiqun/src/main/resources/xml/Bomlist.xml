@@ -9,14 +9,21 @@
 
     <select id="queryBomlists" resultType="Bomlist">
         select b.bid,b.company,b.bname,b.btype,b.buse,b.isauto,b.bdate,bt.name btypeName  from bomlist b,bomtype bt
-         where uid = #{condition.uid} and bt.id=b.btype
+         where  bt.id=b.btype
+         <if test="condition.uid>0">
+             and uid = #{condition.uid}
+         </if>
         order by b.bdate desc
         limit #{pageOffset},#{pageSize}
     </select>
 
     <select id="queryBomlistRow" resultType="_int">
         select count(1) from bomlist
-        where uid = #{condition.uid}
+        <where>
+            <if test="condition.uid>0">
+                and uid = #{condition.uid}
+            </if>
+        </where>
     </select>
 
     <update id="updateBomList">
@@ -27,4 +34,8 @@
          from bomlist
          where bid = #{bid}
     </select>
+
+    <delete id="deleteXbomList">
+        delete from bomlist where bid=#{bid}
+    </delete>
 </mapper>

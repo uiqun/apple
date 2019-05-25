@@ -2,6 +2,7 @@ package com.uiqun.service;
 
 import com.uiqun.model.Bomlist;
 import com.uiqun.utils.Pager;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface BomlistService{
     /**
@@ -26,4 +27,8 @@ public interface BomlistService{
     Bomlist getBomlist(Bomlist bomlist);
 
     boolean modifyBomList(Bomlist bomlist);
+
+    boolean deleteXbom(Integer bomid);
+
+    boolean modifybom(MultipartFile multipartFile, Integer bomid, PnService pnService);
 }

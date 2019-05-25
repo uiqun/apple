@@ -62,4 +62,26 @@ public interface RfqDao {
      * @throws Exception
      */
     Rfq queryRfq(int rfqno)throws Exception;
+
+
+    /**
+     * 后台管理查询总行数
+     * @param pager
+     * @return
+     */
+    int queryRfqRowsByAdmin(Pager<Rfq> pager);
+
+    /**
+     * 后台管理分页查询询价
+     * @param pager
+     * @return
+     */
+    List<Rfq>  queryRfqByAdmin(Pager<Rfq> pager);
+
+    /**
+     * 删除询价
+     * @param rfqid
+     * @return
+     */
+    int deletXrfqByAdmin(int rfqid);
 }

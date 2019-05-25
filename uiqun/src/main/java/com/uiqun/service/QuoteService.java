@@ -24,4 +24,19 @@ public interface QuoteService {
      * @return
      */
     Pager<Quote> queryQuoteByRfq(Pager<Quote> pager);
+
+    /**
+     * 分页查询所有报价
+     * @param pager
+     * @return
+     */
+    Pager<Quote> queryQuote(Pager<Quote> pager);
+
+    /**
+     * 删除报价
+     * @param id
+     * @return
+     */
+    boolean deletXquote(int id);
+
 }

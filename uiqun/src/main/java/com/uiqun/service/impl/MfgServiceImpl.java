@@ -42,4 +42,16 @@ public class MfgServiceImpl implements MfgService {
         }
         return null;
     }
+
+    @Override
+    public Mfg getMfg(Mfg mfg) {
+        try {
+            return mfgDao.queryRfq(mfg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }

@@ -124,4 +124,26 @@ public class RfqController {
     }
 
 
+    /**
+     * 后台询价管理页面
+     * @return
+     */
+    @RequestMapping("/Xrfq")
+    public String Xrfq(Pager<Rfq> pager, Rfq rfq, Model model){
+        pager.getCondition().put("rfq",rfq);
+        model.addAttribute("pager",rfqService.queryRfqByAdmin(pager));
+        return "Xrfq";
+    }
+
+    /**
+     * 后台删除询价
+     * @param rfqid
+     * @return
+     */
+    @RequestMapping("/deletXrfq/{rfqid}")
+    public String deletXrfq(@PathVariable("rfqid") int rfqid){
+        rfqService.deletXrfqByAdmin(rfqid);
+        return "redirect:/Xrfq";
+    }
+
 }

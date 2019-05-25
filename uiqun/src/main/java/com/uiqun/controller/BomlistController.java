@@ -7,8 +7,10 @@ import com.uiqun.service.BomlistService;
 import com.uiqun.service.BtypeService;
 import com.uiqun.service.PnService;
 import com.uiqun.utils.ExcelUtil;
+import com.uiqun.utils.Pager;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -76,6 +78,13 @@ public class BomlistController {
         }
         return "forward:/bom/searchbom";
     }
+
+    /**
+     * 下载bomlist
+     * @param bomid
+     * @param bname
+     * @param response
+     */
     @RequestMapping("/downloadbom/{bomid}/{bname}")
     public void downloadbom(@PathVariable("bomid") int bomid, @PathVariable("bname") String bname
             , HttpServletResponse response){
@@ -90,6 +99,42 @@ public class BomlistController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 后台查看所有bomlist
+     * @param model
+     * @param pager
+     * @return
+     */
+    @RequestMapping("/Xbom")
+    public String Xbom(Model model, Pager<Bomlist> pager){
+        model.addAttribute("pager",bomlistService.queryBomlists(pager));
+        return "Xbom";
+    }
+
+    /**
+     * 后台删除指定bomlist
+     * @param bomid
+     * @return
+     */
+    @RequestMapping("/deleteXbom/{bomid}")
+    public String deleteXbom(@PathVariable("bomid") Integer bomid){
+        bomlistService.deleteXbom(bomid);
+        return  "redirect:/bomlist/Xbom";
+    }
+
+    /**
+     * 上传修改
+     * @param multipartFile
+     * @param bomid
+     * @return
+     */
+    @RequestMapping("/modifybom/{bomid}")
+    public String modifybom(MultipartFile multipartFile
+            ,@PathVariable("bomid") Integer bomid){
+        bomlistService.modifybom(multipartFile,bomid,pnService);
+        return  "redirect:/bomlist/Xbom";
     }
 
 }

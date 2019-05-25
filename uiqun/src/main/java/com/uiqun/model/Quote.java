@@ -4,44 +4,36 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Quote implements Serializable {
-    private int qotno; //报价单号
-    private int rfqno; //询价单号
+    private Integer qotno; //报价单号
+    private Integer rfqno; //询价单号
     private String company; //公司名称
     private String pn; //型号
     private String mfg; //品牌
-    private int qty; //数量
+    private Integer qty; //数量
     private String dtcd; //批次
-    private int qlty; //质量标准
-    private float price; //单价
+    private Integer qlty; //质量标准
+    private Float price; //单价
     private String dtime; //交货日期
-    private int sure; //是否实价
+    private Integer sure; //是否实价
     private Date qdate; //报价日期
-    private int isOpen; //是否公开
-    private int uid; //报价者
+    private Integer isOpen; //是否公开
+    private Integer uid; //报价者
     private String qltyName;//质量标准
     private Rfq rfq;//对应报价
 
-    public Rfq getRfq() {
-        return rfq;
-    }
-
-    public void setRfq(Rfq rfq) {
-        this.rfq = rfq;
-    }
-
-    public int getQotno() {
+    public Integer getQotno() {
         return qotno;
     }
 
-    public void setQotno(int qotno) {
+    public void setQotno(Integer qotno) {
         this.qotno = qotno;
     }
 
-    public int getRfqno() {
+    public Integer getRfqno() {
         return rfqno;
     }
 
-    public void setRfqno(int rfqno) {
+    public void setRfqno(Integer rfqno) {
         this.rfqno = rfqno;
     }
 
@@ -69,11 +61,11 @@ public class Quote implements Serializable {
         this.mfg = mfg;
     }
 
-    public int getQty() {
+    public Integer getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(Integer qty) {
         this.qty = qty;
     }
 
@@ -85,19 +77,19 @@ public class Quote implements Serializable {
         this.dtcd = dtcd;
     }
 
-    public int getQlty() {
+    public Integer getQlty() {
         return qlty;
     }
 
-    public void setQlty(int qlty) {
+    public void setQlty(Integer qlty) {
         this.qlty = qlty;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -109,11 +101,11 @@ public class Quote implements Serializable {
         this.dtime = dtime;
     }
 
-    public int getSure() {
+    public Integer getSure() {
         return sure;
     }
 
-    public void setSure(int sure) {
+    public void setSure(Integer sure) {
         this.sure = sure;
     }
 
@@ -125,19 +117,19 @@ public class Quote implements Serializable {
         this.qdate = qdate;
     }
 
-    public int getIsOpen() {
+    public Integer getIsOpen() {
         return isOpen;
     }
 
-    public void setIsOpen(int isOpen) {
+    public void setIsOpen(Integer isOpen) {
         this.isOpen = isOpen;
     }
 
-    public int getUid() {
+    public Integer getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(Integer uid) {
         this.uid = uid;
     }
 
@@ -147,5 +139,13 @@ public class Quote implements Serializable {
 
     public void setQltyName(String qltyName) {
         this.qltyName = qltyName;
+    }
+
+    public Rfq getRfq() {
+        return rfq;
+    }
+
+    public void setRfq(Rfq rfq) {
+        this.rfq = rfq;
     }
 }

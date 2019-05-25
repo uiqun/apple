@@ -76,4 +76,26 @@ public class RfqServiceImpl implements RfqService {
         }
         return null;
     }
+
+    @Override
+    public boolean deletXrfqByAdmin(int rfqid) {
+        try {
+            return rfqDao.deletXrfqByAdmin(rfqid)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public Pager<Rfq> queryRfqByAdmin(Pager<Rfq> pager) {
+        try {
+            pager.setTotalCount(rfqDao.queryRfqRowsByAdmin(pager));
+            pager.setDatas(rfqDao.queryRfqByAdmin(pager));
+            return pager;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

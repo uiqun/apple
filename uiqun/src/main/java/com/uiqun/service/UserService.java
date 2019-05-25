@@ -32,4 +32,6 @@ public interface UserService {
     User queryUserDetail(User user);
 
     boolean updateUser(User user);
+
+    boolean queryUserByPhone(String moblie);
 }

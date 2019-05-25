@@ -49,4 +49,26 @@ public class QuoteServiceImpl implements QuoteService {
         }
         return null;
     }
+
+    @Override
+    public Pager<Quote> queryQuote(Pager<Quote> pager) {
+        try {
+            pager.setTotalCount(quoteDao.queryQuoteRowsByAdmin(pager));
+            pager.setDatas(quoteDao.queryQuoteByAdmin(pager));
+            return pager;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean deletXquote(int id) {
+        try {
+            return quoteDao.deletXquote(id)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

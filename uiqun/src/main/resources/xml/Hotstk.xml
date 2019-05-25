@@ -20,21 +20,36 @@
 
 
     <select id="queryHotstks" resultType="Hotstk">
-        select * from hotlist
-        <where>
+        select h.*,q.name qltyName from hotlist h,qltytype q
+        where h.qlty=q.id
             <if test="condition.uid >0">
                 AND uid = #{condition.uid}
             </if>
-        </where>
-        order by hotlist.hdate desc
+            <if test="condition.hotstk != null">
+                <if test="condition.hotstk.company != null and condition.hotstk.company != ''">
+                    AND company like concat('%', #{condition.hotstk.company} ,'%')
+                </if>
+                <if test="condition.hotstk.pn != null and condition.hotstk.pn != ''">
+                    AND pn like concat('%', #{condition.hotstk.pn} ,'%')
+                </if>
+            </if>
+        order by h.hdate desc
         limit #{pageOffset},#{pageSize}
     </select>
 
-    <select id="queryRow" resultType="_int">
+    <select id="queryHotstkRow" resultType="_int">
         select count(1) from hotlist
         <where>
             <if test="condition.uid >0">
                 AND uid = #{condition.uid}
+            </if>
+            <if test="condition.hotstk != null">
+                <if test="condition.hotstk.company != null and condition.hotstk.company != ''">
+                    AND company like concat('%', #{condition.hotstk.company} ,'%')
+                </if>
+                <if test="condition.hotstk.pn != null and condition.hotstk.pn != ''">
+                    AND pn like concat('%', #{condition.hotstk.pn} ,'%')
+                </if>
             </if>
         </where>
     </select>
@@ -50,4 +65,8 @@
         </if>
         limit 20
     </select>
+
+    <delete id="deletXhotstk">
+        delete from hotlist where hid =#{hid}
+    </delete>
 </mapper>

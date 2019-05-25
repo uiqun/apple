@@ -65,4 +65,16 @@ public class MfgController {
             return "{\"success\":\"yes\"}";
         }
     }
+
+
+    @RequestMapping("/Xmfg")
+    public String Xmfg(){
+        return "Xmfg";
+    }
+
+    @RequestMapping("/queryMfg")
+    public String queryMfg(Model model,Mfg mfg){
+        model.addAttribute("mfg",mfgService.getMfg(mfg));
+        return "Xmfg";
+    }
 }

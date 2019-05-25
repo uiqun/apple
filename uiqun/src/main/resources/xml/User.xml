@@ -52,4 +52,9 @@
         profile=#{profile},ulogo=#{ulogo},image=#{image},certid=#{certid},cert=#{cert},iscert=#{iscert}
         where uid=#{uid}
     </update>
+
+
+    <select id="queryUserByPhone" resultType="User">
+        select mobile from userlist where mobile=#{mobile}
+    </select>
 </mapper>

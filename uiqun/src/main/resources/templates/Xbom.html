@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="css/public.css"    />
@@ -25,152 +25,36 @@
                 <th colspan="4">操作</th>
 
             </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
-            </tr>
-            <tr>
-                <td>Model001</td>
-                <td>手机主板</td>
-                <td>通信产品</td>
-                <td>30000</td>
-                <td>人工确认</td>
-                <td>2018-12-16</td>
-                <td><input type="button" value="下载"/></td>
-                <td><input type="button" value="删除"/></td>
-                <td><input type="file"/></td>
-                <td><input type="button" value="上传"/></td>
+            <tr th:each="bom:${pager?.datas}">
+                <td th:text="${bom.bid}">Model001</td>
+                <td th:text="${bom.bname}">手机主板</td>
+                <td th:text="${bom.btypeName}">通信产品</td>
+                <td th:text="${bom.buse}">30000</td>
+                <td th:text="${bom.isauto==0}?'智能匹配':'人工确认'">人工确认</td>
+                <td th:text="${#dates.format(bom.bdate,'yyyy-MM-dd')}">2018-12-17</td>
+                <td><a th:href="@{'/bomlist/downloadbom/'+${bom.bid}+'/'+${bom.bname}}">下载</a></td>
+                <td><a th:href="@{'/bomlist/deleteXbom/'+${bom.bid}}">删除</a></td>
+                <td>
+                    <form th:action="${'/bomlist/modifybom/' + bom.bid }" method="post" enctype="multipart/form-data">
+                        <input type="file" name="multipartFile"/>
+                        <input type="submit" value="上传"/>
+                    </form>
+                </td>
             </tr>
         </table>
     </div>
+    <div class="box">
+        <div id="pageCount">
+            <a th:href="@{/bomlist/Xbom(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
+            <a th:href="@{/bomlist/Xbom(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
+            <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/bomlist/Xbom(currentPage=${i})}" th:text="${i}"></a>
+        </span>
+            <a th:href="@{/bomlist/Xbom(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+            <a th:href="@{/bomlist/Xbom(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
+            <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
 
+        </div>
+    </div>
 </body>
 </html>

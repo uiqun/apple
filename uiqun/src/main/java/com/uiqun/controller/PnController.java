@@ -137,4 +137,10 @@ public class PnController {
             return "{\"success\":\"none\"}";
         }
     }
+
+
+    @RequestMapping("/Xpn")
+    public String Xpn(){
+        return "Xpn";
+    }
 }

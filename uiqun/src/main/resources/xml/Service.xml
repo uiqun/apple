@@ -7,7 +7,7 @@
    </insert>
     <sql id="serviceSql">
         <if test="condition.uName!='' and condition.uName!=null">
-            AND s.uid=(SELECT uid FROM userlist WHERE company=#{condition.uName})
+            AND s.uid=(SELECT uid FROM userlist WHERE company like concat('%',#{condition.uName} ,'%'))
         </if>
         <if test="condition.sName!='' and condition.sName!=null">
             AND s.sname LIKE CONCAT('%',#{condition.sName},'%')

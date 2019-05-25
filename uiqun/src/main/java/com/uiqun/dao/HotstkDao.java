@@ -37,4 +37,6 @@ public interface HotstkDao {
      */
     int queryHotstkRow(Pager<Hotstk> pager)throws Exception;
 
+    int deletXhotstk(int id);
+
 }

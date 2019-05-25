@@ -44,4 +44,6 @@ public interface BomlistDao {
      * @return
      */
     int updateBomList(Bomlist bomlist)throws Exception;
+
+    int deleteXbomList(int bid);
 }

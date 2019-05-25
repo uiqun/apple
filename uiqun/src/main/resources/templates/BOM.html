@@ -45,7 +45,7 @@
         <div id="bom">
             <p><span id="title">BOM成本核算</span></p>
             <form th:action="@{${bomam!=null}?'/bom/modifybom':'/bomlist/uploadbom'}" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="bid" th:value="${bomam?.bid}"/>
+                <input type="hidden" th:if="${bomam!=null}" name="bid" th:value="${bomam?.bid}"/>
                 <dl>
                    <dd>  产品名称 ：<input name="bname" th:value="${bomam?.bname}" type="text"/></dd>
                 </dl>
@@ -55,7 +55,7 @@
                     </select></dd>
                 </dl>
                 <dl>
-                    <dd> 计划用量 ：<input name="buse" type="text" th:value="${bomam?.buse}" />套/月</dd>
+                    <dd> 计划用量 ：<input name="buse" type="number" th:value="${bomam?.buse}" />套/月</dd>
                 </dl>
                 <dl th:if="${bomam==null}">
                     <dd> 报价方式 ：<select  name="isauto">
@@ -103,22 +103,19 @@
         </div>
     </div>
 
-    <div id="pageCount_box">
-        <div id="pageCount">
-            <button class="button">首页</button>
-            <span class="num">1</span>
-            <span class="num">2</span>
-            <span class="num">3</span>
-            <span class="num">4</span>
-            <span class="num">5</span>
-            <span class="num">6</span>
-            <span class="num">7</span>
-            <span class="num">8</span>
-            <span class="num">9</span>
-            <span class="num">10</span>
-            <button class="button">末页</button>
-        </div>
+<div class="box">
+    <div id="pageCount">
+        <a th:href="@{/bom/searchbom(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
+        <a th:href="@{/bom/searchbom(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
+        <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/bom/searchbom(currentPage=${i})}" th:text="${i}"></a>
+        </span>
+        <a th:href="@{/bom/searchbom(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+        <a th:href="@{/bom/searchbom(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
+        <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
+
     </div>
+</div>
     <div id="belowNav_box">
         <div id="belowNav">
             <a onclick="platInfo()">用户指南</a>

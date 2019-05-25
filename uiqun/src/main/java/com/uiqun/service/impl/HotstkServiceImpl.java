@@ -21,14 +21,18 @@ public class HotstkServiceImpl implements HotstkService {
     }
 
     @Override
-    public List<Hotstk> queryHotstks(Pager<Hotstk> pager) throws Exception {
-        return hotstkDao.queryHotstks(pager);
+    public Pager<Hotstk> queryHotstks(Pager<Hotstk> pager)  {
+        try {
+            pager.setTotalCount(hotstkDao.queryHotstkRow(pager));
+            pager.setDatas(hotstkDao.queryHotstks(pager));
+            return pager;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    @Override
-    public int queryRow(Pager<Hotstk> pager) throws Exception {
-        return hotstkDao.queryHotstkRow(pager);
-    }
+
 
     @Override
     public List<Hotstk> queryHotstksFromFindPrice(Map<String, Object> condition) {
@@ -38,5 +42,15 @@ public class HotstkServiceImpl implements HotstkService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public boolean deletXhotstk(int id) {
+        try {
+            return hotstkDao.deletXhotstk(id)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

@@ -6,51 +6,27 @@ import java.util.Date;
 
 public class Rfq implements Serializable {
 
-  private int rfqno; //询价单号
+  private Integer rfqno; //询价单号
   private String company; //公司名称
-  private int pntype;//型号类型
+  private Integer pntype;//型号类型
   private String pn; //型号
   private String mfg; //品牌
   private Integer qty; //数量
-  private int qlty; //质量标准Id
+  private Integer qlty; //质量标准Id
   private String dtcd;//批次
   private Double tp; //目标价格
   private String dtime; //交货时间
-  private int sure; //是否实单
+  private Integer sure; //是否实单
   private Date rdate; //报价日期
-  private int isOpen; //是否公开
-  private int uid; //发布者
+  private Integer isOpen; //是否公开
+  private Integer uid; //发布者
   private String qltyName; //质量标准
 
-  public String getQltyName() {
-    return qltyName;
-  }
-
-  public void setQltyName(String qltyName) {
-    this.qltyName = qltyName;
-  }
-
-  public String getDtcd() {
-    return dtcd;
-  }
-
-  public void setDtcd(String dtcd) {
-    this.dtcd = dtcd;
-  }
-
-  public int getPntype() {
-    return pntype;
-  }
-
-  public void setPntype(int pntype) {
-    this.pntype = pntype;
-  }
-
-  public int getRfqno() {
+  public Integer getRfqno() {
     return rfqno;
   }
 
-  public void setRfqno(int rfqno) {
+  public void setRfqno(Integer rfqno) {
     this.rfqno = rfqno;
   }
 
@@ -60,6 +36,14 @@ public class Rfq implements Serializable {
 
   public void setCompany(String company) {
     this.company = company;
+  }
+
+  public Integer getPntype() {
+    return pntype;
+  }
+
+  public void setPntype(Integer pntype) {
+    this.pntype = pntype;
   }
 
   public String getPn() {
@@ -86,12 +70,20 @@ public class Rfq implements Serializable {
     this.qty = qty;
   }
 
-  public int getQlty() {
+  public Integer getQlty() {
     return qlty;
   }
 
-  public void setQlty(int qlty) {
+  public void setQlty(Integer qlty) {
     this.qlty = qlty;
+  }
+
+  public String getDtcd() {
+    return dtcd;
+  }
+
+  public void setDtcd(String dtcd) {
+    this.dtcd = dtcd;
   }
 
   public Double getTp() {
@@ -110,11 +102,11 @@ public class Rfq implements Serializable {
     this.dtime = dtime;
   }
 
-  public int getSure() {
+  public Integer getSure() {
     return sure;
   }
 
-  public void setSure(int sure) {
+  public void setSure(Integer sure) {
     this.sure = sure;
   }
 
@@ -126,19 +118,27 @@ public class Rfq implements Serializable {
     this.rdate = rdate;
   }
 
-  public int getIsOpen() {
+  public Integer getIsOpen() {
     return isOpen;
   }
 
-  public void setIsOpen(int isOpen) {
+  public void setIsOpen(Integer isOpen) {
     this.isOpen = isOpen;
   }
 
-  public int getUid() {
+  public Integer getUid() {
     return uid;
   }
 
-  public void setUid(int uid) {
+  public void setUid(Integer uid) {
     this.uid = uid;
+  }
+
+  public String getQltyName() {
+    return qltyName;
+  }
+
+  public void setQltyName(String qltyName) {
+    this.qltyName = qltyName;
   }
 }

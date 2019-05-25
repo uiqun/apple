@@ -54,4 +54,46 @@
             </if>
         limit 20
     </select>
+
+
+
+
+    <select id="queryRfqRowsByAdmin" resultType="_int">
+        select count(1) from rfqlist
+        <where>
+            <if test="condition.rfq != null">
+                <if test="condition.rfq.company != null and condition.rfq.company != ''">
+                    AND company like concat('%', #{condition.rfq.company} ,'%')
+                </if>
+                <if test="condition.rfq.pn != null and condition.rfq.pn != ''">
+                    AND pn like concat('%', #{condition.rfq.pn} ,'%')
+                </if>
+                <if test="condition.rfq.rfqno>0">
+                    AND rfqno = #{condition.rfq.rfqno}
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <select id="queryRfqByAdmin" resultType="Rfq">
+        select r.*,ql.name qltyName from rfqlist r,qltytype ql
+        where r.qlty=ql.id
+        <if test="condition.rfq != null">
+            <if test="condition.rfq.company != null and condition.rfq.company != ''">
+                AND company like concat('%', #{condition.rfq.company} ,'%')
+            </if>
+            <if test="condition.rfq.pn != null and condition.rfq.pn != ''">
+                AND pn like concat('%', #{condition.rfq.pn} ,'%')
+            </if>
+            <if test="condition.rfq.rfqno>0">
+                AND rfqno = #{condition.rfq.rfqno}
+            </if>
+        </if>
+        order by r.rdate desc
+        limit #{pageOffset},#{pageSize}
+    </select>
+
+    <delete id="deletXrfqByAdmin">
+        delete  from rfqlist where rfqno=#{rfqno}
+    </delete>
 </mapper>

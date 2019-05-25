@@ -60,6 +60,13 @@ public class QuoteController {
         return null;
     }
 
+    /**
+     * 跳转到报价页面
+     * @param model
+     * @param session
+     * @param pager
+     * @return
+     */
     @RequestMapping("/inquote1")
     public String inMfg1(Model model, HttpSession session, Pager<Quote> pager){
         pager.getCondition().put("user",session.getAttribute("user"));
@@ -68,5 +75,29 @@ public class QuoteController {
             model.addAttribute("qltyTypeList",qltytypeService.queryQltytype());
             model.addAttribute("pager",quoteService.queryQuoteByRfq(pager));
             return "quote";
+    }
+
+
+
+    /**
+     * 后台报价管理页面
+     * @return
+     */
+    @RequestMapping("/Xquote")
+    public String Xquote(Pager<Quote> pager, Quote quote, Model model){
+        pager.getCondition().put("quote",quote);
+        model.addAttribute("pager",quoteService.queryQuote(pager));
+        return "Xquote";
+    }
+
+    /**
+     * 后台删除报价
+     * @param quoteid
+     * @return
+     */
+    @RequestMapping("/deletXquote/{quoteid}")
+    public String deletXhotstk(@PathVariable("quoteid") int quoteid){
+        quoteService.deletXquote(quoteid);
+        return "redirect:/Xquote";
     }
 }

@@ -69,5 +69,15 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public boolean queryUserByPhone(String moblie) {
+        try {
+            return userdao.queryUserByPhone(moblie)==null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 }

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="css/public.css"    />
-    <link  rel="stylesheet"  type="text/css"  href="css/vendor.css"  />
-    <script src="js/jquery-3.2.1.js"></script>
-    <script  type="text/javascript" src="js/public.js"></script>
-    <script  type="text/javascript" src="js/vendor.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/public.css"    />
+    <link  rel="stylesheet"  type="text/css"  href="/css/vendor.css"  />
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script  type="text/javascript" src="/js/public.js"></script>
+    <script  type="text/javascript" src="/js/vendor.js"></script>
 
 </head>
 
 <body>
 
     <div>
-        <form action="findHotstk">
+        <form action="/Xhotstk" method="post">
             <table cellspacing="10px">
                 <tr>
                     <td colspan="9">
-                        <input type="text" placeholder="公司名称"/>
-                        <input type="text" placeholder="型号"/>
+                        <input type="text" th:value="${pager?.condition?.hotstk?.company}" name="company" placeholder="公司名称"/>
+                        <input type="text" th:value="${pager?.condition?.hotstk?.pn}" name="pn" placeholder="型号"/>
                         <input type="submit" value="查询"/>
                     </td>
                 </tr>
@@ -34,243 +34,32 @@
                     <th>上传时间</th>
                     <th>&nbsp;</th>
                 </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
+                <tr th:each="hot:${pager?.datas}">
+                    <td th:text="${hot.company}">深圳市模板电子科技有限公司</td>
+                    <td th:text="${hot.pn}">STM8S903K3T6C</td>
+                    <td th:text="${hot.qltyName}">原装正品</td>
+                    <td th:text="${hot.dtcd}">2018+</td>
+                    <td th:text="${hot.qty}">56850</td>
+                    <td th:text="${hot.price}">102.56</td>
+                    <td th:text="${hot.dtime}">深圳现货</td>
+                    <td th:text="${#dates.format(hot.hdate,'yyyy-MM-dd')}">2019-01-03</td>
+                    <td><a th:href="@{'/deletXhotstk/'+${hot.hid}}">删除</a></td>
                 </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
-                <tr>
-                    <td>深圳市模板电子科技有限公司</td>
-                    <td>STM8S903K3T6C</td>
-                    <td>原装正品</td>
-                    <td>2018+</td>
-                    <td>56850</td>
-                    <td>102.56</td>
-                    <td>深圳现货</td>
-                    <td>2019-01-03</td>
-                    <td>删除</td>
-                </tr>
+
              </table>
         </form>
     </div>
-    <div id="pageCount_box">
+    <div class="box">
         <div id="pageCount">
-            <button class="button">首页</button>
-            <span class="num">1</span>
-            <span class="num">2</span>
-            <span class="num">3</span>
-            <span class="num">4</span>
-            <span class="num">5</span>
-            <span class="num">6</span>
-            <span class="num">7</span>
-            <span class="num">8</span>
-            <span class="num">9</span>
-            <span class="num">10</span>
-            <button class="button">末页</button>
+            <a th:href="@{/Xhotstk(currentPage=1,company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage>1}">首页</a>
+            <a th:href="@{/Xhotstk(currentPage=${pager.currentPage} - 1,company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage>1}">上一页</a>
+            <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/Xhotstk(currentPage=${i},company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:text="${i}"></a>
+        </span>
+            <a th:href="@{/Xhotstk(currentPage=${pager.currentPage}+1,company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+            <a th:href="@{/Xhotstk(currentPage=${pager.totalPage},company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage>1}">末页</a>
+            <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
+
         </div>
     </div>
 </body>

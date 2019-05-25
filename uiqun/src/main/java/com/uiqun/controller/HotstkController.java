@@ -9,6 +9,7 @@ import com.uiqun.utils.ExcelUtil;
 import com.uiqun.utils.Pager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -94,6 +95,25 @@ public class HotstkController {
         return "hotStk";
     }
 
+    /**
+     * 后台库存管理页面
+     * @return
+     */
+    @RequestMapping("/Xhotstk")
+    public String Xhotstk(Pager<Hotstk> pager,Hotstk hotstk, Model model){
+        pager.getCondition().put("hotstk",hotstk);
+        model.addAttribute("pager",hotstkService.queryHotstks(pager));
+        return "Xhotstk";
+    }
 
-
+    /**
+     * 后台删除热卖
+     * @param hotid
+     * @return
+     */
+    @RequestMapping("/deletXhotstk/{hotid}")
+    public String deletXhotstk(@PathVariable("hotid") int hotid){
+        hotstkService.deletXhotstk(hotid);
+        return "redirect:/Xhotstk";
+    }
 }

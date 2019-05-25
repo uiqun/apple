@@ -18,14 +18,20 @@ public interface HotstkService {
      * 查找全部
      * @return
      */
-    List<Hotstk> queryHotstks(Pager<Hotstk> pager)throws Exception;
+    Pager<Hotstk> queryHotstks(Pager<Hotstk> pager);
 
-
-    int queryRow(Pager<Hotstk> pager)throws Exception;
 
     /**
      * 前20个热卖
      * @return
      */
     List<Hotstk> queryHotstksFromFindPrice(Map<String,Object> condition);
+
+    /**
+     * 删除热卖库存
+     * @param id
+     * @return
+     */
+    boolean deletXhotstk(int id);
+
 }

@@ -56,11 +56,11 @@ function user(){
 }
 
 function BOM(){
-    window.open("BOM.html","_self");
+    window.open("/bom/searchbom","_self");
 }
 
 function admin(){
-    window.open("admin.html","_self");
+    window.open("/user/admin","_self");
 }
 
 function addPn(){

@@ -19,4 +19,9 @@ public interface RfqService {
      * @throws Exception
      */
     List<Rfq> queryRfqListFromFindPrice(Map<String,Object> condition);
+
+
+     boolean deletXrfqByAdmin(int rfqid);
+
+    Pager<Rfq> queryRfqByAdmin(Pager<Rfq> pager);
 }

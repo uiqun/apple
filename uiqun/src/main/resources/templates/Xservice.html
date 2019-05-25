@@ -53,8 +53,8 @@
             <table cellspacing="10px">
                 <form action="/Xservice" method="post">
                     <th colspan="7">
-                        <input type="text" name="uName" placeholder="请输入客户名称"/>
-                        <input type="text" name="sName" placeholder="服务名称"/>
+                        <input type="text" th:value="${pager?.condition?.uName}" name="uName" placeholder="请输入客户名称"/>
+                        <input type="text" th:value="${pager?.condition?.sName}" name="sName" placeholder="服务名称"/>
                         <input type="submit" value="提交"/>
                     </th>
                 </form>
@@ -67,15 +67,9 @@
                     <th>服务费用</th>
                     <th>操作</th>
                 </tr>
-                <!--<tr>-->
-                    <!--<td>S001</td>-->
-                    <!--<td>深圳市模板电子科技有限公司</td>-->
-                    <!--<td>金牌会员</td>-->
-                    <!--<td>2019-06-12</td>-->
-                    <!--<td>2020-06-11</td>-->
-                    <!--<td>3800</td>-->
-                    <!--<td><a href="">删除</a></td>-->
-                <!--</tr>-->
+                <tr th:if="${#lists.size(pager?.datas)==0}">
+                    <td>暂无记录</td>
+                </tr>
                 <div th:each="service:${pager.datas}">
                     <tr >
                         <td th:text="${service.sid}"></td>
@@ -91,21 +85,18 @@
                 </div>
             </table>
     </div>
-    <div id="pageCount_box">
-        <div id="pageCount">
-            <button class="button">首页</button>
-            <span class="num">1</span>
-            <span class="num">2</span>
-            <span class="num">3</span>
-            <span class="num">4</span>
-            <span class="num">5</span>
-            <span class="num">6</span>
-            <span class="num">7</span>
-            <span class="num">8</span>
-            <span class="num">9</span>
-            <span class="num">10</span>
-            <button class="button">末页</button>
-        </div>
+<div class="box">
+    <div id="pageCount">
+        <a th:href="@{/Xservice(currentPage=1,uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage>1}">首页</a>
+        <a th:href="@{/Xservice(currentPage=${pager.currentPage} - 1,uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage>1}">上一页</a>
+        <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/Xservice(currentPage=${i},uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:text="${i}"></a>
+        </span>
+        <a th:href="@{/Xservice(currentPage=${pager.currentPage}+1,uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+        <a th:href="@{/Xservice(currentPage=${pager.totalPage},uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage>1}">末页</a>
+        <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
+
     </div>
+</div>
 </body>
 </html>

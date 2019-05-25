@@ -62,18 +62,23 @@ public class UserController  {
     @RequestMapping(value = "/registerVerify",method = RequestMethod.POST)
     @ResponseBody
     public String register(HttpSession session, String mobile) throws YunpianException {
-        //获取随机码长度
-        String randomNumber = MessageUtil.getRandomNumber(4);
         VoResponseJson vrj = new VoResponseJson();
-        try {
-            //发送短信消息
-            MessageUtil.singleSend(MessageUtil.getApiKey(), "【易电商城】您的验证码是" + randomNumber, mobile);
-            //保存验证码
-            session.setAttribute("verifyCode",randomNumber);
-        }catch (Exception e){
-            e.printStackTrace();
-            //发送失败
-            vrj.setErrorCode(1001);
+        if(userService.queryUserByPhone(mobile)){
+            //获取随机码长度
+            String randomNumber = MessageUtil.getRandomNumber(4);
+
+            try {
+                //发送短信消息
+                MessageUtil.singleSend(MessageUtil.getApiKey(), "【大唯科技】您的验证码是" + randomNumber, mobile);
+                //保存验证码
+                session.setAttribute("verifyCode",randomNumber);
+            }catch (Exception e){
+                e.printStackTrace();
+                //发送失败
+                vrj.setErrorCode(1001);
+            }
+        }else{
+            vrj.setErrorCode(1111);
         }
         return JSON.toJSONString(vrj);
     }
@@ -82,6 +87,14 @@ public class UserController  {
         return "regist";
     }
 
+    /**
+     * 用户注册
+     * @param session
+     * @param user
+     * @param veriCode
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/addregist",method =RequestMethod.POST)
     public String addregist(HttpSession session, User user, String veriCode, Model model){
         Object verifyCode = session.getAttribute("verifyCode");
@@ -91,5 +104,13 @@ public class UserController  {
             }
         }
         return "regist";
+    }
+
+
+
+
+    @RequestMapping("/Xuser")
+    public String Xuser(){
+        return "Xuser";
     }
 }

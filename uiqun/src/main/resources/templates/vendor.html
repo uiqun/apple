@@ -92,8 +92,7 @@
                         <tr >
                             <td th:if="${#lists.size(vd.user)==0}">无记录</td>
                             <td th:each="user:${vd.user}" style="float: left; width: 100px; padding: 4px;">
-
-                                <a th:href="${user.website1==null}?${user.website}:${user.website1}" target="_blank" th:value="${user.uid}" onmousemove="checkCurrentUserInfo(this)" onmouseleave="uncheckCurrentUserInfo()"  th:text="${user.co}"></a></td>
+                                <a  th:href="${ user.website1==null? user.website: user.website1 }"    th:value="${user.uid}" onmousemove="checkCurrentUserInfo(this)" onmouseleave="uncheckCurrentUserInfo()"  th:text="${user.co}"></a></td>
                         </tr>
                     </div>
                 </table>

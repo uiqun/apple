@@ -29,10 +29,33 @@ public interface QuoteDao {
     int queryQuoteRows(Pager<Quote> pager);
 
     /**
+     * 后台管理分页查询总行数
+     * @param pager
+     * @return
+     */
+    int queryQuoteRowsByAdmin(Pager<Quote> pager);
+
+    /**
      * 查询自己的报价
      * @param user
      * @return
      */
     List<Quote> queryQuoteByRfq(User user);
+
+
     int queryQuoteRowsByRfq(User user);
+
+    /**
+     * 后台管理分页查询所有报价
+     * @param pager
+     * @return
+     */
+    List<Quote> queryQuoteByAdmin(Pager<Quote> pager);
+
+    /**
+     * 删除报价
+     * @param id
+     * @return
+     */
+    int deletXquote(int id);
 }

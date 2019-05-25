@@ -16,7 +16,9 @@
             <table cellspacing="10px">
                 <tr><th colspan="2">品牌管理</th></tr>
                 <tr>
-                    <td colspan="2"><input type="text" placeholder="输入品牌"/>查询</td>
+                    <form action="">
+                        <td colspan="2"><input type="text" placeholder="输入品牌"/><input type="submit" value="查询"/></td>
+                    </form>
                 </tr>
                 <tr>
                     <td>品牌编号：</td>
@@ -69,14 +71,11 @@
         </form>
     </div>
     <div>
-        <form action="uploadMfg">
+        <form method="post" action="/uploadMfg" enctype="multipart/form-data">
             <tr><th>上传品牌列表</th></tr>
             <tr><td>
                 <input type="file"/>
             </td></tr>
-            <tr>
-                <td><input type="radio" value="新增"/>新增<input type="radio" value="修改"/>修改</td>
-            </tr>
             <tr>
                 <td><input type="submit" value="提交"/></td>
             </tr>

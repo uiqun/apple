@@ -52,6 +52,8 @@ function verifyCode(obj) {
         $.post("/user/registerVerify",{"mobile":mobile},function (result) {
             if(result.errorCode==0000){
                 alert("发送成功,验证码仅在一分钟内有效!");
+            }else if(result.errorCode==1111){
+                alert("手机号已注册！请登录");
             }
         },"JSON")
     }

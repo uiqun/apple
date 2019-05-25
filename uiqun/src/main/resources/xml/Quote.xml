@@ -15,7 +15,6 @@
           SELECT count(1)
           FROM `rfqlist` r ,`quotelist` q,qltytype ql
           WHERE ql.id=q.qlty and r.`rfqno`=q.`rfqno` AND r.uid=#{condition.uid} and r.rfqno=#{condition.rfqno}
-
     </select>
 
     <resultMap id="QuoteMap" type="Quote">
@@ -33,4 +32,43 @@
         WHERE uid=#{uid}
     </select>
 
+    <select id="queryQuoteRowsByAdmin" resultType="_int">
+        select count(1) from quotelist
+        <where>
+            <if test="condition.quote != null">
+                <if test="condition.quote.company != null and condition.quote.company != ''">
+                    AND company like concat('%', #{condition.quote.company} ,'%')
+                </if>
+                <if test="condition.quote.pn != null and condition.quote.pn != ''">
+                    AND pn like concat('%', #{condition.quote.pn} ,'%')
+                </if>
+                <if test="condition.quote.qotno>0">
+                    AND qotno = #{condition.quote.qotno}
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <select id="queryQuoteByAdmin" resultType="Quote">
+        select q.*,ql.name qltyName from quotelist q,qltytype ql
+        where q.qlty=ql.id
+            <if test="condition.quote != null">
+                <if test="condition.quote.company != null and condition.quote.company != ''">
+                    AND company like concat('%', #{condition.quote.company} ,'%')
+                </if>
+                <if test="condition.quote.pn != null and condition.quote.pn != ''">
+                    AND pn like concat('%', #{condition.quote.pn} ,'%')
+                </if>
+                <if test="condition.quote.qotno>0">
+                    AND qotno = #{condition.quote.qotno}
+                </if>
+            </if>
+        order by q.qdate desc
+        limit #{pageOffset},#{pageSize}
+
+    </select>
+
+    <delete id="deletXquote">
+        delete  from quotelist where qotno=#{qotno}
+    </delete>
 </mapper>
