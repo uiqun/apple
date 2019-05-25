@@ -35,4 +35,24 @@ public class BomlistServiceImpl implements BomlistService {
         return null;
     }
 
+    @Override
+    public Bomlist getBomlist(Bomlist bomlist) {
+        try {
+            return bomlistDao.queryOneBomlist(bomlist);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean modifyBomList(Bomlist bomlist) {
+        try {
+            return bomlistDao.updateBomList(bomlist)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

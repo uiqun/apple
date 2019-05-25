@@ -11,6 +11,15 @@ public class Bomlist {
     private int isauto;//是否自动匹配
     private Date bdate;//上传日期
     private int uid; //发布者
+    private String btypeName;//料表类型
+
+    public String getBtypeName() {
+        return btypeName;
+    }
+
+    public void setBtypeName(String btypeName) {
+        this.btypeName = btypeName;
+    }
 
     public int getBid() {
         return bid;

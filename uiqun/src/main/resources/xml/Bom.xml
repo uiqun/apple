@@ -22,4 +22,9 @@
             </if>
         </where>
     </select>
+
+
+    <select id="queryBomByBid" resultType="Bom">
+        select * from bom where bid=#{bid}
+    </select>
 </mapper>

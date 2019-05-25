@@ -31,10 +31,10 @@
 
     <select id="selectStkByMinPrice" resultType="Pn">
     SELECT * FROM hotlist
-    WHERE pn LIKE CONCAT('%',#{pn},'%')
+    WHERE pn=#{pn}
     AND mfg=#{mfg}
     AND price = (SELECT MIN(price) FROM hotlist
-    WHERE pn LIKE CONCAT('%',#{pn},'%')
+    WHERE pn=#{pn}
     AND mfg=#{mfg}  )
     </select>
 </mapper>

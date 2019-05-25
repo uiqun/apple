@@ -44,25 +44,26 @@
     <div class="box">
         <div id="bom">
             <p><span id="title">BOM成本核算</span></p>
-            <form action="/bom/uploadbom" method="post" enctype="multipart/form-data">
+            <form th:action="@{${bomam!=null}?'/bom/modifybom':'/bomlist/uploadbom'}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="bid" th:value="${bomam?.bid}"/>
                 <dl>
-                   <dd>  产品名称 ：<input name="bname" type="text"/></dd>
+                   <dd>  产品名称 ：<input name="bname" th:value="${bomam?.bname}" type="text"/></dd>
                 </dl>
                 <dl>
                     <dd> 产品类别 ：<select name="btype">
-                        <option th:each="bom:${btypeList}" th:value="${bom.btypeId}" th:text="${bom.btypeName}">消费电子</option>
+                        <option th:each="bom:${btypeList}" th:value="${bom.btypeId}" th:selected="${bomam?.btype==bom.btypeId}" th:text="${bom.btypeName}">消费电子</option>
                     </select></dd>
                 </dl>
                 <dl>
-                    <dd> 计划用量 ：<input name="buse" type="text" />套/月</dd>
+                    <dd> 计划用量 ：<input name="buse" type="text" th:value="${bomam?.buse}" />套/月</dd>
                 </dl>
-                <dl>
+                <dl th:if="${bomam==null}">
                     <dd> 报价方式 ：<select  name="isauto">
-                        <option value="0" selected>智能匹配，即刻下载结果</option>
-                        <option value="1">要求人工确认，24小时后下载结果</option>
+                        <option  value="0" selected>智能匹配，即刻下载结果</option>
+                        <option   value="1">要求人工确认，24小时后下载结果</option>
                     </select></dd>
                 </dl>
-                <dl>
+                <dl th:if="${bomam==null}">
                     <dd>上传BOM：<input name="multipartFile" type="file"/></dd>(备注：上传格式为4个字段：型号、描述、品牌、单机用量。)
                 </dl>
                 <dl>
@@ -85,17 +86,17 @@
                     <th>回复方式</th>
                     <th>更新日期</th>
                     <th>下载</th>
-                    <th>删除</th>
+                    <th>修改</th>
                 </tr>
                 <tr th:each="bom:${pager?.datas}">
                     <td th:text="${bom.bid}">Model001</td>
                     <td th:text="${bom.bname}">手机主板</td>
-                    <td th:text="${bom.btype}">通信产品</td>
+                    <td th:text="${bom.btypeName}">通信产品</td>
                     <td th:text="${bom.buse}">30000</td>
                     <td th:text="${bom.isauto==0}?'智能匹配':'人工确认'">人工确认</td>
                     <td th:text="${#dates.format(bom.bdate,'yyyy-MM-dd')}">2018-12-17</td>
-                    <td>下载</td>
-                    <td>删除</td>
+                    <td><a th:href="@{'/bomlist/downloadbom/'+${bom.bid}+'/'+${bom.bname}}">下载</a></td>
+                    <td><a th:href="@{'/bom/querybom?bid='+${bom.bid}}">修改</a></td>
                 </tr>
 
             </table>

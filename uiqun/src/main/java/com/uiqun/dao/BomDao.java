@@ -9,4 +9,6 @@ public interface BomDao {
     int insertBoms(List<List<Object>> boms)throws Exception;
 
     Bom queryBomById(int id);
+
+    List<Bom> queryBomByBid(int bid);
 }
