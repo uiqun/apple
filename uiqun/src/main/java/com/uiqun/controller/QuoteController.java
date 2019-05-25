@@ -69,5 +69,4 @@ public class QuoteController {
             model.addAttribute("pager",quoteService.queryQuoteByRfq(pager));
             return "quote";
     }
-
 }

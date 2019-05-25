@@ -43,4 +43,13 @@
     <insert id="insertUser">
         insert into userlist(nickname,mobile,pwd) values(#{nickname},#{mobile},#{pwd})
     </insert>
+
+    <update id="updateUser">
+        update userlist
+        set nickname=#{nickname},company=#{company},co=#{co},area=#{area};utype=#{utype},
+        contact=#{contact},title=#{title},tel=#{tel},qq=#{qq},wechat=#{wechat},hobby=#{hobby},
+        email=#{email},addr=#{addr},website=#{website},website1=#{website1},business=#{business},
+        profile=#{profile},ulogo=#{ulogo},image=#{image},certid=#{certid},cert=#{cert},iscert=#{iscert}
+        where uid=#{uid}
+    </update>
 </mapper>

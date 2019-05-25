@@ -28,4 +28,8 @@ public interface UserService {
      * @return
      */
     boolean register(User user);
+
+    User queryUserDetail(User user);
+
+    boolean updateUser(User user);
 }

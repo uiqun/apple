@@ -53,4 +53,21 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+
+    @Override
+    public User queryUserDetail(User user){
+        try {
+            return userdao.queryUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean updateUser(User user) {
+        return false;
+    }
+
+
 }

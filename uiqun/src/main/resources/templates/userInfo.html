@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>唯群网--用户信息</title>
@@ -50,22 +51,22 @@
         </div>
     </div>
 <div id="form_box">
-    <form id="userDetail">
+    <form id="userDetail" >
     <table width="100%" border="0" cellspacing="0" cellpadding="15">
         <tr>
             <td width="120" height="40" align="right">昵称:</td>
-            <td><input class="input1" name="nickName" type="text" size="18"></td>
+            <td><input class="input1" name="nickName" th:text="${user.nickname}" type="text" size="18"></input></td>
         </tr>
         <tr>
 
-            <td><input name="uLogo" type="file" size="18"></td>
+            <td><input name="uLogo" type="file" size="18" th:text="${user.ulogo}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">公司名称:</td>
-            <td><input class="input1" name="company" type="text" size="18"></td>
+            <td><input class="input1" name="company" type="text" size="18" th:text="${user.company}></input></td>
         </tr>
         <tr>
-            <td width="120" height="40" align="right">地域:</td>
+            <td width="120" height="40" align="right" >地域:</td>
             <td>
                 <select class="input3" type="text">
                     <option value="深圳"selected="selected">深圳市</option>
@@ -86,70 +87,63 @@
         </tr>
         <tr>
             <td width="120" height="40" align="right">手机号码:</td>
-            <td><input class="input1" name="mobile" type="text" size="18"></td>
+            <td><input class="input1" name="mobile" type="text" size="18" th:text="${user.mobile}></input></td>
         </tr>
         <tr>
-            <td width="120" height="40" align="right">用户类型:</td>
-            <td>
-                <select class="input3" type="text">
-                    <option value="贸易"selected="selected">B 贸易商</option>
-                    <option value="代理商" >F 代理商</option>
-                    <option value="原厂">M 品牌原厂</option>
-                    <option value="终端">U 终端用户</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td width="120" height="40" align="right">地址:</td>
-            <td><input class="input2" name="addr" type="text" size="18"></td>
+            <td >地址:</td>
+            <td><input class="input2" name="addr" type="text" size="18" th:text="${user.addr}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">联系人:</td>
-            <td><input class="input1" name="contact" type="text" size="18"></td>
+            <td><input class="input1" name="contact" type="text" size="18" th:text="${user.contact}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">职位:</td>
-            <td><input class="input1" name="title" type="text" size="18"></td>
+            <td><input class="input1" name="title" type="text" size="18" th:text="${user.title}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">电话:</td>
-            <td><input class="input1" name="tel" type="text" size="18"></td>
+            <td><input class="input1" name="tel" type="text" size="18" th:text="${user.tel}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">QQ:</td>
-            <td><input class="input1" name="qq" type="text" size="18"></td>
+            <td><input class="input1" name="qq" type="text" size="18" th:text="${user.ulogo}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">微信:</td>
-            <td><input class="input1" name="wechat" type="text" size="18"></td>
+            <td><input class="input1" name="wechat" type="text" size="18" th:text="${user.wechat}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">个人爱好:</td>
-            <td><input class="input2" name="hobby" type="text" size="18"></td>
+            <td><input class="input2" name="hobby" type="text" size="18" th:text="${user.hobby}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">网址:</td>
-            <td><input class="input1" name="web" type="text" size="18"></td>
+            <td><input class="input1" name="web" type="text" size="18" th:text="${user.website}></input></td>
+        </tr>
+        <tr>
+            <td width="120" height="40" align="right">站内网址:</td>
+            <td><input class="input1" name="web" type="text" size="18" th:text="${user.website1}></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">主营产品:</td>
-            <td><input class="input2" name="business" type="text" size="18"></td>
+            <td><input class="input2" name="business" type="text" size="18" th:text="${user.business}></input></td>
         </tr>
         <tr>
             <td width="120" height="80" align="right">公司介绍:</td>
-            <td><input id="profile" name="profile" type="text" size="500"></td>
+            <td><input id="profile" name="profile" type="text" size="500" th:text="${user.profile}></input></td>
         </tr>
         <tr>
             <td width="120" height="80" align="right">资料认证:</td>
-            <td><input name="verify" type="file" size="18"></td>
+            <td><input name="verify" type="file" size="18" ></input></td>
         </tr>
         <tr>
             <td width="120" height="80" align="right">&nbsp;</td>
-            <td><input name="view" type="image" size="18" value="预览"></td>
+            <td><input name="view" type="image" size="18" value="预览"></input></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">&nbsp;</td>
-            <td><button class="button">提交认证</button></td>
+            <td><input type="submit">提交认证</input></td>
         </tr>
     </table>
   </form>

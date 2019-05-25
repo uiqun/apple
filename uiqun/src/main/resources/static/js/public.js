@@ -19,11 +19,11 @@ function company(){
 }
 
 function userInfo(){
-    window.open("userInfo.html","_self");
+    window.open("/queryUserDetail","_self");
 }
 
 function findPrice(){
-    window.open("/queryBomlists,"_self");
+    window.open("/queryBomlists","_self");
 }
 
 function hotStk(){

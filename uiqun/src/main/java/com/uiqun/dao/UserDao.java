@@ -43,4 +43,6 @@ public interface UserDao {
      * @return
      */
     int insertUser(User user);
+
+    int updateUser(User user);
 }
