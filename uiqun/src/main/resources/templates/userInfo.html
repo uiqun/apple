@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>唯群网--用户信息</title>
-    <link rel="stylesheet" href="css/public.css">
-    <link rel="stylesheet" href="css/userInfo.css">
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/userInfo.css"/>
     <script src="js/jquery-3.2.1.js"></script>
     <script charset="gb2312" type="text/javascript" src="js/public.js"></script>
     <script charset="gb2312" type="text/javascript" src="js/user.js"></script>
@@ -14,7 +14,7 @@
     <div id="header">
         <div id="head">
             <div id="logo">
-                <img src="images/logo.png" alt="">
+                <img src="images/logo.png" alt=""/>
             </div>
             <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
             <a id="admin" onclick="admin()">后台管理</a>
@@ -55,15 +55,15 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="15">
         <tr>
             <td width="120" height="40" align="right">昵称:</td>
-            <td><input class="input1" name="nickName" th:text="${user.nickname}" type="text" size="18"></input></td>
+            <td><input th:value="${user.nickname}" class="input1" name="nickName"  type="text" size="18"/></td>
         </tr>
         <tr>
 
-            <td><input name="uLogo" type="file" size="18" th:text="${user.ulogo}></input></td>
+            <td><input th:value="${user.ulogo}" name="uLogo" type="file" size="18"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">公司名称:</td>
-            <td><input class="input1" name="company" type="text" size="18" th:text="${user.company}></input></td>
+            <td><input th:value="${user.company}" class="input1" name="company" type="text" size="18" /></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right" >地域:</td>
@@ -87,63 +87,63 @@
         </tr>
         <tr>
             <td width="120" height="40" align="right">手机号码:</td>
-            <td><input class="input1" name="mobile" type="text" size="18" th:text="${user.mobile}></input></td>
+            <td><input class="input1" name="mobile" type="text" size="18" th:value="${user.mobile}"/></td>
         </tr>
         <tr>
             <td >地址:</td>
-            <td><input class="input2" name="addr" type="text" size="18" th:text="${user.addr}></input></td>
+            <td><input class="input2" name="addr" type="text" size="18" th:text="${user.addr}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">联系人:</td>
-            <td><input class="input1" name="contact" type="text" size="18" th:text="${user.contact}></input></td>
+            <td><input class="input1" name="contact" type="text" size="18" th:value="${user.contact}"/></td>
         </tr>
         <tr>
-            <td width="120" height="40" align="right">职位:</td>
-            <td><input class="input1" name="title" type="text" size="18" th:text="${user.title}></input></td>
+            <td width="120px" height="40px" align="right">职位:</td>
+            <td><input class="input1" name="title" type="text" size="18" th:value="${user.title}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">电话:</td>
-            <td><input class="input1" name="tel" type="text" size="18" th:text="${user.tel}></input></td>
+            <td><input class="input1" name="tel" type="text" size="18" th:value="${user.tel}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">QQ:</td>
-            <td><input class="input1" name="qq" type="text" size="18" th:text="${user.ulogo}></input></td>
+            <td><input class="input1" name="qq" type="text" size="18" th:value="${user.ulogo}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">微信:</td>
-            <td><input class="input1" name="wechat" type="text" size="18" th:text="${user.wechat}></input></td>
+            <td><input class="input1" name="wechat" type="text" size="18" th:value="${user.wechat}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">个人爱好:</td>
-            <td><input class="input2" name="hobby" type="text" size="18" th:text="${user.hobby}></input></td>
+            <td><input class="input2" name="hobby" type="text" size="18" th:value="${user.hobby}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">网址:</td>
-            <td><input class="input1" name="web" type="text" size="18" th:text="${user.website}></input></td>
+            <td><input class="input1" name="web" type="text" size="18" th:value="${user.website}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">站内网址:</td>
-            <td><input class="input1" name="web" type="text" size="18" th:text="${user.website1}></input></td>
+            <td><input class="input1" name="web" type="text" size="18" th:value="${user.website1}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">主营产品:</td>
-            <td><input class="input2" name="business" type="text" size="18" th:text="${user.business}></input></td>
+            <td><input class="input2" name="business" type="text" size="18" th:value="${user.business}"/></td>
         </tr>
         <tr>
             <td width="120" height="80" align="right">公司介绍:</td>
-            <td><input id="profile" name="profile" type="text" size="500" th:text="${user.profile}></input></td>
+            <td><input id="profile" name="profile" type="text" size="500" th:value="${user.profile}"/></td>
         </tr>
         <tr>
             <td width="120" height="80" align="right">资料认证:</td>
-            <td><input name="verify" type="file" size="18" ></input></td>
+            <td><input name="verify" type="file" size="18" /></td>
         </tr>
         <tr>
             <td width="120" height="80" align="right">&nbsp;</td>
-            <td><input name="view" type="image" size="18" value="预览"></input></td>
+            <td><input name="view" type="image" size="18" value="预览"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">&nbsp;</td>
-            <td><input type="submit">提交认证</input></td>
+            <td><input type="submit"></td>
         </tr>
     </table>
   </form>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,25 +18,9 @@
                 <tr>
                    <th colspan="2">平台信息维护</th>
                 </tr>
-                <tr>
-                    <td>用户指南</td>
-                    <td><textarea name="guide" cols="100" rows="15"></textarea></td>
-                </tr>
-                <tr>
-                    <td>操作流程</td>
-                    <td><textarea name="process" cols="100" rows="15"></textarea></td>
-                </tr>
-                <tr>
-                    <td>免责声明</td>
-                    <td><textarea name="claim" cols="100" rows="15"></textarea></td>
-                </tr>
-                <tr>
-                    <td>关于我们</td>
-                    <td><textarea name="aboutus"cols="100" rows="15"></textarea></td>
-                </tr>
-                <tr>
-                    <td>联系我们</td>
-                    <td><textarea name="contactus" cols="100" rows="15"></textarea></td>
+                <tr th:each="infos:${Platinfo}">
+                    <td th:value="${Platinfo.name}">用户指南</td>
+                    <td><textarea th:value="Platinfo.content" name="guide" cols="100" rows="15" ></textarea></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="提交"/></td>

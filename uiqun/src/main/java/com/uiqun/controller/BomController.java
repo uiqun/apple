@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/bom")
 public class BomController {
-
     @Resource
     private BomlistService bomlistService;
     @Resource
@@ -47,7 +46,7 @@ public class BomController {
 
     @RequestMapping("/modifybom")
     public String modifybom(HttpSession session,Bomlist bomlist){
-        bomlist.setUid( ((User)(session.getAttribute("user"))).getUid() );
+        bomlist.setUid(((User)(session.getAttribute("user"))).getUid() );
         if(bomlistService.modifyBomList(bomlist)){
             return  "redirect:/bom/searchbom";
         }

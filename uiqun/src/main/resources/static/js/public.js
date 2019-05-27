@@ -11,7 +11,7 @@ function vendor(){
 }
 
 function platInfo(){
-    window.open("platInfo.html","_self");
+    window.open("/queyrPlatinfoById?id=1","_self");
 }
 
 function company(){

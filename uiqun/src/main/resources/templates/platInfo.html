@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,15 +44,15 @@
     <div id="box2">
         <div id="category">
             <ul>
-                <li>用户指南</li>
-                <li>操作流程</li>
-                <li>免责声明</li>
-                <li>关于我们</li>
-                <li>联系我们</li>
+                <li><a href="/queyrPlatinfoById?id=1" th:value="用户指南" ></a></li>
+                <li><a href="/queyrPlatinfoById?id=2" th:value="操作流程" ></a></li>
+                <li><a href="/queyrPlatinfoById?id=3" th:value="免责声明" ></a></li>
+                <li><a href="/queyrPlatinfoById?id=4" th:value="关于我们" ></a></li>
+                <li><a href="/queyrPlatinfoById?id=5" th:value="联系我们" ></a></li>
             </ul>
         </div>
         <div id="detail">
-            这里是详情页
+            <textarea th:value=""></textarea>
         </div>
     </div>
 </div>
