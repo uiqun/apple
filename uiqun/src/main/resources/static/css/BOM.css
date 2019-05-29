@@ -14,11 +14,11 @@
 	width: 1000px;
 }
 #title{
-	font: bold  36px "ºÚÌå";
+	font: bold  36px "ï¿½ï¿½ï¿½ï¿½";
 	color:#FF0000;
 }
 form{
-	font: bold 18px "ºÚÌå";
+	font: bold 18px "ï¿½ï¿½ï¿½ï¿½";
 	line-height: 40px;
 }
 input{
@@ -28,12 +28,12 @@ select{
 	font-size: 18px;
 }
 p{
-	font: bold 18px "ºÚÌå";
+	font: bold 18px "ï¿½ï¿½ï¿½ï¿½";
 	line-height: 120px;
 }
 
 button{
-	font: bold 18px "ºÚÌå";
+	font: bold 18px "ï¿½ï¿½ï¿½ï¿½";
 	cursor: pointer;
 	margin-left:10px;
 	text-align: right;
@@ -45,7 +45,6 @@ button:hover{
 #content{
 	margin:0 auto;
 	width:1000px;
-	height:1000px;
 	border-top: 1px solid #FF3300;
 }
 li{

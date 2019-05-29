@@ -14,9 +14,6 @@
 
     <div id="header">
         <div id="head">
-            <div id="logo">
-                <img src="images/logo.png" alt="">
-            </div>
             <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
             <a id="admin" onclick="admin()">后台管理</a>
             <a id="logon" onclick="logon()">登陆</a>
@@ -26,6 +23,9 @@
     </div>
     <div id="naver">
         <div id="nav">
+            <div id="logo">
+                <img src="images/logo.png" alt="">
+            </div>
             <a class="nav1" onclick="index()">首页</a>
             <a class="nav1" onclick="findPrice()">查价</a>
             <a class="nav1" onclick="rfq()">询价</a>
@@ -35,8 +35,10 @@
         </div>
     </div>
 
-    <div id="banner_box">
-        <img id="banner" src="images/banner.jpg" alt="">
+    <div class="box">
+        <div id="banner">
+            <img src="images/banner2.jpg" alt="">
+        </div>
     </div>
     <div class="box">
         <div id="search">
@@ -54,7 +56,7 @@
 
 <div class="box">
     <div id="quoteList">
-        <table cellspacing="10px">
+        <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
             <tr>
                 <th colspan="8">最新报价(仅显示前20)</th>
             </tr>
@@ -68,7 +70,7 @@
                 <th>价格</th>
                 <th>货期</th>
             </tr>
-            <tr th:each="Rfq:${rfqList}">
+            <tr th:class="${index.odd}?'odd'" th:each="Rfq,index:${rfqList}">
                 <td th:text="${Rfq.rfqno}">I890600001</td>
                 <td th:text="${Rfq.company}">深圳市模板电子科技有限公司</td>
                 <td th:text="${Rfq.pn}">STM8S003F3P6TR</td>
@@ -89,7 +91,7 @@
 
     <div class="box">
         <div id="hotStk">
-            <table cellspacing="10px">
+            <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
                 <tr><th colspan="8" style="font-size: 20px">推荐货源(仅显示前20)</th></tr>
                 <tr>
                     <th>公 司 名 称</th>
@@ -114,7 +116,7 @@
                   <!--<td>2018-12-27</td>-->
                 <!--</tr>-->
 
-                <tr th:each="hotstk:${hotstkList}">
+                <tr th:class="${index.odd}?'odd'" th:each="hotstk,index:${hotstkList}">
                     <td th:text="${hotstk.company}">深圳市模板电子科技有限公司</td>
                     <td th:text="${hotstk.pn}">STM8S003F3P6TR</td>
                     <td th:text="${hotstk.mfg}">品牌</td>

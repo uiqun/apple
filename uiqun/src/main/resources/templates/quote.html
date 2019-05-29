@@ -12,21 +12,20 @@
  </head>
 
 <body>
-
-	<div class="box">
+    <div id="header">
         <div id="head" >
-            <div id="logo">
-                <img src="/static/images/logo.png" alt="">
-            </div>
             <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
             <a id="admin" onclick="admin()">后台管理</a>
             <a id="logon" onclick="logon()">登陆</a>
             <a id="regist" onclick="regist()">注册</a>
             <a id="userInfo" onclick="userInfo()">用户信息</a>
-            </div>
+        </div>
      </div>
      <div class="box">
          <div id="nav">
+             <div id="logo">
+                 <img src="/images/logo.png" alt="">
+             </div>
              <a class="nav1" onclick="index()">首页</a>
              <a class="nav1" onclick="findPrice()">查价</a>
              <a class="nav1" onclick="rfq()">询价</a>
@@ -38,7 +37,7 @@
 
     <div id="quoteSubmit_box" th:if="${rfq!=null}">
         <div id="quoteSubmit">
-            <table cellspacing="15px">
+            <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
                 <tr>
                     <th>询 价 单号</th>
                     <th>公司 名称</th>
@@ -64,7 +63,7 @@
             </table>
             <div id="fillQuote">
                 <form method="post" action="/addquote">
-                    <table>
+                    <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
                         <tr><th>填写报价单：</th></tr>
                         <input type="hidden" name="rfqno" th:value="${rfq.rfqno}"/>
                         <tr>
@@ -95,7 +94,7 @@
 
 <div class="box">
 <div id="quoteList">
-    	<table cellspacing="15px">
+    	<table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
             <tr><th colspan="10" style="font-size: 24px">我的报价清单</th></tr>
             <tr>
                 <td>方式</td>
@@ -110,7 +109,7 @@
                 <td>提交方式</td>
             </tr>
             <span th:each="quote:${pager.datas}">
-            <tr style="background-color: gray;">
+            <tr class="odd" style="font-weight: bold">
                 <td>询价</td>
                 <td th:text="${quote.rfq.rfqno}">I8090600001</td>
                  <td th:text="${quote.rfq.pn}">STM8S903K3T6CTR</td>
@@ -122,7 +121,7 @@
                 <td th:text="${#dates.format(quote.rfq.rdate,'yyyy-MM-dd')}">2018-12-18</td>
                 <td th:text="${quote.rfq.isOpen==1}?${quote.rfq.company}:'匿名询价'">深圳市模板电子有限公司</td>
             </tr>
-            <tr style="background-color: #f6f6f6;">
+            <tr>
                 <td>报价</td>
                 <td th:text="${quote.qotno}">I8090600001</td>
                 <td th:text="${quote.pn}">STM8S903K3T6C</td>

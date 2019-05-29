@@ -14,9 +14,6 @@
 <input type="hidden" id="AlertMessage" th:value="${AlertMessage}">
     <div id="header">
         <div id="head">
-            <div id="logo">
-                <img src="/images/logo.png" alt="">
-            </div>
             <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
             <a id="admin" onclick="admin()">后台管理</a>
             <a id="logon" onclick="logon()">登陆</a>
@@ -26,6 +23,9 @@
     </div>
     <div id="naver">
         <div id="nav">
+            <div id="logo">
+                <img src="/images/logo.png" alt="">
+            </div>
             <a class="nav1" onclick="index()">首页</a>
             <a class="nav1" onclick="findPrice()">查价</a>
             <a class="nav1" onclick="rfq()">询价</a>
@@ -34,7 +34,11 @@
             <a class="nav1" onclick="BOM()">BOM</a>
         </div>
     </div>
-
+<div class="box">
+    <div id="banner">
+        <img src="images/banner3.jpg" alt="">
+    </div>
+</div>
 
 	<div id="rfqSubmit_box" >
 		<form id="rfqSubmit" action="/addrfq" method="post" name="rfqSubmit">
@@ -107,7 +111,7 @@
 	
     <div class="box">
         <div id="rfqList">
-            <table cellspacing="10px" >
+            <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%" >
                 <tr>
                 <th>询价单号</th>
                 <th>型号</th>
@@ -119,7 +123,7 @@
                 <th>询价日期</th>
                 <th>操作</th>
                 </tr>
-                <tr th:each="rfq:${pager.datas}">
+                <tr th:class="${index.odd}?'odd'" th:each="rfq,index:${pager.datas}">
                    <td th:text="${rfq.rfqno}">I8090600001</td>
                    <td th:text="${rfq.pn}">STM8S903K3T6C</td>
                    <td th:text="${rfq.qltyName}">原装正品</td>

@@ -14,9 +14,6 @@
 <body>
     <div id="header">
         <div id="head">
-            <div id="logo">
-                <img src="images/logo.png" alt="">
-            </div>
             <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
             <a id="admin" onclick="admin()">后台管理</a>
             <span style="color: red;" th:if="${user!=null}" th:text="'欢迎登录:'+${user.nickname}"></span>
@@ -27,6 +24,9 @@
     </div>
     <div id="naver">
         <div id="nav">
+            <div id="logo">
+                <img src="images/logo.png" alt="">
+            </div>
             <a class="nav1" onclick="index()">首页</a>
             <a class="nav1" onclick="findPrice()">查价</a>
             <a class="nav1" onclick="rfq()">询价</a>
@@ -72,7 +72,7 @@
 <div class="box">
     <div id="content">
         <form action="">
-            <table border="1" style="text-align: center;width: 100%">
+            <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
                 <tr>
                     <td>询价单号</td>
                     <td>公 司 名 称</td>
@@ -85,7 +85,7 @@
                     <td>询价日期</td>
                     <td>操作</td>
                 </tr>
-                <tr th:each="Rfq:${pager.datas}">
+                <tr th:class="${index.odd}?'odd'" th:each="Rfq,index:${pager.datas}">
                     <td th:text="${Rfq.rfqno}">I890600001</td>
                     <td th:text="${Rfq.company}">深圳市模板电子科技有限公司</td>
                     <td th:text="${Rfq.pn}">STM8S003F3P6TR</td>
