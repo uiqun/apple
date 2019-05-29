@@ -12,13 +12,14 @@ public class PlatinfoServiceImpl implements PlatinfoService{
     @Resource
     private PlatInfoDao platInfoDao;
 
+
     @Override
-    public Platinfo queryPlatinfoById(int id) {
-        return platInfoDao.queryPlatinfoById(id);
+    public Platinfo queryPlatinfo() {
+        return platInfoDao.queryPlatinfo();
     }
 
     @Override
-    public boolean updatePlateinfos(Platinfo platinfo) {
-        return platInfoDao.updatePlateinfos(platinfo)>0;
+    public boolean updatePlatinfo(Platinfo platinfo) {
+        return platInfoDao.updatePlatinfo(platinfo)>0;
     }
 }

@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="PlatInfoDao">
-    <select id="queyrPlatinfoById">
-      select * from platinfo where id = #{id}
+<mapper namespace="com.uiqun.dao.PlatInfoDao">
+    <select id="queryPlatinfo" resultType="Platinfo">
+      select * from platinfo
     </select>
 
     <update id="updatePlatinfo">
-        update platinfo set content = #{content}
+        update platinfo set guide = #{guide},flow=#{flow},claim=#{claim},aboutus = #{aboutus},contactus=#{contactus}
     </update>
 </mapper>

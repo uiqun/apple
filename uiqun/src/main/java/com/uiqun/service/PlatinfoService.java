@@ -4,7 +4,7 @@ import com.uiqun.model.Platinfo;
 
 public interface PlatinfoService {
 
-    Platinfo queryPlatinfoById(int id);
+    Platinfo queryPlatinfo();
 
-    boolean updatePlateinfos(Platinfo platinfo);
+    boolean updatePlatinfo(Platinfo platinfo);
 }

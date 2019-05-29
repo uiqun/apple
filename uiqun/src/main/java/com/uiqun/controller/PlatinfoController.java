@@ -13,19 +13,23 @@ public class PlatinfoController{
     @Resource
     private PlatinfoService platinfoService;
 
-    @RequestMapping("/queyrPlatinfoById{id}")
-    public String queyrPlatinfoById(int id, Model model){
-      model.addAttribute("Platinfo", platinfoService.queryPlatinfoById(id));
+    @RequestMapping("/queryPlatinfo")
+    public String queryPlatinfo(Model model){
+      model.addAttribute("Platinfo", platinfoService.queryPlatinfo());
         return "platinfo";
     }
 
+    @RequestMapping("/queryAboutus")
+    public String queryAboutus(Model model){
+        model.addAttribute("Platinfo", platinfoService.queryPlatinfo());
+        return "Xaboutus";
+    }
     @RequestMapping("/updatePlatinfo")
-    public String updatePlatinfo(Platinfo platinfo,Model model){
-        if (platinfoService.updatePlateinfos(platinfo)) {
+    public String updatePlatinfo( Platinfo platinfo, Model model){
+        if (platinfoService.updatePlatinfo(platinfo)) {
             model.addAttribute("AlertMessage", "平台信息修改成功");
         }
         model.addAttribute("AlertMessage", "平台信息修改失败");
-        return "Xaboutus";
+        return "redirect:/queryAboutus";
     }
-
 }

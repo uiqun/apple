@@ -56,7 +56,7 @@ function verifyCode(obj) {
                 alert("手机号已注册！请登录");
             }
         },"JSON")
-    }
+}
 }
 
 function registerUser() {

@@ -44,15 +44,19 @@
     <div id="box2">
         <div id="category">
             <ul>
-                <li><a href="/queyrPlatinfoById?id=1" th:value="用户指南" ></a></li>
-                <li><a href="/queyrPlatinfoById?id=2" th:value="操作流程" ></a></li>
-                <li><a href="/queyrPlatinfoById?id=3" th:value="免责声明" ></a></li>
-                <li><a href="/queyrPlatinfoById?id=4" th:value="关于我们" ></a></li>
-                <li><a href="/queyrPlatinfoById?id=5" th:value="联系我们" ></a></li>
+                <li id="guide">用户指南</li>
+                <li id="flow">操作流程</li>
+                <li id="claim">免责声明</li>
+                <li id="aboutus">关于我们</li>
+                <li id="contactus">联系我们</li>
             </ul>
         </div>
         <div id="detail">
-            <textarea th:value=""></textarea>
+            <p th:text="${Platinfo.guide}" style="display: block;padding: 10px"></p>
+            <p th:text="${Platinfo.flow}" style="display: none;padding: 10px"></p>
+            <p th:text="${Platinfo.claim}" style="display: none;padding: 10px"></p>
+            <p th:text="${Platinfo.aboutus}" style="display: none;padding: 10px"></p>
+            <p th:text="${Platinfo.contactus}" style="display: none;padding: 10px"></p>
         </div>
     </div>
 </div>
