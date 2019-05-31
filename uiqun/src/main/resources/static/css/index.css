@@ -46,11 +46,29 @@ li{
     font-weight: bold;
 }
 
-.bannerDiv{
-    width:1000px;
-    height:243px;
-    margin: 0 auto;
+#tv{
+    width: 470px;
+    height: 280px;
+    margin: 5px;
+    border: solid 10px lavender;
+    border-radius: 10px;
 }
+
+#board{
+    width: 470px;
+    height: 280px;
+    margin: 5px;
+    border: solid 10px lavender;
+    border-radius: 10px;
+}
+
+#bannerDiv{
+    width:1000px;
+    height: 300px;
+    margin: 0 auto;
+    border: solid 1px #333333;
+}
+
 .bannerDiv div{
     float:left;
 }
