@@ -48,7 +48,7 @@ li{
 
 #tv{
     width: 470px;
-    height: 310px;
+    height: 280px;
     margin: 5px;
     border: solid 10px lavender;
     border-radius: 10px;
@@ -56,7 +56,7 @@ li{
 
 #board{
     width: 470px;
-    height: 310px;
+    height: 280px;
     margin: 5px;
     border: solid 10px lavender;
     border-radius: 10px;
@@ -64,7 +64,7 @@ li{
 
 #bannerDiv{
     width:1000px;
-    height: 330px;
+    height: 310px;
     margin: 0 auto;
 }
 
