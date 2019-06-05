@@ -4,15 +4,19 @@ package com.uiqun.utils;
 import com.uiqun.model.Pn;
 import com.uiqun.service.PnService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,7 +28,7 @@ public class ExcelUtil {
     /**
      * Excel导入
      */
-    public static List<List<Object>> getBankListByExcel(InputStream in, String fileName) throws Exception {
+    public static List<List<Object>> getUploadListByExcel(InputStream in, String fileName) throws Exception {
         List<List<Object>> list = null;
         //创建Excel工作薄
         Workbook work = getWorkbook(in, fileName);
@@ -54,7 +58,7 @@ public class ExcelUtil {
                 List<Object> li = new ArrayList<Object>();
                 for (int y = row.getFirstCellNum(); y < row.getLastCellNum(); y++) {
                     if("".equals(row.getCell(y))||row.getCell(y)==null){
-                        row.getCell(y).setCellValue(" ");
+                        row.createCell(y).setCellValue(" ");
                     }
                     cell = row.getCell(y);
                     li.add(getCellValue(cell));
@@ -212,6 +216,22 @@ public class ExcelUtil {
         wk.write(out);
         out.close();
     }
+    public static void downExcelData(HttpServletResponse response, Workbook workbook, String downName){
+        response.setHeader("content-type", "application/octet-stream");
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment;filename=" + downName);
+        OutputStream os = null;
+        try {
+            os = response.getOutputStream();
+            workbook.write(os);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 //
 //    public static void main(String[] args) throws IOException {
 //        List<List<String>> data = new ArrayList<List<String>>();

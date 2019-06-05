@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="css/public.css"    />
@@ -11,61 +11,62 @@
 </head>
 
 <body>
+<input type="hidden" id="AlertMessage" th:value="${AlertMessage}" />
     <div>
-        <form action="toUpdateMfg">
             <table cellspacing="10px">
                 <tr><th colspan="2">品牌管理</th></tr>
                 <tr>
-                    <form action="">
-                        <td colspan="2"><input type="text" placeholder="输入品牌"/><input type="submit" value="查询"/></td>
+                    <td>
+                    <form action="/queryOneMfg" method="post">
+                        <input type="text" th:value="${mfg?.mid}" name="mid"  placeholder="输入品牌"/>
+                        <input type="submit" value="查询"/>
                     </form>
+                    </td>
                 </tr>
+                <form action="/toUpdateMfg" method="post" enctype="multipart/form-data">
                 <tr>
                     <td>品牌编号：</td>
-                    <td><input class="blank" type="text" value="1002"/></td>
+                    <td><input class="blank" name="mid"  type="text"  th:value="${mfg?.mid}"/></td>
                 </tr>
                 <tr>
-                    <td>英文名称：</td>
-                    <td><input class="blank" type="text" value="ST"/></td>
-                </tr>
-                <tr>
-                    <td>中文名称：</td>
-                    <td><input class="blank" type="text" value="意法半导体"/></td>
+                    <td>品牌名称：</td>
+                    <td><input class="blank" name="mfgName" type="text" th:value="${mfg?.mfgName}" value="ST"/></td>
                 </tr>
                 <tr>
                     <td>品牌商标：</td>
-                    <td><input class="blank" type="file" value=""/></td>
+                    <td><input class="blank" name="mfgmultipartFile"   type="file" value=""/></td>
                 </tr>
                 <tr>
                     <td>生产产品：</td>
                     <td>
-                        <textarea name="product"  cols="100" rows="10">微控制器、单片机、车规MOS管、驱动IC芯片
+                        <textarea name="product" th:text="${mfg?.product}"  cols="100" rows="10">
                         </textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>公司简介：</td>
                     <td>
-                      <textarea name="profile" cols="100" rows="10">意法半导体（STMicroelectronics）是一家全球性的独立半导体公司，是微电子应用领域内开发及提供半导体解决方案的领导者。STMicroelectronics凭借硅片及系统技术的完美结合、雄厚的制造实力、全面的知识产品 (IP) 组合及强大的战略合作伙伴，拥有无可匹敌的实力，在系统级芯片 (SoC) 技术领域位居前列，其产品对于促进现在的聚合趋势发挥着重要作用。
+                      <textarea name="mprofile" th:text="${mfg?.mprofile}" cols="100" rows="10">
                       </textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>国籍：</td>
-                    <td><input class="blank" type="text" value="法国"/></td>
+                    <td><input class="blank" name="country" th:value="${mfg?.country}" type="text" /></td>
                 </tr>
                 <tr>
                     <td>网址：</td>
-                    <td><input class="blank" type="text" value="www.st.com"/></td>
+                    <td><input class="blank" name="website" th:value="${mfg?.website}" type="text" /></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="修改"/></td>
                 </tr>
+                </form>
             </table>
-        </form>
+
     </div>
     <div>
-        <form action="downloadMfg">
+        <form action="/downloadMfg" method="post">
             <tr><th>下载品牌列表</th></tr>
             <td><input type="submit" value="批量下载"/></td>
         </form>
@@ -74,7 +75,7 @@
         <form method="post" action="/uploadMfg" enctype="multipart/form-data">
             <tr><th>上传品牌列表</th></tr>
             <tr><td>
-                <input type="file"/>
+                <input name="smultipartfile" type="file"/>
             </td></tr>
             <tr>
                 <td><input type="submit" value="提交"/></td>

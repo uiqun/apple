@@ -2,8 +2,6 @@ package com.uiqun.dao;
 
 import com.uiqun.model.Mfg;
 import com.uiqun.model.Pn;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -13,8 +11,6 @@ public interface MfgDao {
      * @param mfg
      * @return
      */
-    @Insert("insert into mfglist(MID ,mfgName ,mlogo ,product ,mprofile ,country ,website) " +
-            "values(#{mid}  ,#{mfgName} ,#{mlogo} ,#{product} ,#{mprofile} ,#{country} ,#{website})")
     int insertMfg(Mfg mfg)throws Exception;
 
     /**
@@ -22,7 +18,6 @@ public interface MfgDao {
      * @param mfg
      * @return
      */
-    @Select("select count(mfgName) from mfglist where mfgName = #{mfgName}")
     int queryOneMfg(Mfg mfg)throws Exception;
 
     /**
@@ -30,7 +25,6 @@ public interface MfgDao {
      * @param pn
      * @return
      */
-    @Select("select m.* from mfglist m  left join pnlist p on m.mfgName=p.mfg WHERE p.pn=#{pn}")
     List<Mfg> checkRfqPn(Pn pn)throws Exception;
 
     /**
@@ -38,6 +32,13 @@ public interface MfgDao {
      * @param mfg
      * @return
      */
-    @Select("select * from mfglist  WHERE mid=#{mid}")
     Mfg queryRfq(Mfg mfg);
+
+    int modifyMfg(Mfg mfg);
+
+    List<Mfg> queryAllMfg();
+
+    void resetAllMfgInfo(List<List<Object>> uploadListByExcel);
+
+    void truncateTable();
 }

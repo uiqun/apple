@@ -8,7 +8,6 @@ import com.uiqun.service.BtypeService;
 import com.uiqun.service.PnService;
 import com.uiqun.utils.ExcelUtil;
 import com.uiqun.utils.Pager;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 @Controller
@@ -87,17 +84,7 @@ public class BomlistController {
     @RequestMapping("/downloadbom/{bomid}/{bname}")
     public void downloadbom(@PathVariable("bomid") int bomid, @PathVariable("bname") String bname
             , HttpServletResponse response){
-        Workbook downloadbom = bomService.downloadbom(bomid,bname);
-        response.setHeader("content-type", "application/octet-stream");
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment;filename=" + "bomMessage.xls");
-        OutputStream os = null;
-        try {
-            os = response.getOutputStream();
-            downloadbom.write(os);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ExcelUtil.downExcelData(response,bomService.downloadbom(bomid,bname),"bomList.xls");
     }
 
     /**

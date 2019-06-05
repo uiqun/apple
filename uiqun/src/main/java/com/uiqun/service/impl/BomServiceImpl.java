@@ -33,6 +33,7 @@ public class BomServiceImpl implements BomService {
         //2003版本的
         Workbook wk=new HSSFWorkbook();
         Sheet bomList = wk.createSheet("产品名称"+bname+"的Bom清单列表");
+        bomList.setDefaultColumnWidth(20);
         for (int i = 0; i < boms.size()+1; i++) {
             Row row = bomList.createRow(i);
             if(i==0){

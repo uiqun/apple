@@ -64,7 +64,7 @@ public class HotstkController {
             }
             String filepath = upfilelogin;
             FileInputStream inputStream = new FileInputStream(new File(filepath));
-            List<List<Object>> list = ExcelUtil.getBankListByExcel(inputStream, filepath);
+            List<List<Object>> list = ExcelUtil.getUploadListByExcel(inputStream, filepath);
             //添加到数据库
             hotstkService.insertHotstks(list);
             //删除以添加到数据库中的文件

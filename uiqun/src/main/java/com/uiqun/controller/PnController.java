@@ -9,11 +9,13 @@ import com.uiqun.utils.Encrypt_Dncrypt;
 import com.uiqun.utils.ExcelUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,7 +43,7 @@ public class PnController {
         boolean flag =false;
         String filename = null;
         String upfilelogin =null;
-        if(upload.getName()!=null&&!"".equals(upload.getName())){
+        if(!upload.isEmpty()){
             //图片上传
             //获取用户上传的Logo的文件名
             filename = Encrypt_Dncrypt.getUpLoadFileName(session,upload,"importPnTypeExcel");
@@ -64,7 +66,7 @@ public class PnController {
             String filepath = upfilelogin;
             File file = new File(filepath);
             FileInputStream inputStream = new FileInputStream(file);
-            List<List<Object>> list = ExcelUtil.getBankListByExcel(inputStream, filename);
+            List<List<Object>> list = ExcelUtil.getUploadListByExcel(inputStream, filename);
             //添加到数据库
             pnService.insertPns(list);
             //删除以添加到数据库中的文件
@@ -100,12 +102,12 @@ public class PnController {
         model.addAttribute("pntypeList",pntypeService.queryPntypes());
         if(pn.getPn()!=null){
             if(pnService.addPn(pn)) {
-                if(upload.getOriginalFilename()!=null&&!"".equals(upload.getOriginalFilename())){
+                if(!upload.isEmpty()){
                     //图片上传
                     //获取用户上传的Logo的文件名
                     String filename = Encrypt_Dncrypt.getUpLoadFileName(session,upload,"addpn");
                     try {
-                        String upfilelogin = session.getServletContext().getRealPath("upfilelogin");
+                        String upfilelogin = ResourceUtils.getURL("classpath:static/upfilelogin").getPath();
                         //保存路径&保存文件名
                         upload.transferTo(new File(upfilelogin,filename));
                     } catch (IOException e) {
@@ -139,7 +141,62 @@ public class PnController {
 
 
     @RequestMapping("/Xpn")
-    public String Xpn(){
+    public String Xpn(Model model){
+        model.addAttribute("pntypeList",pntypeService.queryPntypes());
         return "Xpn";
+    }
+
+
+
+
+    @RequestMapping("/queryOnePn")
+    public String queryOnePn(Model model,Pn pn){
+        model.addAttribute("pn",pnService.getPnByAdmin(pn));
+        return "forward:/Xpn";
+    }
+
+    /**
+     * 后台更新型号信息
+     * @param model
+     * @param pn
+     * @return
+     */
+    @RequestMapping("/toUpdatePn")
+    public String toUpdatePn(Model model,Pn pn){
+        if(pnService.modifyPnByAdmin(pn)){
+            //返回消息
+            model.addAttribute("AlertMessage","修改型号信息成功");
+        }else{
+            model.addAttribute("AlertMessage","修改型号信息失败");
+        }
+        model.addAttribute("pn",pn);
+        return "forward:/queryOnePn";
+    }
+
+    /**
+     * 下载全部型号信息
+     * @param response
+     */
+    @RequestMapping("/downloadPn")
+    public void downloadPn(HttpServletResponse response,Pn pn){
+        ExcelUtil.downExcelData(response,pnService.downExcelByPn(pn),"pnList.xls");
+    }
+
+    /**
+     * 上传信号信息
+     * @param model
+     * @param pmultipartfile
+     * @return
+     */
+    @RequestMapping("/importPnExcleByAdmin")
+    public String uploadMfg(Model model,MultipartFile pmultipartfile){
+        if(pmultipartfile.isEmpty()){
+            model.addAttribute("AlertMessage","上传型号信息失败,请提交正确格式的型号信息");
+        }else{
+            if(pnService.uploadPnList(pmultipartfile)) {
+                model.addAttribute("AlertMessage", "上传型号信息成功");
+            }
+        }
+        return "Xmfg";
     }
 }

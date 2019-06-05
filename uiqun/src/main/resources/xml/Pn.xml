@@ -37,4 +37,60 @@
     WHERE pn=#{pn}
     AND mfg=#{mfg}  )
     </select>
+
+
+    <select id="getPnByAdmin" resultType="com.uiqun.model.Pn">
+        select pid,ptype,pn,des,mfg,pkge,pack,mpq,
+        price,spec speck,datalink from pnlist
+        where pid=#{pid}
+    </select>
+
+
+    <update id="modifyPnByAdmin">
+        update pnlist
+        <set>
+            <if test="ptype != '' and ptype != null">
+                ptype=#{ptype},
+            </if>
+            <if test="pn != '' and pn != null">
+                pn=#{pn},
+            </if>
+            <if test="des != '' and des != null">
+                des=#{des},
+            </if>
+            <if test="mfg != '' and mfg != null">
+                mfg=#{mfg},
+            </if>
+            <if test="pkge != '' and pkge != null">
+                pkge=#{pkge},
+            </if>
+            <if test="pack != '' and pack != null">
+                pack=#{pack},
+            </if>
+            <if test="mpq &gt; 0">
+                mpq=#{mpq},
+            </if>
+            <if test="price &gt; 0">
+                price=#{price},
+            </if>
+            <if test="speck != '' and speck != null">
+                spec=#{speck},
+            </if>
+            <if test="datalink != '' and datalink != null">
+                datalink=#{datalink},
+            </if>
+        </set>
+        where pid = #{pid}
+    </update>
+
+    <select id="queryPnsByAdmin" resultType="com.uiqun.model.Pn">
+        select p.pid,pt.name ptype,p.pn,p.des,p.mfg,p.pkge,
+        p.pack,p.mpq,p.price,p.spec,p.datalink
+        from pnlist p,pntype pt where p.ptype=pt.id
+        <if test="ptype!='' and ptype!= null and ptype>0">
+            and ptype=#{ptype}
+        </if>
+    </select>
+
+
 </mapper>

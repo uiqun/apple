@@ -1,6 +1,8 @@
 package com.uiqun.service;
 
 import com.uiqun.model.Pn;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -37,4 +39,14 @@ public interface PnService {
      * @return
      */
     Pn selectStkByMinPrice(Pn pn);
+
+    Pn getPnByAdmin(Pn pn);
+
+    boolean modifyPnByAdmin(Pn pn);
+
+    Workbook getPnExcel();
+
+    Workbook downExcelByPn(Pn pn);
+
+    boolean uploadPnList(MultipartFile pmultipartfile);
 }

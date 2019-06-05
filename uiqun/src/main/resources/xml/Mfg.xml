@@ -1,0 +1,61 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uiqun.dao.MfgDao">
+    <insert id="insertMfg">
+        insert into mfglist(MID ,mfgName ,mlogo ,product ,mprofile ,country ,website)
+            values(#{mid}  ,#{mfgName} ,#{mlogo} ,#{product} ,#{mprofile} ,#{country} ,#{website})
+    </insert>
+
+    <select id="queryOneMfg" resultType="_int">
+        select count(mfgName) from mfglist where mfgName = #{mfgName}
+    </select>
+    <select id="checkRfqPn" resultType="com.uiqun.model.Mfg">
+        select m.* from mfglist m  left join pnlist p on m.mfgName=p.mfg WHERE p.pn=#{pn}
+    </select>
+    <select id="queryRfq" resultType="com.uiqun.model.Mfg">
+        select * from mfglist  WHERE mid=#{mid}
+    </select>
+    <update id="modifyMfg">
+        update mfglist
+        <set>
+            <if test="mfgName!= '' and mfgName!= null">
+                mfgName=#{mfgName},
+            </if>
+            <if test="mlogo!= '' and mlogo!= null">
+                mlogo=#{mlogo},
+            </if>
+            <if test="product!= '' and product!= null">
+                product=#{product},
+            </if>
+            <if test="mprofile!= '' and mprofile!= null">
+                mprofile=#{mprofile},
+            </if>
+            <if test="country!= '' and country!= null">
+                country=#{country},
+            </if>
+            <if test="website!= '' and website!= null">
+                website=#{website},
+            </if>
+        </set>
+        where mid =#{mid}
+    </update>
+
+
+    <select id="queryAllMfg" resultType="com.uiqun.model.Mfg">
+        select * from mfglist
+    </select>
+    
+    <delete id="truncateTable">
+        truncate  table  mfglist
+    </delete>
+    <insert id="resetAllMfgInfo">
+        INSERT INTO `mfglist`(MID,mfgName,mlogo,product,`mprofile`,country,website)
+        VALUES
+        <foreach collection="list" item="outList" separator="," close=";">
+            <foreach collection="outList" item="intList" open="(" close=")" separator="," index="index">
+                #{intList}
+            </foreach>
+        </foreach>
+    </insert>
+</mapper>

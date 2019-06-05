@@ -12,104 +12,103 @@
 
 <body>
 <input type="hidden" id="AlertMessage" th:value="${AlertMessage}"/>
-<script>
-    var AlertMessage = document.getElementById("AlertMessage").value;
-    if(AlertMessage!= null &amp;&amp; AlertMessage!=''){
-        alert(AlertMessage);
-    }
-</script>
     <div>
         <form action="toUpdatePn">
             <table id="pn" cellspacing="10px">
                 <tr><th colspan="2">型号管理</th></tr>
                 <tr>
-                    <td colspan="2"><input id="fillPn" type="text" placeholder="输入型号"/><input id="pnSearch" type="submit" width="50px" value="查询"/></td>
+                    <td>
+                    <form action="/queryOnePn" method="post">
+                        <input id="fillPn" th:value="${pn?.pid}" name="pid" type="text" placeholder="输入型号"/>
+                        <input id="pnSearch" type="submit" width="50px" value="查询"/>
+                    </form>
+                    </td>
                 </tr>
+                <form action="/toUpdatePn" method="post">
                 <tr>
                     <td>型号编码：</td>
-                    <td><input class="blank" type="text" value="1002"/></td>
+                    <td><input class="blank" th:value="${pn?.pid}" name="pid" type="text" value="1002"/></td>
                 </tr>
                 <tr>
                     <td>型号分类:</td>
                     <td>
-                        <select  id="ptypeList" >
-                            <option value="I集成电路" selected="selected">I 集成电路</option>
-                            <option value="T三极管">T 三极管</option>
-                            <option value="D二极管">D 二极管</option>
-                            <option value="C电容">C 电容</option>
+                        <select name="ptype"  id="ptypeList" >
+                            <option th:each="pt:${pntypeList}"
+                                    th:selected="${#strings.toString(pt?.id) eq pn?.ptype}" th:value="${pt?.id}"
+                                    th:text="${pt?.name}" >I 集成电路</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>型号：</td>
-                    <td><input class="blank" type="text" value="STM8S003F3P6TR"/></td>
+                    <td><input class="blank" th:value="${pn?.pn}" name="pn" type="text" /></td>
                 </tr>
                 <tr>
                     <td>描述：</td>
-                    <td><input class="blank" type="text" value="MCU 8-Bit STM8S STM8 CISC 8KB Flash 3.3V/5V 20-Pin TSSOP Tube"/></td>
+                    <td><input class="blank" type="text" th:value="${pn?.des}" name="des"/></td>
                 </tr>
                 <tr>
                     <td>厂牌：</td>
-                    <td><input class="blank" type="text" value="ST"/></td>
+                    <td><input class="blank" type="text" th:value="${pn?.mfg}" name="mfg"/></td>
                 </tr>
                 <tr>
                     <td>封装：</td>
-                    <td><input class="blank" type="text" value="TSSOP20"/></td>
+                    <td><input class="blank" type="text" th:value="${pn?.pkge}" name="pkge"/></td>
                 </tr>
                 <tr>
                     <td>包装方式：</td>
-                    <td><input class="blank" type="text" value="ST"/></td>
+                    <td><input class="blank" type="text" th:value="${pn?.pack}" name="pack"/></td>
                 </tr>
                 <tr>
                     <td>最小包装：</td>
-                    <td><input class="blank" type="text" value="2500"/></td>
+                    <td><input class="blank" type="text" th:value="${pn?.mpq}" name="mpq"/></td>
                 </tr>
                 <tr>
                     <td>单价：</td>
-                    <td><input class="blank" type="text" value="1.10"/></td>
+                    <td><input class="blank" type="text" th:value="${pn?.price}" name="price"/></td>
                 </tr>
                 <tr>
                     <td>规格：</td>
-                    <td><textarea name="spec"  cols="100" rows="10"></textarea></td>
+                    <td><textarea  th:text="${pn?.speck}" name="speck"  cols="100" rows="10"></textarea></td>
                 </tr>
                 <tr>
                     <td>规格书链接：</td>
-                    <td><textarea name="spec" cols="100" rows="5">href="https://www.st.com/content/ccc/resource/technical/document/datasheet/42/5a/27/87/ac/5a/44/88/DM00024550.pdf/files/DM00024550.pdf/jcr:content/translations/en.DM00024550.pdf"
+                    <td><textarea th:text="${pn?.datalink}" name="datalink" cols="100" rows="5">href="https://www.st.com/content/ccc/resource/technical/document/datasheet/42/5a/27/87/ac/5a/44/88/DM00024550.pdf/files/DM00024550.pdf/jcr:content/translations/en.DM00024550.pdf"
                     </textarea>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="修改"/></td>
                 </tr>
+                </form>
             </table>
-        </form>
+
     </div>
     <div>
-        <form action="downloadPn">
-            <table id="download" cellspacing="10px">
+            <table  cellspacing="10px">
                 <tr><th>根据分类下载型号列表</th></tr>
                 <tr><td>
-                    型号分类:<select  >
-                    <option value="I集成电路" selected="selected">I 集成电路</option>
-                    <option value="T三极管">T 三极管</option>
-                    <option value="D二极管">D 二极管</option>
-                    <option value="C电容">C 电容</option>
-                </select>
-                </td></tr>
-                <td><input type="submit" value="批量下载"/></td>
+                    <form action="/downloadPn" method="post">
+                        <span>型号分类:</span>
+                        <select name="ptype"  >
+                            <option value="0">全部</option>
+                            <option th:each="pt:${pntypeList}"
+                                    th:value="${pt?.id}"
+                                    th:text="${pt?.name}" >I 集成电路</option>
+                        </select>
+                        <input type="submit" value="批量下载"/>
+                    </form>
+                </td>
+                </tr>
             </table>
-        </form>
     </div>
     <div>
-        <form action="/importExcle" method="post" enctype="multipart/form-data">
+        <form action="/importPnExcleByAdmin" method="post" enctype="multipart/form-data">
             <table id="upload" cellspacing="10px">
                 <tr><th>批量上传型号列表</th></tr>
                 <tr><td>
-                    <input type="file" name="upload"/>
+                    <input type="file" name="pmultipartfile"/>
                 </td><td><input type="submit" value="提交"/></td></tr>
-                <!--<tr>-->
-                    <!--<td><input type="radio" value="新增"/>新增<input type="radio" value="修改"/>修改</td>-->
-                <!--</tr>-->
             </table>
         </form>
     </div>

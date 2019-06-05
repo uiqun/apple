@@ -37,5 +37,19 @@ public interface PnDao {
      */
     Pn selectStkByMinPrice(Pn pn)throws Exception;
 
+    /**
+     * 后台按编号查找型号
+     * @param pn
+     * @return
+     */
+    Pn getPnByAdmin(Pn pn);
 
+    /**
+     * 后台修改型号信息
+     * @param pn
+     * @return
+     */
+    int modifyPnByAdmin(Pn pn);
+
+    List<Pn> queryPnsByAdmin(Pn pn);
 }
