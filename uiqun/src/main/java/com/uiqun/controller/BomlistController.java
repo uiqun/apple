@@ -68,8 +68,7 @@ public class BomlistController {
             try {
                 bomlistService.insertBomlist(bomlist);
                 int bomlistPrimaryKey = bomlist.getBid();
-                org.springframework.core.io.Resource resource = multipartFile.getResource();
-                InputStream inputStream = resource.getInputStream();
+                InputStream inputStream = multipartFile.getInputStream();
                 List<List<Object>> boms = ExcelUtil.getBomListByExcel(inputStream,multipartFile.getOriginalFilename(),bomlistPrimaryKey,pnService);
                 bomService.insertBoms(boms);
             }catch (Exception e){

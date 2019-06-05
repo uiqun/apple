@@ -3,12 +3,11 @@
  */
 
 $(function(){
-    $("ul li").mouseover(function(){
+    $("ul li").click(function(){
         $(this).css("color","#FF0000");
         $(this).find("ol").show();
-    }).mouseout(function(){
-        $(this).css("color","black");
-        $(this).find("ol").hide();
+        $(this).siblings().css("color","black");
+        $(this).siblings().find("ol").hide();
     })
 })
 var checkCurrentUserInfoVar =null;

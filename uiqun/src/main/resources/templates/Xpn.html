@@ -11,10 +11,10 @@
 </head>
 
 <body>
-<input type="hidden" id="AlertMessage" th:value="${AlertMessage}">
+<input type="hidden" id="AlertMessage" th:value="${AlertMessage}"/>
 <script>
     var AlertMessage = document.getElementById("AlertMessage").value;
-    if(AlertMessage!=null&&AlertMessage!=''){
+    if(AlertMessage!= null &amp;&amp; AlertMessage!=''){
         alert(AlertMessage);
     }
 </script>

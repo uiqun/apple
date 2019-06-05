@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>唯群网--BOM成本核算</title>
-    <link rel="stylesheet" href="/css/public.css">
-    <link rel="stylesheet" href="/css/BOM.css">
+    <link rel="stylesheet" href="/css/public.css"/>
+    <link rel="stylesheet" href="/css/BOM.css"/>
     <script src="/js/jquery-3.2.1.js"></script>
     <script  type="text/javascript" src="/js/public.js"></script>
     <script  type="text/javascript" src="/js/BOM.js"></script>
@@ -24,7 +24,7 @@
 <div id="naver">
     <div id="nav">
         <div id="logo">
-            <img src="/images/logo.png" alt="">
+            <img src="/images/logo.png" alt=""/>
         </div>
         <a class="nav1" onclick="index()">首页</a>
         <a class="nav1" onclick="findPrice()">查价</a>
@@ -67,7 +67,7 @@
                     <dd>上传BOM：<input name="multipartFile" type="file"/></dd>(备注：上传格式为4个字段：型号、描述、品牌、单机用量。)
                 </dl>
                 <dl>
-                    <dd><input type="submit"></dd>
+                    <dd><input type="submit"/></dd>
                 </dl>
             </form>
             <br/>
@@ -108,9 +108,9 @@
         <a th:href="@{/bom/searchbom(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
         <a th:href="@{/bom/searchbom(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
         <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/bom/searchbom(currentPage=${i})}" th:text="${i}"></a>
+            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="@{/bom/searchbom(currentPage=${i})}" th:text="${i}"></a>
         </span>
-        <a th:href="@{/bom/searchbom(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+        <a th:href="@{/bom/searchbom(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
         <a th:href="@{/bom/searchbom(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
         <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
 

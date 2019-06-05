@@ -108,7 +108,6 @@ public class PnController {
                         String upfilelogin = session.getServletContext().getRealPath("upfilelogin");
                         //保存路径&保存文件名
                         upload.transferTo(new File(upfilelogin,filename));
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

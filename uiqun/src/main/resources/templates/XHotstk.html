@@ -45,7 +45,6 @@
                     <td th:text="${#dates.format(hot.hdate,'yyyy-MM-dd')}">2019-01-03</td>
                     <td><a th:href="@{'/deletXhotstk/'+${hot.hid}}">删除</a></td>
                 </tr>
-
              </table>
         </form>
     </div>
@@ -54,9 +53,9 @@
             <a th:href="@{/Xhotstk(currentPage=1,company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage>1}">首页</a>
             <a th:href="@{/Xhotstk(currentPage=${pager.currentPage} - 1,company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage>1}">上一页</a>
             <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/Xhotstk(currentPage=${i},company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:text="${i}"></a>
+            <a th:if="${i &lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="@{/Xhotstk(currentPage=${i},company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:text="${i}"></a>
         </span>
-            <a th:href="@{/Xhotstk(currentPage=${pager.currentPage}+1,company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+            <a th:href="@{/Xhotstk(currentPage=${pager.currentPage}+1,company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
             <a th:href="@{/Xhotstk(currentPage=${pager.totalPage},company=${pager?.condition?.hotstk?.company},pn=${pager?.condition?.hotstk?.pn})}" th:if="${pager.currentPage>1}">末页</a>
             <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
 

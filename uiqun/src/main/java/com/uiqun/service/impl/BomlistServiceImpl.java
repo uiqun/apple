@@ -78,7 +78,7 @@ public class BomlistServiceImpl implements BomlistService {
     @Override
     public boolean modifybom(MultipartFile multipartFile, Integer bomid, PnService pnService) {
         try {
-            InputStream inputStream = multipartFile.getResource().getInputStream();
+            InputStream inputStream = multipartFile.getInputStream();
             List<List<Object>> boms = ExcelUtil.getBomListByExcel(inputStream,multipartFile.getOriginalFilename(),bomid,pnService);
             bomDao.deleteXbom(bomid);
             bomDao.insertBoms(boms);

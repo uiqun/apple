@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>唯群网--询价</title>
-    <link rel="stylesheet" href="/css/public.css">
-    <link rel="stylesheet" href="/css/rfq.css">
+    <link rel="stylesheet" href="/css/public.css"/>
+    <link rel="stylesheet" href="/css/rfq.css"/>
     <script src="/js/jquery-3.2.1.js"></script>
     <script  type="text/javascript" src="/js/public.js"></script>
     <script  type="text/javascript" src="/js/rfq.js"></script>
@@ -24,7 +24,7 @@
     <div id="naver">
         <div id="nav">
             <div id="logo">
-                <img src="/images/logo.png" alt="">
+                <img src="/images/logo.png" alt=""/>
             </div>
             <a class="nav1" onclick="index()">首页</a>
             <a class="nav1" onclick="findPrice()">查价</a>
@@ -36,7 +36,7 @@
     </div>
 <div class="box">
     <div id="banner">
-        <img src="images/banner3.jpg" alt="">
+        <img src="images/banner3.jpg" alt=""/>
     </div>
 </div>
 
@@ -85,7 +85,7 @@
             </tr>
             <tr>
                 <td width="150" height="35" align="right">目标价格：</td>
-                <td><input class="rfqForm" name="tp" type="text" ></td>
+                <td><input class="rfqForm" name="tp" type="text" /></td>
                 <td width="250" height="35" align="right">&nbsp;</td>
             </tr>
                   <tr>
@@ -99,7 +99,7 @@
                 <td><input class="rfqForm" name="dtime" type="text" /></td>
                 <td width="250" height="35" align="right">&nbsp;</td>
             </tr>
-                  <input type="hidden" name="isOpen" id="isOpen">
+                  <input type="hidden" name="isOpen" id="isOpen"/>
             <tr>
                 <td width="150" height="35" align="right">&nbsp;</td>
                 <td><button type="button" onclick="commitRfq(1)" class="button">公开询价</button><button type="button" onclick="commitRfq(0)" class="button">匿名询价</button></td>
@@ -143,9 +143,9 @@
         <a th:href="@{/jumprfq(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
         <a th:href="@{/jumprfq(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
         <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/jumprfq(currentPage=${i})}" th:text="${i}"></a>
+            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="@{/jumprfq(currentPage=${i})}" th:text="${i}"></a>
         </span>
-        <a th:href="@{/jumprfq(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+        <a th:href="@{/jumprfq(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage &lt; pager.totalPage}">下一页</a>
         <a th:href="@{/jumprfq(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
         <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
 

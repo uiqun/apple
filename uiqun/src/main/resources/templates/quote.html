@@ -3,8 +3,8 @@
 <head >
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>唯群网--报价</title>
-    <link rel="stylesheet" href="/css/public.css">
-    <link rel="stylesheet" href="/css/quote.css">
+    <link rel="stylesheet" href="/css/public.css"/>
+    <link rel="stylesheet" href="/css/quote.css"/>
     <script src="/js/jquery-3.2.1.js"></script>
     <script charset="gb2312" type="text/javascript" src="/js/public.js"></script>
     <script charset="gb2312" type="text/javascript" src="/js/quote.js"></script>
@@ -24,7 +24,7 @@
      <div class="box">
          <div id="nav">
              <div id="logo">
-                 <img src="/images/logo.png" alt="">
+                 <img src="/images/logo.png" alt=""/>
              </div>
              <a class="nav1" onclick="index()">首页</a>
              <a class="nav1" onclick="findPrice()">查价</a>
@@ -78,12 +78,11 @@
                             <td><input class="qtyL" name="qty" type="text" placeholder="数量" /></td>
                             <td><input class="priceL" name="price" type="text" placeholder="单价" /></td>
                             <td><input class="dtimeL" name="dtime" type="text" placeholder="货期"  /></td>
-                            </td>
                         </tr>
                         <tr>
-                            <td>是否实单: <input type="radio" checked="checked" name="sure" value="1">是<input type="radio" name="sure" value="0">否</td>
-                            <td>是否公开: <input type="radio" checked="checked" name="isOpen" value="1">是<input type="radio" name="isOpen" value="0">否</td>
-                            <td><input type="submit" value="提交报价"/>
+                            <td>是否实单: <input type="radio" checked="checked" name="sure" value="1"/>是<input type="radio" name="sure" value="0"/>否</td>
+                            <td>是否公开: <input type="radio" checked="checked" name="isOpen" value="1"/>是<input type="radio" name="isOpen" value="0"/>否</td>
+                            <td><input type="submit" value="提交报价"/></td>
                         </tr>
                     </table>
                 </form>
@@ -143,9 +142,9 @@
         <a th:href="@{'/inquote/'+${pager.condition.rfqno}(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
         <a th:href="@{'/inquote/'+${pager.condition.rfqno}(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
         <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{'/inquote/'+${pager?.condition?.rfqno}(currentPage=${i})}" th:text="${i}"></a>
+            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="@{'/inquote/'+${pager?.condition?.rfqno}(currentPage=${i})}" th:text="${i}"></a>
         </span>
-        <a th:href="@{'/inquote/'+${pager.condition.rfqno}(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+        <a th:href="@{'/inquote/'+${pager.condition.rfqno}(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
         <a th:href="@{'/inquote/'+${pager.condition.rfqno}(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
         <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
 

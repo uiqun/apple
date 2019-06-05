@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<input type="hidden" id="AlertMessage" th:value="${AlertMessage}">
+<input type="hidden" id="AlertMessage" th:value="${AlertMessage}"/>
     <div>
         <form action="/addService" method="post">
             <table cellspacing="10px">
@@ -90,9 +90,9 @@
         <a th:href="@{/Xservice(currentPage=1,uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage>1}">首页</a>
         <a th:href="@{/Xservice(currentPage=${pager.currentPage} - 1,uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage>1}">上一页</a>
         <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i<pager.currentPage+10&& i<=pager.totalPage}" th:href="@{/Xservice(currentPage=${i},uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:text="${i}"></a>
+            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="@{/Xservice(currentPage=${i},uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:text="${i}"></a>
         </span>
-        <a th:href="@{/Xservice(currentPage=${pager.currentPage}+1,uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage<pager.totalPage}">下一页</a>
+        <a th:href="@{/Xservice(currentPage=${pager.currentPage}+1,uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
         <a th:href="@{/Xservice(currentPage=${pager.totalPage},uName=${pager?.condition?.uName},sName=${pager?.condition?.sName})}" th:if="${pager.currentPage>1}">末页</a>
         <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
 
