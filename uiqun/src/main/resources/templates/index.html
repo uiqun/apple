@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>唯群网--首页</title>
     <link rel="stylesheet" href="/css/public.css"  type="text/css"   />
     <link  href="/css/index.css"  type="text/css"  rel="stylesheet"  />
@@ -21,11 +23,10 @@
         </div>
     </div>
     <div id="naver">
-        <div id="logo">
-            <img src="/images/logo.png" alt=""/>
-        </div>
         <div id="nav">
-
+            <div id="logo">
+                <img src="/images/logo.png" alt=""/>
+            </div>
             <a class="nav1" onclick="index()">首页</a>
             <a class="nav1" onclick="findPrice()">查价</a>
             <a class="nav1" onclick="rfq()">询价</a>
@@ -40,59 +41,29 @@
         <div id="tv">
             <img src="/images/5G1.jpg" alt=""/>
         </div>
-        <div id="board">
-            <areatext>
-                <table cellspacing="5px">
+        <div id="board" style="overflow: hidden">
+            <div id="box">
+                <table id="ul1" cellspacing="5px">
                     <tr>
-                        <h3>&nbsp;&nbsp;最新实单，先到先得！</h3>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td>
-                            STM8S003F3P6 2500只   接受价1.05元未税
-                        </td>
+                        <th th:text="${title}" >最新实单，先到先得！</th>
                     </tr>
-                    <tr>
-                        <td>
-                            STM32F103C8T6 5000只   接受价5.9元含税
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            TMS320F28335PGBA  急需1200只 SL  朱先生 13685978556
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            TMS320F28034PNT  11900只   接受价15元未税
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            MAX485ESA     25000只   SL 王小姐 QQ：25768459
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            EP1C6F256C6N  急需1200只 SL  朱先生 13685978556
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            L6205D013TR     25000只   SL 王小姐 QQ：25768459
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            L6219DS013TR 5000只   接受价5.9元含税
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            XC9536XL-10VQ44I 1000只   SL 32431545@qq.com
-                        </td>
-                    </tr>
+                    <tr><td th:text="${content1}">1</td></tr>
+                    <tr><td th:text="${content2}">2</td></tr>
+                    <tr><td th:text="${content3}">3</td></tr>
+                    <tr><td th:text="${content4}">4</td></tr>
+                    <tr><td th:text="${content5}">5</td></tr>
+                    <tr><td th:text="${content6}">6</td></tr>
+                    <tr><td th:text="${content7}">7</td></tr>
+                    <tr><td th:text="${content8}">8</td></tr>
+                    <tr><td th:text="${content9}">9</td></tr>
+                    <tr><td th:text="${content10}">10</td></tr>
                 </table>
-            </areatext>
+                <table id="ul2">
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -178,7 +149,6 @@
         <span>备案号：©唯群网 粤ICP备17005480号-2</span>
     </div>
 </div>
-
     <script  type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

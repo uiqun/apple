@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/public.css"    />
+    <link  rel="stylesheet"  type="text/css"  href="css/admin.css"  />
+    <script src="js/jquery-3.2.1.js"></script>
+    <script  type="text/javascript" src="js/public.js"></script>
+    <script  type="text/javascript" src="js/admin.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <form id="upLogo" action="upLogo">
+            <table cellspacing="10px">
+                <tr><th >上传维群网LOGO</th></tr>
+                <tr>
+                    <td ><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <form id="uphpadv1" action="uphpadv1">
+            <table cellspacing="10px">
+                <tr><th >上传首页广告图1</th></tr>
+                <tr>
+                    <td ><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="uphpadv2" action="uphpadv2">
+            <table cellspacing="10px">
+                <tr><th >上传首页广告图2</th></tr>
+                <tr>
+                    <td ><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="uphpadv3" action="uphpadv3">
+            <table cellspacing="10px">
+                <tr><th >上传首页广告图3</th></tr>
+                <tr>
+                    <td ><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="uphpadv4" action="uphpadv4">
+            <table cellspacing="10px">
+                <tr><th colspan="2">上传首页广告图4</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="uphpadv5" action="uphpadv5">
+            <table cellspacing="10px">
+                <tr><th colspan="2">上传首页广告图5</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdwords" action="/updateAdvs">
+            <table style="border-collapse:separate; border-spacing:0px 10px;" width="100%">
+                <tr><th colspan="2">上传首页广告词</th></tr>
+                <tr>
+                    <td >广告标题</td>
+                    <td ><input th:value="${title}" class="content" type="text"  name="title" /></td>
+                </tr>
+                <tr>
+                    <td >广告词1</td>
+                    <td ><input th:value="${content1}" class="content" type="text"  name="content1"/></td>
+                </tr>
+                <tr>
+                    <td >广告词2</td>
+                    <td ><input th:value="${content2}" class="content"  type="text"  name="content2"/></td>
+                </tr>
+                <tr>
+                    <td >广告词3</td>
+                    <td ><input th:value="${content3}" class="content" type="text"  name="content3"/></td>
+                </tr>
+                <tr>
+                    <td >广告词4</td>
+                    <td ><input th:value="${content4}" class="content" type="text" name="content4"/></td>
+                </tr>
+                <tr>
+                    <td >广告词5</td>
+                    <td ><input th:value="${content5}" class="content"  type="text" name="content5"/></td>
+                </tr>
+                <tr>
+                    <td >广告词6</td>
+                    <td ><input th:value="${content6}" class="content"  type="text" name="content6"/></td>
+                </tr>
+                <tr>
+                    <td >广告词7</td>
+                    <td ><input th:value="${content7}" class="content"  type="text" name="content7"/></td>
+                </tr>
+                <tr>
+                    <td >广告词8</td>
+                    <td ><input th:value="${content8}" class="content"  type="text" name="content8"/></td>
+                </tr>
+                <tr>
+                    <td >广告词9</td>
+                    <td ><input th:value="${content9}" class="content"  type="text" name="content9"/></td>
+                </tr>
+                <tr>
+                    <td >广告词10</td>
+                    <td ><input th:value="${content10}" class="content"  type="text" name="content10"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input  type="submit" style="display: block;margin: 0 auto;"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upBanner1" action="upBanner1">
+            <table cellspacing="10px">
+                <tr><th>上传页面Banner1</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upBanner2" action="upBanner2">
+            <table cellspacing="10px">
+                <tr><th>上传页面Banner2</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upBanner3" action="upBanner3">
+            <table cellspacing="10px">
+                <tr><th>上传页面Banner3</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upBanner4" action="upBanner4">
+            <table cellspacing="10px">
+                <tr><th>上传页面Banner4</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdvs1" action="upAdvs1">
+            <table cellspacing="10px">
+                <tr><th>上传供应商页面广告图1</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdvs2" action="upAdvs2">
+            <table cellspacing="10px">
+                <tr><th>上传供应商页面广告图2</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdvs3" action="upAdvs3">
+            <table cellspacing="10px">
+                <tr><th>上传供应商页面广告图3</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdvs4" action="upAdvs4">
+            <table cellspacing="10px">
+                <tr><th>上传供应商页面广告图4</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdvs5" action="upAdvs5">
+            <table cellspacing="10px">
+                <tr><th>上传供应商页面广告图5</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdvs6" action="upAdvs6">
+            <table cellspacing="10px">
+                <tr><th>上传供应商页面广告图6</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdvs7" action="upAdvs7">
+            <table cellspacing="10px">
+                <tr><th>上传供应商页面广告图7</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <form id="upAdvs8" action="upAdvs8">
+            <table cellspacing="10px">
+                <tr><th>上传供应商页面广告图8</th></tr>
+                <tr>
+                    <td><input type="file"/><input type="submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+
+</html>

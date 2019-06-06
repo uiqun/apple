@@ -47,3 +47,8 @@ ul li{
     height: 1498px;
     frameborder:0;
 }
+
+.content{
+    font-size: 16px;
+    width: 800px;
+}
