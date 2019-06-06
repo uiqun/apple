@@ -36,12 +36,12 @@
 #box2{
     margin: auto;
     width: 1000px;
-    height: 1250px;
+    height: 510px;
 }
 #category{
     float:left;
     width: 150px;
-    height: 1200px;
+    height: 500px;
     background-color: #99CCFF;
 }
 ul{
@@ -53,7 +53,7 @@ ul li{
 #detail{
     float: left;
     width: 850px;
-    height: 1200px;
+    height: 500px;
     background-color: lightgray;
 }
 

@@ -10,14 +10,8 @@ function vendor(){
     window.open("/queryUtypes","_self");
 }
 
-function guide(){
+function platInfo(){
     window.open("/queryPlatinfo","_self");
-    document.getElementById("guide").style.color="#F30";
-    document.getElementById("flow").style.color="#333333";
-    document.getElementById("claim").style.color="#333333";
-    document.getElementById("aboutus").style.color="#333333";
-    document.getElementById("contactus").style.color="#333333";
-
 }
 
 function company(){
