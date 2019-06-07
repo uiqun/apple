@@ -36,7 +36,8 @@
     </select>
 
     <select id="queryUserById" resultType="User">
-       select uid,company,co,contact,tel,qq,wechat,addr,website,website1,ulogo
+       select uid,nickname,mobile,company,co,area,utype,contact,title,tel,qq,wechat,hobby,email,
+       addr,website,website1,business,profile,ulogo,image,certid,cert,iscert,rrfq,rquote,rhot,rfind,rvendor,rbom
         from userlist
         where uid = #{userId}
     </select>
@@ -46,10 +47,11 @@
 
     <update id="updateUser">
         update userlist
-        set nickname=#{nickname},company=#{company},co=#{co},area=#{area};utype=#{utype},
+        set nickname=#{nickname},mobile=#{mobile},company=#{company},co=#{co},area=#{area};utype=#{utype},
         contact=#{contact},title=#{title},tel=#{tel},qq=#{qq},wechat=#{wechat},hobby=#{hobby},
         email=#{email},addr=#{addr},website=#{website},website1=#{website1},business=#{business},
-        profile=#{profile},ulogo=#{ulogo},image=#{image},certid=#{certid},cert=#{cert},iscert=#{iscert}
+        profile=#{profile},ulogo=#{ulogo},image=#{image},certid=#{certid},cert=#{cert},iscert=#{iscert},
+        rrfq=#{rrfq},rquote=#{rquote},rhot=#{rhot},rfind=#{rfind},rvendor=#{rvendor},rbom=#{rbom}
         where uid=#{uid}
     </update>
 

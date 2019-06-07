@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="css/public.css"    />
@@ -7,122 +7,139 @@
     <script src="js/jquery-3.2.1.js"></script>
     <script  type="text/javascript" src="js/public.js"></script>
     <script  type="text/javascript" src="js/admin.js"></script>
-
 </head>
 
 <body>
     <div>
-        <form id="certify" action="toCertify">
-            <table cellspacing="10px">
-                <tr><th>客户认证</th></tr>
-                <tr>
-                    <td><input type="text" width="150px" placeholder="输入客户名称"/>查询</td>
-                </tr>
-                <tr>
-                    <td>客户名称</td>
-                    <td>是否通过认证</td>
-                    <td>YES</td><td><input type="submit" value="修改"/></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-
-    <div>
-        <form action="toSearchUser">
+        <form action="/queryUserById/{id}">
             <div>
-                <input type="text" width="100px" placeholder="客户编号"/><input type="submit" value="查询"/>
+                <input type="text" name="id" width="100px" placeholder="客户编号"/><input type="submit" value="查询"/>
             </div>
-         </form>
+        </form>
+        <form action="/SaveUser">
             <table id="user" cellspacing="10px">
                 <tr>
                     <td>用户编号：</td>
-                    <td><input type="text" value="1001"/></td>
+                    <td><input type="text" name="uid" th:text="${uid}"/></td>
                 </tr>
                 <tr>
                     <td>用户名：</td>
-                    <td><input type="text" value="卖姑娘的电容"/></td>
+                    <td><input type="text" name="nickname" th:text="${nickname}"/></td>
                 </tr>
                 <tr>
                     <td>手机号码：</td>
-                    <td><input type="text" value="13976892368"/></td>
-                </tr>
-                <tr>
-                    <td>密码：</td>
-                    <td><input type="text" value="358576"/></td>
+                    <td><input type="text" name="mobile" th:text="${mobile}"/></td>
                 </tr>
                 <tr>
                     <td>公司名称：</td>
-                    <td><input type="text" value="深圳市模板电子科技有限公司"/></td>
+                    <td><input type="text" name="company" th:text="${company}"/></td>
+                </tr>
+                <tr>
+                    <td>公司简称：</td>
+                    <td><input type="text" name="co" th:text="${co}"/></td>
                 </tr>
                 <tr>
                     <td>区域：</td>
-                    <td><input type="text" value="深圳市"/></td>
+                    <td><input type="text" name="area" th:text="${area}"/></td>
                 </tr>
                 <tr>
                     <td>用户类型：</td>
-                    <td><input type="text" value="经销商"/></td>
+                    <td><input type="text" name="utype" th:text="${utype}"/></td>
                 </tr>
                 <tr>
                     <td>联系人：</td>
-                    <td><input type="text" value="张先生"/></td>
+                    <td><input type="text" name="contact" th:text="${contact}"/></td>
                 </tr>
                 <tr>
                     <td>职位：</td>
-                    <td><input type="text" value="采购经理"/></td>
+                    <td><input type="text" name="title" th:text="${title}"/></td>
                 </tr>
                 <tr>
                     <td>电话：</td>
-                    <td><input type="text" value="0755-25358576"/></td>
+                    <td><input type="text" name="tel" th:text="${tel}"/></td>
                 </tr>
                 <tr>
                     <td>QQ号码：</td>
-                    <td><input type="text" value="3585767855"/></td>
+                    <td><input type="text" name="qq" th:text="${qq}"/></td>
                 </tr>
                 <tr>
                     <td>微信号码：</td>
-                    <td><input type="text" value="sf358576"/></td>
+                    <td><input type="text" name="wechat" th:text="${wechat}"/></td>
                 </tr>
                 <tr>
                     <td>爱好：</td>
-                    <td><input type="text" value="打羽毛球，游泳，跑步"/></td>
+                    <td><input type="text" name="hobby" th:text="${hobby}"/></td>
                 </tr>
                 <tr>
                     <td>邮箱：</td>
-                    <td><input type="text" value="3585762313@QQ.com"/></td>
+                    <td><input type="text" name="email" th:text="${email}"/></td>
                 </tr>
                 <tr>
                     <td>地址：</td>
-                    <td><input type="text" value="深圳市福田区中航路新亚洲21051"/></td>
+                    <td><input type="text" name="addr" th:text="${addr}"/></td>
                 </tr>
                 <tr>
                     <td>网址：</td>
-                    <td><input type="text" value="www.asferietrte.com"/></td>
+                    <td><input type="text" name="website" th:text="${website}"/></td>
+                </tr>
+                <tr>
+                    <td>站内网址：</td>
+                    <td><input type="text" name="website1" th:text="${website1}"/></td>
                 </tr>
                 <tr>
                     <td>主营业务：</td>
-                    <td><textarea name="spec"  cols="100" rows="10">代理分销ST和TI集成电路</textarea></td>
+                    <td><textarea name="business" th:text="${business}"  cols="100" rows="10">代理分销ST和TI集成电路</textarea></td>
                 </tr>
                 <tr>
                     <td>公司简介：</td>
-                    <td><textarea name="spec" cols="100" rows="10"></textarea></td>
+                    <td><textarea name="profile" th:text="${profile}" cols="100" rows="10"></textarea></td>
                 </tr>
                 <tr>
                     <td>公司商标：</td>
-                    <td><input type="text" value="http://sdaferjfeareteatertwgwrt.com"/></td>
+                    <td><input type="text" name="ulogo" th:text="${ulogo}"/></td>
                 </tr>
                 <tr>
                     <td>宣传图片：</td>
-                    <td><input type="text" value="http://sdaferjfeareteatertwgwrt.com"/></td>
+                    <td><input type="text" name="image" th:text="${image}"/></td>
+                </tr>
+                <tr>
+                    <td>营业执照号码：</td>
+                    <td><input type="text" name="certid" th:text="${certid}"/></td>
                 </tr>
                 <tr>
                     <td>营业执照：</td>
-                    <td><input type="text" value="http://sdaferjfeareteatertwgwrt.com"/></td>
+                    <td><input type="text" name="cert" th:text="${cert}"/></td>
                 </tr>
                 <tr>
                     <td>是否通过认证：</td>
-                    <td><input type="text" value="http://sdaferjfeareteatertwgwrt.com"/></td>
+                    <td><input type="text" name="iscert" th:text="${iscert}"/></td>
+                </tr>
+                <tr>
+                    <td>询价权限：</td>
+                    <td><input type="text" name="rrfq" th:text="${rrfq}"/></td>
+                </tr>
+                <tr>
+                    <td>报价权限：</td>
+                    <td><input type="text" name="rquote" th:text="${rquote}"/></td>
+                </tr>
+                <tr>
+                    <td>热卖权限：</td>
+                    <td><input type="text" name="rhot" th:text="${rhot}"/></td>
+                </tr>
+                <tr>
+                    <td>查询权限：</td>
+                    <td><input type="text" name="rfind" th:text="${rfind}"/></td>
+                </tr>
+                <tr>
+                    <td>供应商权限：</td>
+                    <td><input type="text" name="rvendor" th:text="${rvendor}"/></td>
+                </tr>
+                <tr>
+                    <td>BOM权限：</td>
+                    <td><input type="text" name="rbom" th:text="${rbom}"/></td>
                 </tr>
             </table>
+        </form>
     </div>
 
     <div>

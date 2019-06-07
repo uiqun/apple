@@ -28,6 +28,12 @@ public class User implements Serializable {
     private String certid; //营业执照号码
     private String cert; //营业执照
     private String iscert; //是否通过认证
+    private int rrfq;//询价权限
+    private int rquote;//报价权限
+    private int rhot; //热卖权限
+    private int rfind;//查询权限
+    private int rvendor;//供应商权限
+    private int rbom; //BOM权限
 
     public Integer getUid() {
         return uid;
@@ -227,5 +233,53 @@ public class User implements Serializable {
 
     public void setIscert(String iscert) {
         this.iscert = iscert;
+    }
+
+    public int getRrfq() {
+        return rrfq;
+    }
+
+    public void setRrfq(int rrfq) {
+        this.rrfq = rrfq;
+    }
+
+    public int getRquote() {
+        return rquote;
+    }
+
+    public void setRquote(int rquote) {
+        this.rquote = rquote;
+    }
+
+    public int getRhot() {
+        return rhot;
+    }
+
+    public void setRhot(int rhot) {
+        this.rhot = rhot;
+    }
+
+    public int getRfind() {
+        return rfind;
+    }
+
+    public void setRfind(int rfind) {
+        this.rfind = rfind;
+    }
+
+    public int getRvendor() {
+        return rvendor;
+    }
+
+    public void setRvendor(int rvendor) {
+        this.rvendor = rvendor;
+    }
+
+    public int getRbom() {
+        return rbom;
+    }
+
+    public void setRbom(int rbom) {
+        this.rbom = rbom;
     }
 }
