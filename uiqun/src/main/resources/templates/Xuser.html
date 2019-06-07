@@ -16,127 +16,130 @@
                 <input type="text" name="id" width="100px" placeholder="客户编号"/><input type="submit" value="查询"/>
             </div>
         </form>
-        <form action="/SaveUser">
+        <form method="post" action="/saveUser">
             <table id="user" cellspacing="10px">
                 <tr>
                     <td>用户编号：</td>
-                    <td><input type="text" name="uid" th:text="${uid}"/></td>
+                    <td><input type="text" name="uid" th:value="${uid}"/></td>
                 </tr>
                 <tr>
                     <td>用户名：</td>
-                    <td><input type="text" name="nickname" th:text="${nickname}"/></td>
+                    <td><input type="text" name="nickname" th:value="${nickname}"/></td>
                 </tr>
                 <tr>
                     <td>手机号码：</td>
-                    <td><input type="text" name="mobile" th:text="${mobile}"/></td>
+                    <td><input type="text" name="mobile" th:value="${mobile}"/></td>
                 </tr>
                 <tr>
                     <td>公司名称：</td>
-                    <td><input type="text" name="company" th:text="${company}"/></td>
+                    <td><input type="text" name="company" th:value="${company}"/></td>
                 </tr>
                 <tr>
                     <td>公司简称：</td>
-                    <td><input type="text" name="co" th:text="${co}"/></td>
+                    <td><input type="text" name="co" th:value="${co}"/></td>
                 </tr>
                 <tr>
                     <td>区域：</td>
-                    <td><input type="text" name="area" th:text="${area}"/></td>
+                    <td><input type="text" name="area" th:value="${area}"/></td>
                 </tr>
                 <tr>
                     <td>用户类型：</td>
-                    <td><input type="text" name="utype" th:text="${utype}"/></td>
+                    <td><input type="text" name="utype" th:value="${utype}"/></td>
                 </tr>
                 <tr>
                     <td>联系人：</td>
-                    <td><input type="text" name="contact" th:text="${contact}"/></td>
+                    <td><input type="text" name="contact" th:value="${contact}"/></td>
                 </tr>
                 <tr>
                     <td>职位：</td>
-                    <td><input type="text" name="title" th:text="${title}"/></td>
+                    <td><input type="text" name="title" th:value="${title}"/></td>
                 </tr>
                 <tr>
                     <td>电话：</td>
-                    <td><input type="text" name="tel" th:text="${tel}"/></td>
+                    <td><input type="text" name="tel" th:value="${tel}"/></td>
                 </tr>
                 <tr>
                     <td>QQ号码：</td>
-                    <td><input type="text" name="qq" th:text="${qq}"/></td>
+                    <td><input type="text" name="qq" th:value="${qq}"/></td>
                 </tr>
                 <tr>
                     <td>微信号码：</td>
-                    <td><input type="text" name="wechat" th:text="${wechat}"/></td>
+                    <td><input type="text" name="wechat" th:value="${wechat}"/></td>
                 </tr>
                 <tr>
                     <td>爱好：</td>
-                    <td><input type="text" name="hobby" th:text="${hobby}"/></td>
+                    <td><input type="text" name="hobby" th:value="${hobby}"/></td>
                 </tr>
                 <tr>
                     <td>邮箱：</td>
-                    <td><input type="text" name="email" th:text="${email}"/></td>
+                    <td><input type="text" name="email" th:value="${email}"/></td>
                 </tr>
                 <tr>
                     <td>地址：</td>
-                    <td><input type="text" name="addr" th:text="${addr}"/></td>
+                    <td><input type="text" name="addr" th:value="${addr}"/></td>
                 </tr>
                 <tr>
                     <td>网址：</td>
-                    <td><input type="text" name="website" th:text="${website}"/></td>
+                    <td><input type="text" name="website" th:value="${website}"/></td>
                 </tr>
                 <tr>
                     <td>站内网址：</td>
-                    <td><input type="text" name="website1" th:text="${website1}"/></td>
+                    <td><input type="text" name="website1" th:value="${website1}"/></td>
                 </tr>
                 <tr>
                     <td>主营业务：</td>
-                    <td><textarea name="business" th:text="${business}"  cols="100" rows="10">代理分销ST和TI集成电路</textarea></td>
+                    <td><textarea name="business" th:value="${business}"  cols="100" rows="10"></textarea></td>
                 </tr>
                 <tr>
                     <td>公司简介：</td>
-                    <td><textarea name="profile" th:text="${profile}" cols="100" rows="10"></textarea></td>
+                    <td><textarea name="profile" th:value="${profile}" cols="100" rows="10"></textarea></td>
                 </tr>
                 <tr>
                     <td>公司商标：</td>
-                    <td><input type="text" name="ulogo" th:text="${ulogo}"/></td>
+                    <td><input type="text" name="ulogo" th:value="${ulogo}"/></td>
                 </tr>
                 <tr>
                     <td>宣传图片：</td>
-                    <td><input type="text" name="image" th:text="${image}"/></td>
+                    <td><input type="text" name="image" th:value="${image}"/></td>
                 </tr>
                 <tr>
                     <td>营业执照号码：</td>
-                    <td><input type="text" name="certid" th:text="${certid}"/></td>
+                    <td><input type="text" name="certid" th:value="${certid}"/></td>
                 </tr>
                 <tr>
                     <td>营业执照：</td>
-                    <td><input type="text" name="cert" th:text="${cert}"/></td>
+                    <td><input type="text" name="cert" th:value="${cert}"/></td>
                 </tr>
                 <tr>
                     <td>是否通过认证：</td>
-                    <td><input type="text" name="iscert" th:text="${iscert}"/></td>
+                    <td><input type="text" name="iscert" th:value="${iscert}"/></td>
                 </tr>
                 <tr>
                     <td>询价权限：</td>
-                    <td><input type="text" name="rrfq" th:text="${rrfq}"/></td>
+                    <td><input type="text" name="rrfq" th:value="${rrfq}"/></td>
                 </tr>
                 <tr>
                     <td>报价权限：</td>
-                    <td><input type="text" name="rquote" th:text="${rquote}"/></td>
+                    <td><input type="text" name="rquote" th:value="${rquote}"/></td>
                 </tr>
                 <tr>
                     <td>热卖权限：</td>
-                    <td><input type="text" name="rhot" th:text="${rhot}"/></td>
+                    <td><input type="text" name="rhot" th:value="${rhot}"/></td>
                 </tr>
                 <tr>
                     <td>查询权限：</td>
-                    <td><input type="text" name="rfind" th:text="${rfind}"/></td>
+                    <td><input type="text" name="rfind" th:value="${rfind}"/></td>
                 </tr>
                 <tr>
                     <td>供应商权限：</td>
-                    <td><input type="text" name="rvendor" th:text="${rvendor}"/></td>
+                    <td><input type="text" name="rvendor" th:value="${rvendor}"/></td>
                 </tr>
                 <tr>
                     <td>BOM权限：</td>
-                    <td><input type="text" name="rbom" th:text="${rbom}"/></td>
+                    <td><input type="text" name="rbom" th:value="${rbom}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" /></td>
                 </tr>
             </table>
         </form>

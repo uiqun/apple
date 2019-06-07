@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUser(User user) {
-        return false;
+       return userdao.updateUser(user)>0;
     }
 
     @Override

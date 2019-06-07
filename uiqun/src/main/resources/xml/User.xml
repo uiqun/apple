@@ -47,7 +47,7 @@
 
     <update id="updateUser">
         update userlist
-        set nickname=#{nickname},mobile=#{mobile},company=#{company},co=#{co},area=#{area};utype=#{utype},
+        set nickname=#{nickname},mobile=#{mobile},company=#{company},co=#{co},area=#{area},utype=#{utype},
         contact=#{contact},title=#{title},tel=#{tel},qq=#{qq},wechat=#{wechat},hobby=#{hobby},
         email=#{email},addr=#{addr},website=#{website},website1=#{website1},business=#{business},
         profile=#{profile},ulogo=#{ulogo},image=#{image},certid=#{certid},cert=#{cert},iscert=#{iscert},

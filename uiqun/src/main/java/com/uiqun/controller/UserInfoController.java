@@ -4,7 +4,6 @@ import com.uiqun.model.User;
 import com.uiqun.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -30,7 +29,7 @@ public class UserInfoController {
    }
 
   @RequestMapping("/queryUserById/{id}")
-   public String queryUserById(@PathVariable("id")int id, Model model){
+   public String queryUserById(int id, Model model){
         User user = userService.queryUserById(id);
         model.addAttribute("uid",user.getUid());
       model.addAttribute("nickname",user.getNickname());
@@ -41,7 +40,7 @@ public class UserInfoController {
       model.addAttribute("utype",user.getUtype());
       model.addAttribute("contact",user.getContact());
       model.addAttribute("title",user.getTitle());
-      model.addAttribute("tel",user.getTitle());
+      model.addAttribute("tel",user.getTel());
       model.addAttribute("qq",user.getQq());
       model.addAttribute("wechat",user.getWechat());
       model.addAttribute("hobby",user.getHobby());
@@ -62,8 +61,7 @@ public class UserInfoController {
       model.addAttribute("rfind",user.getRfind());
       model.addAttribute("rvendor",user.getRvendor());
       model.addAttribute("rbom",user.getRbom());
-
-       return "forward:/Xuser";
+       return "/Xuser";
    }
 
     @RequestMapping("/saveUser")
@@ -72,6 +70,6 @@ public class UserInfoController {
             model.addAttribute("AlertMessage", "用户信息修改成功");
         }
         model.addAttribute("AlertMessage", "用户信息修改失败");
-        return "forward:/Xuser";
+        return "/Xuser";
     }
 }
