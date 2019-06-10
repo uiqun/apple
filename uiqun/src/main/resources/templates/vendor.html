@@ -40,10 +40,11 @@
 
     <div id="header">
         <div id="head">
-            <div id="uname" onclick="company()">深圳市模板电子科技有限公司</div>
-            <a id="admin" onclick="admin()">后台管理</a>
-            <a id="logon" onclick="logon()">登陆</a>
-            <a id="regist" onclick="regist()">注册</a>
+            <span style="color: red;" th:if="${user!=null}" th:text="'您好:'+${user.nickname}+'，欢迎登录!'"></span>
+            <a id="admin"  onclick="admin()">后台管理</a>
+            <a id="logon" th:if="${user==null}" href="/user/login" >登陆</a>
+            <a id="regist" th:if="${user==null}" onclick="regist()">注册</a>
+            <a id="exit" th:if="${user!=null}" href="/user/login" >退出</a>
             <a id="userInfo" onclick="userInfo()">用户信息</a>
         </div>
     </div>
@@ -61,6 +62,11 @@
         </div>
     </div>
 
+<div class="box">
+    <div id="banner">
+        <img src="/images/banner1.jpg" alt=""/>
+    </div>
+</div>
 
 <div class="box">
     <div id="box2">
@@ -78,19 +84,19 @@
         </div>
         <div id="detail">
             <div>
-                <div style="font:bold 20px arial,sans-serif; ">
+                <div style="font:bold 20px arial,sans-serif;padding: 15px ">
                     <span>当前位置：</span><span th:text="${currentCheck?.utype?.utypeName}">一级目录</span>&gt;<span th:text="${currentCheck?.utypeName}">二级目录</span>
                 </div>
 
-                <table  class="table" width="100%" cellspacing="20px">
+                <table  class="table" width="100%" cellspacing="10px">
                     <div th:each="vd:${vendors}">
                         <tr>
-                            <th th:text="${vd.utypeName}" colspan="4">分类一</th>
+                            <th th:text="${vd.utypeName}" colspan="5">分类一</th>
                         </tr>
                         <tr >
-                            <td th:if="${#lists.size(vd.user)==0}">无记录</td>
+                            <td th:if="${#lists.size(vd.user)==0}" colspan="5">待完善</td>
                             <td th:each="user:${vd.user}" style="float: left; width: 100px; padding: 4px;">
-                                <a  th:href="${ user.website1==null? user.website: user.website1 }"    th:value="${user.uid}" onmousemove="checkCurrentUserInfo(this)" onmouseleave="uncheckCurrentUserInfo()"  th:text="${user.co}"></a></td>
+                                <a  th:href="${ user.website1==null? user.website: user.website1 }" target="_blank"   th:value="${user.uid}" onmousemove="checkCurrentUserInfo(this)" onmouseleave="uncheckCurrentUserInfo()"  th:text="${user.co}"></a></td>
                         </tr>
                     </div>
                 </table>
@@ -98,7 +104,7 @@
 
         </div>
         <div id="adv">
-            <div><img src="/images/ad1.jpg" alt=""/></div>
+            <div><img src="/images/ad4.jpg" alt=""/></div>
             <div><img src="/images/ad2.jpg" alt=""/></div>
             <div><img src="/images/ad3.jpg" alt=""/></div>
             <div><img src="/images/ad4.jpg" alt=""/></div>

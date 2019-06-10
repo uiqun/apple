@@ -32,7 +32,8 @@ ul{
     width:150px;
     height:80px;
 }
-#uname{
+#head span{
+    display: inline-block;
     float:left;
     width:220px;
     height:25px;
@@ -53,6 +54,17 @@ ul{
 }
 #logon:hover{color:#F00;}
 #logon{
+    float:left;
+    width:40px;
+    height:25px;
+    font-size: 16px;
+    margin-left:80px;
+    margin-top:5px;
+    text-decoration:none;
+    cursor:pointer;
+}
+#exit:hover{color:#F00;}
+#exit{
     float:left;
     width:40px;
     height:25px;
@@ -178,8 +190,8 @@ ul{
 #vr span{
    float: left;
     margin-left: 100px;
-    margin-top: 20px;
-    margin-bottom: 60px;
+    padding-top: 20px;
+    padding-bottom: 60px;
 }
 
 .odd{

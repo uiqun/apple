@@ -16,7 +16,7 @@
 
     </sql>
     <select id="queryRfqList" resultType="Rfq">
-        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,dtcd,sure,rdate,isOpen,q.name qltyName
+        select rfqno,company,pn,mfg,qty,qlty,tp,dtime,dtcd,sure,rdate,isOpen,q.name qltyName,uid
         from  rfqlist r,qltytype q where r.qlty=q.id
         <include refid="rfqCondition"/>
         limit #{pageOffset},#{pageSize}

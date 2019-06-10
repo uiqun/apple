@@ -41,7 +41,7 @@ li{
     height: 30px;
 }
 
-.nav1:first-child{
+.nav1:nth-child(2){
     color: #FF3300;
     font-weight: bold;
 }

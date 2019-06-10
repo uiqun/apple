@@ -7,7 +7,7 @@ function addPn(){
 }
 
 function vendor(){
-    window.open("/queryUtypes","_self");
+    window.open("/queryLevel/11","_self");
 }
 
 function platInfo(){

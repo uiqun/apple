@@ -1,13 +1,17 @@
 package com.uiqun.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.uiqun.model.Hotstk;
 import com.uiqun.model.User;
+import com.uiqun.service.HotstkService;
 import com.uiqun.service.UserService;
 import com.uiqun.utils.MessageUtil;
+import com.uiqun.utils.Pager;
 import com.uiqun.utils.VoResponseJson;
 import com.yunpian.sdk.YunpianException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +25,8 @@ import javax.servlet.http.HttpSession;
 public class UserController  {
     @Resource
     private UserService userService;
+    @Resource
+    private HotstkService hotstkService;
 
     @RequestMapping("/login")
     public String login(User user,HttpServletRequest request){
@@ -106,11 +112,23 @@ public class UserController  {
         return "regist";
     }
 
-
-
-
     @RequestMapping("/Xuser")
     public String Xuser(){
         return "Xuser";
+    }
+
+    @RequestMapping("/company/{id}")
+    public String showCompany(@PathVariable int id, Pager<Hotstk> pager, Model model) throws Exception{
+        pager.getCondition().put("uid",id);
+        model.addAttribute("page",hotstkService.queryHotstks(pager));
+        model.addAttribute("company",userService.queryUserById(id).getCompany());
+        model.addAttribute("addr",userService.queryUserById(id).getAddr());
+        model.addAttribute("contact",userService.queryUserById(id).getContact());
+        model.addAttribute("tel",userService.queryUserById(id).getTel());
+        model.addAttribute("wechat",userService.queryUserById(id).getWechat());
+        model.addAttribute("website",userService.queryUserById(id).getWebsite());
+        model.addAttribute("business",userService.queryUserById(id).getBusiness());
+        model.addAttribute("profile",userService.queryUserById(id).getProfile());
+        return "company";
     }
 }

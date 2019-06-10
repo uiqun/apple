@@ -40,9 +40,9 @@
 }
 #category{
     float:left;
-    width: 150px;
-    height: 1200px;
-    background-color: #99CCFF;
+    width: 120px;
+    height: 1230px;
+    background-color: lavender;
 }
 ul{
     list-style:none;
@@ -61,19 +61,18 @@ ol{
 }
 #detail{
     float: left;
-    width: 600px;
-    height: 1200px;
-    background-color: lightgray;
+    width: 680px;
+    height: 1230px;
+    background-color: lavenderblush;
 }
 
 #adv{
      float: left;
      width: 200px;
-     height: 1200px;
-     background-color: #99CCFF;
+     height: 1230px;
  }
 
-.nav1:nth-child(5){
+.nav1:nth-child(6){
     color: #FF3300;
     font-weight: bold;
 }
