@@ -46,20 +46,81 @@ li{
     font-weight: bold;
 }
 
-#tv{
+a{
+    text-decoration: none;
+}
+.container {
+    position: relative;
     width: 470px;
     height: 280px;
     margin: 5px;
     border: solid 10px lavender;
     border-radius: 10px;
+    box-shadow: 0 0 5px blue;
+    overflow: hidden;
 }
-
+.container .wrap {
+    position: absolute;
+    width: 3290px;
+    height: 280px;
+    z-index: 1;
+}
+.container .wrap img {
+    float: left;
+    width: 470px;
+    height: 280px;
+}
+.container .buttons {
+    position: absolute;
+    right: 5px;
+    bottom:15px;
+    width: 150px;
+    height: 10px;
+    z-index: 2;
+}
+.container .buttons span {
+    margin-left: 5px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #333333;
+    text-align: center;
+    color:white;
+    cursor: pointer;
+}
+.container .buttons span.on{
+    background-color: #F30;
+}
+.container .arrow {
+    position: absolute;
+    top: 35%;
+    color: #FF3300;
+    padding:0px 14px;
+    border-radius: 50%;
+    font-size: 50px;
+    z-index: 2;
+    display: none;
+}
+.container .arrow_left {
+    left: 10px;
+}
+.container .arrow_right {
+    right: 10px;
+}
+.container:hover .arrow {
+    display: block;
+}
+.container .arrow:hover {
+    background-color: rgba(0,0,0,0.2);
+}
 #board{
     width: 470px;
     height: 280px;
     margin: 5px;
     border: solid 10px lavender;
     border-radius: 10px;
+    box-shadow: 0 0 5px blue;
 }
 #box{
     margin:0 auto;

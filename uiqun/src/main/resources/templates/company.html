@@ -3,11 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>维群网--公司详情页</title>
-    <link rel="stylesheet" href="css/public.css"/>
-    <link rel="stylesheet" href="css/company.css"/>
-    <script src="js/jquery-3.2.1.js"></script>
-    <script charset="gb2312" type="text/javascript" src="js/public.js"></script>
-    <script charset="gb2312" type="text/javascript" src="js/company.js"></script>
+    <link rel="stylesheet" href="/css/public.css"/>
+    <link rel="stylesheet" href="/css/company.css"/>
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script charset="gb2312" type="text/javascript" src="/js/public.js"></script>
+    <script charset="gb2312" type="text/javascript" src="/js/company.js"></script>
  </head>
 
 <body>
@@ -15,7 +15,7 @@
 <div id="header">
     <div id="head">
         <span style="color: red;" th:if="${user!=null}" th:text="'您好:'+${user.nickname}+'，欢迎登录!'"></span>
-        <a id="admin" th:if="${10002==user.uid}" onclick="admin()">后台管理</a>
+        <a id="admin" th:if="${10002==user?.uid}" onclick="admin()">后台管理</a>
         <a id="logon" th:if="${user==null}" href="/user/login" >登陆</a>
         <a id="regist" th:if="${user==null}" onclick="regist()">注册</a>
         <a id="exit" th:if="${user!=null}" href="/user/login" >退出</a>
@@ -25,7 +25,7 @@
 <div id="naver">
     <div id="nav">
         <div id="logo">
-            <img src="images/logo.png" alt=""/>
+            <img src="/images/logo.png" alt=""/>
         </div>
         <a class="nav1" onclick="index()">首页</a>
         <a class="nav1" onclick="findPrice()">查价</a>
@@ -36,55 +36,50 @@
     </div>
 </div>
 
+<div class="box">
+    <div id="banner">
+        <img src="/images/banner.jpg" alt=""/>
+    </div>
+</div>
     <div class="box">
-        <div id="title">
-            <span>公 司 详 情</span>
+        <div id="title" style="padding: 20px">
+            <span th:text="${company}">深圳市模板电子科技有限公司</span>
         </div>
     </div>
 
-    <div id="comInfo_box">
 
+    <div id="comInfo_box">
         <div id="comInfo">
-                <table>
+                <table width="100%" border="1px">
                     <tr>
-                        <td><img src="images/elecland.jpg" alt=""/></td>
-                        <td class="inputFm1" th:text="${company}">深圳市模板电子科技有限公司</td>
-                    </tr>
-                    <tr>
-                        <td align="right" >地址：</td>
-                        <td class="inputFm1" th:text="${addr}">深圳市福田区华强北路32号华强大厦A座4020室</td>
-                    </tr>
-                    <tr>
-                        <td align="right">联系人：</td>
+                        <td width="12%" align="right">联系人：</td>
                         <td class="inputFm1" th:text="${contact}">张三</td>
-                    </tr>
-                    <tr>
-                        <td align="right">电话：</td>
+                        <td width="12%" align="right">电话：</td>
                         <td class="inputFm1" th:text="${tel}">0755-23864596</td>
                     </tr>
                     <tr>
                         <td align="right">手机：</td>
                         <td class="inputFm1" th:text="${mobile}">0755-23864596</td>
-                    </tr>
-                    <tr>
                         <td align="right">QQ：</td>
-                        <td class="inputFm1" th:text="${qq}">56871568986</td>
+                        <td class="inputFm1" th:text="${QQ}">56871568986</td>
                     </tr>
                     <tr>
                         <td align="right">微信：</td>
                         <td class="inputFm1" th:text="${wechat}">56871568986</td>
-                    </tr>
-                    <tr>
                         <td align="right">网址：</td>
                         <td class="inputFm1" th:text="${website}">www.alibaba.com</td>
                     </tr>
                     <tr>
+                        <td align="right" >地址：</td>
+                        <td colspan="3" class="inputFm1" th:text="${addr}">深圳市福田区华强北路32号华强大厦A座4020室</td>
+                    </tr>
+                    <tr>
                         <td align="right">主营产品：</td>
-                        <td class="inputFm1" th:text="${business}">主营ST、TI、Maxim、ON等知名品牌元器件</td>
+                        <td colspan="3" class="inputFm1" th:text="${business}">主营ST、TI、Maxim、ON等知名品牌元器件</td>
                     </tr>
                     <tr>
                         <td align="right">公司介绍：</td>
-                        <td><textarea rows="6" cols="100" style="font-size: 20px" th:text="${profile}">主营ST、TI、Maxim、ON等知名品牌元器件</textarea></td>
+                        <td colspan="3" class="inputFm1" > <p th:text="${profile}">主营ST、TI、Maxim、ON等知名品牌元器件</p></td>
                     </tr>
                 </table>
         </div>
@@ -92,9 +87,9 @@
 
     <div class="box">
         <div id="hotStk">
-            <table cellspacing="15px">
-                <tr><th style="font-size: 24px">库存推广清单</th></tr>
-                <tr>
+            <div>热卖清单 在线订购</div>
+            <table cellspacing="15px" width="100%">
+                <tr class="headline">
                     <th>型号</th>
                     <th>品牌</th>
                     <th>包装</th>
@@ -110,34 +105,29 @@
                     <td th:text="${stk.pn}">STM8S903K3T6CTR</td>
                     <td th:text="${stk.mfg}">ST</td>
                     <td th:text="${stk.pack}">TSSOP20</td>
-                    <td th:text="${stk.qlty}">原装正品</td>
+                    <td th:text="${stk.qltyName}">原装正品</td>
                     <td th:text="${stk.dtcd}">2018+</td>
                     <td th:text="${stk.qty}">56850</td>
                     <td th:text="${stk.price}">102.56</td>
                     <td th:text="${stk.dtime}">深圳现货</td>
-                    <td th:text="${#dates.format(stk.date,'yyyy-MM-dd')}">2018-12-27</td>
+                    <td th:text="${#dates.format(stk.hdate,'yyyy-MM-dd')}">2018-12-27</td>
                     <td><a th:href="${stk.buylink}" th:text="购买"></a></td>
                 </tr>
             </table>
         </div>
     </div>
 
-    <div id="pageCount_box">
-        <div id="pageCount">
-            <button class="button">首页</button>
-            <span class="num">1</span>
-            <span class="num">2</span>
-            <span class="num">3</span>
-            <span class="num">4</span>
-            <span class="num">5</span>
-            <span class="num">6</span>
-            <span class="num">7</span>
-            <span class="num">8</span>
-            <span class="num">9</span>
-            <span class="num">10</span>
-            <button class="button">末页</button>
-        </div>
+<div class="box">
+    <div id="pageCount">
+        <a href="/index" th:if="${pager.currentPage>1}">首页</a>
+        <a th:href="${'/index/'+(pager.currentPage-1)}" th:if="${pager.currentPage>1}">上一页</a>
+        <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="'/index/'+${i}" th:text="${i}"></a>
+        </span>
+        <a th:href="${'/index/'+(pager.currentPage+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
+        <a th:href="${'/index/'+pager.totalPage}" th:if="${pager.currentPage>1}">末页</a>
     </div>
+</div>
 
     <div id="belowNav_box">
         <div id="belowNav">

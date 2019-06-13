@@ -52,99 +52,71 @@
         </div>
     </div>
 <div id="form_box">
-    <form id="userDetail" >
+    <form id="userDetail" action="/updateUser">
     <table width="100%" border="0" cellspacing="0" cellpadding="15">
         <tr>
             <td width="120" height="40" align="right">昵称:</td>
-            <td><input th:value="${user.nickname}" class="input1" name="nickName"  type="text" size="18"/></td>
-        </tr>
-        <tr>
-
-            <td><input th:value="${user.ulogo}" name="uLogo" type="file" size="18"/></td>
+            <td><input th:value="${nickname}" class="input1" name="nickName"  type="text" size="18"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">公司名称:</td>
-            <td><input th:value="${user.company}" class="input1" name="company" type="text" size="18" /></td>
+            <td><input th:value="${company}" class="input1" name="company" type="text" size="18" /></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right" >地域:</td>
             <td>
-                <select class="input3" type="text">
-                    <option value="深圳"selected="selected">深圳市</option>
-                    <option value="北京" >北京市</option>
-                    <option value="上海">上海市</option>
-                    <option value="南京">南京市</option>
-                    <option value="杭州">杭州市</option>
-                    <option value="港台">港澳台</option>
-                    <option value="华南">华南区</option>
-                    <option value="华东">华东区</option>
-                    <option value="华中">华中区</option>
-                    <option value="华北">华北区</option>
-                    <option value="西南">西南区</option>
-                    <option value="西北">西北区</option>
-                    <option value="东北">东北区</option>
+                <select class="input3" name="area">
+                    <option th:each="area:${areas}"  th:value="${area.areaId}" th:text="${area.areaName}"></option>
                 </select>
             </td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">手机号码:</td>
-            <td><input class="input1" name="mobile" type="text" size="18" th:value="${user.mobile}"/></td>
+            <td><input class="input1" name="mobile" type="text" size="18" th:value="${mobile}"/></td>
         </tr>
         <tr>
             <td >地址:</td>
-            <td><input class="input2" name="addr" type="text" size="18" th:text="${user.addr}"/></td>
+            <td><input class="input2" name="addr" type="text" size="18" th:text="${addr}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">联系人:</td>
-            <td><input class="input1" name="contact" type="text" size="18" th:value="${user.contact}"/></td>
+            <td><input class="input1" name="contact" type="text" size="18" th:value="${contact}"/></td>
         </tr>
         <tr>
             <td width="120px" height="40px" align="right">职位:</td>
-            <td><input class="input1" name="title" type="text" size="18" th:value="${user.title}"/></td>
+            <td><input class="input1" name="title" type="text" size="18" th:value="${title}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">电话:</td>
-            <td><input class="input1" name="tel" type="text" size="18" th:value="${user.tel}"/></td>
+            <td><input class="input1" name="tel" type="text" size="18" th:value="${tel}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">QQ:</td>
-            <td><input class="input1" name="qq" type="text" size="18" th:value="${user.ulogo}"/></td>
+            <td><input class="input1" name="qq" type="text" size="18" th:value="${QQ}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">微信:</td>
-            <td><input class="input1" name="wechat" type="text" size="18" th:value="${user.wechat}"/></td>
+            <td><input class="input1" name="wechat" type="text" size="18" th:value="${wechat}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">个人爱好:</td>
-            <td><input class="input2" name="hobby" type="text" size="18" th:value="${user.hobby}"/></td>
+            <td><input class="input2" name="hobby" type="text" size="18" th:value="${hobby}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">网址:</td>
-            <td><input class="input1" name="web" type="text" size="18" th:value="${user.website}"/></td>
-        </tr>
-        <tr>
-            <td width="120" height="40" align="right">站内网址:</td>
-            <td><input class="input1" name="web" type="text" size="18" th:value="${user.website1}"/></td>
+            <td><input class="input1" name="web" type="text" size="18" th:value="${website}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">主营产品:</td>
-            <td><input class="input2" name="business" type="text" size="18" th:value="${user.business}"/></td>
+            <td><input class="input2" name="business" type="text" size="18" th:value="${business}"/></td>
         </tr>
         <tr>
             <td width="120" height="80" align="right">公司介绍:</td>
-            <td><input id="profile" name="profile" type="text" size="500" th:value="${user.profile}"/></td>
-        </tr>
-        <tr>
-            <td width="120" height="80" align="right">资料认证:</td>
-            <td><input name="verify" type="file" size="18" /></td>
-        </tr>
-        <tr>
-            <td width="120" height="80" align="right">&nbsp;</td>
-            <td><input name="view" type="image" size="18" value="预览"/></td>
+            <td><input id="profile" name="profile" type="text" size="500" th:value="${profile}"/></td>
         </tr>
         <tr>
             <td width="120" height="40" align="right">&nbsp;</td>
-            <td><input type="submit"></td>
+            <td><input type="submit"/></td>
         </tr>
     </table>
   </form>

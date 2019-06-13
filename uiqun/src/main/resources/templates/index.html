@@ -19,7 +19,7 @@
             <a id="logon" th:if="${user==null}" href="/user/login" >登陆</a>
             <a id="regist" th:if="${user==null}" onclick="regist()">注册</a>
             <a id="exit" th:if="${user!=null}" href="/user/login" >退出</a>
-            <a id="userInfo" onclick="userInfo()">用户信息</a>
+            <a id="userInfo" th:href="@{'/queryUserDetail/'+${user.uid}}" target="_blank">用户信息</a>
         </div>
     </div>
     <div id="naver">
@@ -38,8 +38,25 @@
 
 <div id="banner">
     <div id="bannerDiv">
-        <div id="tv">
-            <img src="/images/5G1.jpg" alt=""/>
+        <div class="container">
+            <div class="wrap" style="left:-470px;">
+                <img src="/images/IC2.jpg" alt=""/>
+                <img src="/images/5G1.jpg" alt=""/>
+                <img src="/images/5G2.jpg" alt=""/>
+                <img src="/images/5G3.jpg" alt=""/>
+                <img src="/images/IC1.jpg" alt=""/>
+                <img src="/images/IC2.jpg" alt=""/>
+                <img src="/images/5G1.jpg" alt=""/>
+            </div>
+            <div class="buttons">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <a href="javascript:;" class="arrow arrow_left">&lt;</a>
+            <a href="javascript:;" class="arrow arrow_right">&gt;</a>
         </div>
         <div id="board" style="overflow: hidden">
             <div id="box">
@@ -91,21 +108,21 @@
     <div id="content">
         <form action="">
             <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
-                <tr>
-                    <td>询价单号</td>
-                    <td>公 司 名 称</td>
-                    <td>规格型号</td>
-                    <td>品质要求</td>
-                    <td>批次</td>
-                    <td>数量</td>
-                    <td>价格(元)</td>
-                    <td>要求货期</td>
-                    <td>询价日期</td>
-                    <td>操作</td>
+                <tr class="headline">
+                    <th>询价单号</th>
+                    <th>&nbsp; &nbsp;公 司 名 称</th>
+                    <th>规格型号</th>
+                    <th>品质要求</th>
+                    <th>批次</th>
+                    <th>数量</th>
+                    <th>价格(元)</th>
+                    <th>要求货期</th>
+                    <th>询价日期</th>
+                    <th>操作</th>
                 </tr>
                 <tr th:class="${index.odd}?'odd'" th:each="Rfq,index:${pager.datas}">
                     <td th:text="${Rfq.rfqno}">I890600001</td>
-                    <td ><a th:text="${Rfq.company}" th:href="@{'/company/'+${Rfq.uid}}">深圳市模板电子科技有限公司</a></td>
+                    <td ><a th:text="${Rfq.company}" th:href="@{'/user/company/'+${Rfq.uid}}" target="_blank">深圳市模板电子科技有限公司</a></td>
                     <td th:text="${Rfq.pn}">STM8S003F3P6TR</td>
                     <td th:text="${Rfq.qltyName}">原装正品</td>
                     <td th:text="${Rfq.dtcd}">1830+</td>

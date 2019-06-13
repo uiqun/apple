@@ -38,8 +38,8 @@
 
     <div id="quoteSubmit_box" th:if="${rfq!=null}">
         <div id="quoteSubmit">
-            <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
-                <tr>
+            <table width="100%">
+                <tr class="headline">
                     <th>询 价 单号</th>
                     <th>公司 名称</th>
                     <th>型 号</th>
@@ -64,26 +64,28 @@
             </table>
             <div id="fillQuote">
                 <form method="post" action="/addquote">
-                    <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
-                        <tr><th>填写报价单：</th></tr>
+                    <table  style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
+                        <tr><th colspan="7">填写报价单：</th></tr>
                         <input type="hidden" name="rfqno" th:value="${rfq.rfqno}"/>
                         <tr>
-                            <td><input class="pnL"  name="pn" type="text" placeholder="型号"  onblur="checkRfqPn()" /></td>
+                            <td><input name="pn" type="text" placeholder="型号"  onblur="checkRfqPn()" /></td>
+                            <td id="mfg" style="color: red;font-size: 8px;">请填写型号</td>
                             <td>
-                                <select class="qltyL" name="qlty" type="text" id="ptypeList">
+                                <select name="qlty" type="text" id="ptypeList">
                                     <option th:each="ql:${qltyTypeList}" th:value="${ql.id}" th:text="${ql.name}">原厂代理</option>
                                 </select>
                             </td>
-                            <td id="mfg" style="color: red;font-size: 8px;">请填写型号</td>
-                            <td><input class="dtcdL" name="dtcd" type="text" placeholder="批次"  /></td>
-                            <td><input class="qtyL" name="qty" type="text" placeholder="数量" /></td>
-                            <td><input class="priceL" name="price" type="text" placeholder="单价" /></td>
-                            <td><input class="dtimeL" name="dtime" type="text" placeholder="货期"  /></td>
+                            <td><input  name="dtcd" type="text" size="8" placeholder="批次"  /></td>
+                            <td><input  name="qty" type="text" size="8" placeholder="数量" /></td>
+                            <td><input name="price" type="text" size="8" placeholder="单价" /></td>
+                            <td><input  name="dtime" type="text" placeholder="货期"  /></td>
                         </tr>
                         <tr>
-                            <td>是否实单: <input type="radio" checked="checked" name="sure" value="1"/>是<input type="radio" name="sure" value="0"/>否</td>
-                            <td>是否公开: <input type="radio" checked="checked" name="isOpen" value="1"/>是<input type="radio" name="isOpen" value="0"/>否</td>
-                            <td><input type="submit" value="提交报价"/></td>
+                            <td></td>
+                            <td><input type="button" style="display: none" onclick="addPn()" value="新建型号"/></td>
+                            <td style="text-align: center" colspan="2">是否实单: <input type="radio" checked="checked" name="sure" value="1"/>是<input type="radio" name="sure" value="0"/>否</td>
+                            <td style="text-align: center" colspan="2">是否公开: <input type="radio" checked="checked" name="isOpen" value="1"/>是<input type="radio" name="isOpen" value="0"/>否</td>
+                            <td style="text-align: center"><input type="submit" value="提交报价"/></td>
                         </tr>
                     </table>
                 </form>
@@ -96,17 +98,17 @@
 <div id="quoteList">
     	<table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
             <tr><th colspan="10" style="font-size: 24px">我的报价清单</th></tr>
-            <tr style="font-weight: bold">
-                <td>方式</td>
-                <td>单号</td>
-                <td>型号</td>
-                <td>质量标准</td>
-                <td>批次</td>
-                <td>数量</td>
-                <td>价格</td>
-                <td>交货方式</td>
-                <td>日期</td>
-                <td>提交方式</td>
+            <tr class="headline">
+                <th>方式</th>
+                <th>单号</th>
+                <th>型号</th>
+                <th>质量标准</th>
+                <th>批次</th>
+                <th>数量</th>
+                <th>价格</th>
+                <th>交货方式</th>
+                <th>日期</th>
+                <th>提交方式</th>
             </tr>
             <span th:each="quote:${pager.datas}">
             <tr class="odd" >

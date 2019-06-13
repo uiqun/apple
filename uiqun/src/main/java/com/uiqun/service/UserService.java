@@ -1,5 +1,6 @@
 package com.uiqun.service;
 
+import com.uiqun.model.Area;
 import com.uiqun.model.User;
 import com.uiqun.model.Vendors;
 
@@ -34,4 +35,6 @@ public interface UserService {
     boolean updateUser(User user);
 
     boolean queryUserByPhone(String moblie);
+
+    List<Area> queryAreas();
 }

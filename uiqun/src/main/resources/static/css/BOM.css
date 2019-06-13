@@ -47,9 +47,7 @@ button:hover{
 	width:1000px;
 	border-top: 1px solid #FF3300;
 }
-#BomTitle th{
-	text-align: left;
-}
+
 li{
 	display:inline-block;
 }

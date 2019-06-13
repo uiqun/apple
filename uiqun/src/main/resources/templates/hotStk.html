@@ -53,7 +53,7 @@
     <div id="hotStk">
         <table cellspacing="10px">
             <tr><th colspan="10" style="font-size: 20px">库存推广清单</th></tr>
-            <tr >
+            <tr class="headline">
                 <th>型号</th>
                 <th>品牌</th>
                 <th>封装</th>
@@ -74,7 +74,7 @@
                 <td th:text="${stk.qty}">56850</td>
                 <td th:text="${stk.price}">102.56</td>
                 <td th:text="${stk.dtime}">深圳现货</td>
-                <td th:text="${#dates.format(stk.date,'yyyy-MM-dd')}">2018-12-27</td>
+                <td th:text="${#dates.format(stk.hdate,'yyyy-MM-dd')}">2018-12-27</td>
                 <td><a th:href="${stk.buylink}" th:text="购买"></a></td>
             </tr>
         </table>

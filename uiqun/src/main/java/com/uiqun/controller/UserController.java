@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.uiqun.model.Hotstk;
 import com.uiqun.model.User;
 import com.uiqun.service.HotstkService;
+import com.uiqun.service.QltytypeService;
 import com.uiqun.service.UserService;
 import com.uiqun.utils.MessageUtil;
 import com.uiqun.utils.Pager;
@@ -27,6 +28,8 @@ public class UserController  {
     private UserService userService;
     @Resource
     private HotstkService hotstkService;
+    @Resource
+    private QltytypeService qltytypeService;
 
     @RequestMapping("/login")
     public String login(User user,HttpServletRequest request){
@@ -121,8 +124,11 @@ public class UserController  {
     public String showCompany(@PathVariable int id, Pager<Hotstk> pager, Model model) throws Exception{
         pager.getCondition().put("uid",id);
         model.addAttribute("page",hotstkService.queryHotstks(pager));
+        model.addAttribute("qltytypeList",qltytypeService.queryQltytype());
         model.addAttribute("company",userService.queryUserById(id).getCompany());
         model.addAttribute("addr",userService.queryUserById(id).getAddr());
+        model.addAttribute("mobile",userService.queryUserById(id).getMobile());
+        model.addAttribute("QQ",userService.queryUserById(id).getQq());
         model.addAttribute("contact",userService.queryUserById(id).getContact());
         model.addAttribute("tel",userService.queryUserById(id).getTel());
         model.addAttribute("wechat",userService.queryUserById(id).getWechat());

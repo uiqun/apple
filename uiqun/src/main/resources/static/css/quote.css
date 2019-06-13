@@ -1,55 +1,28 @@
 
 #quoteSubmit_box{
+    margin-top: 30px;
 	width:100%;
     border-top: 1px solid #FF0000;
 }
 #quoteSubmit{
 	margin:0 auto;
+    padding-top: 20px;
 	width:1030px;
-	height:200px;
+	height:240px;
     font-size: 18px;
 }
 
-#quoteSubmit #rfqTarget{
-	float:left;
-	width:1030px;
-	height:40px;
-}
-#quoteSubmit #rfqTarget li{
-    margin-top: 20px;
+#quoteSubmit input{
+    font-size: 18px;
 }
 
-#quoteSubmit #rfqTarget1{
-    float:left;
-    width:1030px;
-    height:80px;
+#ptypeList{
+    font-size: 18px;
+}
 
-}
-#quoteSubmit  #rfqTarget1 #span{
-    margin-left:60px;
-    margin-top: 40px;
-}
 #quoteSubmit #fillQuote{
-    float:left;
-    width:1030px;
-    margin-left:30px;
     margin-top: 20px;
-}
-#listHead_box{
-    width: 100%;
-}
-#listHead{
-    margin:0 auto;
-    width: 1030px;
-    font-size: 20px;
-    color: #000033;
-}
-#myQuote_box{
-    width:100%;
-}
-
-ul li{
-    float: left;
+    margin-bottom: 20px;
 }
 
 #quoteList{

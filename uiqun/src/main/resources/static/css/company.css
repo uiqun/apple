@@ -5,7 +5,7 @@
 }
 #title span{
     font-size: 32px;
-    margin-left: 350px;
+    margin-left: 300px;
 }
 
 #comInfo_box{
@@ -14,17 +14,18 @@
 #comInfo{
 	margin:0 auto;
     width:1000px;
-    font-size: 20px;
+    font-size: 16px;
 }
 #comInfo form{
     margin-top: 20px;
 }
-.inputFm1{
-    width: auto;
-    height: 20px;
+#comInfo td{
+    padding: 10px;
 }
-#comInfo #table #textarea{
-    font-size: 18px;
+
+.inputFm1{
+    width: 38%;
+    height: 20px;
 }
 
 #h2_box{
@@ -51,5 +52,9 @@ ul li{
 #hotStk{
     margin:0 auto;
     width: 1000px;
-    height: 800px;
+}
+#hotStk div:first-child{
+    padding: 32px;
+    font-size: 24px;
+    text-align: center;
 }

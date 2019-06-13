@@ -1,6 +1,8 @@
 package com.uiqun.service.impl;
 
+import com.uiqun.dao.AreaDao;
 import com.uiqun.dao.UserDao;
+import com.uiqun.model.Area;
 import com.uiqun.model.User;
 import com.uiqun.model.Vendors;
 import com.uiqun.service.UserService;
@@ -13,6 +15,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userdao;
+    @Resource
+    private AreaDao areaDao;
 
 
     public User login(User user) {
@@ -79,5 +83,14 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public List<Area> queryAreas() {
+        try {
+            return areaDao.queryAreas();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

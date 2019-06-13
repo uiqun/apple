@@ -13,9 +13,30 @@ public class UserInfoController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/queryUserDetail")
-   public String queryUserDetail(User user, Model model){
-       model.addAttribute("user",userService.queryUserDetail(user));
+    @RequestMapping("/queryUserDetail/{id}")
+   public String queryUserDetail(int id, Model model){
+        User user = userService.queryUserById(id);
+        model.addAttribute("areas",userService.queryAreas());
+        model.addAttribute("uid",user.getUid());
+        model.addAttribute("nickname",user.getNickname());
+        model.addAttribute("mobile",user.getMobile());
+        model.addAttribute("company",user.getCompany());
+        model.addAttribute("co",user.getUid());
+        model.addAttribute("area",user.getArea());
+        model.addAttribute("utype",user.getUtype());
+        model.addAttribute("contact",user.getContact());
+        model.addAttribute("title",user.getTitle());
+        model.addAttribute("tel",user.getTel());
+        model.addAttribute("QQ",user.getQq());
+        model.addAttribute("wechat",user.getWechat());
+        model.addAttribute("hobby",user.getHobby());
+        model.addAttribute("email",user.getEmail());
+        model.addAttribute("addr",user.getAddr());
+        model.addAttribute("website",user.getWebsite());
+        model.addAttribute("website1",user.getWebsite1());
+        model.addAttribute("business",user.getBusiness());
+        model.addAttribute("profile",user.getProfile());
+        model.addAttribute("certid",user.getCertid());
        return "userInfo";
    }
 
@@ -25,7 +46,7 @@ public class UserInfoController {
            model.addAttribute("AlertMessage", "用户信息修改成功");
        }
        model.addAttribute("AlertMessage", "用户信息修改失败");
-       return "forward:/queryUserDetail";
+       return "userInfo";
    }
 
   @RequestMapping("/queryUserById/{id}")
@@ -41,7 +62,7 @@ public class UserInfoController {
       model.addAttribute("contact",user.getContact());
       model.addAttribute("title",user.getTitle());
       model.addAttribute("tel",user.getTel());
-      model.addAttribute("qq",user.getQq());
+      model.addAttribute("QQ",user.getQq());
       model.addAttribute("wechat",user.getWechat());
       model.addAttribute("hobby",user.getHobby());
       model.addAttribute("email",user.getEmail());

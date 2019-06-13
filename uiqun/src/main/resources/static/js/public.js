@@ -27,7 +27,7 @@ function findPrice(){
 }
 
 function hotStk(){
-    window.open("hotStk.html","_self");
+    window.open("/queryHotstks","_self");
 }
 
 function index(){
@@ -43,7 +43,7 @@ function quote(){
 }
 
 function regist(){
-    window.open("regist.html","_self");
+    window.open("/regist","_self");
 }
 
 function rfq(){

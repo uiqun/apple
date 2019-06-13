@@ -42,7 +42,7 @@
     float:left;
     width: 150px;
     height: 500px;
-    background-color: #99CCFF;
+    background-color: lavender;
 }
 ul{
     list-style:none;
@@ -54,6 +54,6 @@ ul li{
     float: left;
     width: 850px;
     height: 500px;
-    background-color: lightgray;
+    background-color: lavenderblush;
 }
 
