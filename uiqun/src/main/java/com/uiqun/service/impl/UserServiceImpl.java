@@ -74,6 +74,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean saveUser(User user) {
+        return userdao.updateUser(user)>0;
+    }
+    @Override
     public boolean queryUserByPhone(String moblie) {
         try {
             return userdao.queryUserByPhone(moblie)==null;

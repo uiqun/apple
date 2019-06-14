@@ -47,5 +47,7 @@ public interface UserDao {
 
     int updateUser(User user);
 
+    int saveUser(User user);
+
     User queryUserByPhone(@Param("mobile") String mobile);
 }

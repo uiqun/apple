@@ -47,6 +47,15 @@
 
     <update id="updateUser">
         update userlist
+        set nickname=#{nickname},company=#{company},co=#{co},area=#{area},
+        contact=#{contact},title=#{title},tel=#{tel},qq=#{qq},wechat=#{wechat},hobby=#{hobby},
+        email=#{email},addr=#{addr},website=#{website},business=#{business},
+        profile=#{profile},certid=#{certid}
+        where uid=#{uid}
+    </update>
+
+    <update id="saveUser">
+        update userlist
         set nickname=#{nickname},mobile=#{mobile},company=#{company},co=#{co},area=#{area},utype=#{utype},
         contact=#{contact},title=#{title},tel=#{tel},qq=#{qq},wechat=#{wechat},hobby=#{hobby},
         email=#{email},addr=#{addr},website=#{website},website1=#{website1},business=#{business},
@@ -54,7 +63,6 @@
         rrfq=#{rrfq},rquote=#{rquote},rhot=#{rhot},rfind=#{rfind},rvendor=#{rvendor},rbom=#{rbom}
         where uid=#{uid}
     </update>
-
 
     <select id="queryUserByPhone" resultType="User">
         select mobile from userlist where mobile=#{mobile}

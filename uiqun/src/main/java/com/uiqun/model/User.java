@@ -35,6 +35,7 @@ public class User implements Serializable {
     private int rvendor;//供应商权限
     private int rbom; //BOM权限
 
+
     public Integer getUid() {
         return uid;
     }

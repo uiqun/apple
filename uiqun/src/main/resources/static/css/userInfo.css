@@ -1,7 +1,7 @@
 
 #title{
     margin: 0 auto;
-    width: 1226px;
+    width: 1000px;
 }
 #title span{
     font-size: 32px;
@@ -13,49 +13,49 @@
 }
 #hlBox{
 	margin: 0 auto;
-	width:1226px;
-	height: 90px;
+	width:1000px;
+	height: 80px;
     font-size: 18px;
 }
-#hl{
-    width:1226px;
-	margin-top: 50px;
-    font-size: 20px;
+
+#hlBox th{
+    font-size: 30px;
 }
-#hl span{
-    margin-left: 60px;
-}
+
 #form_box{
 	width: 100%;
 }
 #userDetail{
 	margin:0 auto;
-	width: 1226px;
+	width: 1000px;
 	font-size: 18px;
 }
-.input1{
-    width: 300px;
-    height: 20px;
-    margin-left: 10px;
+.lname{
+    width: 15%;
+    text-align: right;
+    font-weight: bold;
 }
-.input2{
-    width: 800px;
-    height: 20px;
-    margin-left: 10px;
+.rname{
+    font-size: 18px;
+    background:none;
+    outline:none;
+    border:0px;
 }
-.input3{
-    width: 305px;
-    height: 25px;
-    margin-left: 10px;
+#userDetail td{
+    padding: 5px;
 }
-#profile{
-    width:800px;
-    height:400px;
-    margin-left: 10px;
+#userDetail textarea{
+    font-size: 18px;
+    background:none;
+    outline:none;
+    border:0px;
 }
-span:last-child{
+
+#hl span:last-child:hover{
+    font-size: 24px;
     cursor: pointer;
+    color: #FF0000;
 }
-span:last-child:hover{
+#hl span:last-child:hover{
     color: #FF0000;
 }

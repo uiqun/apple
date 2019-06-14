@@ -34,6 +34,8 @@ public interface UserService {
 
     boolean updateUser(User user);
 
+    boolean saveUser(User user);
+
     boolean queryUserByPhone(String moblie);
 
     List<Area> queryAreas();
