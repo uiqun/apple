@@ -2,7 +2,11 @@ package com.uiqun.utils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class UpLoadUtil {
@@ -18,9 +22,18 @@ public abstract class UpLoadUtil {
                     sb=new StringBuilder(name);
                     sb.setCharAt(0,Character.toUpperCase(name.charAt(0)));
                     sb.insert(0,"set");
-                    tClass.getMethod(sb.toString(),declaredFields[j].getType()).invoke(t,
-                            (list.get(i).get(j)!=null&&!"".equals(list.get(i).get(j)))?UpLoadUtil.class.getClassLoader().loadClass(declaredFields[j].getType().getName()).getConstructor(String.class).newInstance(list.get(i).get(j)):null
-                    );
+                    Method method = tClass.getMethod(sb.toString(), declaredFields[j].getType());
+                    //判断是不是字符串是不是Date日期格式且是不是日期类型
+                    if(Date.class.getTypeName().equalsIgnoreCase(declaredFields[j].getType().getTypeName() ) ){
+                        method.invoke(t,dateDispose(list.get(i).get(j)));
+                    }else {
+                        method.invoke(t,
+                                (list.get(i).get(j) != null && !"".equals(list.get(i).get(j)))
+                                        ? UpLoadUtil.class.getClassLoader().
+                                        loadClass(declaredFields[j].getType().getName()).getConstructor(String.class).newInstance(list.get(i).get(j))
+                                        : null
+                        );
+                    }
                 }
                 tList.add(t);
             }
@@ -41,4 +54,28 @@ public abstract class UpLoadUtil {
         return tList;
     }
 
+    /**
+     * 字符串转换成日期类型
+     * @param o
+     * @return
+     */
+    private static Date dateDispose(Object o){
+        try {
+            String format ="yyyy/MM/dd HH:mm:ss";
+            if(o!=null&&!"".equals(o)){
+                String dateStr = (String) o;
+                if( dateStr.indexOf("/")>0 &&!(dateStr.indexOf(":")>0) ){
+                    format ="yyyy/MM/dd";
+                }else if( dateStr.indexOf("-")>0 &&(dateStr.indexOf(":")>0) ){
+                    format ="yyyy-MM-dd HH:mm:ss";
+                }else if( dateStr.indexOf("-")>0 &&!(dateStr.indexOf(":")>0) ){
+                    format ="yyyy-MM-dd";
+                }
+                return new SimpleDateFormat(format).parse((String)o);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

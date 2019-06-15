@@ -1,15 +1,13 @@
 package com.uiqun.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.uiqun.dao.AreaDao;
 import com.uiqun.model.Hotstk;
 import com.uiqun.model.User;
 import com.uiqun.service.HotstkService;
 import com.uiqun.service.QltytypeService;
 import com.uiqun.service.UserService;
-import com.uiqun.utils.MessageUtil;
-import com.uiqun.utils.RedisUtils;
-import com.uiqun.utils.Pager;
-import com.uiqun.utils.VoResponseJson;
+import com.uiqun.utils.*;
 import com.yunpian.sdk.YunpianException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -31,6 +31,8 @@ public class UserController  {
     private HotstkService hotstkService;
     @Resource
     private QltytypeService qltytypeService;
+    @Resource
+    private AreaDao areaDao;
     @Resource
     private RedisUtils redisUtils;
 
@@ -54,6 +56,11 @@ public class UserController  {
         return "login";
     }
 
+    /**
+     * 显示用户信息
+     * @param userId
+     * @return
+     */
     @RequestMapping(value="/queryUserInfo",produces = "text/html;charset=utf-8")
     @ResponseBody
     public String queryUserInfo(Integer userId){
@@ -125,13 +132,29 @@ public class UserController  {
     }
 
 
-
-
+    /**
+     * 跳转到后台用户管理页面
+     * @param model
+     * @return
+     */
     @RequestMapping("/Xuser")
-    public String Xuser(){
+    public String Xuser(Model model){
+        try {
+            model.addAttribute("areaList",areaDao.queryAreas());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "Xuser";
     }
 
+    /**
+     * 根据用户id查找公司页面
+     * @param id
+     * @param pager
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/company/{id}")
     public String showCompany(@PathVariable int id, Pager<Hotstk> pager, Model model) throws Exception{
         pager.getCondition().put("uid",id);
@@ -148,5 +171,33 @@ public class UserController  {
         model.addAttribute("business",userService.queryUserById(id).getBusiness());
         model.addAttribute("profile",userService.queryUserById(id).getProfile());
         return "company";
+    }
+
+
+    /**
+     * 下载全部型号信息
+     * @param response
+     */
+    @RequestMapping("/downloadUser")
+    public void downloadPn(HttpServletResponse response, User user){
+        ExcelUtil.downExcelData(response,userService.downExcelByUser(user),"userList.xls");
+    }
+
+    /**
+     * 上传信号信息
+     * @param model
+     * @param pmultipartfile
+     * @return
+     */
+    @RequestMapping("/uploadUser")
+    public String uploadMfg(Model model, MultipartFile pmultipartfile){
+        if(pmultipartfile.isEmpty()){
+            model.addAttribute("AlertMessage","上传用户信息失败");
+        }else{
+            if(userService.uploadUserList(pmultipartfile)) {
+                model.addAttribute("AlertMessage", "上传用户信息成功");
+            }
+        }
+        return "forward:/user/Xuser";
     }
 }

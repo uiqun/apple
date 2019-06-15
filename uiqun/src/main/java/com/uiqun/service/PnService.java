@@ -40,12 +40,25 @@ public interface PnService {
      */
     Pn selectStkByMinPrice(Pn pn);
 
+    /**
+     * 后台型号获取
+     * @param pn
+     * @return
+     */
     Pn getPnByAdmin(Pn pn);
 
+    /**
+     * 修改型号信息
+     * @param pn
+     * @return
+     */
     boolean modifyPnByAdmin(Pn pn);
 
-    Workbook getPnExcel();
-
+    /**
+     * 获取下载的
+     * @param pn
+     * @return
+     */
     Workbook downExcelByPn(Pn pn);
 
     boolean uploadPnList(MultipartFile pmultipartfile);

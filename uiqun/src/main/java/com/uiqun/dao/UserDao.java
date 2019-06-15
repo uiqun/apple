@@ -73,4 +73,27 @@ public interface UserDao {
      * @return
      */
     int viewAllRegister();
+
+    /**
+     * 根据区域查询用户信息
+     * @param user
+     * @return
+     */
+    List<User> queryUsersByAdmin(User user);
+
+    /**
+     * 后台插入用户信息
+     * @param user
+     * @return
+     */
+    int insertOneUserByAdmin(User user);
+
+    /**
+     * 后台修改用户信息
+     * @param user
+     * @return
+     */
+    int modifyUserByAdmin(User user);
+
+
 }

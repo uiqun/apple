@@ -10,7 +10,7 @@ public class User implements Serializable {
     private String pwd; //密码
     private String company; //公司名称
     private String co; //公司简称
-    private Integer area; //区域
+    private String area; //区域
     private Integer utype; //用户类型
     private String contact; //联系人
     private String title; //职位
@@ -29,12 +29,12 @@ public class User implements Serializable {
     private String certid; //营业执照号码
     private String cert; //营业执照
     private String iscert; //是否通过认证
-    private int rrfq;//询价权限
-    private int rquote;//报价权限
-    private int rhot; //热卖权限
-    private int rfind;//查询权限
-    private int rvendor;//供应商权限
-    private int rbom; //BOM权限
+    private Integer rrfq;//询价权限
+    private Integer rquote;//报价权限
+    private Integer rhot; //热卖权限
+    private Integer rfind;//查询权限
+    private Integer rvendor;//供应商权限
+    private Integer rbom; //BOM权限
     private Date lastLogin;//最后登录时间
 
     public Integer getUid() {
@@ -85,11 +85,11 @@ public class User implements Serializable {
         this.co = co;
     }
 
-    public Integer getArea() {
+    public String getArea() {
         return area;
     }
 
-    public void setArea(Integer area) {
+    public void setArea(String area) {
         this.area = area;
     }
 
@@ -237,51 +237,51 @@ public class User implements Serializable {
         this.iscert = iscert;
     }
 
-    public int getRrfq() {
+    public Integer getRrfq() {
         return rrfq;
     }
 
-    public void setRrfq(int rrfq) {
+    public void setRrfq(Integer rrfq) {
         this.rrfq = rrfq;
     }
 
-    public int getRquote() {
+    public Integer getRquote() {
         return rquote;
     }
 
-    public void setRquote(int rquote) {
+    public void setRquote(Integer rquote) {
         this.rquote = rquote;
     }
 
-    public int getRhot() {
+    public Integer getRhot() {
         return rhot;
     }
 
-    public void setRhot(int rhot) {
+    public void setRhot(Integer rhot) {
         this.rhot = rhot;
     }
 
-    public int getRfind() {
+    public Integer getRfind() {
         return rfind;
     }
 
-    public void setRfind(int rfind) {
+    public void setRfind(Integer rfind) {
         this.rfind = rfind;
     }
 
-    public int getRvendor() {
+    public Integer getRvendor() {
         return rvendor;
     }
 
-    public void setRvendor(int rvendor) {
+    public void setRvendor(Integer rvendor) {
         this.rvendor = rvendor;
     }
 
-    public int getRbom() {
+    public Integer getRbom() {
         return rbom;
     }
 
-    public void setRbom(int rbom) {
+    public void setRbom(Integer rbom) {
         this.rbom = rbom;
     }
 

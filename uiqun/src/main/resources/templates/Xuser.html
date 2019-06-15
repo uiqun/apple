@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<input type="hidden" id="AlertMessage" th:value="${AlertMessage}"/>
     <div>
         <form action="/queryUserById/{id}">
             <div>
@@ -146,37 +147,23 @@
     </div>
 
     <div>
-        <form action="downloadUser">
+        <form action="/user/downloadUser" method="post">
             <tr><th>根据地域下载用户列表</th></tr>
             <tr><td>
-                型号分类:<select class="input3" type="text">
-                <option value="深圳" selected="selected">深圳市</option>
-                <option value="北京" >北京市</option>
-                <option value="上海">上海市</option>
-                <option value="南京">南京市</option>
-                <option value="杭州">杭州市</option>
-                <option value="港台">港澳台</option>
-                <option value="华南">华南区</option>
-                <option value="华东">华东区</option>
-                <option value="华中">华中区</option>
-                <option value="华北">华北区</option>
-                <option value="西南">西南区</option>
-                <option value="西北">西北区</option>
-                <option value="东北">东北区</option>
-            </select>
+                型号分类:
+                <select class="input3" name="area">
+                    <option th:each="area:${areaList}" th:value="${area.areaId}" th:text="${area.areaName}">深圳市</option>
+                </select>
             </td></tr>
             <td><input type="submit" value="批量下载"/></td>
         </form>
     </div>
     <div>
-        <form action="uploadUser">
+        <form action="/user/uploadUser" method="post" enctype="multipart/form-data">
             <tr><th>批量上传用户列表</th></tr>
             <tr><td>
-                <input type="file"/>
+                <input type="file" name="pmultipartfile"/>
             </td></tr>
-            <tr>
-                <td><input type="radio" value="新增"/>新增<input type="radio" value="修改"/>修改</td>
-            </tr>
             <tr>
                 <td><input type="submit" value="提交"/></td>
             </tr>

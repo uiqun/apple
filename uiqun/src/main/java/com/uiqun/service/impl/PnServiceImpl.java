@@ -87,10 +87,6 @@ public class PnServiceImpl implements PnService {
         return false;
     }
 
-    @Override
-    public Workbook getPnExcel() {
-        return null;
-    }
 
     @Override
     public Workbook downExcelByPn(Pn pn) {

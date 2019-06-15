@@ -13,7 +13,7 @@
             <if test="pwd!='' and pwd!=null">
                and pwd = #{pwd}
             </if>
-            <if test="uid>0">
+            <if test="uid &gt; 0">
                and uid = #{uid}
             </if>
         </where>
@@ -83,5 +83,125 @@
     <!--查看总注册人数-->
     <select id="viewAllRegister" resultType="_int">
         select count(1) from userlist
+    </select>
+
+
+
+    <insert id="insertOneUserByAdmin">
+        INSERT INTO `userlist`(uid,nickname,mobile,pwd,company,co,area,utype,contact,title,
+        tel,qq,wechat,hobby,email,addr,website,website1,business,PROFILE,ulogo,
+        image,certid,cert,iscert,rrfq,rquote,rhot,rfind,rvendor,rbom,lastLogin)
+         VALUES(#{uid},#{nickname},#{mobile},#{pwd},#{company},#{co},#{area},#{utype},#{contact},#{title},#{
+        tel},#{qq},#{wechat},#{hobby},#{email},#{addr},#{website},#{website1},#{business},#{profile},#{ulogo},#{
+        image},#{certid},#{cert},#{iscert},#{rrfq},#{rquote},#{rhot},#{rfind},#{rvendor},#{rbom},#{lastLogin})
+    </insert>
+    <update id="modifyUserByAdmin">
+        update userlist
+        <set>
+            <if test="area != '' and area != null">
+                area=(SELECT id FROM pntype WHERE NAME LIKE CONCAT('%',#{area},'%')),
+            </if>
+            <if test="nickname != '' and nickname != null">
+                nickname=#{nickname},
+            </if>
+            <if test="mobile != '' and mobile != null">
+                mobile=#{mobile},
+            </if>
+            <if test="pwd != '' and pwd != null">
+                pwd=#{pwd},
+            </if>
+            <if test="company != '' and company != null">
+                company=#{company},
+            </if>
+            <if test="co != '' and co != null">
+                co=#{co},
+            </if>
+            <if test="contact != '' and contact != null">
+                contact=#{contact},
+            </if>
+            <if test="title != '' and title != null">
+                   title=#{title},
+            </if>
+            <if test="tel != '' and tel != null">
+                tel=#{tel},
+            </if>
+            <if test="qq != '' and qq != null">
+                qq=#{qq},
+            </if>
+            <if test="wechat != '' and wechat != null">
+                wechat=#{wechat},
+            </if>
+            <if test="hobby != '' and hobby != null">
+                hobby=#{hobby},
+            </if>
+            <if test="email != '' and email != null">
+                email=#{email},
+            </if>
+            <if test="addr != '' and addr != null">
+                addr=#{addr},
+            </if>
+            <if test="website != '' and website != null">
+                website=#{website},
+            </if>
+            <if test="website1 != '' and website1 != null">
+                website1=#{website1},
+            </if>
+            <if test="business != '' and business != null">
+                business=#{business},
+            </if>
+            <if test="profile != '' and profile != null">
+                profile=#{profile},
+            </if>
+            <if test="ulogo != '' and ulogo != null">
+                ulogo=#{ulogo},
+            </if>
+            <if test="image != '' and image != null">
+                image=#{image},
+            </if>
+            <if test="certid != '' and certid != null">
+                certid=#{certid},
+            </if>
+            <if test="cert != '' and cert != null">
+                cert=#{cert},
+            </if>
+            <if test="iscert != '' and iscert != null">
+                iscert=#{iscert},
+            </if>
+            <if test="lastLogin != null">
+                lastLogin=#{lastLogin},
+            </if>
+            <if test="utype &gt; 0">
+                utype=#{utype},
+            </if>
+            <if test="rrfq &gt; -1">
+                rrfq=#{rrfq},
+            </if>
+            <if test="rquote &gt; -1">
+                rquote=#{rquote},
+            </if>
+            <if test="rhot &gt; -1">
+                rhot=#{rhot},
+            </if>
+            <if test="rfind &gt; -1">
+                rfind=#{rfind},
+            </if>
+            <if test="rvendor &gt; -1">
+                rvendor=#{rvendor},
+            </if>
+            <if test="rbom &gt; -1">
+                rbom=#{rbom},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+
+    <select id="queryUsersByAdmin" resultType="User">
+        select uid,nickname,mobile,company,areaName area,co,utype,contact,title,tel,qq,wechat,
+        hobby,email,addr,website,website1,business,PROFILE,ulogo,image,certid,cert,iscert,rrfq,rquote,rhot,rfind,rvendor,rbom,lastLogin
+        from userlist u ,area a
+        where u.area = a.areaId
+        <if test="area &gt; 0">
+            and area = #{area}
+        </if>
     </select>
 </mapper>

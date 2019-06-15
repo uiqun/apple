@@ -3,6 +3,7 @@ package com.uiqun.utils;
 
 import com.uiqun.model.Pn;
 import com.uiqun.service.PnService;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -50,7 +51,6 @@ public class ExcelUtil {
                 //读取一行
                 row = sheet.getRow(j);
                 //去掉空行和表头
-                System.out.println(row.getFirstCellNum());
                 if ((row == null || row.getFirstCellNum() == j)
                 &&(countCol==0)) {
                     countCol= row.getLastCellNum();
@@ -160,18 +160,18 @@ public class ExcelUtil {
     public static Object getCellValue(Cell cell) {
         Object value = null;
         DecimalFormat df = new DecimalFormat("0");  //格式化字符类型的数字
-        SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");  //日期格式化
+        SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");  //日期格式化
         DecimalFormat df2 = new DecimalFormat("0.00");  //格式化数字
         switch (cell.getCellType()) {
             case Cell.CELL_TYPE_STRING:
                 value = cell.getRichStringCellValue().getString();
                 break;
             case Cell.CELL_TYPE_NUMERIC:
-                if ("General".equals(cell.getCellStyle().getDataFormatString())) {
-                    value = df.format(cell.getNumericCellValue());
-                } else if ("m/d/yy".equals(cell.getCellStyle().getDataFormatString())) {
+                if (HSSFDateUtil.isCellDateFormatted(cell)) {
                     value = sdf.format(cell.getDateCellValue());
-                } else {
+                }else if ("General".equals(cell.getCellStyle().getDataFormatString())) {
+                      value = df.format(cell.getNumericCellValue());
+                 } else {
                     value = df2.format(cell.getNumericCellValue());
                 }
                 break;

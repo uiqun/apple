@@ -3,6 +3,8 @@ package com.uiqun.service;
 import com.uiqun.model.Area;
 import com.uiqun.model.User;
 import com.uiqun.model.Vendors;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -30,13 +32,51 @@ public interface UserService {
      */
     boolean register(User user);
 
+    /**
+     * 查询用户详情
+     * @param user
+     * @return
+     */
     User queryUserDetail(User user);
 
+    /**
+     * 更新用户数据
+     * @param user
+     * @return
+     */
     boolean updateUser(User user);
 
+    /**
+     * 保存用户数据
+     * @param user
+     * @return
+     */
     boolean saveUser(User user);
 
+    /**
+     * 根据用户电话查询用户
+     * @param moblie
+     * @return
+     */
     boolean queryUserByPhone(String moblie);
 
+    /**
+     * 查询区域
+     * @return
+     */
     List<Area> queryAreas();
+
+    /**
+     * 获取下载的excel文件
+     * @param user
+     * @return
+     */
+    Workbook downExcelByUser(User user);
+
+    /**
+     * 根据excel批量上传用户信息
+     * @param pmultipartfile
+     * @return
+     */
+    boolean uploadUserList(MultipartFile pmultipartfile);
 }
