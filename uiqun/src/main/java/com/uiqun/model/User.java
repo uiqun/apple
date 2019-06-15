@@ -9,7 +9,7 @@ public class User implements Serializable {
     private String pwd; //密码
     private String company; //公司名称
     private String co; //公司简称
-    private String area; //区域
+    private Integer area; //区域
     private Integer utype; //用户类型
     private String contact; //联系人
     private String title; //职位
@@ -84,11 +84,11 @@ public class User implements Serializable {
         this.co = co;
     }
 
-    public String getArea() {
+    public Integer getArea() {
         return area;
     }
 
-    public void setArea(String area) {
+    public void setArea(Integer area) {
         this.area = area;
     }
 

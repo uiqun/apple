@@ -19,9 +19,14 @@
 }
 
 #hlBox th{
-    font-size: 30px;
+    font-size: 20px;
+    color: dimgray;
 }
 
+#hlBox th:last-child:hover{
+    color: #FF0000;
+    cursor:pointer;
+}
 #form_box{
 	width: 100%;
 }
@@ -33,7 +38,7 @@
 .lname{
     width: 15%;
     text-align: right;
-    font-weight: bold;
+    color: dimgray;
 }
 .rname{
     font-size: 18px;
@@ -43,6 +48,7 @@
 }
 #userDetail td{
     padding: 5px;
+    border: solid 1px lavender;
 }
 #userDetail textarea{
     font-size: 18px;
@@ -51,11 +57,10 @@
     border:0px;
 }
 
-#hl span:last-child:hover{
-    font-size: 24px;
-    cursor: pointer;
-    color: #FF0000;
+#note{
+    margin: 0 auto;
+    width: 800px;
 }
-#hl span:last-child:hover{
-    color: #FF0000;
+#note td{
+    color: dimgray;
 }
