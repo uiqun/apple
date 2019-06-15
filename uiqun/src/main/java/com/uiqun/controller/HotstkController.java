@@ -9,6 +9,7 @@ import com.uiqun.utils.ExcelUtil;
 import com.uiqun.utils.Pager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,9 +48,9 @@ public class HotstkController {
             //获取用户上传的Logo的文件名
             filename = Encrypt_Dncrypt.getUpLoadFileName(session,upload,"uploadHotstk");
             try {
-                upfilelogin = session.getServletContext().getRealPath("upfilelogin");
+                upfilelogin = ResourceUtils.getURL("classpath:static/upfilelogin").getPath();
                 //保存路径&保存文件名
-                upload.transferTo(new File("C:\\Users\\Administrator\\Desktop\\bookinfo - 副本\\target\\classes\\static\\upfilelogin",filename));
+                upload.transferTo(new File(upfilelogin,filename));
                 flag = true;
             } catch (IOException e) {
                 e.printStackTrace();

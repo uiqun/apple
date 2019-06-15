@@ -50,4 +50,27 @@ public interface UserDao {
     int saveUser(User user);
 
     User queryUserByPhone(@Param("mobile") String mobile);
+
+    /**
+     * 修改最后登录时间
+     * @param user
+     * @return
+     */
+    int modifyLastLoginDate(User user);
+
+    /**
+     * 查看近30天登陆
+     * @return
+     */
+    int viewRecentLogin();
+    /**
+     * 查看历史登陆人数
+     */
+    int viewHistoryLogin();
+
+    /**
+     * 查看总注册人数
+     * @return
+     */
+    int viewAllRegister();
 }

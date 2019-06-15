@@ -7,6 +7,7 @@ import com.uiqun.service.HotstkService;
 import com.uiqun.service.QltytypeService;
 import com.uiqun.service.UserService;
 import com.uiqun.utils.MessageUtil;
+import com.uiqun.utils.RedisUtils;
 import com.uiqun.utils.Pager;
 import com.uiqun.utils.VoResponseJson;
 import com.yunpian.sdk.YunpianException;
@@ -30,7 +31,15 @@ public class UserController  {
     private HotstkService hotstkService;
     @Resource
     private QltytypeService qltytypeService;
+    @Resource
+    private RedisUtils redisUtils;
 
+    /**
+     * 用户登录
+     * @param user
+     * @param request
+     * @return
+     */
     @RequestMapping("/login")
     public String login(User user,HttpServletRequest request){
         if(user!=null&&user.getNickname()!=null&&!"".equals(user.getNickname())){
@@ -114,6 +123,9 @@ public class UserController  {
         }
         return "regist";
     }
+
+
+
 
     @RequestMapping("/Xuser")
     public String Xuser(){

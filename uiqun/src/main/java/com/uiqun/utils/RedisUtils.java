@@ -2,10 +2,13 @@ package com.uiqun.utils;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.LinkedHashMap;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
     @Component
@@ -135,4 +138,51 @@ import java.util.concurrent.TimeUnit;
         public void expire(String key, long timeout) {
             redisTemplate.expire(key, timeout, TimeUnit.SECONDS);
         }
-}
+
+        /**
+         * 存储排行榜数据
+         * @param key 排行榜名称
+         * @param value 需要存的对象
+         * @param score 分数
+         */
+        public void setSortedSet(String key,Object value,Double score){
+            ZSetOperations<String, Object> zSet = redisTemplate.opsForZSet();
+            zSet.add(key,value,score);
+        }
+
+        /**
+         * 获取对应排行榜前50名的数据 Set 集合
+         * @param key
+         * @return
+         */
+        private Set<Object> getSortedSet(String key){
+            ZSetOperations<String, Object> zSet = redisTemplate.opsForZSet();
+            return zSet.reverseRange(key, 0, zSet.size(key)<50?-1:50);
+        }
+
+        /**
+         * 获取对应分数
+         * @param key
+         * @param value
+         * @return
+         */
+        public Double getSortScore(String key,String value){
+            ZSetOperations<String, Object> zSet = redisTemplate.opsForZSet();
+            Double score = zSet.score(key, value);
+            return score==null?0d:score;
+        }
+
+        /**
+         * 获取对应排行榜前50名的数据 Map 集合
+         * @param key
+         * @return
+         */
+        public LinkedHashMap<String,Integer> getSortInfo(String key){
+            Set<Object> sortedSet = getSortedSet(key);
+            LinkedHashMap<String,Integer> sortInfo = new LinkedHashMap<>();
+            for (Object o : sortedSet) {
+                sortInfo.put((String)o, getSortScore(key,(String)o).intValue() );
+            }
+            return sortInfo;
+        }
+    }

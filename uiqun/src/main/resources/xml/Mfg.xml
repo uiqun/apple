@@ -50,12 +50,15 @@
         truncate  table  mfglist
     </delete>
     <insert id="resetAllMfgInfo">
-        INSERT INTO `mfglist`(MID,mfgName,mlogo,product,`mprofile`,country,website)
-        VALUES
+        insert into mfglist(mid,mfgName,mlogo,product,mprofile,country,website)
+        values
         <foreach collection="list" item="outList" separator="," close=";">
             <foreach collection="outList" item="intList" open="(" close=")" separator="," index="index">
                 #{intList}
             </foreach>
         </foreach>
     </insert>
+    <update id="resetTable">
+        ALTER TABLE mfglist AUTO_INCREMENT = 1;
+    </update>
 </mapper>

@@ -52,4 +52,6 @@ public interface PnDao {
     int modifyPnByAdmin(Pn pn);
 
     List<Pn> queryPnsByAdmin(Pn pn);
+
+    int insertOnePnByAdmin(Pn pn);
 }

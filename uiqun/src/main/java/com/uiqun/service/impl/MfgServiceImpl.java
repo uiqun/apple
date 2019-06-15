@@ -105,6 +105,7 @@ public class MfgServiceImpl implements MfgService {
             List<List<Object>> uploadListByExcel = ExcelUtil.getUploadListByExcel(smultipartfile.getInputStream(),
                     smultipartfile.getOriginalFilename());
             mfgDao.truncateTable();
+            mfgDao.resetTable();
             mfgDao.resetAllMfgInfo(uploadListByExcel);
             return true;
         } catch (Exception e) {

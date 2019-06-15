@@ -41,4 +41,6 @@ public interface MfgDao {
     void resetAllMfgInfo(List<List<Object>> uploadListByExcel);
 
     void truncateTable();
+
+    void resetTable();
 }

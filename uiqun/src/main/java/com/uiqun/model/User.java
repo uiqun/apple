@@ -1,6 +1,7 @@
 package com.uiqun.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class User implements Serializable {
     private Integer uid; //用户编号
@@ -34,7 +35,7 @@ public class User implements Serializable {
     private int rfind;//查询权限
     private int rvendor;//供应商权限
     private int rbom; //BOM权限
-
+    private Date lastLogin;//最后登录时间
 
     public Integer getUid() {
         return uid;
@@ -282,5 +283,13 @@ public class User implements Serializable {
 
     public void setRbom(int rbom) {
         this.rbom = rbom;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
 }

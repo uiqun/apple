@@ -4,6 +4,7 @@ import com.uiqun.dao.PnDao;
 import com.uiqun.model.Pn;
 import com.uiqun.service.PnService;
 import com.uiqun.utils.ExcelUtil;
+import com.uiqun.utils.UpLoadUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -114,17 +115,17 @@ public class PnServiceImpl implements PnService {
                 row.createCell(10).setCellValue("规格书链接");
                 continue;
             }
-            row.createCell(0).setCellValue(pns.get(i-1).getPid());
-            row.createCell(1).setCellValue(pns.get(i-1).getPtype());
-            row.createCell(2).setCellValue(pns.get(i-1).getPn());
-            row.createCell(3).setCellValue(pns.get(i-1).getDes());
-            row.createCell(4).setCellValue(pns.get(i-1).getMfg());
-            row.createCell(5).setCellValue(pns.get(i-1).getPkge());
-            row.createCell(6).setCellValue(pns.get(i-1).getPack());
-            row.createCell(7).setCellValue(pns.get(i-1).getMpq());
-            row.createCell(8).setCellValue(pns.get(i-1).getPrice());
-            row.createCell(9).setCellValue(pns.get(i-1).getSpeck());
-            row.createCell(10).setCellValue(pns.get(i-1).getDatalink());
+            row.createCell(0).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getPid()));
+            row.createCell(1).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getPtype()));
+            row.createCell(2).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getPn()));
+            row.createCell(3).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getDes()));
+            row.createCell(4).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getMfg()));
+            row.createCell(5).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getPkge()));
+            row.createCell(6).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getPack()));
+            row.createCell(7).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getMpq()));
+            row.createCell(8).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getPrice()));
+            row.createCell(9).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getSpeck()));
+            row.createCell(10).setCellValue(ExcelUtil.setResponseValue(pns.get(i-1).getDatalink()));
         }
         return  wk;
     }
@@ -132,13 +133,18 @@ public class PnServiceImpl implements PnService {
     @Override
     public boolean uploadPnList(MultipartFile pmultipartfile) {
         try {
+            //读取进来的列表
             List<List<Object>> uploadListByExcel = ExcelUtil.getUploadListByExcel(pmultipartfile.getInputStream(),
                     pmultipartfile.getOriginalFilename());
-
-            //转换
-
-            for (int i = 0; i < uploadListByExcel.size(); i++) {
-//                pnDao.modifyPnByAdmin(uploadListByExcel);
+            List<Pn> pns = UpLoadUtil.tranceObject(uploadListByExcel, Pn.class);
+            for (int i = 0; i < pns.size(); i++) {
+                Pn pn = pns.get(i);
+                pn.setPtype(pn.getPtype().split(" ")[0]);
+                if(pn.getPid()==null||pn.getPid()==0){
+                    pnDao.insertOnePnByAdmin(pn);
+                }else {
+                    pnDao.modifyPnByAdmin(pn);
+                }
             }
             return true;
         } catch (Exception e) {

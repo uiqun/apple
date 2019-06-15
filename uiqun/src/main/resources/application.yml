@@ -10,8 +10,13 @@ spring:
     url: jdbc:mysql://localhost:3306/uiqun?serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: root
+    password: 123456
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    timeout: 3000
+  
 mybatis:
   type-aliases-package: com.uiqun.model
   mapper-locations: classpath:/xml/*.xml
-

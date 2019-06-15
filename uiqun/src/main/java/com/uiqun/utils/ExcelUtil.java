@@ -4,7 +4,6 @@ package com.uiqun.utils;
 import com.uiqun.model.Pn;
 import com.uiqun.service.PnService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -16,7 +15,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,6 +38,7 @@ public class ExcelUtil {
         Cell cell = null;
         list = new ArrayList<List<Object>>();
         //遍历Excel中所有的sheet
+        Short countCol = 0;
         for (int i = 0; i < work.getNumberOfSheets(); i++) {
             sheet = work.getSheetAt(i);
             if (sheet == null) {
@@ -51,14 +50,17 @@ public class ExcelUtil {
                 //读取一行
                 row = sheet.getRow(j);
                 //去掉空行和表头
-                if (row == null || row.getFirstCellNum() == j) {
+                System.out.println(row.getFirstCellNum());
+                if ((row == null || row.getFirstCellNum() == j)
+                &&(countCol==0)) {
+                    countCol= row.getLastCellNum();
                     continue;
                 }
                 //遍历所有的列
                 List<Object> li = new ArrayList<Object>();
-                for (int y = row.getFirstCellNum(); y < row.getLastCellNum(); y++) {
+                for (int y = 0; y < countCol; y++) {
                     if("".equals(row.getCell(y))||row.getCell(y)==null){
-                        row.createCell(y).setCellValue(" ");
+                        row.createCell(y);
                     }
                     cell = row.getCell(y);
                     li.add(getCellValue(cell));
@@ -230,17 +232,8 @@ public class ExcelUtil {
     }
 
 
+    public static String setResponseValue(Object o){
+        return o==null?"":o.toString();
+    }
 
-
-//
-//    public static void main(String[] args) throws IOException {
-//        List<List<String>> data = new ArrayList<List<String>>();
-//        for(int i =0;i<5;i++){
-//            data.add(new ArrayList<String>());
-//            for(int x =0;x<5;x++){
-//                data.get(i).add("\""+i+"------"+x+"\"");
-//            }
-//        }
-//        downExclePnTypeTemplate(data,"111");
-//    }
 }

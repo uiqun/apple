@@ -45,12 +45,15 @@
         where pid=#{pid}
     </select>
 
-
+    <insert id="insertOnePnByAdmin">
+        INSERT INTO `pnlist`(ptype,pn,des,mfg,pkge,pack,mpq,price,spec,datalink)
+         VALUES((select id from pntype where name like concat('%',#{ptype},'%') ),#{pn},#{des},#{mfg},#{pkge},#{pack},#{mpq},#{price},#{speck},#{datalink})
+    </insert>
     <update id="modifyPnByAdmin">
         update pnlist
         <set>
             <if test="ptype != '' and ptype != null">
-                ptype=#{ptype},
+                ptype=(SELECT id FROM pntype WHERE NAME LIKE CONCAT('%',#{ptype},'%')),
             </if>
             <if test="pn != '' and pn != null">
                 pn=#{pn},
@@ -85,7 +88,7 @@
 
     <select id="queryPnsByAdmin" resultType="com.uiqun.model.Pn">
         select p.pid,pt.name ptype,p.pn,p.des,p.mfg,p.pkge,
-        p.pack,p.mpq,p.price,p.spec,p.datalink
+        p.pack,p.mpq,p.price,p.spec speck,p.datalink
         from pnlist p,pntype pt where p.ptype=pt.id
         <if test="ptype!='' and ptype!= null and ptype>0">
             and ptype=#{ptype}

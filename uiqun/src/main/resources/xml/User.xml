@@ -4,7 +4,7 @@
 <mapper namespace="com.uiqun.dao.UserDao">
     <select id="queryUser" resultType="User">
         select uid,nickname,mobile,company,area,utype,contact,title,tel,qq,wechat,
-        hobby,email,addr,website,business,PROFILE,ulogo,image,certid,cert,iscert
+        hobby,email,addr,website,business,PROFILE,ulogo,image,certid,cert,iscert,rrfq,rquote,rhot,rfind,rvendor,rbom
         from userlist
         <where>
             <if test="nickname!='' and nickname!=null">
@@ -18,6 +18,10 @@
             </if>
         </where>
     </select>
+
+    <update id="modifyLastLoginDate">
+        update userlist set lastLogin = now() where uid=#{uid}
+    </update>
 
     <select id="queryVendor" resultType="User">
        select uid,co,website,website1
@@ -66,5 +70,18 @@
 
     <select id="queryUserByPhone" resultType="User">
         select mobile from userlist where mobile=#{mobile}
+    </select>
+
+    <!--查看近30天登陆-->
+    <select id="viewRecentLogin" resultType="_int">
+        SELECT count(1) FROM userlist WHERE lastLogin BETWEEN DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 1 MONTH),'%Y-%m-%d') AND NOW()
+    </select>
+    <!--查看历史登陆人数-->
+    <select id="viewHistoryLogin" resultType="_int">
+        select count(1) from userlist where lastLogin is not null
+    </select>
+    <!--查看总注册人数-->
+    <select id="viewAllRegister" resultType="_int">
+        select count(1) from userlist
     </select>
 </mapper>
