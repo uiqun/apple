@@ -4,19 +4,19 @@ import com.uiqun.model.User;
 import com.uiqun.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserInfoController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/queryUserDetail/{id}")
-   public String queryUserDetail(@PathVariable("id")int id, Model model){
-        User user = userService.queryUserById(id);
+    @RequestMapping("/queryUserDetail")
+   public String queryUserDetail(HttpSession session, Model model){
+        User user = userService.queryUserDetail( (User)session.getAttribute("user") );
         model.addAttribute("uid",user.getUid());
         model.addAttribute("areas",userService.queryAreas());
         model.addAttribute("nickname",user.getNickname());
@@ -47,7 +47,7 @@ public class UserInfoController {
        }else {
            model.addAttribute("AlertMessage", "用户信息修改失败");
        }
-       return "/queryUserDetail/{id}";
+       return "forward:/queryUserDetail";
    }
 
   @RequestMapping("/queryUserById")

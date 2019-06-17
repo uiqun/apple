@@ -1,6 +1,7 @@
 package com.uiqun.config.intercepors;
 
 import com.sun.istack.internal.Nullable;
+import com.uiqun.constant.PowerConstant;
 import com.uiqun.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -14,6 +15,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     //这个方法是在访问接口之前执行的，我们只需要在这里写验证登陆状态的业务逻辑，就可以在用户调用指定接口之前验证登陆状态了
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         //每一个项目对于登陆的实现逻辑都有所区别，我这里使用最简单的Session提取User来验证登陆。
         HttpSession session = request.getSession();
         //这里的User是登陆时放入session的
@@ -35,22 +37,45 @@ public class LoginInterceptor implements HandlerInterceptor {
             //将用户信息写入modelAndView
             if(modelAndView!=null) {
                 modelAndView.addObject("user", user);
+                    //访问权限处理
+                    //查价
+                    if("/findPrice".equals(request.getRequestURI())&&user.getRfind()==1){
+                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                    }
+                    //报价  -1为管理员
+                    else if("/jumprfq".equals(request.getRequestURI())&&user.getRquote()>0||user.getRquote()==-1){
+                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                    }
+                    //询价 -1为管理员
+                    else if( ("/inquote1".equals(request.getRequestURI())
+                            ||("/inquote".equals(request.getRequestURI())
+                    )&&user.getRrfq()>0||user.getRrfq()==-1)){
+                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                    }
+                    //供应商
+                    else if("/findPrice1".equals(request.getRequestURI())&&user.getRvendor()==1){
+                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                    }
+                    //热卖库存
+                    else if("/bom/searchbom".equals(request.getRequestURI())&&user.getRhot()==1){
+                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                    }
+                    //bom
+                    else if("/bom/searchbom".equals(request.getRequestURI())&&user.getRbom()==1){
+                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                    }
+                    //权限不足
+                    else {
+                        request.setAttribute("status", PowerConstant.PERMISSION_DENIED);
+                        request.getRequestDispatcher("/tips").forward(request,response);
+                    }
+
+
             }
         }
     }
 
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
-        User user = (User)request.getSession().getAttribute("user");
-        if(user!=null){
-            //访问权限处理
-                //查价
-                //报价
-                //询价
-                //供应商
-                //热卖库存
-                //bom
-
-        }
     }
 
 }
