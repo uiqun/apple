@@ -14,12 +14,16 @@
 
 <div id="header">
     <div id="head">
-        <span style="color: red;" th:if="${user!=null}" th:text="'您好:'+${user.nickname}+'，欢迎登录!'"></span>
-        <a id="admin"  onclick="admin()">后台管理</a>
-        <a id="logon" th:if="${user==null}" href="/user/login" >登陆</a>
-        <a id="regist" th:if="${user==null}" onclick="regist()">注册</a>
-        <a id="exit" th:if="${user!=null}" href="/user/login" >退出</a>
-        <a id="userInfo" onclick="userInfo()">用户信息</a>
+        <span th:if="${user?.uid!=null}" th:text="您好："></span>
+        <span style="color: red;" th:if="${user?.uid!=null}">
+                <a id="userInfo" th:text="${user.nickname}" th:href="@{'/queryUserDetail/'+${user?.uid}}" target="_blank">用户信息</a>
+            </span>
+        <span id="topnav">
+                <a id="admin" th:if="${10002==user?.uid}" onclick="admin()">后台管理</a>
+            <a id="logon" th:if="${user?.uid==null}" href="/user/login" >登陆</a>
+            <a id="regist" th:if="${user?.uid==null}" onclick="regist()">注册</a>
+            <a id="exit" th:if="${user?.uid!=null}" href="/user/login" >退出</a>
+            </span>
     </div>
 </div>
 <div id="naver">

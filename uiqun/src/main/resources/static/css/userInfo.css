@@ -36,11 +36,12 @@
 	font-size: 18px;
 }
 .lname{
-    width: 15%;
+    width: 100px;
     text-align: right;
     color: dimgray;
 }
 .rname{
+    width: 390px;
     font-size: 18px;
     background:none;
     outline:none;
@@ -55,6 +56,9 @@
     background:none;
     outline:none;
     border:0px;
+    width:880px;
+    overflow: hidden;
+    resize: none;
 }
 
 #note{

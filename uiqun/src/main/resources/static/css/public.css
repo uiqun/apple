@@ -35,65 +35,24 @@ ul{
 #head span{
     display: inline-block;
     float:left;
-    width:220px;
     height:25px;
     font-size: 16px;
-    margin-left:250px;
     margin-top:5px;
 }
-#admin:hover{color:#F00;}
-#admin{
-    float:left;
+#head span:first-child{
+    margin-left: 600px;
+}
+#head a:hover{
+    color:#F00;
+    cursor:pointer;
+}
+
+#topnav a{
     width:80px;
     height:25px;
     font-size: 16px;
     margin-left:50px;
-    margin-top:5px;
     text-decoration:none;
-    cursor:pointer;
-}
-#logon:hover{color:#F00;}
-#logon{
-    float:left;
-    width:40px;
-    height:25px;
-    font-size: 16px;
-    margin-left:80px;
-    margin-top:5px;
-    text-decoration:none;
-    cursor:pointer;
-}
-#exit:hover{color:#F00;}
-#exit{
-    float:left;
-    width:40px;
-    height:25px;
-    font-size: 16px;
-    margin-left:80px;
-    margin-top:5px;
-    text-decoration:none;
-    cursor:pointer;
-}
-#regist:hover{color:#F00;}
-#regist{
-    float:left;
-    width:40px;
-    height:25px;
-    font-size: 16px;
-    margin-left:20px;
-    margin-top:5px;
-    cursor:pointer;
-}
-
-#userInfo:hover{color:#F00;}
-#userInfo{
-    float:left;
-    width:80px;
-    height:25px;
-    font-size: 16px;
-    margin-left:20px;
-    margin-top:5px;
-    cursor:pointer;
 }
 #nav{
     margin:0 auto;
