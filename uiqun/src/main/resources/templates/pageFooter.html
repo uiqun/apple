@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/images/uiqun.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/uiqun.ico" type="image/x-icon"/>
+    <title>唯群网--登录</title>
+    <link rel="stylesheet" href="/css/public.css"/>
+    <link rel="stylesheet" href="/css/login.css"/>
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script charset="gb2312" type="text/javascript" src="/js/public.js"></script>
+    <script charset="gb2312" type="text/javascript" src="/js/login.js"></script>
+ </head>
+
+<body>
+<div th:fragment="pageFooterIndex">
+    <div id="belowNav_box">
+        <div id="belowNav">
+            <a onclick="platInfo()">用户指南</a>
+            <a onclick="platInfo()">操作流程</a>
+            <a onclick="platInfo()">免责声明</a>
+            <a onclick="platInfo()">关于我们</a>
+            <a onclick="platInfo()">联系我们</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <div id="vr">
+            <span>版权所有：深圳市大唯科技有限公司</span>
+            <span>备案号：©唯群网 粤ICP备17005480号-2</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

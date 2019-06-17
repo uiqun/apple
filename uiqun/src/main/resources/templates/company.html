@@ -12,29 +12,8 @@
 
 <body>
 
-<div id="header">
-    <div id="head">
-        <span style="color: red;" th:if="${user!=null}" th:text="'您好:'+${user.nickname}+'，欢迎登录!'"></span>
-        <a id="admin" th:if="${10002==user?.uid}" onclick="admin()">后台管理</a>
-        <a id="logon" th:if="${user==null}" href="/user/login" >登陆</a>
-        <a id="regist" th:if="${user==null}" onclick="regist()">注册</a>
-        <a id="exit" th:if="${user!=null}" href="/user/login" >退出</a>
-        <a id="userInfo" onclick="userInfo()">用户信息</a>
-    </div>
-</div>
-<div id="naver">
-    <div id="nav">
-        <div id="logo">
-            <img src="/images/logo.png" alt=""/>
-        </div>
-        <a class="nav1" onclick="index()">首页</a>
-        <a class="nav1" onclick="findPrice()">查价</a>
-        <a class="nav1" onclick="rfq()">询价</a>
-        <a class="nav1" onclick="quote()">报价</a>
-        <a class="nav1" onclick="vendor()">供应商</a>
-        <a class="nav1" onclick="BOM()">BOM</a>
-    </div>
-</div>
+<!--引入头部信息-->
+<div th:include="pageHead :: pageHeadIndex"></div>
 
 <div class="box">
     <div id="banner">
@@ -121,7 +100,7 @@
     <div id="pageCount">
         <a href="/index" th:if="${pager.currentPage>1}">首页</a>
         <a th:href="${'/index/'+(pager.currentPage-1)}" th:if="${pager.currentPage>1}">上一页</a>
-        <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+        <span th:if="${pager.totalPage>0}" th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
             <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="'/index/'+${i}" th:text="${i}"></a>
         </span>
         <a th:href="${'/index/'+(pager.currentPage+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
@@ -129,21 +108,7 @@
     </div>
 </div>
 
-    <div id="belowNav_box">
-        <div id="belowNav">
-            <a onclick="platInfo()">用户指南</a>
-            <a onclick="platInfo()">操作流程</a>
-            <a onclick="platInfo()">免责声明</a>
-            <a onclick="platInfo()">关于我们</a>
-            <a onclick="platInfo()">联系我们</a>
-        </div>
-    </div>
-
-    <div class="box">
-        <div id="vr">
-            <span>版权所有：深圳市大唯科技有限公司</span>
-            <span>备案号：©唯群网 粤ICP备17005480号-2</span>
-        </div>
-    </div>
+<!--引入页脚-->
+<div th:include="pageFooter :: pageFooterIndex"></div>
 </body>
 </html>

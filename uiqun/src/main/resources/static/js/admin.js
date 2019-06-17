@@ -5,6 +5,9 @@
 function analysis(){
 
 }
+
+
+
 $(function(){
     $("ul li:first-child").click(function(){
         $(this).css("color","#FF0000");

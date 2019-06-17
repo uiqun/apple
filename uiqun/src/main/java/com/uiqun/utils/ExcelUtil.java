@@ -219,15 +219,17 @@ public class ExcelUtil {
         out.close();
     }
     public static void downExcelData(HttpServletResponse response, Workbook workbook, String downName){
-        response.setHeader("content-type", "application/octet-stream");
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment;filename=" + downName);
-        OutputStream os = null;
-        try {
-            os = response.getOutputStream();
-            workbook.write(os);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(workbook!=null) {
+            response.setHeader("content-type", "application/octet-stream");
+            response.setContentType("application/octet-stream");
+            response.setHeader("Content-Disposition", "attachment;filename=" + downName);
+            OutputStream os = null;
+            try {
+                os = response.getOutputStream();
+                workbook.write(os);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

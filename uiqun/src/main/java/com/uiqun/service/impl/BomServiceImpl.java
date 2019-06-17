@@ -34,6 +34,7 @@ public class BomServiceImpl implements BomService {
         Workbook wk=new HSSFWorkbook();
         Sheet bomList = wk.createSheet("产品名称"+bname+"的Bom清单列表");
         bomList.setDefaultColumnWidth(20);
+
         for (int i = 0; i < boms.size()+1; i++) {
             Row row = bomList.createRow(i);
             if(i==0){
@@ -44,6 +45,10 @@ public class BomServiceImpl implements BomService {
                 row.createCell(4).setCellValue("最小包装");
                 row.createCell(5).setCellValue("单价");
                 row.createCell(6).setCellValue("货期");
+                if(boms.size()==0){
+                    row = bomList.createRow(i+1);
+                    row.createCell(0).setCellValue("产品bom清单无数据,清单未上传");
+                }
                 continue;
             }
             row.createCell(0).setCellValue(boms.get(i-1).getPn());

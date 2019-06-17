@@ -9,7 +9,7 @@ public class Pager<T> implements Serializable {
     private int currentPage=1;//当前页
     private int totalCount;//总记录数
     private int totalPage;//总页数
-    private int pageSize=10;//每页行数
+    private int pageSize=25;//每页行数
     private List<T> datas;//每页数据
     private Map<String,Object> condition = new HashMap<String, Object>();
     private int pageOffset;//每页起始页

@@ -40,16 +40,16 @@ public class UserInfoController {
        return "userInfo";
    }
 
-   @RequestMapping("/updateUser")
-   public String updateUser(User user,Model model) {
-       if (userService.updateUser(user)) {
-           model.addAttribute("AlertMessage", "用户信息修改成功");
-       }
-       model.addAttribute("AlertMessage", "用户信息修改失败");
-       return "/queryUserDetail/{id}";
-   }
+//   @RequestMapping("/updateUser")
+//   public String updateUser(User user,Model model) {
+//       if (userService.updateUser(user)) {
+//           model.addAttribute("AlertMessage", "用户信息修改成功");
+//       }
+//       model.addAttribute("AlertMessage", "用户信息修改失败");
+//       return "/queryUserDetail/{id}";
+//   }
 
-  @RequestMapping("/queryUserById/{id}")
+  @RequestMapping("/queryUserById")
    public String queryUserById(int id, Model model){
         User user = userService.queryUserById(id);
         model.addAttribute("uid",user.getUid());
@@ -82,15 +82,16 @@ public class UserInfoController {
       model.addAttribute("rfind",user.getRfind());
       model.addAttribute("rvendor",user.getRvendor());
       model.addAttribute("rbom",user.getRbom());
-       return "/Xuser";
+       return "forward:/user/Xuser";
    }
 
     @RequestMapping("/saveUser")
     public String saveUser(User user,Model model) {
         if (userService.saveUser(user)) {
             model.addAttribute("AlertMessage", "用户信息修改成功");
+        }else{
+            model.addAttribute("AlertMessage", "用户信息修改失败");
         }
-        model.addAttribute("AlertMessage", "用户信息修改失败");
-        return "/Xuser";
+        return "forward:/user/Xuser";
     }
 }

@@ -82,8 +82,17 @@ public class MfgController {
     }
 
     @RequestMapping("/queryOneMfg")
-    public String queryOneMfg(Model model,Mfg mfg){
-        model.addAttribute("mfg",mfgService.getMfg(mfg));
+    public String queryOneMfg(Model model,Mfg mfg1){
+        if(mfg1!=null){
+            Mfg mfg = mfgService.getMfg(mfg1);
+            if(mfg!=null) {
+                model.addAttribute("mfg", mfg);
+            }else{
+                model.addAttribute("AlertMessage", "品牌不存在");
+            }
+        }else{
+            model.addAttribute("AlertMessage", "请输入品牌编号");
+        }
         return "Xmfg";
     }
 
