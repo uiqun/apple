@@ -18,7 +18,7 @@
                 <tr>
                     <td>
                     <form action="/queryOnePn" method="post">
-                        <input id="fillPn" th:value="${pn?.pid}" name="pid" type="text" placeholder="输入型号"/>
+                        <input id="fillPn" th:value="${pn?.pid}" name="pid" type="text" required="required" placeholder="输入型号"/>
                         <input id="pnSearch" type="submit" width="50px" value="查询"/>
                     </form>
                     </td>

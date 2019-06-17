@@ -81,8 +81,11 @@ function getRootPath() {
     return (localhostPaht + projectName);
 }
 $(function () {
-    var AlertMessage = document.getElementById("AlertMessage").value;
-    if(AlertMessage!=null&&AlertMessage!=''){
-        alert(AlertMessage);
+    var AlertMessage = document.getElementById("AlertMessage");
+    if(AlertMessage!=null) {
+        var AlertMessageValue = AlertMessage.value;
+        if (AlertMessageValue != null && AlertMessageValue != '') {
+            alert(AlertMessageValue);
+        }
     }
 })

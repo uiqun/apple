@@ -18,7 +18,7 @@
                 <tr>
                     <td>
                     <form action="/queryOneMfg" method="post">
-                        <input type="text" th:value="${mfg?.mid}" name="mid"  placeholder="输入品牌"/>
+                        <input type="text" th:value="${mfg?.mid}" name="mid" required="required"  placeholder="输入品牌"/>
                         <input type="submit" value="查询"/>
                     </form>
                     </td>

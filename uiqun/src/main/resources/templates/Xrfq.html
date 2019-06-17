@@ -54,7 +54,7 @@
         <div id="pageCount">
             <a th:href="@{/Xrfq(currentPage=1,company=${pager?.condition?.rfq?.company},pn=${pager?.condition?.rfq?.pn},rfqno=${pager?.condition?.rfq?.rfqno})}" th:if="${pager.currentPage>1}">首页</a>
             <a th:href="@{/Xrfq(currentPage=${pager.currentPage} - 1,company=${pager?.condition?.rfq?.company},pn=${pager?.condition?.rfq?.pn},rfqno=${pager?.condition?.rfq?.rfqno})}" th:if="${pager.currentPage>1}">上一页</a>
-            <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <span th:if="${pager.totalPage>0}" th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
             <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="@{/Xrfq(currentPage=${i},company=${pager?.condition?.rfq?.company},pn=${pager?.condition?.rfq?.pn},rfqno=${pager?.condition?.rfq?.rfqno})}" th:text="${i}"></a>
         </span>
             <a th:href="@{/Xrfq(currentPage=${pager.currentPage}+1,company=${pager?.condition?.rfq?.company},pn=${pager?.condition?.rfq?.pn},rfqno=${pager?.condition?.rfq?.rfqno})}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>

@@ -53,7 +53,7 @@
         <div id="pageCount">
             <a th:href="@{/Xquote(currentPage=1,company=${pager?.condition?.quote?.company},pn=${pager?.condition?.quote?.pn},qotno=${pager?.condition?.quote?.qotno})}" th:if="${pager.currentPage>1}">首页</a>
             <a th:href="@{/Xquote(currentPage=${pager.currentPage} - 1,company=${pager?.condition?.quote?.company},pn=${pager?.condition?.quote?.pn},qotno=${pager?.condition?.quote?.qotno})}" th:if="${pager.currentPage>1}">上一页</a>
-            <span th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <span th:if="${pager.totalPage>0}" th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
             <a th:if="${i&lt;pager.currentPage+10 &amp;&amp; i&lt;=pager.totalPage}" th:href="@{/Xquote(currentPage=${i},company=${pager?.condition?.quote?.company},pn=${pager?.condition?.quote?.pn},qotno=${pager?.condition?.quote?.qotno})}" th:text="${i}"></a>
         </span>
             <a th:href="@{/Xquote(currentPage=${pager.currentPage}+1,company=${pager?.condition?.quote?.company},pn=${pager?.condition?.quote?.pn},qotno=${pager?.condition?.quote?.qotno})}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>

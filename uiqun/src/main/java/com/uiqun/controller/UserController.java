@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -39,20 +38,33 @@ public class UserController  {
     /**
      * 用户登录
      * @param user
-     * @param request
+     * @param session
      * @return
      */
     @RequestMapping("/login")
-    public String login(User user,HttpServletRequest request){
+    public String login( Model model, User user, HttpSession session){
         if(user!=null&&user.getNickname()!=null&&!"".equals(user.getNickname())){
             User login = userService.login(user);
             if(login!=null) {
-                request.getSession().setAttribute("user", login);
+                session.setAttribute("user", login);
+                model.addAttribute("AlertMessage","登录成功");
                 return "redirect:/index";
             }else{
+                model.addAttribute("AlertMessage","账号或密码错误");
                 return "login";
             }
         }
+        return "login";
+    }
+
+    /**
+     * 退出登陆
+     * @param session
+     * @return
+     */
+    @RequestMapping("/logout")
+    public String login(HttpSession session){
+        session.invalidate();
         return "login";
     }
 

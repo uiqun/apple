@@ -107,9 +107,6 @@
             <if test="mobile != '' and mobile != null">
                 mobile=#{mobile},
             </if>
-            <if test="pwd != '' and pwd != null">
-                pwd=#{pwd},
-            </if>
             <if test="company != '' and company != null">
                 company=#{company},
             </if>

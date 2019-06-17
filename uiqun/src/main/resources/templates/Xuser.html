@@ -12,9 +12,9 @@
 <body>
 <input type="hidden" id="AlertMessage" th:value="${AlertMessage}"/>
     <div>
-        <form action="/queryUserById/{id}">
+        <form id="queryUser" action="/queryUserById" method="post">
             <div>
-                <input type="text" name="id" width="100px" placeholder="客户编号"/><input type="submit" value="查询"/>
+                <input type="text"  name="id" width="100px" required="required" placeholder="客户编号"/><input type="submit"  value="查询"/>
             </div>
         </form>
         <form method="post" action="/saveUser">
