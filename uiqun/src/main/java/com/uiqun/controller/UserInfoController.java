@@ -40,14 +40,15 @@ public class UserInfoController {
        return "userInfo";
    }
 
-//   @RequestMapping("/updateUser")
-//   public String updateUser(User user,Model model) {
-//       if (userService.updateUser(user)) {
-//           model.addAttribute("AlertMessage", "用户信息修改成功");
-//       }
-//       model.addAttribute("AlertMessage", "用户信息修改失败");
-//       return "/queryUserDetail/{id}";
-//   }
+   @RequestMapping("/updateUser")
+   public String updateUser(User user,Model model) {
+       if (userService.updateUser(user)) {
+           model.addAttribute("AlertMessage", "用户信息修改成功");
+       }else {
+           model.addAttribute("AlertMessage", "用户信息修改失败");
+       }
+       return "/queryUserDetail/{id}";
+   }
 
   @RequestMapping("/queryUserById")
    public String queryUserById(int id, Model model){
