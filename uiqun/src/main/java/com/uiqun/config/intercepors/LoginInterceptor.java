@@ -38,38 +38,44 @@ public class LoginInterceptor implements HandlerInterceptor {
             if(modelAndView!=null) {
                 modelAndView.addObject("user", user);
                     //访问权限处理
-                    //查价
-                    if("/findPrice".equals(request.getRequestURI())&&user.getRfind()==1){
-                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                    if("/findPrice".equals(request.getRequestURI())||
+                            "/findPrice".equals(request.getRequestURI())||
+                            "/jumprfq".equals(request.getRequestURI())||
+                            "/inquote1".equals(request.getRequestURI())||
+                            "/queryLevel/11".equals(request.getRequestURI())||
+                            "/bom/searchbom".equals(request.getRequestURI())) {
+                        //查价
+                        if ("/findPrice".equals(request.getRequestURI()) && user.getRfind() == 1) {
+                            request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                        }
+                        //报价  -1为管理员
+                        else if ("/jumprfq".equals(request.getRequestURI()) && user.getRquote() > 0 || user.getRquote() == -1) {
+                            request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                        }
+                        //询价 -1为管理员
+                        else if (("/inquote1".equals(request.getRequestURI())
+                                || ("/inquote".equals(request.getRequestURI())
+                        ) && user.getRrfq() > 0 || user.getRrfq() == -1)) {
+                            request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                        }
+                        //供应商
+                        else if ("/queryLevel/11".equals(request.getRequestURI()) && user.getRvendor() == 1) {
+                            request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                        }
+                        //热卖库存(不知道哪个路径)
+//                    else if("/bom/searchbom".equals(request.getRequestURI())&&user.getRhot()==1){
+//                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+//                    }
+                        //bom
+                        else if ("/bom/searchbom".equals(request.getRequestURI()) && user.getRbom() == 1) {
+                            request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+                        }
+                        //权限不足
+                        else {
+                            request.setAttribute("status", PowerConstant.PERMISSION_DENIED);
+                            request.getRequestDispatcher("/tips").forward(request, response);
+                        }
                     }
-                    //报价  -1为管理员
-                    else if("/jumprfq".equals(request.getRequestURI())&&user.getRquote()>0||user.getRquote()==-1){
-                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
-                    }
-                    //询价 -1为管理员
-                    else if( ("/inquote1".equals(request.getRequestURI())
-                            ||("/inquote".equals(request.getRequestURI())
-                    )&&user.getRrfq()>0||user.getRrfq()==-1)){
-                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
-                    }
-                    //供应商
-                    else if("/findPrice1".equals(request.getRequestURI())&&user.getRvendor()==1){
-                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
-                    }
-                    //热卖库存
-                    else if("/bom/searchbom".equals(request.getRequestURI())&&user.getRhot()==1){
-                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
-                    }
-                    //bom
-                    else if("/bom/searchbom".equals(request.getRequestURI())&&user.getRbom()==1){
-                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
-                    }
-                    //权限不足
-                    else {
-                        request.setAttribute("status", PowerConstant.PERMISSION_DENIED);
-                        request.getRequestDispatcher("/tips").forward(request,response);
-                    }
-
 
             }
         }
