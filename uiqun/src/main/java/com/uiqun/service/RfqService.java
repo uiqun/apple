@@ -18,7 +18,7 @@ public interface RfqService {
      * @return
      * @throws Exception
      */
-    List<Rfq> queryRfqListFromFindPrice(Map<String,Object> condition);
+    List<Rfq> queryRfqListFromFindPrice(Map<String, Object> condition);
 
 
      boolean deletXrfqByAdmin(int rfqid);

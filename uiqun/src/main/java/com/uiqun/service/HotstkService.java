@@ -25,7 +25,7 @@ public interface HotstkService {
      * 前20个热卖
      * @return
      */
-    List<Hotstk> queryHotstksFromFindPrice(Map<String,Object> condition);
+    List<Hotstk> queryHotstksFromFindPrice(Map<String, Object> condition);
 
     /**
      * 删除热卖库存

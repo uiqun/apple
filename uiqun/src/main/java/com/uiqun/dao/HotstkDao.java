@@ -27,7 +27,7 @@ public interface HotstkDao {
      * @return
      * @throws Exception
      */
-    List<Hotstk> queryHotstksFromFindPrice(Map<String,Object> condition)throws Exception;
+    List<Hotstk> queryHotstksFromFindPrice(Map<String, Object> condition)throws Exception;
 
     /**
      * 查询行数

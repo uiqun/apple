@@ -21,7 +21,7 @@ public interface RfqDao {
      * @return
      * @throws Exception
      */
-    List<Rfq> queryRfqListFromFindPrice(Map<String,Object> condition)throws Exception;
+    List<Rfq> queryRfqListFromFindPrice(Map<String, Object> condition)throws Exception;
 
     /**
      * 查询总行数

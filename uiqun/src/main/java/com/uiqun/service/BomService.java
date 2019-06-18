@@ -26,5 +26,5 @@ public interface BomService {
      * @param bid
      * @return
      */
-    Workbook downloadbom(int bid,String bname);
+    Workbook downloadbom(int bid, String bname);
 }
