@@ -45,6 +45,7 @@
     </div>
     <div class="box">
         <div id="pageCount">
+              <span th:if="${pager.totalPage>0}">
             <a th:href="@{/bomlist/Xbom(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
             <a th:href="@{/bomlist/Xbom(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
             <span th:if="${pager.totalPage>0}" th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
@@ -53,7 +54,7 @@
             <a th:href="@{/bomlist/Xbom(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
             <a th:href="@{/bomlist/Xbom(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
             <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
-
+              </span>
         </div>
     </div>
 </body>
