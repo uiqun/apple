@@ -23,13 +23,13 @@
               <form id="registForm" name="registForm" method="post" action="/user/addregist">
                   <table>
                         <tr>
-                            <td>用户名：<input id="nickname" name="nickname" pattern="/^[a-zA-Z][a-zA-Z0-9]{3,15}$/" type="text" size="18" required/><span id="user_prompt">用户名由英文字母和数字组成的4-16位字符，以字母开头</span></td>
+                            <td>用户名：<input id="nickname" name="nickname" pattern="/^[a-zA-Z][a-zA-Z0-9]{3,15}$/" type="text" size="18" required="required"/><span id="user_prompt">用户名由英文字母和数字组成的4-16位字符，以字母开头</span></td>
                         </tr>
                         <tr>
-                            <td>密 &nbsp 码：<input id="pwd" name="pwd" pattern="/[A-Za-z0-9]{4,10}/" type="password" size="18" required/><span id="pwd_prompt">密码由英文字母和数字组成的4-10位字符</span></td>
+                            <td>密 &nbsp; 码：<input id="pwd" name="pwd" pattern="/[A-Za-z0-9]{4,10}/" type="password" size="18" required="required"/><span id="pwd_prompt">密码由英文字母和数字组成的4-10位字符</span></td>
                         </tr>
                         <tr>
-                            <td>手 &nbsp 机：<input id="mobile" name="mobile" type="text" size="18" required/> <span onclick="verifyCode(this)">发送验证码</span><span id="mobile_prompt"></span></td>
+                            <td>手 &nbsp; 机：<input id="mobile" name="mobile" type="text" size="18" required="required"/> <span onclick="verifyCode(this)">发送验证码</span><span id="mobile_prompt"></span></td>
                         </tr>
                         <tr>
                             <td>验证码：<input id="veriCode" name="veriCode" type="text" size="18"/></td>

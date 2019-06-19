@@ -43,7 +43,7 @@ function quote(){
 }
 
 function regist(){
-    window.open("/regist","_self");
+    window.open("/user/regist","_self");
 }
 
 function rfq(){
