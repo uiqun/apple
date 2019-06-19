@@ -40,24 +40,37 @@ ul{
     margin-top:5px;
 }
 #head span:first-child{
-    margin-left: 600px;
+    margin-left: 550px;
 }
-#head a:hover{
+#head span:nth-child(2) a{
+    color:blue;
+    text-align: left;
+    margin-left: 5px;
+    text-decoration:underline;
+}
+#head span:nth-child(2) a:hover{
     color:#F00;
     cursor:pointer;
 }
+
 
 #topnav a{
     width:80px;
     height:25px;
     font-size: 16px;
-    margin-left:50px;
+    margin-right:50px;
     text-decoration:none;
 }
+#topnav a:hover{
+    color:#F00;
+    cursor:pointer;
+}
+
 #nav{
     margin:0 auto;
     width:1000px;
     height:80px;
+
 }
 
 #logo{

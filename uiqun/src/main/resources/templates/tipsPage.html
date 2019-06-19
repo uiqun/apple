@@ -7,8 +7,24 @@
     <title>唯群网</title>
 </head>
 <body>
-<!--<h1 align="center">操作有误,请按照操作规程操作</h1>-->
-<h1 align="center" th:text="${TipsMessage}">权限不足,请按照操作规程操作</h1>
-<a href="/index">点击返回首页</a>
+<div id="box" style="margin-top: 100px">
+    <div id="message">
+        <img src="/images/sad.jpg" alt=""/>
+        <h2 align="center" th:text="${TipsMessage}">您的权限不足,请联系客服</h2>
+        <a href="/index">点击返回首页</a>
+    </div>
+</div>
+
+
 </body>
+<style>
+    #message{
+        margin: 0 auto;
+        width: 1000px;
+        text-align: center;
+    }
+    a{
+        font-size: 20px;
+    }
+</style>
 </html>
