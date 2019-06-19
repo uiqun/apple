@@ -82,31 +82,63 @@ for (var i = 0, len = dots.length; i < len; i++){
 
 
 
-window.onload = roll(100);
+$(function(){
+    $('.myscroll').myScroll({
+        speed: 80, //数值越大，速度越慢
+        rowHeight: 28 //tr的高度
+    });
+});
 
-function roll(t) {
-    var ul1 = document.getElementById("ul1");
-    var ul2 = document.getElementById("ul2");
-    var box = document.getElementById("box");
-    ul2.innerHTML = ul1.innerHTML;
-    box.scrollTop = 0;
-    var timer = setInterval(rollStart, t);
-    box.onmouseover = function () {
-        clearInterval(timer)
-    }
-    box.onmouseout = function () {
-        timer = setInterval(rollStart, t);
-    }
-}
+(function($){
+    $.fn.myScroll = function(options){
+        //默认配置
+        var defaults = {
+            speed:80,  //滚动速度,值越大速度越慢
+            rowHeight:28 //每行的高度
+        };
 
-function rollStart() {
-    if (box.scrollTop >= ul1.scrollHeight) {
-        box.scrollTop = 0;
-    } else {
-        box.scrollTop++;
-    }
-}
+        var opts = $.extend({}, defaults, options),intId = [];
 
+        function marquee(obj, step){
+
+            obj.find("table").animate({
+                marginTop: '-=1'
+            },0,function(){
+                var s = Math.abs(parseInt($(this).css("margin-top")));
+                if(s >= step){
+                    $(this).find("tr").slice(0, 1).appendTo($(this));
+                    $(this).css("margin-top", 0);
+                }
+            });
+        }
+
+        this.each(function(i){
+            var sh = opts["rowHeight"],speed = opts["speed"],_this = $(this);
+            intId[i] = setInterval(function(){
+                if(_this.find("table").height()<=_this.height()){
+                    clearInterval(intId[i]);
+                }else{
+                    marquee(_this, sh);
+                }
+            }, speed);
+
+            _this.hover(function(){
+                clearInterval(intId[i]);
+            },function(){
+                intId[i] = setInterval(function(){
+                    if(_this.find("table").height()<=_this.height()){
+                        clearInterval(intId[i]);
+                    }else{
+                        marquee(_this, sh);
+                    }
+                }, speed);
+            });
+
+        });
+
+    }
+
+})(jQuery);
 
 
 $(function(){
@@ -117,26 +149,6 @@ function inquote(rfqno) {
     window.location.href=getRootPath()+"/inquote/"+rfqno;
 }
 
-
-var w = 1;
-var aLRB = document.getElementsByClassName("bannerArrow");
-
-function changeBG(der) {
-    if(der==-1){
-        --w<0?w=3:"";
-    }
-    else{
-        ++w==4?w=1:"";
-    }
-    document.getElementsByClassName("bannerMiddle")[0].className="bannerMiddle bannerImage"+w;
-}
-aLRB[0].onclick = function () {
-    changeBG(-1);
-}
-aLRB[1].onclick = function () {
-    changeBG(1);
-}
-setInterval("changeBG(1)",3000);
 
 
 
