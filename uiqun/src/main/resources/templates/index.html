@@ -90,10 +90,10 @@
                     <th>询价单号</th>
                     <th>&nbsp; &nbsp;公 司 名 称</th>
                     <th>规格型号</th>
+                    <th>品牌</th>
                     <th>品质要求</th>
                     <th>批次</th>
                     <th>数量</th>
-                    <th>价格(元)</th>
                     <th>要求货期</th>
                     <th>询价日期</th>
                     <th>操作</th>
@@ -102,10 +102,10 @@
                     <td th:text="${Rfq.rfqno}">I890600001</td>
                     <td ><a th:text="${Rfq.company}" th:href="@{'/user/company/'+${Rfq.uid}}" target="_blank">深圳市模板电子科技有限公司</a></td>
                     <td th:text="${Rfq.pn}">STM8S003F3P6TR</td>
+                    <td th:text="${Rfq.mfg}">ST</td>
                     <td th:text="${Rfq.qltyName}">原装正品</td>
                     <td th:text="${Rfq.dtcd}">1830+</td>
                     <td th:text="${Rfq.qty}">500000</td>
-                    <td th:text="${Rfq.tp}">11.2563</td>
                     <td th:text="${Rfq.dtime}">深圳现货</td>
                     <td th:text="${#dates.format(Rfq.rdate,'yyyy-MM-dd')}">2019-04-23</td>
                     <td><button type="button" th:value="${Rfq.rfqno}" onclick="inquote(this.value)">报价</button></td>

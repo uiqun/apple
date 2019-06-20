@@ -24,6 +24,7 @@
                     <th>询 价 单号</th>
                     <th>公司 名称</th>
                     <th>型 号</th>
+                    <th>品牌</th>
                     <th>品质要求</th>
                     <th>批次</th>
                     <th>数量</th>
@@ -35,6 +36,7 @@
                     <td th:text="${rfq.rfqno}">I8090600001</td>
                     <td th:text="${rfq.company}">深圳市模板测试电子有限公司</td>
                     <td th:text="${rfq.pn}">STM8S903K3T6CTR</td>
+                    <td th:text="${rfq.mfg}">品牌</td>
                     <td th:text="${rfq.qltyName}">原装正品</td>
                     <td th:text="${rfq.dtcd}" > 2018+</td>
                     <td th:text="${rfq.qty}" >56850</td>
@@ -49,8 +51,8 @@
                         <tr><th colspan="7">填写报价单：</th></tr>
                         <input type="hidden" name="rfqno" th:value="${rfq.rfqno}"/>
                         <tr>
-                            <td><input name="pn" type="text" placeholder="型号"  onblur="checkRfqPn()" /></td>
-                            <td id="mfg" style="font-size: 18px;">品牌</td>
+                            <td><input name="pn" type="text" placeholder="型号" th:value="${rfq.pn}"  onblur="checkRfqPn()"/></td>
+                            <td id="mfg" style="font-size: 18px;" th:text="${rfq.mfg}" >品牌</td>
                             <td>
                                 <select name="qlty" type="text" id="ptypeList">
                                     <option th:each="ql:${qltyTypeList}" th:value="${ql.id}" style="font-size: 18px" th:text="${ql.name}">原装正品</option>
@@ -83,6 +85,7 @@
                 <th>方式</th>
                 <th>单号</th>
                 <th>型号</th>
+                <th>品牌</th>
                 <th>质量标准</th>
                 <th>批次</th>
                 <th>数量</th>
@@ -96,6 +99,7 @@
                 <td>询价</td>
                 <td th:text="${quote.rfq.rfqno}">I8090600001</td>
                  <td th:text="${quote.rfq.pn}">STM8S903K3T6CTR</td>
+                <td th:text="${quote.rfq.mfg}">品牌</td>
                 <td th:text="${quote.rfq.qltyName}">原装正品</td>
                 <td th:text="${quote.rfq.dtcd}">2018+</td>
                 <td th:text="${quote.rfq.qty}">56850</td>
@@ -108,6 +112,7 @@
                 <td>报价</td>
                 <td th:text="${quote.qotno}">I8090600001</td>
                 <td th:text="${quote.pn}">STM8S903K3T6C</td>
+                <td th:text="${quote.mfg}">品牌</td>
                 <td th:text="${quote.qltyName}">原装正品</td>
                 <td th:text="${quote.dtcd}">2018+</td>
                 <td th:text="${quote.qty}">56850</td>

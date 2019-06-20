@@ -96,6 +96,7 @@
                 <tr class="headline">
                 <th>询价单号</th>
                 <th>型号</th>
+                    <th>品牌</th>
                 <th>品质标准</th>
                 <th>批次</th>
                 <th>数量</th>
@@ -107,6 +108,7 @@
                 <tr th:class="${index.odd}?'odd'" th:each="rfq,index:${pager.datas}">
                    <td th:text="${rfq.rfqno}">I8090600001</td>
                    <td th:text="${rfq.pn}">STM8S903K3T6C</td>
+                    <td th:text="${rfq.mfg}">ST</td>
                    <td th:text="${rfq.qltyName}">原装正品</td>
                    <td th:text="${rfq.dtcd}">2018+</td>
                    <td th:text="${rfq.qty}">56850</td>
