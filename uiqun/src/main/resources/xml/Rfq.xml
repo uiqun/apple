@@ -44,7 +44,7 @@
 
 
     <select id="queryRfqListFromFindPrice" resultType="Rfq">
-        select rfqno,company,pn,mfg,qty,dtcd,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName
+        select rfqno,company,pn,mfg,qty,dtcd,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName,uid
         from  rfqlist r,qltytype q where r.qlty=q.id
             <if test="pn!='' and pn!=null">
                 and pn like concat('%',#{pn},'%')

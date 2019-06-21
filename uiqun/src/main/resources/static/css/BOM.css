@@ -13,6 +13,24 @@
 	margin:0 auto;
 	width: 1000px;
 }
+#bom td{
+	height: 45px;
+	font-size: 18px;
+}
+#bom select{
+	height: 30px;
+	font-size: 18px;
+	width: 300px;
+}
+#bom option{
+	font-size: 18px;
+}
+#bom input{
+	height: 28px;
+	font-size: 18px;
+	width: 295px;
+}
+
 #title{
 	font: bold  36px "����";
 	color:#FF0000;

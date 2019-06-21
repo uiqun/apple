@@ -34,7 +34,7 @@
                 </tr>
                 <tr>
                     <td th:text="${rfq.rfqno}">I8090600001</td>
-                    <td th:text="${rfq.company}">深圳市模板测试电子有限公司</td>
+                    <td><a th:text="${rfq.company}" th:href="@{'/user/company/'+${rfq.uid}}" target="_blank">深圳市模板电子科技有限公司</a></td>
                     <td th:text="${rfq.pn}">STM8S903K3T6CTR</td>
                     <td th:text="${rfq.mfg}">品牌</td>
                     <td th:text="${rfq.qltyName}">原装正品</td>

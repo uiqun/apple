@@ -1,4 +1,3 @@
-
 #login_box{
 	width: 100%;
 }
@@ -18,11 +17,4 @@
 }
 #logForm input{
     font-size: 24px;
-}
-a{
-    font-size: 24px;
-    cursor: pointer;
-}
-a:hover{
-    color: #FF0000;
 }

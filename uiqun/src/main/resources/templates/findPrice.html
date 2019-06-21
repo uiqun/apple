@@ -55,7 +55,7 @@
             </tr>
             <tr th:class="${index.odd}?'odd'" th:each="Rfq,index:${rfqList}">
                 <td th:text="${Rfq.rfqno}">I890600001</td>
-                <td th:text="${Rfq.company}">深圳市模板电子科技有限公司</td>
+                <td><a th:text="${Rfq.company}" th:href="@{'/user/company/'+${Rfq.uid}}" target="_blank">深圳市模板电子科技有限公司</a></td>
                 <td th:text="${Rfq.pn}">STM8S003F3P6TR</td>
                 <td th:text="${Rfq.mfg}">品牌</td>
                 <td th:text="${Rfq.qltyName}">原装正品</td>
@@ -90,7 +90,7 @@
                 </tr>
 
                 <tr th:class="${index.odd}?'odd'" th:each="hotstk,index:${hotstkList}">
-                    <td th:text="${hotstk.company}">深圳市模板电子科技有限公司</td>
+                    <td><a th:text="${hotstk.company}" th:href="@{'/user/company/'+${hotstk.uid}}" target="_blank">深圳市模板电子科技有限公司</a></td>
                     <td th:text="${hotstk.pn}">STM8S003F3P6TR</td>
                     <td th:text="${hotstk.mfg}">品牌</td>
                     <td th:text="${hotstk.qltyName}">品牌</td>

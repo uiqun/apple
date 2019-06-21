@@ -17,7 +17,7 @@
 <div th:include="pageHead :: pageHeadIndex"></div>
 <div class="box">
     <div id="banner">
-        <img src="images/banner3.jpg" alt=""/>
+        <img src="/images/banner3.jpg" alt=""/>
     </div>
 </div>
 
@@ -25,74 +25,80 @@
 		<form id="rfqSubmit" action="/addrfq" method="post" name="rfqSubmit">
               <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td width="250" height="35"  align="right">规格型号：</td>
-                    <td><input  id="pnInput" name="pn" type="text"  /></td>
+                    <td width="250" align="right">规格型号：</td>
+                    <td ><input  id="pnInput" name="pn" type="text"  /></td>
                     <td ><input class="button" type="button" name="searchBtn" onclick="checkRfqPn()" value="查询型号"/>
                         <input class="button" type="button" name="addBtn" onclick="addPn()" value="新建型号"/></td>
                 </tr>
 
                   <tr>
-                      <td width="150" height="35" align="right">品牌：</td>
+                      <td width="150" align="right">品牌：</td>
                       <td id="mfg" style="color: red;">请查询型号选择品牌</td>
-                      <td width="250" height="35" align="right">&nbsp;</td>
+                      <td colspan="">&nbsp;</td>
                   </tr>
-
                  <tr>
-                     <td width="250px" height="35px" align="right">产品种类：</td>
-                      <td>   <select  id="ptypeList" name="pntype">
-
-                     <option th:each="pntype:${pntypeList}"  th:value="${pntype.id}" th:text="${pntype.name}"></option>
+                     <td width="250px" align="right">产品种类：</td>
+                      <td><select  id="ptypeList" name="pntype">
+                     <option th:each="pntype:${pntypeList}" style="font-size: 18px"  th:value="${pntype.id}" th:text="${pntype.name}"></option>
                  </select>
                      </td>
+                     <td ></td>
                  </tr>
                 <tr>
-                    <td width="150" height="35" align="right"> 品质要求：</td>
+                    <td align="right"> 品质要求：</td>
                     <td >
                         <select id="qltyForm" name="qlty">
-                           <option  th:each="qlty:${qltyTypeList}" th:value="${qlty.id}" th:text="${qlty.name}">原装正品</option>
+                           <option  th:each="qlty:${qltyTypeList}" style="font-size: 18px;" th:value="${qlty.id}" th:text="${qlty.name}">原装正品</option>
                         </select>
                     </td>
-                    <td width="250" height="35" align="right">&nbsp;</td>
+                    <td></td>
                 </tr>
                   <tr>
-                      <td width="150" height="35" align="right">批次：</td>
+                      <td align="right">批次：</td>
                       <td ><input class="rfqForm" name="dtcd" type="text" /></td>
-                      <td width="250" height="35" align="right">&nbsp;</td>
+                      <td></td>
                   </tr>
                 <tr>
-                <td width="150" height="35" align="right">询价数量：</td>
+                <td align="right">询价数量：</td>
                 <td ><input class="rfqForm" name="qty" type="text" /></td>
-                    <td width="250" height="35" align="right">&nbsp;</td>
+                    <td></td>
             </tr>
             <tr>
-                <td width="150" height="35" align="right">目标价格：</td>
+                <td align="right">目标价格：</td>
                 <td><input class="rfqForm" name="tp" type="text" /></td>
-                <td width="250" height="35" align="right">&nbsp;</td>
+                <td ></td>
             </tr>
-                  <tr>
-                      <td width="150" height="35" align="right">是否实单：</td>
-                      <td>是<input type="radio" checked="checked" name="sure" value="1" />
-                          否<input type="radio" name="sure"  value="0"/></td>
-
-                  </tr>
+          <tr>
+              <td align="right">交货周期：</td>
+              <td><input class="rfqForm" name="dtime" type="text" /></td>
+              <td></td>
+          </tr>
             <tr>
-                <td width="150" height="35" align="right">交货周期：</td>
-                <td><input class="rfqForm" name="dtime" type="text" /></td>
-                <td width="250" height="35" align="right">&nbsp;</td>
+                <td align="right">是否实单：</td>
+                 <td>是<input type="radio" checked="checked" name="sure" value="1" />
+                  否<input type="radio" name="sure"  value="0"/></td>
+                <td></td>
             </tr>
                   <input type="hidden" name="isOpen" id="isOpen"/>
             <tr>
-                <td width="150" height="35" align="right">&nbsp;</td>
+                <td align="right">&nbsp;</td>
                 <td><button type="button" onclick="commitRfq(1)" class="button">公开询价</button><button type="button" onclick="commitRfq(0)" class="button">匿名询价</button></td>
-                <td width="250" height="35" align="right">&nbsp;</td>
+                <td></td>
             </tr>
             </table>
             </form>
  	</div>
-	
+	<div style="margin: 0 auto; width: 1000px; padding: 20px">
+        <table cellspacing="10px" >
+            <tr><td>原厂代理：产品来自原厂或授权代理，可追溯原厂，包括品质追踪，技术支持，环保信息获取等。</td></tr>
+            <tr><td>原装正品：产品本身是全新原装正品。保证来自原厂，且所有的电气特性符合原厂出厂规格。</td></tr>
+            <tr><td>旧货库存：产品本身是原装正品，但是生产批次超过2年以上。没有被使用或翻新过。引脚有可能氧化。</td></tr>
+            <tr><td>替代型号：具有同等电气特性的其他产品，包括其他品牌的同型号产品，翻新产品，国产山寨产品等。</td></tr>
+        </table>
+    </div>
     <div class="box">
         <div id="rfqList">
-            <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%" >
+            <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%;" >
                 <tr class="headline">
                 <th>询价单号</th>
                 <th>型号</th>

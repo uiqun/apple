@@ -27,30 +27,35 @@
         <div id="bom">
             <p><span id="title">BOM成本核算</span></p>
             <form th:action="@{${bomam!=null}?'/bom/modifybom':'/bomlist/uploadbom'}" method="post" enctype="multipart/form-data">
+               <table>
                 <input type="hidden" th:if="${bomam!=null}" name="bid" th:value="${bomam?.bid}"/>
-                <dl>
-                   <dd>  产品名称 ：<input name="bname" th:value="${bomam?.bname}" type="text"/></dd>
-                </dl>
-                <dl>
-                    <dd> 产品类别 ：<select name="btype">
+                <tr>
+                   <td>  产品名称 ：<input name="bname" th:value="${bomam?.bname}" type="text"/></td>
+                </tr>
+                <tr>
+                    <td> 产品类别 ：<select name="btype">
                         <option th:each="bom:${btypeList}" th:value="${bom.btypeId}" th:selected="${bomam?.btype==bom.btypeId}" th:text="${bom.btypeName}">消费电子</option>
-                    </select></dd>
-                </dl>
-                <dl>
-                    <dd> 计划用量 ：<input name="buse" type="number" th:value="${bomam?.buse}" />套/月</dd>
-                </dl>
-                <dl th:if="${bomam==null}">
-                    <dd> 报价方式 ：<select  name="isauto">
+                    </select></td>
+                </tr>
+                <tr>
+                    <td> 计划用量 ：<input name="buse" type="number" th:value="${bomam?.buse}" />套/月</td>
+                </tr>
+                <tr th:if="${bomam==null}">
+                    <td> 报价方式 ：<select  name="isauto">
                         <option  value="0" selected="selected">智能匹配，即刻下载结果</option>
                         <option   value="1">要求人工确认，24小时后下载结果</option>
-                    </select></dd>
-                </dl>
-                <dl th:if="${bomam==null}">
-                    <dd>上传BOM：<input name="multipartFile" type="file"/></dd>(备注：上传格式为4个字段：型号、描述、品牌、单机用量。)
-                </dl>
-                <dl>
-                    <dd><input type="submit"/></dd>
-                </dl>
+                    </select></td>
+                </tr>
+                <tr th:if="${bomam==null}">
+                    <td>上传BOM：<input name="multipartFile" type="file"/></td>
+                </tr>
+                   <tr>
+                       <td>(备注：上传格式为4个字段：型号、描述、品牌、单机用量。)</td>
+                   </tr>
+                <tr>
+                    <td><input type="submit" style="width: 80px;"/></td>
+                </tr>
+               </table>
             </form>
             <br/>
         </div>
@@ -80,7 +85,6 @@
                     <td><a th:href="@{'/bomlist/downloadbom/'+${bom.bid}+'/'+${bom.bname}}">下载</a></td>
                     <td><a th:href="@{'/bom/querybom?bid='+${bom.bid}}">修改</a></td>
                 </tr>
-
             </table>
         </div>
     </div>
