@@ -59,28 +59,30 @@
                     </th>
                 </form>
                 <tr>
-                    <th>服务编号</th>
+                    <th>编号</th>
                     <th>客户名称</th>
                     <th>服务名称</th>
                     <th>起始时间</th>
                     <th>截止时间</th>
-                    <th>服务费用</th>
+                    <th>费用</th>
                     <th>操作</th>
                 </tr>
                 <tr th:if="${#lists.size(pager?.datas)==0}">
                     <td>暂无记录</td>
                 </tr>
                 <div th:each="service:${pager.datas}">
-                    <tr >
+                    <tr>
                         <td th:text="${service.sid}"></td>
                         <td th:text="${service.uName}"></td>
                         <td th:text="${service.sname}"></td>
                         <td th:text="${#dates.format(service.startdate,'yyyy/MM/dd')}"></td>
                         <td th:text="${#dates.format(service.enddate,'yyyy/MM/dd')}"></td>
                         <td th:text="${service.fee}"></td>
+                        <td>修改</td>
                     </tr>
                     <tr>
-                        <td th:text="${'内容：'+service.scontent}"></td>
+                        <td></td>
+                        <td colspan="5" th:text="${'内容：'+service.scontent}" style="padding-bottom: 10px; border-bottom: solid 2px white;"></td>
                     </tr>
                 </div>
             </table>

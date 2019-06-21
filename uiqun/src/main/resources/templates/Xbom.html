@@ -7,40 +7,43 @@
     <script src="js/jquery-3.2.1.js"></script>
     <script  type="text/javascript" src="js/public.js"></script>
     <script  type="text/javascript" src="js/admin.js"></script>
-
 </head>
 
 <body>
 
     <div id="content">
         <table cellspacing="10px">
-            <tr><th colspan="10">BOM清单管理</th></tr>
+            <tr><th colspan="6" style="font-size: 24px;padding: 20px;">BOM清单管理</th></tr>
             <tr>
-                <th>产品编号</th>
-                <th>产品名称</th>
+                <th>Bom编号</th>
+                <th style="text-align: left">产品名称</th>
                 <th>产品类别</th>
-                <th>每月用量</th>
-                <th>回复方式</th>
-                <th>更新时间</th>
-                <th colspan="4">操作</th>
-
+                <th>月用量</th>
+                <th style="text-align: left">回复方式</th>
+                <th style="text-align: left">更新时间</th>
             </tr>
-            <tr th:each="bom:${pager?.datas}">
-                <td th:text="${bom.bid}">Model001</td>
-                <td th:text="${bom.bname}">手机主板</td>
-                <td th:text="${bom.btypeName}">通信产品</td>
-                <td th:text="${bom.buse}">30000</td>
-                <td th:text="${bom.isauto==0}?'智能匹配':'人工确认'">人工确认</td>
-                <td th:text="${#dates.format(bom.bdate,'yyyy-MM-dd')}">2018-12-17</td>
-                <td><a th:href="@{'/bomlist/downloadbom/'+${bom.bid}+'/'+${bom.bname}}">下载</a></td>
-                <td><a th:href="@{'/bomlist/deleteXbom/'+${bom.bid}}">删除</a></td>
-                <td>
-                    <form th:action="${'/bomlist/modifybom/' + bom.bid }" method="post" enctype="multipart/form-data">
-                        <input type="file" name="multipartFile"/>
-                        <input type="submit" value="上传"/>
-                    </form>
-                </td>
-            </tr>
+            <span  th:each="bom:${pager?.datas}" style="display: inline-block;border-bottom: solid 2px white;">
+                <tr>
+                    <td th:text="${bom.bid}">Model001</td>
+                    <td th:text="${bom.bname}">手机主板</td>
+                    <td th:text="${bom.btypeName}">通信产品</td>
+                    <td th:text="${bom.buse}">30000</td>
+                    <td th:text="${bom.isauto==0}?'智能匹配':'人工确认'">人工确认</td>
+                    <td th:text="${#dates.format(bom.bdate,'yyyy-MM-dd')}">2018-12-17</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td th:text="${bom.company}" style="color: blue;">深圳市模板电子科技有限公司</td>
+                     <td><a th:href="@{'/bomlist/downloadbom/'+${bom.bid}+'/'+${bom.bname}}">下载</a></td>
+                    <td><a th:href="@{'/bomlist/deleteXbom/'+${bom.bid}}">删除</a></td>
+                    <td colspan="2">
+                        <form th:action="${'/bomlist/modifybom/' + bom.bid }" method="post" enctype="multipart/form-data">
+                            <input type="file" name="multipartFile"/>
+                            <input type="submit" value="上传"/>
+                        </form>
+                    </td>
+                </tr>
+            </span>
         </table>
     </div>
     <div class="box">

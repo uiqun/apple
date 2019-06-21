@@ -68,6 +68,6 @@ function registerUser() {
     && /[A-Za-z0-9]{4,10}/.test(pwd)&&/\d{4}/.test(veriCode)){
         document.registForm.submit();
     }else{
-        alert("请正确填写信息");
+        alert("请正确填写信息并确认唯群网用户协议！");
     }
 }
