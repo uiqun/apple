@@ -21,4 +21,6 @@ public interface ServiceDao {
      */
     List<Service> queryService(Pager<Service> pager);
     int queryServiceRows(Pager<Service> pager);
+
+    int deleteServiceById(int id);
 }

@@ -6,4 +6,5 @@ import com.uiqun.utils.Pager;
 public interface ServiceToService {
     boolean insertService(Service service);
     Pager<Service> queryService(Pager<Service> pager);
+    boolean deleteServiceById(int sid);
 }

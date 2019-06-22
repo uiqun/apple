@@ -26,4 +26,8 @@
         WHERE s.uid=u.uid
         <include refid="serviceSql"/>
     </select>
+
+    <delete id="deleteServiceById">
+        delete from servicelist where sid=#{sid}
+    </delete>
 </mapper>

@@ -124,6 +124,11 @@ public class UserController  {
         return "regist";
     }
 
+    @RequestMapping("/forgetPw")
+    public String forgetPw(){
+        return "forgetPw";
+    }
+
     /**
      * 用户注册
      * @param session

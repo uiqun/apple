@@ -34,4 +34,9 @@ public class ServiceToServiceImpl implements ServiceToService {
         }
         return null;
     }
+
+    @Override
+    public boolean deleteServiceById(int sid) {
+        return serviceDao.deleteServiceById(sid)>0;
+    }
 }

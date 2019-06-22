@@ -51,7 +51,7 @@ function verifyCode(obj) {
     if(b){
         $.post("/user/registerVerify",{"mobile":mobile},function (result) {
             if(result.errorCode==0000){
-                alert("发送成功,验证码仅在一分钟内有效!");
+                alert("验证码发送成功,仅在一分钟内有效!");
             }else if(result.errorCode==1111){
                 alert("手机号已注册！请登录");
             }
@@ -59,6 +59,18 @@ function verifyCode(obj) {
     }
 }
 
+
+function verifyCode1(obj) {
+    var mobile = obj.previousElementSibling.value;
+    var b = /^1[34578]\d{9}$/.test(mobile);
+    if(b){
+        $.post("/user/registerVerify",{"mobile":mobile},function (result) {
+            if(result.errorCode==0000){
+                alert("验证码发送成功,仅在一分钟内有效!");
+            }
+        },"JSON")
+    }
+}
 function registerUser() {
     var isAgree = $("input[name=isAgree]:checked").val();
     var username= $("input[name=nickname]").val();

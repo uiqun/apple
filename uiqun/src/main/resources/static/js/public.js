@@ -46,6 +46,9 @@ function regist(){
     window.open("/user/regist","_self");
 }
 
+function forgetPw(){
+    window.open("/user/forgetPw","_self");
+}
 function rfq(){
     window.open("/jumprfq","_self");
 }
