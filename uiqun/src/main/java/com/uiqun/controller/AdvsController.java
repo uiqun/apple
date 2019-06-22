@@ -2,9 +2,11 @@ package com.uiqun.controller;
 
 import com.uiqun.model.Advs;
 import com.uiqun.service.AdvsService;
+import com.uiqun.utils.UpLoadUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 
@@ -38,5 +40,18 @@ public class AdvsController {
     }
         return "redirect:/Xadvs";
     }
+
+
+    @RequestMapping("/advUpLogo")
+    public String updateAdvs(Model model, MultipartFile logo){
+    if(UpLoadUtil.uploadImages(logo,"logo")){
+        model.addAttribute("AlertMessage","更新logo成功！");
+    }else{
+        model.addAttribute("AlertMessage","更新logo失败！");
+    }
+        return "redirect:/Xadvs";
+    }
+
+
 
 }

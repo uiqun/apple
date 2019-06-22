@@ -41,6 +41,37 @@ function checkRfqPn(){
     },"json")
 }
 
+function checkRfqPnX(){
+    var pn = document.getElementsByName("pn")[0].value;
+    if(pn==null||pn==''){
+        document.getElementById("AlertMessage").value="型号不能为空";
+        return;
+    }else {
+        document.getElementById("AlertMessage").value="";
+    }
+    $.post("/checkRfqPnX",{"pn":pn},function (date){
+        if(date.state=="none"){
+            document.getElementById("AlertMessage").value=date.message;
+            AlertMessageX();
+        }else{
+            if(date.datas.length>0) {
+                var tdSelect = document.getElementsByName("mfg")[0];
+                tdSelect.value = "";
+                tdSelect.style.fontSize="18px";
+                for (i = 0; i < date.datas.length; i++) {
+                    var option = document.createElement("option");
+                    option.setAttribute("value", date.datas[i].mfg);
+                    option.innerText = date.datas[i].mfgName;
+                    option.style.fontSize="18px";
+                    tdSelect.append(option);
+                }
+                document.getElementById("AlertMessage").value="";
+            }
+        }
+
+    },"json")
+}
+
 function commitRfq(num) {
     document.getElementById('isOpen').value=num;
     var qty = document.getElementsByName("qty")[0].value;

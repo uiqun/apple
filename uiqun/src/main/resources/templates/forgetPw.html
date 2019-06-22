@@ -20,10 +20,10 @@
 
     <div id="regist1_box">
         <div id="regist1">
-              <form id="registForm" name="registForm" method="post" action="/user/addregist">
+              <form id="registForm" name="registForm" method="post" action="/user/forgetPw">
                   <table>
                         <tr>
-                            <td>用户名：<input id="nickname" name="nickname" pattern="/^[a-zA-Z][a-zA-Z0-9]{3,15}$/" type="text" size="18" required="required"/><span id="user_prompt"></span></td>
+                            <td>用户名：<input id="nickname" name="nickname" pattern="[a-zA-Z][a-zA-Z0-9]{3,15}" type="text"  required="required"/><span id="user_prompt"></span></td>
                         </tr>
 
                         <tr>
@@ -33,10 +33,10 @@
                             <td>验证码：<input id="veriCode" name="veriCode" type="text" size="18"/></td>
                         </tr>
                       <tr>
-                          <td>新密码：<input id="pwd" name="pwd" pattern="/[A-Za-z0-9]{4,10}/" type="password" size="18" required="required"/><span id="pwd_prompt">密码由英文字母和数字组成的4-10位字符</span></td>
+                          <td>新密码：<input id="pwd" name="pwd" pattern="[A-Za-z0-9]{4,10}" type="password" size="18" required="required"/><span id="pwd_prompt">密码由英文字母和数字组成的4-10位字符</span></td>
                       </tr>
                         <tr>
-                            <td><input class="button" type="button" onclick="registerUser()" name="regist" value="提交修改"/> </td>
+                            <td><input class="button" type="button" onclick="forgetUser()" name="regist" value="提交修改"/> </td>
                         </tr>
                   </table>
             </form>

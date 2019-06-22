@@ -12,11 +12,11 @@
 
 <body>
     <div>
-        <form id="upLogo" action="upLogo">
+        <form id="upLogo" method="post" enctype="multipart/form-data" action="/advUpLogo">
             <table cellspacing="10px">
                 <tr><th >上传维群网图片</th></tr>
                 <tr>
-                    <td ><input type="file"/></td>
+                    <td ><input type="file" name="logo"/></td>
                 </tr>
                 <tr>
                     <td><input type="submit" class="button" style="width: 80px"/></td>

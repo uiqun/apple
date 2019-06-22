@@ -47,9 +47,12 @@ public interface UserDao {
 
     int updateUser(User user);
 
+    int updateSelfUser(User user)throws Exception;
+
     int saveUser(User user);
 
     User queryUserByPhone(@Param("mobile") String mobile);
+    User querySelfUserByPhone(User user);
 
     /**
      * 修改最后登录时间

@@ -119,6 +119,35 @@ public class UserController  {
         }
         return JSON.toJSONString(vrj);
     }
+    /**
+     * 发短信验证码
+     * @param session
+     * @param user
+     * @return
+     * @throws YunpianException
+     */
+    @RequestMapping(value = "/registerVerify1",method = RequestMethod.POST)
+    @ResponseBody
+    public String register1(HttpSession session, User user) throws YunpianException {
+        VoResponseJson vrj = new VoResponseJson();
+        if(userService.querySelfUserByPhone(user)){
+            //获取随机码长度
+            String randomNumber = MessageUtil.getRandomNumber(4);
+            try {
+                //发送短信消息
+                MessageUtil.singleSend(MessageUtil.getApiKey(), "【大唯科技】您的验证码是" + randomNumber, user.getMobile());
+                //保存验证码
+                session.setAttribute("verifyCode",randomNumber);
+            }catch (Exception e){
+                e.printStackTrace();
+                //发送失败
+                vrj.setErrorCode(1001);
+            }
+        }else{
+            vrj.setErrorCode(1111);
+        }
+        return JSON.toJSONString(vrj);
+    }
     @RequestMapping("/regist")
     public String regist(){
         return "regist";
@@ -142,6 +171,24 @@ public class UserController  {
         Object verifyCode = session.getAttribute("verifyCode");
         if(verifyCode!=null&&verifyCode.equals(veriCode)){
             if(userService.register(user)){
+                return "login";
+            }
+        }
+        return "regist";
+    }
+    /**
+     * 用户注册
+     * @param session
+     * @param user
+     * @param veriCode
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/forgetPw",method =RequestMethod.POST)
+    public String forgetPw(HttpSession session, User user, String veriCode, Model model){
+        Object verifyCode = session.getAttribute("verifyCode");
+        if(verifyCode!=null&&verifyCode.equals(veriCode)){
+            if(userService.updateSelfUser(user)){
                 return "login";
             }
         }

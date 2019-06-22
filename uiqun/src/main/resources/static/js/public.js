@@ -84,6 +84,10 @@ function getRootPath() {
     return (localhostPaht + projectName);
 }
 $(function () {
+    AlertMessageX();
+})
+
+function AlertMessageX() {
     var AlertMessage = document.getElementById("AlertMessage");
     if(AlertMessage!=null) {
         var AlertMessageValue = AlertMessage.value;
@@ -91,4 +95,4 @@ $(function () {
             alert(AlertMessageValue);
         }
     }
-})
+}

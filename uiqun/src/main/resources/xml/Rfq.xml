@@ -19,6 +19,7 @@
         select rfqno,company,pn,mfg,qty,qlty,tp,dtime,dtcd,sure,rdate,isOpen,q.name qltyName,uid
         from  rfqlist r,qltytype q where r.qlty=q.id
         <include refid="rfqCondition"/>
+        order by r.rdate desc
         limit #{pageOffset},#{pageSize}
     </select>
     <select id="queryRfqRows" resultType="_int">
@@ -36,10 +37,12 @@
     <select id="modifyrfq" resultType="Rfq">
         select rfqno,company,pn,mfg,qty,qlty,dtcd,tp,dtime,sure,rdate,isOpen,q.name qltyName
         from  rfqlist r,qltytype q where r.qlty=q.id and r.rfqno=#{rfqno}
+        order by r.rdate desc
     </select>
     <select id="queryRfq" resultType="Rfq">
         select rfqno,company,pn,mfg,qty,dtcd,qlty,tp,dtime,sure,rdate,isOpen,q.name qltyName
         from  rfqlist r,qltytype q where r.qlty=q.id and r.rfqno=#{rfqno}
+        order by r.rdate desc
     </select>
 
 

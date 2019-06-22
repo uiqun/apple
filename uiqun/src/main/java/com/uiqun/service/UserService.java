@@ -45,6 +45,7 @@ public interface UserService {
      * @return
      */
     boolean updateUser(User user);
+    boolean updateSelfUser(User user);
 
     /**
      * 保存用户数据
@@ -59,6 +60,7 @@ public interface UserService {
      * @return
      */
     boolean queryUserByPhone(String moblie);
+    boolean querySelfUserByPhone(User user);
 
     /**
      * 查询区域

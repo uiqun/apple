@@ -27,13 +27,13 @@
                 <tr>
                     <td width="250" align="right">规格型号：</td>
                     <td ><input  id="pnInput" name="pn" type="text"  /></td>
-                    <td ><input class="button" type="button" name="searchBtn" onclick="checkRfqPn()" value="查询型号"/>
+                    <td ><input class="button" type="button" name="searchBtn" onclick="checkRfqPnX()" value="查询型号"/>
                         <input class="button" type="button" name="addBtn" onclick="addPn()" value="新建型号"/></td>
                 </tr>
 
                   <tr>
                       <td width="150" align="right">品牌：</td>
-                      <td id="mfg" style="color: red;">请查询型号选择品牌</td>
+                      <td id="mfg" style="color: red;"><select name="mfg" required="required"></select></td>
                       <td colspan="">&nbsp;</td>
                   </tr>
                  <tr>

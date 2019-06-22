@@ -76,6 +76,16 @@ public class RfqController {
         return JSON.toJSONString(new VoResponseJson("none",1111,"该型号不存在,请添加该型号"));
     }
 
+    @RequestMapping(value = "/checkRfqPnX",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String checkRfqPnX(Pn pn){
+        List<Mfg> mfgs = mfgService.checkRfqPn(pn);
+        if(mfgs!=null&&mfgs.size()>0){
+            return JSON.toJSONString(new VoResponseJson(mfgs));
+        }
+        return JSON.toJSONString(new VoResponseJson("none",1111,"该型号不存在,请添加该型号"));
+    }
+
     /**
      * 访问RFQ页面
      * @param model

@@ -10,6 +10,7 @@
          SELECT q.qotno,q.company,q.pn,q.mfg,q.qty,q.qlty,q.dtcd,q.price,q.dtime,q.sure,q.qdate,q.isOpen,ql.name qltyName
          FROM `rfqlist` r ,`quotelist` q,qltytype ql
          WHERE ql.id=q.qlty and r.`rfqno`=q.`rfqno` AND r.uid=#{condition.uid} and r.rfqno=#{condition.rfqno}
+         order by q.qdate desc
     </select>
     <select id="queryQuoteRows" resultType="_int">
           SELECT count(1)
@@ -25,6 +26,7 @@
         SELECT *,ql.name qltyName
         FROM `quotelist` qu,qltytype ql
         WHERE qu.uid=#{uid} and qu.qlty=ql.id
+        order by qu.qdate desc
     </select>
     <select id="queryQuoteRowsByRfq" resultType="_int">
         SELECT count(1)

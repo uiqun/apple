@@ -58,6 +58,12 @@
         where uid=#{uid}
     </update>
 
+    <update id="updateSelfUser">
+        update userlist
+        set pwd=#{pwd}
+        where nickname=#{nickname} and mobile=#{mobile}
+    </update>
+
     <update id="saveUser">
         update userlist
         set nickname=#{nickname},mobile=#{mobile},company=#{company},co=#{co},area=#{area},utype=#{utype},
@@ -70,6 +76,9 @@
 
     <select id="queryUserByPhone" resultType="User">
         select mobile from userlist where mobile=#{mobile}
+    </select>
+    <select id="querySelfUserByPhone" resultType="User">
+        select mobile from userlist where mobile=#{mobile} and nickname=#{nickname}
     </select>
 
     <!--查看近30天登陆-->

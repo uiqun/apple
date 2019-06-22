@@ -96,6 +96,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean updateSelfUser(User user) {
+        try {
+            return userdao.updateSelfUser(user)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
     public boolean saveUser(User user) {
         return userdao.updateUser(user)>0;
     }
@@ -103,6 +113,16 @@ public class UserServiceImpl implements UserService {
     public boolean queryUserByPhone(String moblie) {
         try {
             return userdao.queryUserByPhone(moblie)==null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean querySelfUserByPhone(User user) {
+        try {
+            return userdao.querySelfUserByPhone(user)!=null;
         } catch (Exception e) {
             e.printStackTrace();
         }
