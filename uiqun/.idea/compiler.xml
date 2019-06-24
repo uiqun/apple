@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="bookinfo" options="" />
+      <module name="bookinfo" options="-bootclasspath $PROJECT_DIR$/../../../IDEA/jdk/jre\lib\rt.jar;$PROJECT_DIR$/../../../IDEA/jdk/jre\lib\jce.jar -Xlint:deprecation" />
     </option>
   </component>
 </project>

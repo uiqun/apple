@@ -48,3 +48,16 @@
     color: #FF3300;
     font-weight: bold;
 }
+
+#back{
+    color: blue;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: underline;
+    padding-top: 30px;
+    cursor: pointer;
+}
+
+#back:hover{
+    color: #FF3300;
+}

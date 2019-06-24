@@ -52,7 +52,7 @@ container.onmouseleave = function () {
 }
 
 var index = 0;
-var dots = document.getElementsByTagName("span");
+var dots = document.getElementById("bannerDiv").getElementsByTagName("span");
 function showCurrentDot () {
     for(var i = 0, len = dots.length; i < len; i++){
         dots[i].className = "";
@@ -77,8 +77,6 @@ for (var i = 0, len = dots.length; i < len; i++){
         }
     })(i);
 }
-
-
 
 
 

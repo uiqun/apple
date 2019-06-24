@@ -21,6 +21,14 @@
     width: 400px;
     height:25px;
 }
+#mfg{
+	width: 205px;
+	height:25px;
+}
+#mfg select{
+	width: 205px;
+	height:25px;
+}
 #ptypeList{
 	width:205px;
 	height:25px;

@@ -122,7 +122,13 @@
                 <td th:text="${quote.isOpen==1}?'实名报价':'匿名报价'"></td>
             </tr>
             </span>
+            <tr th:if="${pager.datas.size()==0}">
+                <td colspan="10" onclick="index()" id="back">请返回首页，查找感兴趣的询价来报价。</td>
+            </tr>
         </table>
+        <div th:if="${pager.datas.size()==0}" style="margin: 0 auto;padding-top: 10px;padding-left: 200px">
+            <img src="/images/noQuote.jpg" alt=""/>
+        </div>
     </div>
 </div>
 

@@ -91,6 +91,10 @@ ul{
     margin: auto;
     width:1000px;
     height:243px;
+    border: solid 1px lavender;
+    border-radius: 10px;
+    box-shadow: 0 0 5px blue;
+    overflow: hidden;
 }
 
 #img{

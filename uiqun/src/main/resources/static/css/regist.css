@@ -42,3 +42,10 @@
 	height:300px;
 	font-size: 20px;
 }
+
+#veriCode{
+	cursor: pointer;
+}
+#veriCode:hover{
+	color: #FF3300;
+}
