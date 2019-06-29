@@ -49,6 +49,10 @@ ul{
 }
 ul li{
     padding: 10px 10px;
+    cursor: pointer;
+}
+ul li:hover{
+    color: #FF3300;
 }
 
 ul li span{

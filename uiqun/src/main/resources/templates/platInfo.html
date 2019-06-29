@@ -15,12 +15,12 @@
 
 <body>
 <!--引入头部信息-->
-<div th:include="pageHead :: pageHeadIndexTitle"></div>
+<div th:include="pageHead :: pageHeadIndex"></div>
 
 
 <div class="box">
     <div id="banner">
-        <img src="images/banner3.jpg" alt=""/>
+        <img src="images/banner.jpg" alt=""/>
     </div>
     <div id="box2">
         <div id="category">
@@ -33,11 +33,11 @@
             </ul>
         </div>
         <div id="detail">
-            <p th:text="${Platinfo.guide}" style="display: block;padding: 10px"></p>
-            <p th:text="${Platinfo.flow}" style="display: none;padding: 10px"></p>
-            <p th:text="${Platinfo.claim}" style="display: none;padding: 10px"></p>
-            <p th:text="${Platinfo.aboutus}" style="display: none;padding: 10px"></p>
-            <p th:text="${Platinfo.contactus}" style="display: none;padding: 10px"></p>
+            <textarea th:text="${Platinfo.guide}" style="display: block;padding: 10px"></textarea>
+            <textarea th:text="${Platinfo.flow}" style="display: none;padding: 10px"></textarea>
+            <textarea th:text="${Platinfo.claim}" style="display: none;padding: 10px"></textarea>
+            <textarea th:text="${Platinfo.aboutus}" style="display: none;padding: 10px"></textarea>
+            <textarea th:text="${Platinfo.contactus}" style="display: none;padding: 10px"></textarea>
         </div>
     </div>
 </div>

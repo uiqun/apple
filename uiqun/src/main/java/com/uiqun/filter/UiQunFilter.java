@@ -16,9 +16,14 @@ public class UiQunFilter extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         User user= (User)request.getSession().getAttribute("user");
-        if(user==null||userService.login(user)==null){
-            response.sendRedirect("/user/login");
-        }
+       StringBuffer url = request.getRequestURL();
+//       if(url == null || "".equals(url)){
+//           response.sendRedirect("/index");
+//       }else {
+           if(user==null||userService.login(user)==null){
+                response.sendRedirect("/user/login");
+            }
+//    }
         return super.preHandle(request, response, handler);
     }
 

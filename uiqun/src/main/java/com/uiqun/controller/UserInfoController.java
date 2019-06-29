@@ -14,6 +14,7 @@ public class UserInfoController {
     @Resource
     private UserService userService;
 
+
     @RequestMapping("/queryUserDetail")
    public String queryUserDetail(HttpSession session, Model model){
         User user = userService.queryUserDetail( (User)session.getAttribute("user") );
