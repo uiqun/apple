@@ -20,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/user")
@@ -35,6 +37,7 @@ public class UserController  {
     @Resource
     private RedisUtils redisUtils;
 
+
     /**
      * 用户登录
      * @param user
@@ -43,17 +46,29 @@ public class UserController  {
      */
     @RequestMapping("/login")
     public String login( Model model, User user, HttpSession session){
-        if(user!=null&&user.getNickname()!=null&&!"".equals(user.getNickname())){
-            User login = userService.login(user);
-            if(login!=null) {
-                session.setAttribute("user", login);
-                model.addAttribute("AlertMessage","登录成功");
-                return "redirect:/index";
-            }else{
-                model.addAttribute("AlertMessage","账号或密码错误");
-                return "login";
+        Map<String, User> userMap = UnRepeatLogin.getUserMap();
+        if(userMap.size()>0) {
+            Set<String> sessionIds = userMap.keySet();
+            for (String sessionId : sessionIds) {
+                if(userMap.get(sessionId).getNickname().equals(user.getNickname())){
+                    model.addAttribute("AlertMessage","用户已登录");
+                    return "login";
+                }
             }
         }
+           if (user != null && user.getNickname() != null && !"".equals(user.getNickname())) {
+               User login = userService.login(user);
+               if (login != null) {
+                   UnRepeatLogin.setUserMap(session.getId(),login);
+                   session.setAttribute("user", login);
+                   model.addAttribute("AlertMessage", "登录成功");
+                   return "redirect:/index";
+               } else {
+                   model.addAttribute("AlertMessage", "账号或密码错误");
+                   return "login";
+               }
+           }
+
         return "login";
     }
 

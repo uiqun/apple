@@ -123,6 +123,8 @@ public class RfqController {
             rfq.setCompany(user.getCompany());
             rfq.setUid(user.getUid());
             if(rfqService.addRfq(rfq)){
+                //添加询价次数
+
                 model.addAttribute("AlertMessage", "添加询价成功");
             }
         }

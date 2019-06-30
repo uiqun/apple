@@ -42,12 +42,13 @@ public class AdvsController {
     }
 
 
-    @RequestMapping("/advUpLogo")
-    public String updateAdvs(Model model, MultipartFile logo){
-    if(UpLoadUtil.uploadImages(logo,"logo")){
-        model.addAttribute("AlertMessage","更新logo成功！");
+    @RequestMapping("/advUpPic")
+    public String updateAdvs(Model model, MultipartFile pic){
+        String of = pic.getOriginalFilename();
+        if(UpLoadUtil.uploadImages(pic,of.substring(0,of.lastIndexOf(".")))){
+        model.addAttribute("AlertMessage","更新图片成功！");
     }else{
-        model.addAttribute("AlertMessage","更新logo失败！");
+        model.addAttribute("AlertMessage","更新图片失败！");
     }
         return "redirect:/Xadvs";
     }

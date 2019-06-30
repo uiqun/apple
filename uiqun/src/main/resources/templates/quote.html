@@ -52,7 +52,7 @@
                         <input type="hidden" name="rfqno" th:value="${rfq.rfqno}"/>
                         <tr>
                             <td><input name="pn" type="text" placeholder="型号" th:value="${rfq.pn}"  onblur="checkRfqPn()"/></td>
-                            <td id="mfg" style="font-size: 18px;" th:text="${rfq.mfg}" >品牌</td>
+                            <td id="mfg" style="font-size: 18px;"  ><input type="text" name="mfg" th:value="${rfq.mfg}"/></td>
                             <td>
                                 <select name="qlty" type="text" id="ptypeList">
                                     <option th:each="ql:${qltyTypeList}" th:value="${ql.id}" style="font-size: 18px" th:text="${ql.name}">原装正品</option>
