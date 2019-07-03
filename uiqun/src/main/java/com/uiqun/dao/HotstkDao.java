@@ -14,6 +14,9 @@ public interface HotstkDao {
      */
     int insertHotstks(List<List<Object>> Hotstks)throws Exception;
 
+    int insertOneHotstk(Hotstk hotstk);
+
+    int deleteHotstkByUid(int uid);
     /**
      * 查询全部
      * @param pager

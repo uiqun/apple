@@ -66,6 +66,10 @@ function admin(){
     window.open("/user/admin","_self");
 }
 
+function exit(){
+    window.open("/user/logout","_self");
+}
+
 function addPn(){
     window.open("/addpn","_self");
 }

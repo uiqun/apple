@@ -16,7 +16,7 @@
 <!--引入头部信息-->
 <div th:include="pageHead :: pageHeadIndex"></div>
 
-        <div class="box">
+        <div class="box" style="margin-top: 40px">
             <div id="title">
                 <span>用户信息管理</span>
             </div>
@@ -29,15 +29,15 @@
                 <th th:text="${company}" style="font-size: 30px">模板科技</th>
                 <th th:if="${iscert}==0">未认证</th>
                 <th th:if="${iscert}==1">已认证</th>
-                <th onclick="hotStk()">推广库存</th>
+                <th ><a th:href="@{'/queryHotstks/'+${uid}}">推广库存</a></th>
                 </tr>
             </table>
         </div>
     </div>
 <div id="form_box">
+    <input type="hidden" name="uid" th:value="${uid}"/>
     <form id="userDetail" method="post" action="/updateUser">
     <table width="100%" border="solid 1px lavender" cellpadding="0" cellspacing="0" >
-        <input type="hidden" name="uid" th:value="${uid}"/>
         <tr>
             <td class="lname">昵称:</td>
             <td><input th:value="${nickname}" class="rname" name="nickname"  type="text" size="30"/></td>

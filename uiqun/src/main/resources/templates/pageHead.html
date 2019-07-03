@@ -25,7 +25,7 @@
                <a th:if="${0 eq user?.utype }" onclick="admin()">后台管理</a>
             <a th:if="${ user eq null  }" href="/user/login" >登陆</a>
             <a th:if="${ user eq null  }" onclick="regist()">注册</a>
-            <a th:if="${user ne null } " href="/user/logout" >退出</a>
+            <a th:if="${user ne null }" onclick="exit()">退出</a>
            </span>
         </div>
     </div>

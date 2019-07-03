@@ -2,6 +2,7 @@ package com.uiqun.service;
 
 import com.uiqun.model.Hotstk;
 import com.uiqun.utils.Pager;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,8 @@ public interface HotstkService {
      * @return
      */
     boolean insertHotstks(List<List<Object>> hotstks)throws Exception;
+
+    boolean uploadHotstkListByUid(int uid, MultipartFile pmultipartfile);
 
     /**
      * 查找全部

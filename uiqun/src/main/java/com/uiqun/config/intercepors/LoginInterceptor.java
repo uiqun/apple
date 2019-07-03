@@ -69,9 +69,9 @@ public class LoginInterceptor implements HandlerInterceptor {
                             request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
                         }
                         //热卖库存(不知道哪个路径)
-//                    else if("/bom/searchbom".equals(request.getRequestURI())&&user.getRhot()==1){
-//                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
-//                    }
+////                    else if("/bom/searchbom".equals(request.getRequestURI())&&user.getRhot()==1){
+////                        request.setAttribute("status", PowerConstant.HAVE_PERMISSION);
+////                    }
                         //bom
                         else if ("/bom/searchbom".equals(request.getRequestURI()) && user.getRbom() == 1) {
                             request.setAttribute("status", PowerConstant.HAVE_PERMISSION);

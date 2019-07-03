@@ -9,7 +9,7 @@ public class Hotstk implements Serializable {
     private String pn; //型号
     private String mfg; //品牌
     private String pack; //封装
-    private int qty; //数量
+    private String qty; //数量
     private float price; //单价
     private String dtcd; //批次
     private int qlty; //质量标准id
@@ -59,11 +59,11 @@ public class Hotstk implements Serializable {
         this.pack = pack;
     }
 
-    public int getQty() {
+    public String getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(String qty) {
         this.qty = qty;
     }
 

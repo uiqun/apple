@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uiqun.dao.HotstkDao">
     <insert id="insertHotstks">
-        INSERT INTO `hotlist`(company,pn,mfg,pack,qty,price,dtcd,qlty,dtime,buylink,date,uid)
+        INSERT INTO `hotlist`(company,pn,mfg,pack,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
           VALUES
           <foreach collection="list" item="outList" separator="," close=";">
               <foreach collection="outList" item="intList" open="(" close=")" separator="," index="index">
@@ -13,11 +13,18 @@
               <if test="index > 0">
                   #{intList}
               </if>
-
               </foreach>
           </foreach>
     </insert>
 
+    <insert id="insertOneHotstk">
+        INSERT INTO `hotlist`(company,pn,mfg,pack,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
+         VALUES(#{company}, #{pn},#{mfg},#{pack},#{qty},#{price},#{dtcd},(select id from qltytype where name like concat('%',#{qlty},'%') ),#{dtime},#{buylink},now(),#{uid})
+    </insert>
+
+    <delete id="deleteHotstkByUid">
+        delete * from hotlist where uid = #{uid}
+    </delete>
 
     <select id="queryHotstks" resultType="Hotstk">
         select h.*,q.name qltyName from hotlist h,qltytype q
