@@ -3,43 +3,43 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uiqun.dao.HotstkDao">
     <insert id="insertHotstks">
-        INSERT INTO `hotlist`(company,pn,mfg,pack,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
-          VALUES
-          <foreach collection="list" item="outList" separator="," close=";">
-              <foreach collection="outList" item="intList" open="(" close=")" separator="," index="index">
+        INSERT INTO `hotlist`(company,pn,mfg,pkge,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
+        VALUES
+        <foreach collection="list" item="outList" separator="," close=";">
+            <foreach collection="outList" item="intList" open="(" close=")" separator="," index="index">
                 <if test="index == 0">
                     (SELECT id FROM `pntype` WHERE `name` LIKE  concat('%',#{intList}))
                 </if>
-              <if test="index > 0">
-                  #{intList}
-              </if>
-              </foreach>
-          </foreach>
+                <if test="index > 0">
+                    #{intList}
+                </if>
+            </foreach>
+        </foreach>
     </insert>
 
     <insert id="insertOneHotstk">
-        INSERT INTO `hotlist`(company,pn,mfg,pack,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
-         VALUES(#{company}, #{pn},#{mfg},#{pack},#{qty},#{price},#{dtcd},(select id from qltytype where name like concat('%',#{qlty},'%') ),#{dtime},#{buylink},now(),#{uid})
+        INSERT INTO `hotlist`(company,pn,mfg,pkge,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
+         VALUES(#{company},#{pn},#{mfg},#{pkge},#{qty},#{price},#{dtcd},(select id from qltytype where name like concat('%',#{qltyName},'%') ),#{dtime},#{buylink},now(),#{uid})
     </insert>
 
     <delete id="deleteHotstkByUid">
-        delete * from hotlist where uid = #{uid}
+        delete  from hotlist where uid = #{uid}
     </delete>
 
     <select id="queryHotstks" resultType="Hotstk">
         select h.*,q.name qltyName from hotlist h,qltytype q
         where h.qlty=q.id
-            <if test="condition.uid >0">
-                AND uid = #{condition.uid}
+        <if test="condition.uid >0">
+            AND uid = #{condition.uid}
+        </if>
+        <if test="condition.hotstk != null">
+            <if test="condition.hotstk.company != null and condition.hotstk.company != ''">
+                AND company like concat('%', #{condition.hotstk.company} ,'%')
             </if>
-            <if test="condition.hotstk != null">
-                <if test="condition.hotstk.company != null and condition.hotstk.company != ''">
-                    AND company like concat('%', #{condition.hotstk.company} ,'%')
-                </if>
-                <if test="condition.hotstk.pn != null and condition.hotstk.pn != ''">
-                    AND pn like concat('%', #{condition.hotstk.pn} ,'%')
-                </if>
+            <if test="condition.hotstk.pn != null and condition.hotstk.pn != ''">
+                AND pn like concat('%', #{condition.hotstk.pn} ,'%')
             </if>
+        </if>
         order by h.hdate desc
         limit #{pageOffset},#{pageSize}
     </select>

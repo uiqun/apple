@@ -4,36 +4,21 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Hotstk implements Serializable {
-    private int hid; //库存编号
-    private String company; //公司名称
+
     private String pn; //型号
     private String mfg; //品牌
-    private String pack; //封装
-    private String qty; //数量
-    private float price; //单价
+    private String pkge; //封装
+    private Integer qty; //数量
+    private Float price; //单价
     private String dtcd; //批次
-    private int qlty; //质量标准id
+    private String qltyName; //质量名称
     private String dtime; //货期
     private String buylink; //购买链接
     private Date hdate; //热卖发布日期
-    private int uid; //发布者
-    private String qltyName; //质量标准
-
-    public int getHid() {
-        return hid;
-    }
-
-    public void setHid(int hid) {
-        this.hid = hid;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
+    private Integer uid; //发布者
+    private String company; //公司名称
+    private String qlty; //质量标准id
+    private Integer hid; //库存编号
 
     public String getPn() {
         return pn;
@@ -51,27 +36,27 @@ public class Hotstk implements Serializable {
         this.mfg = mfg;
     }
 
-    public String getPack() {
-        return pack;
+    public String getPkge() {
+        return pkge;
     }
 
-    public void setPack(String pack) {
-        this.pack = pack;
+    public void setPkge(String pkge) {
+        this.pkge = pkge;
     }
 
-    public String getQty() {
+    public Integer getQty() {
         return qty;
     }
 
-    public void setQty(String qty) {
+    public void setQty(Integer qty) {
         this.qty = qty;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -83,12 +68,12 @@ public class Hotstk implements Serializable {
         this.dtcd = dtcd;
     }
 
-    public int getQlty() {
-        return qlty;
+    public String getQltyName() {
+        return qltyName;
     }
 
-    public void setQlty(int qlty) {
-        this.qlty = qlty;
+    public void setQltyName(String qltyName) {
+        this.qltyName = qltyName;
     }
 
     public String getDtime() {
@@ -115,19 +100,35 @@ public class Hotstk implements Serializable {
         this.hdate = hdate;
     }
 
-    public int getUid() {
+    public Integer getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(Integer uid) {
         this.uid = uid;
     }
 
-    public String getQltyName() {
-        return qltyName;
+    public String getCompany() {
+        return company;
     }
 
-    public void setQltyName(String qltyName) {
-        this.qltyName = qltyName;
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getQlty() {
+        return qlty;
+    }
+
+    public void setQlty(String qlty) {
+        this.qlty = qlty;
+    }
+
+    public Integer getHid() {
+        return hid;
+    }
+
+    public void setHid(Integer hid) {
+        this.hid = hid;
     }
 }

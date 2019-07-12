@@ -1,11 +1,12 @@
 package com.uiqun.controller;
 
 import com.uiqun.model.Hotstk;
+import com.uiqun.model.User;
 import com.uiqun.service.HotstkService;
 import com.uiqun.service.PntypeService;
 import com.uiqun.service.RfqService;
+import com.uiqun.utils.ExcelUtil;
 import com.uiqun.utils.Pager;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class HotstkController {
@@ -30,15 +33,34 @@ public class HotstkController {
      * @return
      */
     @RequestMapping("/uploadHotstk")
-    public String importExcelHotstk(@Param("uid") int uid, Model model, MultipartFile pmultipartfile){
-        if(pmultipartfile.isEmpty()){
-            model.addAttribute("AlertMessage","上传库存信息失败,请提交正确格式的库存清单");
-        }else{
-            if(hotstkService.uploadHotstkListByUid(uid,pmultipartfile)) {
-                model.addAttribute("AlertMessage", "上传库存信息成功");
+    public String importExcelHotstk(HttpSession session, Model model, MultipartFile pmultipartfile){
+        User user =(User) session.getAttribute("user");
+        //判断是否有权限上传热卖库存
+        if(user!=null&&user.getRhot()>0){
+            if(pmultipartfile.isEmpty()){
+                model.addAttribute("AlertMessage","上传库存信息失败,请提交正确格式的库存清单");
+            }else{
+                if(hotstkService.uploadHotstkListByUid(user,pmultipartfile)) {
+                    model.addAttribute("AlertMessage", "上传库存信息成功");
+                }else{
+                    model.addAttribute("AlertMessage","上传库存信息失败,提交的热卖信息超过500条");
+                }
             }
+        }else {
+            model.addAttribute("AlertMessage","权限不足,上传库存信息失败,请联系客服开通权限");
         }
-        return "hotStk";
+        return "forward:/queryHotstks/"+user.getUid();
+    }
+
+    /**
+     * 下载热卖库存模板
+     * @param response
+     */
+    @RequestMapping("/downloadHotstkSample")
+    public void downloadHotstk(HttpServletResponse response){
+        String[] header={"型号","品牌","封装","数量","单价","批次","质量标准","货期","购买链接"};
+        //模板创建模板并下载
+        ExcelUtil.downTemplate(response,header,"热卖库存信息","hotskList.xls");
     }
 
 
@@ -78,4 +100,6 @@ public class HotstkController {
         hotstkService.deletXhotstk(hotid);
         return "redirect:/Xhotstk";
     }
+
+
 }

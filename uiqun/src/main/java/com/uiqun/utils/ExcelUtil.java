@@ -52,7 +52,7 @@ public class ExcelUtil {
                 row = sheet.getRow(j);
                 //去掉空行和表头
                 if ((row == null || row.getFirstCellNum() == j)
-                &&(countCol==0)) {
+                        &&(countCol==0)) {
                     countCol= row.getLastCellNum();
                     continue;
                 }
@@ -170,8 +170,8 @@ public class ExcelUtil {
                 if (HSSFDateUtil.isCellDateFormatted(cell)) {
                     value = sdf.format(cell.getDateCellValue());
                 }else if ("General".equals(cell.getCellStyle().getDataFormatString())) {
-                      value = df.format(cell.getNumericCellValue());
-                 } else {
+                    value = df.format(cell.getNumericCellValue());
+                } else {
                     value = df2.format(cell.getNumericCellValue());
                 }
                 break;
@@ -236,6 +236,25 @@ public class ExcelUtil {
 
     public static String setResponseValue(Object o){
         return o==null?"":o.toString();
+    }
+
+
+    /**
+     * 下载模板信息
+     * @param response HttpServletResponse
+     * @param header 表头
+     * @param sheetName sheet名
+     * @param fileName 文件名
+     */
+    public static void downTemplate(HttpServletResponse response,String[] header,String sheetName,String fileName){
+        Workbook wk=new HSSFWorkbook();//创建一个工作薄
+        Sheet sh=wk.createSheet(sheetName);//创建一个sheet页
+        sh.setDefaultColumnWidth(15);
+        Row row=sh.createRow(0);//创建第一行
+        for (int i = 0; i < header.length; i++) {
+            row.createCell(i).setCellValue(header[i]);
+        }
+        downExcelData(response,wk,fileName);
     }
 
 }

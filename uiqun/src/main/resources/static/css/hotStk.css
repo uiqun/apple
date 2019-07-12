@@ -1,13 +1,3 @@
-
-#title{
-	margin: 0 auto;
-	width: 1000px;
-}
-#title span{
-	font-size: 32px;
-	margin-left: 150px;
-}
-
 #h1_box{
 	width: 100%;
 }
@@ -15,6 +5,13 @@
 	margin: 0 auto;
 	width: 1000px;
 	height: 120px;
+	border: solid 1px lightgray;
+	border-radius: 10px;
+}
+
+#h1 span{
+	float: left;
+	text-align: center;
 }
 #uLogo{
 	float: left;
@@ -53,5 +50,4 @@ ul li{
 #hotStk{
 	margin:0 auto;
 	width: 1000px;
-	height: 800px;
 }

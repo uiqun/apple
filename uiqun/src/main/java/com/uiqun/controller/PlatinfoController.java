@@ -15,7 +15,7 @@ public class PlatinfoController{
 
     @RequestMapping("/queryPlatinfo")
     public String queryPlatinfo(Model model){
-      model.addAttribute("Platinfo", platinfoService.queryPlatinfo());
+        model.addAttribute("Platinfo", platinfoService.queryPlatinfo());
         return "platInfo";
     }
 

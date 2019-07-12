@@ -30,6 +30,7 @@ public class PnController {
     private PntypeService pntypeService;
     @Resource
     private MfgService mfgService;
+
     /**
      * Excel导入型号
      * @param model

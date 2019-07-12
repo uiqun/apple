@@ -58,7 +58,7 @@ public class UserInfoController {
       model.addAttribute("nickname",user.getNickname());
       model.addAttribute("mobile",user.getMobile());
       model.addAttribute("company",user.getCompany());
-      model.addAttribute("co",user.getUid());
+      model.addAttribute("co",user.getCo());
       model.addAttribute("area",user.getArea());
       model.addAttribute("utype",user.getUtype());
       model.addAttribute("contact",user.getContact());

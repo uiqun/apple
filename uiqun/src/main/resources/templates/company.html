@@ -73,7 +73,7 @@
                 <tr class="headline">
                     <th>型号</th>
                     <th>品牌</th>
-                    <th>包装</th>
+                    <th>封装</th>
                     <th>品质标准</th>
                     <th>批次</th>
                     <th>数量</th>
@@ -85,14 +85,14 @@
                 <tr th:each="stk:${page.datas}">
                     <td th:text="${stk.pn}">STM8S903K3T6CTR</td>
                     <td th:text="${stk.mfg}">ST</td>
-                    <td th:text="${stk.pack}">TSSOP20</td>
+                    <td th:text="${stk.pkge}">TSSOP20</td>
                     <td th:text="${stk.qltyName}">原装正品</td>
                     <td th:text="${stk.dtcd}">2018+</td>
                     <td th:text="${stk.qty}">56850</td>
                     <td th:text="${stk.price}">102.56</td>
                     <td th:text="${stk.dtime}">深圳现货</td>
                     <td th:text="${#dates.format(stk.hdate,'yyyy-MM-dd')}">2018-12-27</td>
-                    <td><a th:href="${stk.buylink}" th:text="购买"></a></td>
+                    <td><a th:if="${stk.buylink ne null }" th:href="${stk.buylink}" th:text="购买"></a></td>
                 </tr>
             </table>
         </div>
@@ -101,13 +101,13 @@
 <div class="box">
     <div id="pageCount">
           <span th:if="${pager.totalPage>0}">
-        <a href="/index" th:if="${pager.currentPage>1}">首页</a>
-        <a th:href="${'/index/'+(pager.currentPage-1)}" th:if="${pager.currentPage>1}">上一页</a>
+        <a href="/user/company/" th:if="${pager.currentPage>1}">首页</a>
+        <a th:href="${'/user/company/'+(pager.currentPage-1)}" th:if="${pager.currentPage>1}">上一页</a>
         <span th:if="${pager.totalPage>0}" th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="'/index/'+${i}" th:text="${i}"></a>
+            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="'/user/company/'+${i}" th:text="${i}"></a>
         </span>
-        <a th:href="${'/index/'+(pager.currentPage+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
-        <a th:href="${'/index/'+pager.totalPage}" th:if="${pager.currentPage>1}">末页</a>
+        <a th:href="${'/user/company/'+(pager.currentPage+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
+        <a th:href="${'/user/company/'+pager.totalPage}" th:if="${pager.currentPage>1}">末页</a>
           </span>
     </div>
 </div>

@@ -33,11 +33,11 @@ public class AdvsController {
 
     @RequestMapping("/updateAdvs")
     public String updateAdvs(Advs advs,Model model){
-    if(advsService.updateAdvs(advs)){
-        model.addAttribute("AlertMessage","更新广告词成功！");
-    }else{
-        model.addAttribute("AlertMessage","更新广告词失败！");
-    }
+        if(advsService.updateAdvs(advs)){
+            model.addAttribute("AlertMessage","更新广告词成功！");
+        }else{
+            model.addAttribute("AlertMessage","更新广告词失败！");
+        }
         return "redirect:/Xadvs";
     }
 
@@ -46,10 +46,10 @@ public class AdvsController {
     public String updateAdvs(Model model, MultipartFile pic){
         String of = pic.getOriginalFilename();
         if(UpLoadUtil.uploadImages(pic,of.substring(0,of.lastIndexOf(".")))){
-        model.addAttribute("AlertMessage","更新图片成功！");
-    }else{
-        model.addAttribute("AlertMessage","更新图片失败！");
-    }
+            model.addAttribute("AlertMessage","更新图片成功！");
+        }else{
+            model.addAttribute("AlertMessage","更新图片失败！");
+        }
         return "redirect:/Xadvs";
     }
 

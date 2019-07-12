@@ -81,6 +81,7 @@
                     <th>公 司 名 称</th>
                     <th>规 格 型 号</th>
                     <th>品牌</th>
+                    <th>封装</th>
                     <th>品质要求</th>
                     <th>批次</th>
                     <th>数量</th>
@@ -93,7 +94,8 @@
                     <td><a th:text="${hotstk.company}" th:href="@{'/user/company/'+${hotstk.uid}}" target="_blank">深圳市模板电子科技有限公司</a></td>
                     <td th:text="${hotstk.pn}">STM8S003F3P6TR</td>
                     <td th:text="${hotstk.mfg}">品牌</td>
-                    <td th:text="${hotstk.qltyName}">品牌</td>
+                    <td th:text="${hotstk.pkge}">封装</td>
+                    <td th:text="${hotstk.qlty}">质量标准</td>
                     <td th:text="${hotstk.dtcd}">1830+</td>
                     <td th:text="${hotstk.qty}">500000</td>
                     <td th:text="${hotstk.price}">11.2563</td>

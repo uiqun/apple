@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uiqun.dao.DataAnalysisDao">
+    <select id="getRankingList" resultType="DataAnalysis">
+        SELECT id,type,pn,dayCount,countByMonthOfJSON,countByMonth,countByHistory,selLastDate
+        FROM  dataanalysis
+        WHERE type=#{type}
+        ORDER BY countByMonth DESC
+        LIMIT #{ranking}
+    </select>
+    <select id="getDataList" resultType="DataAnalysis">
+        SELECT id,type,pn,dayCount,countByMonthOfJSON,countByMonth,countByHistory,selLastDate
+        FROM  dataanalysis
+        LIMIT #{pageNum},#{pageSize}
+    </select>
+
+    <update id="updateStats">
+       UPDATE dataanalysis SET dayCount=#{dayCount},countByMonthOfJSON=#{countByMonthOfJson},
+       countByMonth=#{countByMonth},countByHistory=#{countByHistory},selLastDate=#{selLastDate}
+       WHERE id=#{id}
+    </update>
+
+    <select id="queryOneData"  resultType="DataAnalysis">
+         SELECT id,type,pn,dayCount,countByMonthOfJSON,countByMonth,countByHistory,selLastDate
+         FROM  dataanalysis
+         WHERE type=#{type} and pn=#{pn}
+    </select>
+    <insert id="insertDataAnalysis">
+        INSERT INTO dataanalysis(type,pn,dayCount,countByMonthOfJson,countByMonth,countByHistory,selLastDate)
+        VALUES(#{type},#{pn},#{dayCount},#{countByMonthOfJson},
+      #{countByMonth},#{countByHistory},#{selLastDate})
+    </insert>
+
+
+    <insert id="insertDataAnalysisbyVisitors">
+        INSERT INTO dataanalysisbyvisitors values(#{dayCount},#{visitorsByMonth},#{visitorsByMonthOfJson},#{historicalVisitors})
+    </insert>
+    <update id="updateStatsByDataAnalysisbyVisitors">
+        UPDATE dataanalysisbyvisitors SET dayCount=#{dayCount},`visitorsByMonth`=#{visitorsByMonth},
+        `visitorsByMonthOfJson`=#{visitorsByMonthOfJson},`historicalVisitors`=#{historicalVisitors}
+    </update>
+    <select id="queryDataAnalysisbyVisitors" resultType="DataAnalysisbyVisitors">
+        select * from dataanalysisbyvisitors
+    </select>
+</mapper>

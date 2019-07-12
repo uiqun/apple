@@ -125,33 +125,33 @@ public class DateLogUtil {
         Cell cell = null;
         StringBuilder sb =null;
         //读取一行
-            if(!"暂无数据".equalsIgnoreCase(sheet.getRow(1).getCell(0).getStringCellValue())) {
-                //在线统计
-                if (data instanceof OnlineDataLog) {
-                    row = sheet.getRow(1);
-                    //询价/报价统计
-                } else if (data instanceof QuoteDataLog || data instanceof RfqDataLog) {
-                    //查找是否存在询价型号或者报价型号
-                    Object value = getValue(data, 0);
-                    Integer existsPn = isExistsPn(sheet, value != null ? value.toString() : null);
-                    if (existsPn > -1) {
-                        row = sheet.getRow(existsPn);
+        if(!"暂无数据".equalsIgnoreCase(sheet.getRow(1).getCell(0).getStringCellValue())) {
+            //在线统计
+            if (data instanceof OnlineDataLog) {
+                row = sheet.getRow(1);
+                //询价/报价统计
+            } else if (data instanceof QuoteDataLog || data instanceof RfqDataLog) {
+                //查找是否存在询价型号或者报价型号
+                Object value = getValue(data, 0);
+                Integer existsPn = isExistsPn(sheet, value != null ? value.toString() : null);
+                if (existsPn > -1) {
+                    row = sheet.getRow(existsPn);
 
-                    } else {
-                        row = sheet.createRow(sheet.getLastRowNum() + 1);
-                    }
+                } else {
+                    row = sheet.createRow(sheet.getLastRowNum() + 1);
                 }
-            }else{
-                row=sheet.getRow(1);
             }
-            Field[] declaredFields = data.getClass().getDeclaredFields();
-            for (int y = row.getFirstCellNum(),i = 0; y < row.getLastCellNum(); y++) {
-                //设置值
-                row.getCell(y).setCellValue(
-                        //判断是否为日期类型  是日期类型则输出格式为yyyy-MM-dd HH:mm:ss 否则则将数据格式化为String 类型
-                        new DateUtil().getPrettyDate( getValue(data,i++) )
-                );
-            }
+        }else{
+            row=sheet.getRow(1);
+        }
+        Field[] declaredFields = data.getClass().getDeclaredFields();
+        for (int y = row.getFirstCellNum(),i = 0; y < row.getLastCellNum(); y++) {
+            //设置值
+            row.getCell(y).setCellValue(
+                    //判断是否为日期类型  是日期类型则输出格式为yyyy-MM-dd HH:mm:ss 否则则将数据格式化为String 类型
+                    new DateUtil().getPrettyDate( getValue(data,i++) )
+            );
+        }
     }
 
     private<T> Object getValue(T data,Integer i){

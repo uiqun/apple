@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUser(User user) {
-       return userdao.updateUser(user)>0;
+        return userdao.updateUser(user)>0;
     }
 
     @Override
@@ -107,7 +107,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean saveUser(User user) {
-        return userdao.updateUser(user)>0;
+        return userdao.saveUser(user)>0;
     }
     @Override
     public boolean queryUserByPhone(String moblie) {

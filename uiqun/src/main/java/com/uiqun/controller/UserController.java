@@ -240,6 +240,7 @@ public class UserController  {
         model.addAttribute("page",hotstkService.queryHotstks(pager));
         model.addAttribute("qltytypeList",qltytypeService.queryQltytype());
         model.addAttribute("company",userService.queryUserById(id).getCompany());
+        model.addAttribute("co",userService.queryUserById(id).getCo());
         model.addAttribute("addr",userService.queryUserById(id).getAddr());
         model.addAttribute("mobile",userService.queryUserById(id).getMobile());
         model.addAttribute("QQ",userService.queryUserById(id).getQq());

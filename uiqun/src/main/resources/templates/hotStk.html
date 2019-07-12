@@ -10,35 +10,39 @@
     <script src="/js/jquery-3.2.1.js"></script>
     <script charset="gb2312" type="text/javascript" src="/js/public.js"></script>
     <script charset="gb2312" type="text/javascript" src="/js/hotStk.js"></script>
- </head>
+</head>
 
 <body>
 <!--引入头部信息-->
 <div th:include="pageHead :: pageHeadIndex"></div>
 
-    <div class="box" style="margin-top: 30px">
-        <div id="title">
-            <span>库  存  推  广</span> <span >深圳市模板电子科技有限公司</span>
-        </div>
-    </div>
-
 <div id="h1_box">
     <div id="h1">
-        <form action="uploadHotstk" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="uid" th:value="${uid}"/>
-            <table id="upload" cellspacing="10px">
-                <tr><th>上传库存清单(限500条)</th></tr>
-                <tr><td>
-                    <input type="file" name="pmultipartfile"/>
-                </td><td><input type="submit" value="提交"/></td></tr>
-            </table>
-        </form>
+        <span style="padding: 25px;font-size: 32px;">库  存  推  广</span>
+        <span style="padding: 15px;">
+            <form action="/uploadHotstk" method="post" enctype="multipart/form-data">
+                <table id="upload" cellspacing="10px">
+                    <tr><th>上传库存清单(限500条)</th></tr>
+                    <tr><td>
+                        <input type="file" name="pmultipartfile"/>
+                    </td><td><input type="submit" value="提交"/></td></tr>
+                </table>
+            </form>
+        </span>
+        <span style="padding: 25px 125px;">
+            <form action="/downloadHotstkSample" method="post">
+                <table>
+                <tr><th>下载库存模板</th></tr>
+                <tr><td><input type="submit" value="下载"/></td></tr>
+                </table>
+            </form>
+        </span>
     </div>
 </div>
 <div class="box">
     <div id="hotStk">
-        <table cellspacing="10px">
-            <tr><th colspan="10" style="font-size: 20px">库存推广清单</th></tr>
+        <table style="border-collapse:separate; border-spacing:0px 15px;width: 100%">
+            <tr><th colspan="10" style="font-size: 20px">我的推广库存清单</th></tr>
             <tr class="headline">
                 <th>型号</th>
                 <th>品牌</th>
@@ -51,36 +55,36 @@
                 <th>更新日期</th>
                 <th>操作</th>
             </tr>
-            <tr th:each="stk:${page.datas}">
+            <tr th:class="${index.odd}?'odd'" th:each="stk,index:${pager.datas}">
                 <td th:text="${stk.pn}">STM8S903K3T6CTR</td>
                 <td th:text="${stk.mfg}">ST</td>
-                <td th:text="${stk.pack}">TSSOP20</td>
-                <td th:text="${stk.qlty}">原装正品</td>
+                <td th:text="${stk.pkge}">TSSOP20</td>
+                <td th:text="${stk.qltyName}">原装正品</td>
                 <td th:text="${stk.dtcd}">2018+</td>
                 <td th:text="${stk.qty}">56850</td>
                 <td th:text="${stk.price}">102.56</td>
                 <td th:text="${stk.dtime}">深圳现货</td>
                 <td th:text="${#dates.format(stk.hdate,'yyyy-MM-dd')}">2018-12-27</td>
-                <td><a th:href="${stk.buylink}" th:text="购买"></a></td>
+                <td><a th:if="${stk.buylink ne null }" th:href="${stk.buylink}" th:text="购买"></a></td>
             </tr>
         </table>
     </div>
 </div>
 
-    <div class="box">
-        <div id="pageCount">
-              <span th:if="${pager.totalPage>0}">
-            <a href="/index" th:if="${pager.currentPage>1}">首页</a>
-            <a th:href="${'/index/'+(pager.currentPage-1)}" th:if="${pager.currentPage>1}">上一页</a>
-            <span th:if="${pager.totalPage>0}" th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="'/index/'+${i}" th:text="${i}"></a>
+<div class="box">
+    <div id="pageCount">
+          <span th:if="${pager.totalPage>0}">
+        <a th:href="@{'/queryHotstks/'+${user.uid}(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
+        <a th:href="@{'/queryHotstks/'+${user.uid}(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
+        <span th:if="${pager.totalPage>0}" th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
+            <a th:if="${i&lt;pager.currentPage+10 &amp;&amp; i&lt;=pager.totalPage}" th:href="@{'/queryHotstks/'+${user.uid}(currentPage=${i})}" th:text="${i}"></a>
         </span>
-            <a th:href="${'/index/'+(pager.currentPage+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
-            <a th:href="${'/index/'+pager.totalPage}" th:if="${pager.currentPage>1}">末页</a>
-              </span>
-        </div>
-
+        <a th:href="@{'/queryHotstks/'+${user.uid}(currentPage=${pager.currentPage} + 1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
+        <a th:href="@{'/queryHotstks/'+${user.uid}(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
+        <span th:text="'第'+${pager.currentPage}+'页/共'+${pager.totalPage}+'页'"></span>
+          </span>
     </div>
+</div>
 
 <!--引入页脚-->
 <div th:include="pageFooter :: pageFooterIndex"></div>

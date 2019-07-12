@@ -2,6 +2,7 @@ package com.uiqun.service.impl;
 
 import com.uiqun.dao.HotstkDao;
 import com.uiqun.model.Hotstk;
+import com.uiqun.model.User;
 import com.uiqun.service.HotstkService;
 import com.uiqun.utils.ExcelUtil;
 import com.uiqun.utils.Pager;
@@ -24,16 +25,20 @@ public class HotstkServiceImpl implements HotstkService {
     }
 
     @Override
-    public boolean uploadHotstkListByUid(int uid,MultipartFile pmultipartfile) {
+    public boolean uploadHotstkListByUid(User user, MultipartFile pmultipartfile) {
         try {
             //读取进来的列表
             List<List<Object>> uploadListByExcel = ExcelUtil.getUploadListByExcel(pmultipartfile.getInputStream(),
                     pmultipartfile.getOriginalFilename());
+            if(uploadListByExcel.size()>500||uploadListByExcel.size()==0){
+                return false;
+            }
             List<Hotstk> hotstks = UpLoadUtil.tranceObject(uploadListByExcel, Hotstk.class);
-            hotstkDao.deleteHotstkByUid(uid);
+            hotstkDao.deleteHotstkByUid(user.getUid());
             for (int i = 0; i < hotstks.size(); i++) {
                 Hotstk hotstk = hotstks.get(i);
-                hotstk.setQlty(hotstk.getQlty());
+                hotstk.setUid(user.getUid());
+                hotstk.setCompany(user.getCompany());
                 hotstkDao.insertOneHotstk(hotstk);
             }
             return true;
