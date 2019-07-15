@@ -60,7 +60,7 @@ function checkRfqPnX(){
                 tdSelect.style.fontSize="18px";
                 for (i = 0; i < date.datas.length; i++) {
                     var option = document.createElement("option");
-                    option.setAttribute("value", date.datas[i].mfg);
+                    option.setAttribute("value", date.datas[i].mfgName);
                     option.innerText = date.datas[i].mfgName;
                     option.style.fontSize="18px";
                     tdSelect.append(option);
@@ -78,10 +78,8 @@ function commitRfq(num) {
     var tp = document.getElementsByName("tp")[0].value;
     var dtime = document.getElementsByName("dtime")[0].value;
 
-
     if(document.getElementsByName("mfg")!=null&&document.getElementsByName("mfg").length>0
         &&(qty.match(/\d+/))
-        &&(tp.match(/\d{1,5}[\.]?\d{0,3}/))
         &&(dtime!=null&&dtime!='')){
         document.rfqSubmit.submit();
     }else {

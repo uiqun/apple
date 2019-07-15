@@ -11,7 +11,7 @@
         select count(mfgName) from mfglist where mfgName = #{mfgName}
     </select>
     <select id="checkRfqPn" resultType="com.uiqun.model.Mfg">
-        select m.* from mfglist m  left join pnlist p on m.mfgName=p.mfg WHERE p.pn=#{pn}
+        select distinct m.* from mfglist m  left join pnlist p on m.mfgName=p.mfg WHERE p.pn=#{pn}
     </select>
     <select id="queryRfq" resultType="com.uiqun.model.Mfg">
         select * from mfglist  WHERE mid=#{mid}

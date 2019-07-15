@@ -108,11 +108,12 @@ public class RfqController {
      * 添加询价
      * @param model
      * @param rfq
-     * @param session
+     * @param request
      * @return
      */
     @RequestMapping("/addrfq")
-    public String addrfq(Model model,Rfq rfq,HttpSession session){
+    public String addrfq(Model model,Rfq rfq,HttpServletRequest request){
+        HttpSession session =request.getSession();
         if(rfq.getMfg()==null) {
             model.addAttribute("AlertMessage", "添加询价失败,请填写规格型号后,查询该型号是否存在,再选择型号对应的品牌");
         }else{
@@ -128,7 +129,7 @@ public class RfqController {
                 model.addAttribute("AlertMessage", "添加询价成功");
             }
         }
-        return "forward:/jumprfq";
+        return "redirect:/jumprfq";
     }
 
     /**
