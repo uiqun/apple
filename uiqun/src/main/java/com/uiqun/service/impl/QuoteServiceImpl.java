@@ -4,6 +4,7 @@ import com.uiqun.dao.QuoteDao;
 import com.uiqun.model.Quote;
 import com.uiqun.model.User;
 import com.uiqun.service.QuoteService;
+import com.uiqun.utils.DataAnalysisUtil;
 import com.uiqun.utils.Pager;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,16 @@ public class QuoteServiceImpl implements QuoteService {
 
     @Resource
     private QuoteDao quoteDao;
+    @Resource
+    private DataAnalysisUtil dataAnalysisUtil;
+
 
     @Override
     public boolean addQuote(Quote quote) {
         try {
-            return quoteDao.insertQuote(quote)>0;
+            boolean b = quoteDao.insertQuote(quote) > 0;
+            dataAnalysisUtil.modifyOrInsertDataAnalysis(2,quote.getPn());
+            return b;
         } catch (Exception e) {
             e.printStackTrace();
         }

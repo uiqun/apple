@@ -5,6 +5,7 @@ import com.uiqun.dao.RfqDao;
 import com.uiqun.model.Rfq;
 import com.uiqun.model.RfqDataLog;
 import com.uiqun.service.RfqService;
+import com.uiqun.utils.DataAnalysisUtil;
 import com.uiqun.utils.Pager;
 import com.uiqun.utils.RedisUtils;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,10 @@ import java.util.Map;
 @Service
 public class RfqServiceImpl implements RfqService {
     @Resource
-    private RedisUtils redisUtils;
+    private DataAnalysisUtil dataAnalysisUtil;
     @Resource
     private RfqDao rfqDao;
+
 
     public Pager<Rfq> queryRfqList(Pager<Rfq> pager) {
         try {
@@ -37,23 +39,7 @@ public class RfqServiceImpl implements RfqService {
         try {
             boolean flag  = rfqDao.insertRfq(rfq)>0;
             if(flag) {
-                //设置/重新设置型号询价数据
-                RfqDataLog rfqDataLog = JSON.parseObject((String) redisUtils.get(rfq.getPn()), RfqDataLog.class);
-                //如果型号没有询价数据记录
-                if (rfqDataLog == null) {
-                    rfqDataLog = new RfqDataLog();
-                    rfqDataLog.setRfqPn(rfq.getPn());
-                    rfqDataLog.setStartDayByRfq(new Date());
-                }
-                //设置询价redis信息
-                rfqDataLog.setRestartDayByRfq(rfqDataLog.getEndDayByRfq());
-                rfqDataLog.setEndDayByRfq(null);
-                rfqDataLog.setTodayQueryByRfq(rfqDataLog.getTodayQueryByRfq()+1);
-                rfqDataLog.setSumQueryByRfq(rfqDataLog.getSumQueryByRfq()+1);
-                //保存查询信息
-                redisUtils.set(rfqDataLog.getRfqPn(),JSON.toJSONString(rfqDataLog));
-                //添加询价排行榜
-                redisUtils.setSortedSet("RfqSort", JSON.toJSONString(rfqDataLog), redisUtils.getSortScore("RfqSort", rfq.getPn()) + 1);
+                dataAnalysisUtil.modifyOrInsertDataAnalysis(1,rfq.getPn());
             }
             return flag;
         } catch (Exception e) {

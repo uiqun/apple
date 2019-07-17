@@ -1,12 +1,15 @@
 package com.uiqun.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.uiqun.dao.DataAnalysisDao;
 import com.uiqun.model.DataAnalysis;
 import com.uiqun.model.DataAnalysisbyVisitors;
 import com.uiqun.service.DataAnalysisService;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class DataAnalysisServiceImpl implements DataAnalysisService {
@@ -15,6 +18,17 @@ public class DataAnalysisServiceImpl implements DataAnalysisService {
     @Override
     public List<DataAnalysis> getRankingList(int ranking, int type) {
         return dataAnalysisDao.getRankingList(ranking,type);
+    }
+
+
+
+    /**
+     * 偏移统计信息指针，修改统计信息
+     */
+    @Scheduled(cron = "0 52 0 * * ?")
+    private void skewingPointerByData(){
+        System.out.println(11112);
+
     }
 
     @Override

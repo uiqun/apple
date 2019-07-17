@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/images/uiqun.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/uiqun.ico" type="image/x-icon"/>
+    <title>唯群网</title>
+</head>
+<body>
+<div id="box" style="margin-top: 100px">
+    <span th:text="${Exception}"></span>
+    <div id="message">
+        <img src="/images/sad.jpg" alt=""/>
+        <h2 align="center" >服务器繁忙，请稍后重试或咨询客服</h2>
+        <a href="/index">点击返回首页</a>
+    </div>
+</div>
+
+
+</body>
+<style>
+    #message{
+        margin: 0 auto;
+        width: 1000px;
+        text-align: center;
+    }
+    a{
+        font-size: 20px;
+    }
+</style>
+</html>

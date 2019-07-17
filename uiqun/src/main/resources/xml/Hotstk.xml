@@ -68,7 +68,7 @@
             and pn like concat('%',#{pn},'%')
         </if>
         <if test="pntype>0">
-            and pntype=#{pntype}
+            and pntype=#{ptype}
         </if>
         limit 20
     </select>
