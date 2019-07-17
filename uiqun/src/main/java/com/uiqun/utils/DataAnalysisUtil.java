@@ -68,26 +68,33 @@ public class DataAnalysisUtil {
     /**
      * 偏移统计信息指针，修改统计信息
      */
-    @Scheduled(cron = "0 2 0 * * *")
+    @Scheduled(cron = "0 0 0 * * *")
     private void skewingPointerByData(){
-        System.out.println(1111);
-        int pageNum =0;
-        List<DataAnalysis> dataList = dataAnalysisDao.getDataList(pageNum, pageNum + 20);
-        while(dataList!=null){
+        int pageNum =1;
+        int pageSize=20;
+        List<DataAnalysis> dataList = dataAnalysisDao.getDataList((pageNum-1)*pageSize, pageSize);
+        while(dataList!=null&&dataList.size()>0){
             for (int i = 0; i < dataList.size(); i++) {
                 DataAnalysis dataAnalysis = dataList.get(i);
                 //修改天数计数器
                 Integer dayCount = dataAnalysis.getDayCount();
+                //修改近30天数据(JSON类型)
+                ArrayList<Integer> arrayList = JSON.parseObject(dataAnalysis.getCountByMonthOfJson(), ArrayList.class);
+                if(arrayList.size()<30) {
+                    arrayList.add(0);
+                }
+                if(dayCount+1<30&&dayCount+1<arrayList.size()) {
+                    arrayList.set(dayCount+1, 0);
+                }else if(dayCount+1==30){
+                    arrayList.set(0, 0);
+                }
+                dataAnalysis.setCountByMonthOfJson(JSON.toJSONString(arrayList));
                 dayCount++;
                 if(dayCount<30){
                     dataAnalysis.setDayCount(dayCount);
                 }else{
                     dataAnalysis.setDayCount(0);
                 }
-                //修改近30天数据(JSON类型)
-                ArrayList<Integer> arrayList = JSON.parseObject(dataAnalysis.getCountByMonthOfJson(), ArrayList.class);
-                arrayList.set(dayCount,0);
-                dataAnalysis.setCountByMonthOfJson(JSON.toJSONString(arrayList));
                 //修改近30天数据(Integer类型)
                 int count = 0;
                 for (int j = 0; j < arrayList.size(); j++) {
@@ -95,34 +102,45 @@ public class DataAnalysisUtil {
                 }
                 dataAnalysis.setCountByMonth(count);
             }
-            pageNum=pageNum + 20;
-            dataList = dataAnalysisDao.getDataList(pageNum, pageNum + 20);
+            for (DataAnalysis dataAnalysis : dataList) {
+                dataAnalysisDao.updateStats(dataAnalysis);
+            }
+            pageNum++;
+            dataList = dataAnalysisDao.getDataList((pageNum-1)*pageSize, pageSize);
         }
     }
 
     //偏移统计信息指针，修改统计信息(访客数)
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "0 0 0 * * *")
     private void skewingPointerByVisitors(){
         DataAnalysisbyVisitors dataAnalysisbyVisitors = dataAnalysisDao.queryDataAnalysisbyVisitors();
         if(dataAnalysisbyVisitors!=null){
             //修改天数计数器
             Integer dayCount = dataAnalysisbyVisitors.getDayCount();
+            //修改近30天数据(JSON类型)
+            ArrayList<Integer> arrayList = JSON.parseObject(dataAnalysisbyVisitors.getVisitorsByMonthOfJson(), ArrayList.class);
+            if(arrayList.size()<30) {
+                arrayList.add(0);
+            }
+            if(dayCount+1<30&&dayCount+1<arrayList.size()) {
+                arrayList.set(dayCount+1, 0);
+            }else if(dayCount+1==30){
+                arrayList.set(0, 0);
+            }
+            dataAnalysisbyVisitors.setVisitorsByMonthOfJson(JSON.toJSONString(arrayList));
             dayCount++;
             if(dayCount<30){
                 dataAnalysisbyVisitors.setDayCount(dayCount);
             }else{
                 dataAnalysisbyVisitors.setDayCount(0);
             }
-            //修改近30天数据(JSON类型)
-            ArrayList<Integer> arrayList = JSON.parseObject(dataAnalysisbyVisitors.getVisitorsByMonthOfJson(), ArrayList.class);
-            arrayList.set(dayCount,0);
-            dataAnalysisbyVisitors.setVisitorsByMonthOfJson(JSON.toJSONString(arrayList));
             //修改近30天数据(Integer类型)
             int count = 0;
             for (int j = 0; j < arrayList.size(); j++) {
                 count+=arrayList.get(j);
             }
             dataAnalysisbyVisitors.setVisitorsByMonth(count);
+            dataAnalysisDao.updateStatsByDataAnalysisbyVisitors(dataAnalysisbyVisitors);
         }
     }
 }
