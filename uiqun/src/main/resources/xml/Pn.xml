@@ -86,6 +86,43 @@
         where pid = #{pid}
     </update>
 
+    <update id="modifyPnByAdminByOne">
+        update pnlist
+        <set>
+            <if test="ptype != '' and ptype != null">
+                ptype = #{ptype},
+            </if>
+            <if test="pn != '' and pn != null">
+                pn = #{pn},
+            </if>
+            <if test="des != '' and des != null">
+                des = #{des},
+            </if>
+            <if test="mfg != '' and mfg != null">
+                mfg = #{mfg},
+            </if>
+            <if test="pkge != '' and pkge != null">
+                pkge = #{pkge},
+            </if>
+            <if test="pack != '' and pack != null">
+                pack = #{pack},
+            </if>
+            <if test="mpq &gt; 0">
+                mpq = #{mpq},
+            </if>
+            <if test="price &gt; 0">
+                price = #{price},
+            </if>
+            <if test="speck != '' and speck != null">
+                spec = #{speck},
+            </if>
+            <if test="datalink != '' and datalink != null">
+                datalink = #{datalink},
+            </if>
+        </set>
+        where pid = #{pid}
+    </update>
+
     <select id="queryPnsByAdmin" resultType="com.uiqun.model.Pn">
         select p.pid,pt.name ptype,p.pn,p.des,p.mfg,p.pkge,
         p.pack,p.mpq,p.price,p.spec speck,p.datalink

@@ -12,7 +12,6 @@
 <body>
 <input type="hidden" id="AlertMessage" th:value="${AlertMessage}"/>
     <div>
-        <form action="toUpdatePn">
             <table id="pn" cellspacing="10px">
                 <tr><th colspan="2">型号管理</th></tr>
                 <tr>
@@ -23,7 +22,10 @@
                     </form>
                     </td>
                 </tr>
+            </table>
+
                 <form action="/toUpdatePn" method="post">
+                    <table cellspacing="10px">
                 <tr>
                     <td>型号编码：</td>
                     <td><input class="blank" th:value="${pn?.pid}" name="pid" type="text" value="1002"/></td>
@@ -79,9 +81,11 @@
                 <tr>
                     <td colspan="2"><input type="submit" value="修改"/></td>
                 </tr>
+                    </table>
                 </form>
-            </table>
-        </form>
+
+
+
     </div>
     <div>
             <table  cellspacing="10px">

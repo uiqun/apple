@@ -239,17 +239,21 @@ public class UserController  {
         pager.getCondition().put("uid",id);
         model.addAttribute("page",hotstkService.queryHotstks(pager));
         model.addAttribute("qltytypeList",qltytypeService.queryQltytype());
-        model.addAttribute("company",userService.queryUserById(id).getCompany());
-        model.addAttribute("co",userService.queryUserById(id).getCo());
-        model.addAttribute("addr",userService.queryUserById(id).getAddr());
-        model.addAttribute("mobile",userService.queryUserById(id).getMobile());
-        model.addAttribute("QQ",userService.queryUserById(id).getQq());
-        model.addAttribute("contact",userService.queryUserById(id).getContact());
-        model.addAttribute("tel",userService.queryUserById(id).getTel());
-        model.addAttribute("wechat",userService.queryUserById(id).getWechat());
-        model.addAttribute("website",userService.queryUserById(id).getWebsite());
-        model.addAttribute("business",userService.queryUserById(id).getBusiness());
-        model.addAttribute("profile",userService.queryUserById(id).getProfile());
+
+        User user = userService.queryUserById(id);
+        if(user!=null) {
+            model.addAttribute("company", user.getCompany());
+            model.addAttribute("co", userService.queryUserById(id).getCo());
+            model.addAttribute("addr", userService.queryUserById(id).getAddr());
+            model.addAttribute("mobile", userService.queryUserById(id).getMobile());
+            model.addAttribute("QQ", userService.queryUserById(id).getQq());
+            model.addAttribute("contact", userService.queryUserById(id).getContact());
+            model.addAttribute("tel", userService.queryUserById(id).getTel());
+            model.addAttribute("wechat", userService.queryUserById(id).getWechat());
+            model.addAttribute("website", userService.queryUserById(id).getWebsite());
+            model.addAttribute("business", userService.queryUserById(id).getBusiness());
+            model.addAttribute("profile", userService.queryUserById(id).getProfile());
+        }
         return "company";
     }
 

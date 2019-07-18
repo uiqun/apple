@@ -101,13 +101,13 @@
 <div class="box">
     <div id="pageCount">
           <span th:if="${pager.totalPage>0}">
-        <a href="/user/company/{uid}" th:if="${pager.currentPage>1}">首页</a>
-        <a th:href="@{/user/company(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
+        <a th:href="@{'/user/company/'+${pager.condition.uid}(currentPage=1)}" th:if="${pager.currentPage>1}">首页</a>
+        <a th:href="@{'/user/company/'+${pager.condition.uid}(currentPage=${pager.currentPage} - 1)}" th:if="${pager.currentPage>1}">上一页</a>
         <span th:if="${pager.totalPage>0}" th:each="i:${#numbers.sequence(pager.currentPage,pager.totalPage,1)}">
-            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="@{/user/company(currentPage=${i})}" th:text="${i}"></a>
+            <a th:if="${i&lt;pager.currentPage+10&amp;&amp; i&lt;=pager.totalPage}" th:href="@{'/user/company/'+${pager.condition.uid}(currentPage=${i})}" th:text="${i}"></a>
         </span>
-        <a th:href="@{/user/company(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
-        <a th:href="@{/user/company(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
+        <a th:href="@{'/user/company/'+${pager.condition.uid}(currentPage=${pager.currentPage}+1)}" th:if="${pager.currentPage&lt;pager.totalPage}">下一页</a>
+        <a th:href="@{'/user/company/'+${pager.condition.uid}(currentPage=${pager.totalPage})}" th:if="${pager.currentPage>1}">末页</a>
           </span>
     </div>
 </div>

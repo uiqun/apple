@@ -27,18 +27,24 @@
     <div id="rfqs">
         <table cellspacing="15px">
             <tr><th>最近30天询价次数前50名</th></tr>
-            <tr th:each="rfqData:${rfq50}">
+
+            <tr th:if="${#lists.size(rfq50) &gt; 0}" th:each="rfqData:${rfq50}">
                 <td th:text="${rfqData.pn}">STM8S003F3P6</td><td th:text="${rfqData.countByMonth+'次'}">1586次</td>
+            </tr>
+            <tr th:if="${#lists.size(rfq50) eq 0}">
+                <td>暂无排名数据</td>
             </tr>
         </table>
     </div>
     <div id="finds">
         <table cellspacing="15px">
             <tr><th>最近30天查询次数前50名</th></tr>
-            <tr th:each="quoteData:${quote50}">
+            <tr  th:if="${#lists.size(quote50) &gt; 0}" th:each="quoteData:${quote50}">
                 <td th:text="${quoteData.pn}">STM8S003F3P6</td><td th:text="${quoteData.countByMonth+'次'}">3586次</td>
             </tr>
-
+            <tr th:if="${#lists.size(quote50) eq 0}">
+                <td>暂无排名数据</td>
+            </tr>
         </table>
     </div>
 </div>

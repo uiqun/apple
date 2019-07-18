@@ -22,6 +22,7 @@ public class SessionCounter implements HttpSessionListener {
 
     //session创建时执行
     public void sessionCreated(HttpSessionEvent se) {
+        activeSessions++;
         DataAnalysisbyVisitors dataAnalysis = dataAnalysisDao.queryDataAnalysisbyVisitors();
         if (dataAnalysis != null) {
             //历史查询加1
@@ -53,9 +54,9 @@ public class SessionCounter implements HttpSessionListener {
             dataAnalysis.setVisitorsByMonthOfJson(JSON.toJSONString(Json));
             //新建统计信息
             dataAnalysisDao.insertDataAnalysisbyVisitors(dataAnalysis);
-            activeSessions++;
         }
-    }
+
+        }
         //session销毁时执行
         public void sessionDestroyed (HttpSessionEvent se){
             if (activeSessions > 0) {

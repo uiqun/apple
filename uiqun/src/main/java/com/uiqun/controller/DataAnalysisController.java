@@ -35,9 +35,21 @@ public class DataAnalysisController {
         //近30天的访客数
         model.addAttribute("visitors", dataAnalysisService.queryDataAnalysisbyVisitors());
         //询价前50名
-        model.addAttribute("rfq50",dataAnalysisService.getRankingList(DataAnalysisConstant.RANKING,DataAnalysisConstant.RFQ_TYPE));
+        List<DataAnalysis> rankingList = dataAnalysisService.getRankingList(DataAnalysisConstant.RANKING, DataAnalysisConstant.RFQ_TYPE);
+        for (int i = 0; i < rankingList.size(); i++){
+            if(rankingList.get(i).getCountByMonth()==0){
+                rankingList.remove(rankingList.get(i));
+            }
+        }
+        model.addAttribute("rfq50",rankingList);
         //报价前50名
-        model.addAttribute("quote50",dataAnalysisService.getRankingList(DataAnalysisConstant.RANKING,DataAnalysisConstant.QUOTE_TYPE));
+        List<DataAnalysis> rankingList1 = dataAnalysisService.getRankingList(DataAnalysisConstant.RANKING, DataAnalysisConstant.QUOTE_TYPE);
+        for (int i = 0; i < rankingList1.size(); i++){
+            if(rankingList1.get(i).getCountByMonth()==0){
+                rankingList1.remove(rankingList1.get(i));
+            }
+        }
+        model.addAttribute("quote50",rankingList1);
         return "Xanalysis";
     }
 

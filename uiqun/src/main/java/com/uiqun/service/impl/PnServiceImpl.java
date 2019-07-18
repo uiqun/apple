@@ -87,6 +87,15 @@ public class PnServiceImpl implements PnService {
         return false;
     }
 
+    @Override
+    public boolean modifyPnByAdminByOne(Pn pn) {
+        try {
+            return pnDao.modifyPnByAdminByOne(pn)>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     @Override
     public Workbook downExcelByPn(Pn pn) {

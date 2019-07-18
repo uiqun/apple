@@ -58,7 +58,7 @@ public class HotstkController {
      */
     @RequestMapping("/downloadHotstkSample")
     public void downloadHotstk(HttpServletResponse response){
-        String[] header={"型号","品牌","封装","数量","单价","批次","质量标准","货期","购买链接"};
+        String[] header={"型号","型号类型","品牌","封装","数量","单价","批次","质量标准","货期","购买链接"};
         //模板创建模板并下载
         ExcelUtil.downTemplate(response,header,"热卖库存信息","hotskList.xls");
     }

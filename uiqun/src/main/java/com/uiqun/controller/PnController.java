@@ -164,7 +164,7 @@ public class PnController {
      */
     @RequestMapping("/toUpdatePn")
     public String toUpdatePn(Model model,Pn pn){
-        if(pnService.modifyPnByAdmin(pn)){
+        if(pnService.modifyPnByAdminByOne(pn)){
             //返回消息
             model.addAttribute("AlertMessage","修改型号信息成功");
         }else{
@@ -198,6 +198,6 @@ public class PnController {
                 model.addAttribute("AlertMessage", "上传型号信息成功");
             }
         }
-        return "Xmfg";
+        return "Xpn";
     }
 }

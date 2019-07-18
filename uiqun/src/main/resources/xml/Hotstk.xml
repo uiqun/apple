@@ -70,6 +70,7 @@
         <if test="pntype>0">
             and pntype=#{ptype}
         </if>
+        order by hdate desc
         limit 20
     </select>
 

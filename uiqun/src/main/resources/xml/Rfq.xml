@@ -55,6 +55,7 @@
             <if test="pntype>0">
                 and pntype=#{pntype}
             </if>
+        order by rdate desc
         limit 20
     </select>
 

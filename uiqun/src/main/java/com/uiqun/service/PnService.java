@@ -54,6 +54,8 @@ public interface PnService {
      */
     boolean modifyPnByAdmin(Pn pn);
 
+    boolean modifyPnByAdminByOne(Pn pn);
+
     /**
      * 获取下载的
      * @param pn
