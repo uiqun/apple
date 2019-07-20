@@ -146,7 +146,6 @@ public class PnServiceImpl implements PnService {
             List<Pn> pns = UpLoadUtil.tranceObject(uploadListByExcel, Pn.class);
             for (int i = 0; i < pns.size(); i++) {
                 Pn pn = pns.get(i);
-                pn.setPtype(pn.getPtype().split(" ")[0]);
                 if(pn.getPid()==null||pn.getPid()==0){
                     pnDao.insertOnePnByAdmin(pn);
                 }else {
