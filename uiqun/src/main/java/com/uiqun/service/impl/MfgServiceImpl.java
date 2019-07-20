@@ -10,6 +10,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -100,6 +101,7 @@ public class MfgServiceImpl implements MfgService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean uploadMfgList(MultipartFile smultipartfile) {
         try {
             List<List<Object>> uploadListByExcel = ExcelUtil.getUploadListByExcel(smultipartfile.getInputStream(),

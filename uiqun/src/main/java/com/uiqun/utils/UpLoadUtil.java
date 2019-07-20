@@ -21,10 +21,10 @@ public abstract class UpLoadUtil {
      * @param <T>
      * @return
      */
-    public static <T> List<T> tranceObject(List<List<Object>> list , Class<T> tClass){
+    public static <T> List<T> tranceObject(List<List<Object>> list , Class<T> tClass) throws NoSuchMethodException,
+            IllegalAccessException, InstantiationException, InvocationTargetException, ClassNotFoundException {
         List<T> tList = new ArrayList<>();
         StringBuilder sb = null;
-        try {
             for (int i = 0; i < list.size(); i++) {
                     T t = tClass.newInstance();
                 Field[] declaredFields = tClass.getDeclaredFields();
@@ -50,17 +50,6 @@ public abstract class UpLoadUtil {
             }
 
 
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
         return tList;
     }

@@ -43,7 +43,7 @@ public class HotstkController {
                 if(hotstkService.uploadHotstkListByUid(user,pmultipartfile)) {
                     model.addAttribute("AlertMessage", "上传库存信息成功");
                 }else{
-                    model.addAttribute("AlertMessage","上传库存信息失败,提交的热卖信息超过500条");
+                    model.addAttribute("AlertMessage","上传库存信息失败,提交的热卖信息超过500条或文件中格式错误。");
                 }
             }
         }else {

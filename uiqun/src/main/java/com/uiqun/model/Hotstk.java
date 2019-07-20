@@ -6,6 +6,7 @@ import java.util.Date;
 public class Hotstk implements Serializable {
 
     private String pn; //型号
+    private String pntype;//型号类型
     private String mfg; //品牌
     private String pkge; //封装
     private Integer qty; //数量
@@ -19,6 +20,14 @@ public class Hotstk implements Serializable {
     private String company; //公司名称
     private String qlty; //质量标准id
     private Integer hid; //库存编号
+
+    public String getPntype() {
+        return pntype;
+    }
+
+    public void setPntype(String pntype) {
+        this.pntype = pntype;
+    }
 
     public String getPn() {
         return pn;

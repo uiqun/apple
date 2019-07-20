@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uiqun.dao.HotstkDao">
     <insert id="insertHotstks">
-        INSERT INTO `hotlist`(company,pn,mfg,pkge,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
+        INSERT INTO `hotlist`(pn,pntype,mfg,pkge,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
         VALUES
         <foreach collection="list" item="outList" separator="," close=";">
             <foreach collection="outList" item="intList" open="(" close=")" separator="," index="index">
@@ -18,8 +18,8 @@
     </insert>
 
     <insert id="insertOneHotstk">
-        INSERT INTO `hotlist`(company,pn,mfg,pkge,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
-         VALUES(#{company},#{pn},#{mfg},#{pkge},#{qty},#{price},#{dtcd},(select id from qltytype where name like concat('%',#{qltyName},'%') ),#{dtime},#{buylink},now(),#{uid})
+        INSERT INTO `hotlist`(company,pn,pntype,mfg,pkge,qty,price,dtcd,qlty,dtime,buylink,hdate,uid)
+         VALUES(#{company},#{pn},(select id from pntype where name like concat('%',#{pntype},'%') ),#{mfg},#{pkge},#{qty},#{price},#{dtcd},(select id from qltytype where name like concat('%',#{qltyName},'%') ),#{dtime},#{buylink},now(),#{uid})
     </insert>
 
     <delete id="deleteHotstkByUid">

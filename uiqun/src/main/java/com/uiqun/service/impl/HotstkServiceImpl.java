@@ -8,6 +8,7 @@ import com.uiqun.utils.ExcelUtil;
 import com.uiqun.utils.Pager;
 import com.uiqun.utils.UpLoadUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -25,6 +26,7 @@ public class HotstkServiceImpl implements HotstkService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean uploadHotstkListByUid(User user, MultipartFile pmultipartfile) {
         try {
             //读取进来的列表
@@ -44,8 +46,8 @@ public class HotstkServiceImpl implements HotstkService {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
 

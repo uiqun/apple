@@ -19,18 +19,6 @@ public class DataAnalysisServiceImpl implements DataAnalysisService {
     public List<DataAnalysis> getRankingList(int ranking, int type) {
         return dataAnalysisDao.getRankingList(ranking,type);
     }
-
-
-
-    /**
-     * 偏移统计信息指针，修改统计信息
-     */
-    @Scheduled(cron = "0 52 0 * * ?")
-    private void skewingPointerByData(){
-        System.out.println(11112);
-
-    }
-
     @Override
     public DataAnalysis queryOneData(DataAnalysis dataAnalysis) {
         return dataAnalysisDao.queryOneData(dataAnalysis);
