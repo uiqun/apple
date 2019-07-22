@@ -1,6 +1,8 @@
 package com.uiqun.utils;
 
+import org.aspectj.weaver.ast.Var;
 import org.springframework.util.ResourceUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -38,12 +40,18 @@ public abstract class UpLoadUtil {
                     if(Date.class.getTypeName().equalsIgnoreCase(declaredFields[j].getType().getTypeName() ) ){
                         method.invoke(t,dateDispose(list.get(i).get(j)));
                     }else {
-                        method.invoke(t,
-                                (list.get(i).get(j) != null && !"".equals(list.get(i).get(j)))
-                                        ? UpLoadUtil.class.getClassLoader().
-                                        loadClass(declaredFields[j].getType().getName()).getConstructor(String.class).newInstance(list.get(i).get(j))
-                                        : null
-                        );
+                        if(declaredFields[j].getType().getTypeName().equalsIgnoreCase("String") ){
+                            method.invoke(t,
+                                    (StringUtils.isEmpty(list.get(i).get(j) )
+                                            ? UpLoadUtil.class.getClassLoader().
+                                            loadClass(declaredFields[j].getType().getName()).getConstructor(String.class).newInstance(list.get(i).get(j))
+                                            : null
+                            ));
+                        }else{
+                            String trim = ((String) list.get(i).get(j)).trim();
+                            method.invoke(t,StringUtils.isEmpty(trim)?null:UpLoadUtil.class.getClassLoader().
+                                    loadClass(declaredFields[j].getType().getName()).getConstructor(String.class).newInstance(trim));
+                        }
                     }
                 }
                 tList.add(t);
