@@ -1,6 +1,5 @@
 package com.uiqun.utils;
 
-import org.aspectj.weaver.ast.Var;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
