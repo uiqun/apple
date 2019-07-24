@@ -3,6 +3,7 @@ package com.uiqun.dao;
 import com.uiqun.model.Quote;
 import com.uiqun.model.User;
 import com.uiqun.utils.Pager;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -40,7 +41,8 @@ public interface QuoteDao {
      * @param user
      * @return
      */
-    List<Quote> queryQuoteByRfq(User user);
+    List<Quote> queryQuoteByRfq(@Param("user") User user, @Param("pageOffSet") Integer pageOffSet,
+                                @Param("pageSize") Integer pageSize);
 
 
     int queryQuoteRowsByRfq(User user);

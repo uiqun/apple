@@ -48,7 +48,7 @@ public class QuoteServiceImpl implements QuoteService {
         try {
             User user = (User)pager.getCondition().get("user");
             pager.setTotalCount(quoteDao.queryQuoteRowsByRfq(user));
-            pager.setDatas(quoteDao.queryQuoteByRfq(user));
+            pager.setDatas(quoteDao.queryQuoteByRfq(user,pager.getPageOffset(),pager.getPageSize()));
             return pager;
         } catch (Exception e) {
             e.printStackTrace();

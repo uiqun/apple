@@ -25,8 +25,9 @@
     <select id="queryQuoteByRfq" resultMap="QuoteMap">
         SELECT *,ql.name qltyName
         FROM `quotelist` qu,qltytype ql
-        WHERE qu.uid=#{uid} and qu.qlty=ql.id
+        WHERE qu.uid=#{user.uid} and qu.qlty=ql.id
         order by qu.qdate desc
+        limit #{pageOffSet},#{pageSize}
     </select>
     <select id="queryQuoteRowsByRfq" resultType="_int">
         SELECT count(1)
